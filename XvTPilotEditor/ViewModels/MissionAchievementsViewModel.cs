@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using XvTPilotEditor.Models;
 
 namespace XvTPilotEditor.ViewModels
 {
-    class MissionAchievementsViewModel : PageViewModel
+    public class MissionAchievementsViewModel : PageViewModel
     {
+        internal MissionAchievementsViewModel(Pilot pilotModel)
+            : base(pilotModel)
+        {
+        }
     }
 }

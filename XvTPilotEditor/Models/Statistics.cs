@@ -1,6 +1,6 @@
 ﻿namespace XvTPilotEditor.Models
 {
-    class Statistics
+    public class Statistics
     {
         public ModeStats Exercise { get; }
         public ModeStats Melee { get; }

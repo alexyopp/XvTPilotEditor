@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace XvTPilotEditor.Models
 {
-    class Pilot
+    public class Pilot
     {
         private const uint MAX_NAME_LENGTH = 12;
 

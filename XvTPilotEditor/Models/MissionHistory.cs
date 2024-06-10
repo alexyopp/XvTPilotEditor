@@ -2,7 +2,7 @@
 
 namespace XvTPilotEditor.Models
 {
-    class MissionHistory
+    public class MissionHistory
     {
         public List<TrainingResult>?    Training    { get; set; }
         public List<MeleeResult>?       Melee       { get; set; }

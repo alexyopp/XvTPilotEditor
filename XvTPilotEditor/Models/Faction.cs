@@ -1,6 +1,6 @@
 ﻿namespace XvTPilotEditor.Models
 {
-    class Faction
+    public class Faction
     {
         public Statistics Statistics { get; }
         public MissionHistory SinglePlayer { get; }

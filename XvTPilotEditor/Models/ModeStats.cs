@@ -2,7 +2,7 @@
 
 namespace XvTPilotEditor.Models
 {
-    class ModeStats
+    public class ModeStats
     {
         //**    Summary of Kills    **//
         //

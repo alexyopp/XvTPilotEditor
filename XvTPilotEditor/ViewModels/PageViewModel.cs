@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using XvTPilotEditor.Models;
 
 namespace XvTPilotEditor.ViewModels
 {
     public class PageViewModel : ViewModelBase
     {
+        protected Pilot pilotModel;
+
+        public PageViewModel(Pilot pilotModel)
+        {
+            this.pilotModel = pilotModel;
+        }
     }
 }

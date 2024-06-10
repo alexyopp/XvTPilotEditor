@@ -2,7 +2,7 @@
 
 namespace XvTPilotEditor.Models
 {
-    class RatingHistory
+    public class RatingHistory
     {
         public List<PilotRating> RatingAchievedOnMissionNumber { get; }
 

@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using XvTPilotEditor.Commands;
+using XvTPilotEditor.Models;
 
 namespace XvTPilotEditor.ViewModels
 {
@@ -19,14 +15,16 @@ namespace XvTPilotEditor.ViewModels
         public ICommand ChangeActivePageCommand     { get; private set; }
 
         private Dictionary<Page, PageViewModel> pageViewModels;
+        private Pilot pilotModel;
 
         public MainViewModel()
         {
+            pilotModel = new Pilot();
             pageViewModels = BuildViewModels();
 
             ChangeActivePageCommand = new DelegateCommand(o => this.UpdateActivePageViewModel());
 
-            // Initial state
+            // Initial UI state
             ActiveFaction           = Faction.Rebel;
             ActivePage              = Page.Statistics;
             ActivePageViewModel     = pageViewModels[ActivePage];
@@ -41,13 +39,13 @@ namespace XvTPilotEditor.ViewModels
                 switch (page)
                 {
                     case Page.Statistics:
-                        viewModels.Add(Page.Statistics, new StatisticsPageViewModel());
+                        viewModels.Add(Page.Statistics, new StatisticsPageViewModel(pilotModel));
                         break;
                     case Page.RatingHistory:
-                        viewModels.Add(Page.RatingHistory, new RatingHistoryViewModel());
+                        viewModels.Add(Page.RatingHistory, new RatingHistoryViewModel(pilotModel));
                         break;
                     case Page.MissionAchievements:
-                        viewModels.Add(Page.MissionAchievements, new MissionAchievementsViewModel());
+                        viewModels.Add(Page.MissionAchievements, new MissionAchievementsViewModel(pilotModel));
                         break;
                 }
             }
