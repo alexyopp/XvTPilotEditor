@@ -4,70 +4,76 @@ namespace XvTPilotEditor.Models
 {
     class ModeStats
     {
-        //**SUMMARY OF KILLS**//
-        //  Total Kills
+        //**    Summary of Kills    **//
+        //
         public uint TotalKills          { get; }                   // Sum of PlayerKillsByRank and CraftKillsByType?
         public uint TotalSharedKills    { get; }                   // Sum of PlayerSharedKillsByRank and CraftSharedKillsByType?
 
-        //  Player Kills
         public uint PlayerKills         { get; }                  // Sum of PlayerKillsByRank?
         public uint PlayerSharedKills   { get; }                  // Sum of PlayerSharedKillsByRank?
 
-        //  Non-Player Kills
         public uint NonPlayerKills          { get; }               // Sum of CraftKillsByType?
         public uint NonPlayerSharedKills    { get; }               // Sum of CraftSharedKillsByType?
 
-        //  Assists
         public uint Assists { get; set; }
 
-        //  Hidden Cargo Found
         public uint HiddenCargoFound { get; set; }
 
-        //  Laser Accuracy (a percentage, 0 - 100)
-        public uint LaserAccuracy { get; set; }
+        public uint LaserAccuracy { get; set; }                     //  Percentage, 0...100
 
-        //  Warhead Accuracy (a percentage, 0 - 100)
-        public uint WarheadAccuracy { get; set; }
+        public uint WarheadAccuracy { get; set; }                   //  Percentage, 0...100
+        //
 
-        //**PLAYER KILLS BY RANK**//
-        public List<PilotRating>? PlayerKillsByRank        { get; set; }
-        public List<PilotRating>? PlayerSharedKillsByRank  { get; set; }
+        //**    Player Kills by Rank    **//
+        //
+        public List<PilotRating> PlayerKillsByRank        { get; set; }
+        public List<PilotRating> PlayerSharedKillsByRank  { get; set; }
+        //
 
-        //**CRAFT KILLS BY TYPE**//
+        //**    Craft Kills by Type     **//
+        //
         public List<CraftTypes> CraftKillsByType          { get; set; }
         public List<CraftTypes> CraftSharedKillsByType    { get; set; }
+        //
 
-        //**AVERAGES PER MISSION**//
-        //  Total Kills
+        //**    Averages per Mission    **//
+        //
         public double TotalKillsPerMission          { get; }       // Sum of PlayerKillsPerMission and NonPlayerKillsPerMission?
         public double TotalSharedKillsPerMission    { get; }       // Sum of PlayerSharedKillsPerMission and NonPlayerSharedKillsPerMission?
 
-        //  Player Kills
         public double PlayerKillsPerMission         { get; }        // Calculated value?
         public double PlayerSharedKillsPerMission   { get; }        // Calculated value?
 
-        //  Non-Player Kills
         public double NonPlayerKillsPerMission          { get; }    // Calculated value?
         public double NonPlayerSharedKillsPerMission    { get; }    // Calculated value?
 
-        //  Assists
         public double AssistsPerMission { get; }                    //  Calculated value?
+        //
 
-        //**TOTAL LOSSES**//
+        //**    Total Losses    **//
+        //
         public uint TotalCraftLosses        { get; set; }           //  Calculated value?
         public uint LossesToPlayerPilots    { get; set; }           //  Sum of LossesToPlayersByRank?
         public uint LossesToNonPlayerPilots { get; set; }
         public uint LossesToStarships       { get; set; }
         public uint LossesToMines           { get; set; }
         public uint LossesFromCollisions    { get; set; }
+        //
 
-        //**LOSSES TO PLAYERS BY RANK**//
-        public List<PilotRating>? LossesToPlayersByRank { get; set; }
+        //**    Losses to Players by Rank   **//
+        //
+        public List<PilotRating> LossesToPlayersByRank { get; set; }
+        //
 
         public ModeStats()
         {
+            PlayerKillsByRank       = new List<PilotRating>((int)PilotRating.MAX_PILOT_RATINGS);
+            PlayerSharedKillsByRank = new List<PilotRating>((int)PilotRating.MAX_PILOT_RATINGS);
+
             CraftKillsByType        = new List<CraftTypes>((int)CraftTypes.MAX_CRAFT_TYPES);
             CraftSharedKillsByType  = new List<CraftTypes>((int)CraftTypes.MAX_CRAFT_TYPES);
+
+            LossesToPlayersByRank   = new List<PilotRating>((int)PilotRating.MAX_PILOT_RATINGS);
         }
     }
 }
