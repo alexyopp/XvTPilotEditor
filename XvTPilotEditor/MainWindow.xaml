@@ -4,9 +4,48 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XvTPilotEditor"
+        xmlns:view="clr-namespace:XvTPilotEditor.Views"
+        xmlns:vm="clr-namespace:XvTPilotEditor.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Xvt/BoP Pilot Editor" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
+        <view:PilotUniversals
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"/>
+
+        <view:PageSelection
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalAlignment="Left"/>
+
+        <ScrollViewer
+            Grid.Row="1"
+            Grid.Column="1"
+            HorizontalScrollBarVisibility = "Hidden" 
+            VerticalScrollBarVisibility = "Auto">
+            <ScrollViewer.Resources>
+                <DataTemplate DataType="{x:Type vm:StatisticsPageViewModel}">
+                    <view:StatisticsPage/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:RatingHistoryViewModel}">
+                    <view:RatingHistoryPage/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:MissionAchievementsViewModel}">
+                    <view:MissionAchievementsPage/>
+                </DataTemplate>
+            </ScrollViewer.Resources>
+            <ContentControl Content="{Binding ActivePageViewModel}"/>
+        </ScrollViewer>
     </Grid>
 </Window>

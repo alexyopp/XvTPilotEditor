@@ -120,8 +120,16 @@
         MAX_FACTIONS
     }
 
+    public enum Page
+    {
+        Statistics,
+        RatingHistory,
+        MissionAchievements,
+        MAX_PAGES
+    }
+
     //  List in order of BoP Craft Library (different from order shown on Pilot Statistics)
-    //  * - ships not showing on Statistics page (in some cases, definitely should, cannot confirm that's true for all, though)
+    //  * - ships not showing on Statistics page in game (in some cases, definitely should, cannot confirm that's true for all, though)
     public enum CraftTypes : uint
     {
         XWing,

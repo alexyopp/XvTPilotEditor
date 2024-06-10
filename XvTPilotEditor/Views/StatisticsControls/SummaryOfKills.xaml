@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="XvTPilotEditor.Views.SummaryOfKills"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:XvTPilotEditor.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Summary of Kills"   Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"/>
+        <Label Content="Exercise"           Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+        <Label Content="Melee"              Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+        <Label Content="Combat"             Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
+
+        <Label Content="Total Kills"         Grid.Row="1" Grid.Column="0"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="1" Grid.Column="1" Text="{Binding PilotVM.TotalKills_Exercise}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="1" Grid.Column="2" Text="{Binding PilotVM.TotalKills_Exercise_Shared}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="1" Grid.Column="3" Text="{Binding PilotVM.TotalKills_Melee}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="1" Grid.Column="4" Text="{Binding PilotVM.TotalKills_Melee_Shared}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="1" Grid.Column="5" Text="{Binding PilotVM.TotalKills_Combat}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="1" Grid.Column="6" Text="{Binding PilotVM.TotalKills_Combat_Shared}"/>
+
+        <Label Content="Player Kills"        Grid.Row="2" Grid.Column="0"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="2" Grid.Column="1" Text="{Binding PilotVM.PlayerKills_Exercise}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="2" Grid.Column="2" Text="{Binding PilotVM.PlayerKills_Exercise_Shared}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="2" Grid.Column="3" Text="{Binding PilotVM.PlayerKills_Melee}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="2" Grid.Column="4" Text="{Binding PilotVM.PlayerKills_Melee_Shared}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="2" Grid.Column="5" Text="{Binding PilotVM.PlayerKills_Combat}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="2" Grid.Column="6" Text="{Binding PilotVM.PlayerKills_Combat_Shared}"/>
+
+        <Label Content="Non-Player Kills"    Grid.Row="3" Grid.Column="0"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="3" Grid.Column="1" Text="{Binding PilotVM.NonPlayerKills_Exercise}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="3" Grid.Column="2" Text="{Binding PilotVM.NonPlayerKills_Exercise_Shared}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="3" Grid.Column="3" Text="{Binding PilotVM.NonPlayerKills_Melee}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="3" Grid.Column="4" Text="{Binding PilotVM.NonPlayerKills_Melee_Shared}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="3" Grid.Column="5" Text="{Binding PilotVM.NonPlayerKills_Combat}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="3" Grid.Column="6" Text="{Binding PilotVM.NonPlayerKills_Combat_Shared}"/>
+
+        <Label Content="Assists"             Grid.Row="4" Grid.Column="0"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding PilotVM.Assists_Exercise}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Text="{Binding PilotVM.Assists_Melee}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2" Text="{Binding PilotVM.Assists_Combat}"/>
+
+        <Label Content="Hidden Cargo Found"             Grid.Row="5" Grid.Column="0"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding PilotVM.HiddenCargoFound_Exercise}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" Text="{Binding PilotVM.HiddenCargoFound_Melee}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" Text="{Binding PilotVM.HiddenCargoFound_Combat}"/>
+
+        <Label Content="Laser Accuracy"             Grid.Row="6" Grid.Column="0"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding PilotVM.LaserAccuracy_Exercise}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="2" Text="{Binding PilotVM.LaserAccuracy_Melee}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="2" Text="{Binding PilotVM.LaserAccuracy_Combat}"/>
+
+        <Label Content="Warhead Accuracy"             Grid.Row="7" Grid.Column="0"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding PilotVM.WarheadAccuracy_Exercise}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="2" Text="{Binding PilotVM.WarheadAccuracy_Melee}"/>
+        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="7" Grid.Column="5" Grid.ColumnSpan="2" Text="{Binding PilotVM.WarheadAccuracy_Combat}"/>
+    </Grid>
+</UserControl>

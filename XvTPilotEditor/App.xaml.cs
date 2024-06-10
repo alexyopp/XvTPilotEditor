@@ -13,5 +13,12 @@ namespace XvTPilotEditor
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            MainWindow = new MainWindow(){ DataContext = new ViewModels.MainViewModel() };
+            MainWindow.Show();
+
+            base.OnStartup(e);
+        }
     }
 }
