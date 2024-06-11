@@ -30,15 +30,20 @@ namespace XvTPilotEditor.Models
         public uint TotalMissions           { get; set; }       //  Sum of Rebel.TotalMissions and Imperial.TotalMissions?
 
         public RatingHistory RatingHistory  { get; }
-        public Faction Rebel                { get; }
-        public Faction Imperial             { get; }
+        // NOTE: Intentionally choosing to break factions at this point (rather than deeper in the
+        //          hierarchy); branching higher makes things simpler to understand (for example,
+        //          can ignore an entire faction, but still have all options available.
+        public Dictionary<XvTPilotEditor.Faction, Models.Faction> FactionData { get; }
 
         public Pilot()
         {
             RatingHistory = new RatingHistory();
 
-            Rebel = new Faction();
-            Imperial = new Faction();
+            FactionData = new Dictionary<XvTPilotEditor.Faction, Models.Faction>();
+            foreach (XvTPilotEditor.Faction faction in Enum.GetValues<XvTPilotEditor.Faction>())
+            {
+                FactionData.Add(faction, new Models.Faction());
+            }
         }
     }
 }

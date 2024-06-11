@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace XvTPilotEditor.Models
 {
@@ -6,14 +7,14 @@ namespace XvTPilotEditor.Models
     {
         //**    Summary of Kills    **//
         //
-        public uint TotalKills          { get; }                   // Sum of PlayerKillsByRank and CraftKillsByType?
-        public uint TotalSharedKills    { get; }                   // Sum of PlayerSharedKillsByRank and CraftSharedKillsByType?
+        public uint TotalKills          { get; set; }                   // Sum of PlayerKillsByRank and CraftKillsByType?
+        public uint TotalSharedKills    { get; set; }                   // Sum of PlayerSharedKillsByRank and CraftSharedKillsByType?
 
-        public uint PlayerKills         { get; }                  // Sum of PlayerKillsByRank?
-        public uint PlayerSharedKills   { get; }                  // Sum of PlayerSharedKillsByRank?
+        public uint PlayerKills         { get; set; }                  // Sum of PlayerKillsByRank?
+        public uint PlayerSharedKills   { get; set; }                  // Sum of PlayerSharedKillsByRank?
 
-        public uint NonPlayerKills          { get; }               // Sum of CraftKillsByType?
-        public uint NonPlayerSharedKills    { get; }               // Sum of CraftSharedKillsByType?
+        public uint NonPlayerKills          { get; set; }               // Sum of CraftKillsByType?
+        public uint NonPlayerSharedKills    { get; set; }               // Sum of CraftSharedKillsByType?
 
         public uint Assists { get; set; }
 
@@ -26,28 +27,28 @@ namespace XvTPilotEditor.Models
 
         //**    Player Kills by Rank    **//
         //
-        public List<PilotRating> PlayerKillsByRank        { get; set; }
-        public List<PilotRating> PlayerSharedKillsByRank  { get; set; }
+        public Dictionary<PilotRating, uint> PlayerKillsByRank        { get; set; }
+        public Dictionary<PilotRating, uint> PlayerSharedKillsByRank  { get; set; }
         //
 
         //**    Craft Kills by Type     **//
         //
-        public List<CraftTypes> CraftKillsByType          { get; set; }
-        public List<CraftTypes> CraftSharedKillsByType    { get; set; }
+        public Dictionary<CraftType, uint> CraftKillsByType          { get; set; }
+        public Dictionary<CraftType, uint> CraftSharedKillsByType    { get; set; }
         //
 
         //**    Averages per Mission    **//
         //
-        public double TotalKillsPerMission          { get; }       // Sum of PlayerKillsPerMission and NonPlayerKillsPerMission?
-        public double TotalSharedKillsPerMission    { get; }       // Sum of PlayerSharedKillsPerMission and NonPlayerSharedKillsPerMission?
+        public double TotalKillsPerMission          { get; set; }       // Sum of PlayerKillsPerMission and NonPlayerKillsPerMission?
+        public double TotalSharedKillsPerMission    { get; set; }       // Sum of PlayerSharedKillsPerMission and NonPlayerSharedKillsPerMission?
 
-        public double PlayerKillsPerMission         { get; }        // Calculated value?
-        public double PlayerSharedKillsPerMission   { get; }        // Calculated value?
+        public double PlayerKillsPerMission         { get; set; }        // Calculated value?
+        public double PlayerSharedKillsPerMission   { get; set; }        // Calculated value?
 
-        public double NonPlayerKillsPerMission          { get; }    // Calculated value?
-        public double NonPlayerSharedKillsPerMission    { get; }    // Calculated value?
+        public double NonPlayerKillsPerMission          { get; set; }    // Calculated value?
+        public double NonPlayerSharedKillsPerMission    { get; set; }    // Calculated value?
 
-        public double AssistsPerMission { get; }                    //  Calculated value?
+        public double AssistsPerMission { get; set; }                    //  Calculated value?
         //
 
         //**    Total Losses    **//
@@ -62,18 +63,28 @@ namespace XvTPilotEditor.Models
 
         //**    Losses to Players by Rank   **//
         //
-        public List<PilotRating> LossesToPlayersByRank { get; set; }
+        public Dictionary<PilotRating, uint> LossesToPlayersByRank { get; set; }
         //
 
         public ModeStats()
         {
-            PlayerKillsByRank       = new List<PilotRating>((int)PilotRating.MAX_PILOT_RATINGS);
-            PlayerSharedKillsByRank = new List<PilotRating>((int)PilotRating.MAX_PILOT_RATINGS);
+            PlayerKillsByRank = new Dictionary<PilotRating, uint>();
+            PlayerSharedKillsByRank = new Dictionary<PilotRating, uint>();
+            LossesToPlayersByRank = new Dictionary<PilotRating, uint>();
+            foreach (PilotRating pilotRating in Enum.GetValues<PilotRating>())
+            {
+                PlayerKillsByRank.Add(pilotRating, 0);
+                PlayerSharedKillsByRank.Add(pilotRating, 0);
+                LossesToPlayersByRank.Add(pilotRating, 0);
+            }
 
-            CraftKillsByType        = new List<CraftTypes>((int)CraftTypes.MAX_CRAFT_TYPES);
-            CraftSharedKillsByType  = new List<CraftTypes>((int)CraftTypes.MAX_CRAFT_TYPES);
-
-            LossesToPlayersByRank   = new List<PilotRating>((int)PilotRating.MAX_PILOT_RATINGS);
+            CraftKillsByType = new Dictionary<CraftType, uint>();
+            CraftSharedKillsByType = new Dictionary<CraftType, uint>();
+            foreach (CraftType craftType in Enum.GetValues<CraftType>())
+            {
+                CraftKillsByType.Add(craftType, 0);
+                CraftSharedKillsByType.Add(craftType, 0);
+            }
         }
     }
 }

@@ -42,7 +42,12 @@ namespace XvTPilotEditor.Models
         new public MissionEvaluation Evaluation = MissionEvaluation.Empty;
 
         public uint BestProgressInMissions { get; set; }
-        public List<CampaignMissionResult>? CampaignHistory { get; set; }
+        public Dictionary<uint, CampaignMissionResult> CampaignHistory { get; set; }
+
+        public CampaignResult()
+        {
+            CampaignHistory = new Dictionary<uint, CampaignMissionResult>();
+        }
     }
 
     public class CampaignMissionResult : MissionResult
