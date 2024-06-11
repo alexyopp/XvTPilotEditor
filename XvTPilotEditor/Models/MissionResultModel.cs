@@ -2,7 +2,7 @@
 
 namespace XvTPilotEditor.Models
 {
-    public class MissionResult
+    public class MissionResultBase
     {
         public MissionEvaluation Evaluation { get; set; }
         public string? Name                 { get; set; }
@@ -11,46 +11,46 @@ namespace XvTPilotEditor.Models
         public uint PlayCount               { get; set; }     // TODO: Investigate whether this should be a base property or not
     }
 
-    public class TrainingResult : MissionResult
+    public class TrainingResultModel : MissionResultBase
     {
         public uint BestCompletionTimeInSeconds { get; set; }
     }
 
-    public class MeleeResult : MissionResult
+    public class MeleeResultModel : MissionResultBase
     {
         public uint BestPlaceFinish { get; set; }
     }
 
-    public class TournamentResult : MissionResult
+    public class TournamentResultModel : MissionResultBase
     {
         public uint BestPlaceFinish { get; set; }
     }
 
-    public class CombatResult : MissionResult
+    public class CombatResultModel : MissionResultBase
     {
         public uint BestCompletionTimeInSeconds { get; set; }
     }
 
-    public class BattleResult : MissionResult
+    public class BattleResultModel : MissionResultBase
     {
         public uint BestMarginOfVictoryInMissions { get; set; }
     }
 
-    public class CampaignResult : MissionResult
+    public class CampaignResultModel : MissionResultBase
     {
         //  Campaigns do not have overall evaluations (just per mission results)
         new public MissionEvaluation Evaluation = MissionEvaluation.Empty;
 
         public uint BestProgressInMissions { get; set; }
-        public Dictionary<uint, CampaignMissionResult> CampaignHistory { get; set; }
+        public Dictionary<uint, CampaignMissionResultModel> CampaignHistory { get; set; }
 
-        public CampaignResult()
+        public CampaignResultModel()
         {
-            CampaignHistory = new Dictionary<uint, CampaignMissionResult>();
+            CampaignHistory = new Dictionary<uint, CampaignMissionResultModel>();
         }
     }
 
-    public class CampaignMissionResult : MissionResult
+    public class CampaignMissionResultModel : MissionResultBase
     {
         public uint BestCompletionTimeInSeconds { get; set; }
     }

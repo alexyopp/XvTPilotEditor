@@ -4,9 +4,9 @@ namespace XvTPilotEditor.ViewModels
 {
     public class PageViewModel : ViewModelBase
     {
-        protected Pilot pilotModel;
+        protected PilotModel pilotModel;
 
-        public PageViewModel(Pilot pilotModel)
+        public PageViewModel(PilotModel pilotModel)
         {
             this.pilotModel = pilotModel;
         }

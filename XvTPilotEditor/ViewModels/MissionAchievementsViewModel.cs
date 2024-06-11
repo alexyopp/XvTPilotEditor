@@ -4,7 +4,7 @@ namespace XvTPilotEditor.ViewModels
 {
     public class MissionAchievementsViewModel : PageViewModel
     {
-        internal MissionAchievementsViewModel(Pilot pilotModel)
+        internal MissionAchievementsViewModel(PilotModel pilotModel)
             : base(pilotModel)
         {
         }

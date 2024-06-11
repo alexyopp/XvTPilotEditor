@@ -4,7 +4,7 @@ namespace XvTPilotEditor.ViewModels
 {
     public class StatisticsPageViewModel : PageViewModel
     {
-        internal StatisticsPageViewModel(Pilot pilotModel)
+        internal StatisticsPageViewModel(PilotModel pilotModel)
             : base(pilotModel)
         {
         }

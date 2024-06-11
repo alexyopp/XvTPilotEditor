@@ -15,11 +15,11 @@ namespace XvTPilotEditor.ViewModels
         public ICommand ChangeActivePageCommand     { get; private set; }
 
         private Dictionary<Page, PageViewModel> pageViewModels;
-        private Pilot pilotModel;
+        private PilotModel pilotModel;
 
         public MainViewModel()
         {
-            pilotModel = new Pilot();
+            pilotModel = new PilotModel();
             pageViewModels = BuildViewModels();
 
             ChangeActivePageCommand = new DelegateCommand(o => this.UpdateActivePageViewModel());

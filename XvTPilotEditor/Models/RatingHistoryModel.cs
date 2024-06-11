@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace XvTPilotEditor.Models
 {
-    public class RatingHistory
+    public class RatingHistoryModel
     {
         public Dictionary<PilotRating, uint> RatingAchievedOnMissionNumber { get; set; }
 
-        public RatingHistory()
+        public RatingHistoryModel()
         {
             RatingAchievedOnMissionNumber = new Dictionary<PilotRating, uint>();
 
