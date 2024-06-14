@@ -42,18 +42,21 @@
             x:Name="SoKExercise"
             Grid.Row="1"
             Grid.Column="1"
-            Grid.RowSpan = "7"/>
+            Grid.RowSpan = "7"
+            DataContext="{Binding ExerciseSummaryOfKills}"/>
 
         <control:SummaryOfKillsColumn
             x:Name="SoKMelee"
             Grid.Row="1"
             Grid.Column="2"
-            Grid.RowSpan = "7"/>
+            Grid.RowSpan = "7"
+            DataContext="{Binding MeleeSummaryOfKills}"/>
 
         <control:SummaryOfKillsColumn
             x:Name="SoKCombat"
             Grid.Row="1"
             Grid.Column="3"
-            Grid.RowSpan = "7"/>
+            Grid.RowSpan = "7"
+            DataContext="{Binding CombatSummaryOfKills}"/>
     </Grid>
 </UserControl>
