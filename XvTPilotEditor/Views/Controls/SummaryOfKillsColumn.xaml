@@ -20,12 +20,12 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <local:KillsTuple x:Name="TotalKillsTuple" Grid.Row="0" KillsValue="TotalKillsValue" SharedKillsValue="{Binding TotalSharedKillsValue}"/>
-        <local:KillsTuple x:Name="PlayerKillsTuple" Grid.Row="1" KillsValue="{Binding PlayerKillsValue}" SharedKillsValue="{Binding PlayerSharedKillsValue}"/>
-        <local:KillsTuple x:Name="NonPlayerKillsTuple" Grid.Row="2" KillsValue="{Binding NonPlayerKillsValue}" SharedKillsValue="{Binding NonPlayerSharedKillsValue}"/>
-        <TextBox x:Name="AssistsTextBox" Width="75" Margin="5,5,5,5" Grid.Row="3" Text="{Binding AssistsValue}"/>
-        <TextBox x:Name="HiddenCargoTextBox" Width="75" Margin="5,5,5,5" Grid.Row="4" Text="{Binding HiddenCargoFoundValue}"/>
-        <TextBox x:Name="LaserAccuracyTextBox" Width="75" Margin="5,5,5,5" Grid.Row="5" Text="{Binding LaserAccuracyValue}"/>
-        <TextBox x:Name="WarheadAccuracyTextBox" Width="75" Margin="5,5,5,5" Grid.Row="6" Text="{Binding WarheadAccuracyValue}"/>
+        <local:KillsTuple x:Name="TotalKillsTuple" Grid.Row="0" KillsValue="TotalKillsValue" SharedKillsValue="{Binding TotalSharedKills}"/>
+        <local:KillsTuple x:Name="PlayerKillsTuple" Grid.Row="1" KillsValue="{Binding PlayerKills}" SharedKillsValue="{Binding PlayerSharedKills}"/>
+        <local:KillsTuple x:Name="NonPlayerKillsTuple" Grid.Row="2" KillsValue="{Binding NonPlayerKills}" SharedKillsValue="{Binding NonPlayerSharedKills}"/>
+        <TextBox x:Name="AssistsTextBox" Width="75" Margin="5,5,5,5" Grid.Row="3" Text="{Binding Assists}"/>
+        <TextBox x:Name="HiddenCargoTextBox" Width="75" Margin="5,5,5,5" Grid.Row="4" Text="{Binding HiddenCargoFound}"/>
+        <TextBox x:Name="LaserAccuracyTextBox" Width="75" Margin="5,5,5,5" Grid.Row="5" Text="{Binding LaserAccuracy}"/>
+        <TextBox x:Name="WarheadAccuracyTextBox" Width="75" Margin="5,5,5,5" Grid.Row="6" Text="{Binding WarheadAccuracy}"/>
     </Grid>
 </UserControl>
