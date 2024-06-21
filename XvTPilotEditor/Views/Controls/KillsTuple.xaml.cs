@@ -38,10 +38,6 @@ namespace XvTPilotEditor.Views.Controls
         public KillsTuple()
         {
             InitializeComponent();
-            this.DataContext = this;
-
-            KillsValue = "KillsTuple";
-            SharedKillsValue = "KillsTuple";
         }
     }
 }

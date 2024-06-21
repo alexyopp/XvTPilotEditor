@@ -20,7 +20,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <local:KillsTuple x:Name="TotalKillsTuple" Grid.Row="0" KillsValue="TotalKillsValue" SharedKillsValue="{Binding TotalSharedKills}"/>
+        <local:KillsTuple x:Name="TotalKillsTuple" Grid.Row="0" KillsValue="{Binding TotalKills}" SharedKillsValue="{Binding TotalSharedKills}"/>
         <local:KillsTuple x:Name="PlayerKillsTuple" Grid.Row="1" KillsValue="{Binding PlayerKills}" SharedKillsValue="{Binding PlayerSharedKills}"/>
         <local:KillsTuple x:Name="NonPlayerKillsTuple" Grid.Row="2" KillsValue="{Binding NonPlayerKills}" SharedKillsValue="{Binding NonPlayerSharedKills}"/>
         <TextBox x:Name="AssistsTextBox" Width="75" Margin="5,5,5,5" Grid.Row="3" Text="{Binding Assists}"/>
