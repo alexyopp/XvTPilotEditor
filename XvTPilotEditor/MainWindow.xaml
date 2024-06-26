@@ -7,11 +7,14 @@
         xmlns:view="clr-namespace:XvTPilotEditor.Views"
         xmlns:vm="clr-namespace:XvTPilotEditor.ViewModels"
         mc:Ignorable="d"
-        Title="Xvt/BoP Pilot Editor" Height="450" Width="800">
-    <Grid>
+        Title="Xvt/BoP Pilot Editor"
+        MaxWidth="1024"
+        MaxHeight="768">
+    <Grid
+            x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -19,21 +22,22 @@
         </Grid.ColumnDefinitions>
 
         <view:PilotUniversals
-            Grid.Row="0"
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
-            HorizontalAlignment="Center"/>
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"/>
 
         <view:PageSelection
-            Grid.Row="1"
-            Grid.Column="0"
-            HorizontalAlignment="Left"/>
+                Grid.Row="1"
+                Grid.Column="0"
+                HorizontalAlignment="Left"/>
 
         <ScrollViewer
-            Grid.Row="1"
-            Grid.Column="1"
-            HorizontalScrollBarVisibility = "Hidden" 
-            VerticalScrollBarVisibility = "Auto">
+                Grid.Row="1"
+                Grid.Column="1"
+                CanContentScroll="True"
+                HorizontalScrollBarVisibility = "Hidden" 
+                VerticalScrollBarVisibility = "Auto">
             <ScrollViewer.Resources>
                 <DataTemplate DataType="{x:Type vm:StatisticsPageViewModel}">
                     <view:StatisticsPage/>
