@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:XvTPilotEditor.Views"
+             xmlns:control="clr-namespace:XvTPilotEditor.Views.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -29,33 +30,31 @@
         <Label Content="Combat"         Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center"/>
 
         <Label Content="Total Craft Losses"   Grid.Row="1" Grid.Column="0"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="1" Grid.Column="1" Text="{Binding PilotVM.TotalCraftLosses_Exercise}"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="1" Grid.Column="2" Text="{Binding PilotVM.TotalCraftLosses_Melee}"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="1" Grid.Column="3" Text="{Binding PilotVM.TotalCraftLosses_Combat}"/>
-
         <Label Content="To Player Pilots"     Grid.Row="2" Grid.Column="0"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="2" Grid.Column="1" Text="{Binding PilotVM.LossesToPlayerPilots_Exercise}"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="2" Grid.Column="2" Text="{Binding PilotVM.LossesToPlayerPilots_Melee}"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="2" Grid.Column="3" Text="{Binding PilotVM.LossesToPlayerPilots_Combat}"/>
-
         <Label Content="To Non-Player Pilots" Grid.Row="3" Grid.Column="0"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="3" Grid.Column="1" Text="{Binding PilotVM.LossesToNonPlayerPilots_Exercise}"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="3" Grid.Column="2" Text="{Binding PilotVM.LossesToNonPlayerPilots_Melee}"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="3" Grid.Column="3" Text="{Binding PilotVM.LossesToNonPlayerPilots_Combat}"/>
-
         <Label Content="To Starships"         Grid.Row="4" Grid.Column="0"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="4" Grid.Column="1" Text="{Binding PilotVM.LossesToStarships_Exercise}"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="4" Grid.Column="2" Text="{Binding PilotVM.LossesToStarships_Melee}"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="4" Grid.Column="3" Text="{Binding PilotVM.LossesToStarships_Combat}"/>
-
         <Label Content="To Mines"             Grid.Row="5" Grid.Column="0"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="5" Grid.Column="1" Text="{Binding PilotVM.LossesToMines_Exercise}"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="5" Grid.Column="2" Text="{Binding PilotVM.LossesToMines_Melee}"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="5" Grid.Column="3" Text="{Binding PilotVM.LossesToMines_Combat}"/>
-
         <Label Content="From Collisions"      Grid.Row="6" Grid.Column="0"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="6" Grid.Column="1" Text="{Binding PilotVM.LossesFromCollisions_Exercise}"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="6" Grid.Column="2" Text="{Binding PilotVM.LossesFromCollisions_Melee}"/>
-        <TextBox Width="75" Margin="5,5,5,5"  Grid.Row="6" Grid.Column="3" Text="{Binding PilotVM.LossesFromCollisions_Combat}"/>
+
+        <control:TotalLossesColumn
+            x:Name="TotalLossesExercise"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.RowSpan = "6"
+            DataContext="{Binding ExerciseTotalLosses}"/>
+
+        <control:TotalLossesColumn
+            x:Name="TotalLossesMelee"
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.RowSpan = "6"
+            DataContext="{Binding MeleeTotalLosses}"/>
+
+        <control:TotalLossesColumn
+            x:Name="TotalLossesCombat"
+            Grid.Row="1"
+            Grid.Column="3"
+            Grid.RowSpan = "6"
+            DataContext="{Binding CombatTotalLosses}"/>
     </Grid>
 </UserControl>

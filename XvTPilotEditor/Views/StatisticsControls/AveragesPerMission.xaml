@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:XvTPilotEditor.Views"
+             xmlns:control="clr-namespace:XvTPilotEditor.Views.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -19,43 +20,37 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Avgs Per Mission"   Grid.Row="0" Grid.Column="0"/>
-        <Label Content="Exercise"           Grid.Row="0" Grid.Column="1"/>
-        <Label Content="Melee"              Grid.Row="0" Grid.Column="3"/>
-        <Label Content="Combat"             Grid.Row="0" Grid.Column="5"/>
+        <Label Content="Avgs Per Mission"   Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"/>
+        <Label Content="Exercise"           Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"/>
+        <Label Content="Melee"              Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"/>
+        <Label Content="Combat"             Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center"/>
 
-        <Label Content="Total Kills"   Grid.Row="1" Grid.Column="0"></Label>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="1" Grid.Column="1" Text="{Binding PilotVM.AverageTotalKills_Exercise}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="1" Grid.Column="2" Text="{Binding PilotVM.AverageTotalKills_Exercise_Shared}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="1" Grid.Column="3" Text="{Binding PilotVM.AverageTotalKills_Melee}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="1" Grid.Column="4" Text="{Binding PilotVM.AverageTotalKills_Melee_Shared}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="1" Grid.Column="5" Text="{Binding PilotVM.AverageTotalKills_Combat}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="1" Grid.Column="6" Text="{Binding PilotVM.AverageTotalKills_Combat_Shared}"/>
+        <Label Content="Total Kills"        Grid.Row="1" Grid.Column="0"/>
+        <Label Content="Player Kills"       Grid.Row="2" Grid.Column="0"/>
+        <Label Content="Non-Player Kills"   Grid.Row="3" Grid.Column="0"/>
+        <Label Content="Assists"            Grid.Row="4" Grid.Column="0"/>
 
-        <Label Content="Player Kills"           Grid.Row="2" Grid.Column="0"></Label>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="2" Grid.Column="1" Text="{Binding PilotVM.AveragePlayerKills_Exercise}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="2" Grid.Column="2" Text="{Binding PilotVM.AveragePlayerKills_Exercise_Shared}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="2" Grid.Column="3" Text="{Binding PilotVM.AveragePlayerKills_Melee}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="2" Grid.Column="4" Text="{Binding PilotVM.AveragePlayerKills_Melee_Shared}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="2" Grid.Column="5" Text="{Binding PilotVM.AveragePlayerKills_Combat}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="2" Grid.Column="6" Text="{Binding PilotVM.AveragePlayerKills_Combat_Shared}"/>
+        <control:AveragesPerMissionColumn
+            x:Name="ApMExercise"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.RowSpan = "7"
+            DataContext="{Binding ExerciseAveragesPerMission}"/>
 
-        <Label Content="Non-Player Kills"              Grid.Row="3" Grid.Column="0"></Label>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="3" Grid.Column="1" Text="{Binding PilotVM.AverageNonPlayerKills_Exercise}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="3" Grid.Column="2" Text="{Binding PilotVM.AverageNonPlayerKills_Exercise_Shared}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="3" Grid.Column="3" Text="{Binding PilotVM.AverageNonPlayerKills_Melee}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="3" Grid.Column="4" Text="{Binding PilotVM.AverageNonPlayerKills_Melee_Shared}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="3" Grid.Column="5" Text="{Binding PilotVM.AverageNonPlayerKills_Combat}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="3" Grid.Column="6" Text="{Binding PilotVM.AverageNonPlayerKills_Combat_Shared}"/>
+        <control:AveragesPerMissionColumn
+            x:Name="ApMMelee"
+            Grid.Row="1"
+            Grid.Column="2"
+            Grid.RowSpan = "7"
+            DataContext="{Binding MeleeAveragesPerMission}"/>
 
-        <Label Content="Assists"             Grid.Row="4" Grid.Column="0"></Label>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding PilotVM.AverageAssists_Exercise}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2" Text="{Binding PilotVM.AverageAssists_Melee}"/>
-        <TextBox Width="75" Margin="5,5,5,5" Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2" Text="{Binding PilotVM.AverageAssists_Combat}"/>
+        <control:AveragesPerMissionColumn
+            x:Name="ApMCombat"
+            Grid.Row="1"
+            Grid.Column="3"
+            Grid.RowSpan = "7"
+            DataContext="{Binding CombatAveragesPerMission}"/>
     </Grid>
 </UserControl>
