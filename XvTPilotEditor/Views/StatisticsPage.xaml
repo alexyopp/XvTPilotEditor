@@ -11,6 +11,7 @@
         <Label>Statistics</Label>
         <Label>Under construction</Label>
         <view:SummaryOfKills/>
+        <view:PlayerKillsByRank/>
         <view:AveragesPerMission/>
         <view:TotalLosses/>
     </StackPanel>
