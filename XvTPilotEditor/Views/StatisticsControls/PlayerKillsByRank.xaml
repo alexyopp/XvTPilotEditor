@@ -24,17 +24,6 @@
         <Label Content="Melee"                  Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"/>
         <Label Content="Combat"                 Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center"/>
 
-        <ItemsControl
-            ItemsSource="{Binding PlayerKillsByRank}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Label Content="{Binding PilotRating}"/>
-                    </Grid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-
         <control:PlayerKillsByRankColumn
             x:Name="PKbRExercise"
             Grid.Row="1"
