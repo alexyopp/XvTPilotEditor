@@ -24,22 +24,31 @@
         <Label Content="Melee"                  Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"/>
         <Label Content="Combat"                 Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center"/>
 
-        <control:PlayerKillsByRankColumn
-            x:Name="PKbRExercise"
-            Grid.Row="1"
-            Grid.Column="1"
-            DataContext="{Binding ExercisePlayerKillsByRank}"/>
-
-        <control:PlayerKillsByRankColumn
-            x:Name="PKbRMelee"
-            Grid.Row="1"
-            Grid.Column="2"
-            DataContext="{Binding MeleePlayerKillsByRank}"/>
-
-        <control:PlayerKillsByRankColumn
-            x:Name="PKbRCombat"
-            Grid.Row="1"
-            Grid.Column="3"
-            DataContext="{Binding CombatPlayerKillsByRank}"/>
+        <ItemsControl
+            x:Name="PlayerKillsByRankList"
+            Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+            ItemsSource="{Binding PlayerKillsByRank.PlayerKillsByRank}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Key}"/>
+                        <ItemsControl
+                            x:Name="PlayerKillsByRankLine"
+                            ItemsSource="{Binding Value.PlayerKillsByRankByMissionType}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <control:KillsTuple x:Name="PlayerKillsByRankTuple" KillsValue="{Binding Value.Kills}" SharedKillsValue="{Binding Value.SharedKills}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>

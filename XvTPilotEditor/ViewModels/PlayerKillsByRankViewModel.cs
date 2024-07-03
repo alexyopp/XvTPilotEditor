@@ -11,49 +11,62 @@ namespace XvTPilotEditor.ViewModels
     {
         public class PlayerKillByRankItem
         {
-            public PilotRating PilotRating  { get; private set;}
             public uint Kills               { get; set; }
             public uint SharedKills         { get; set; }
 
-            public PlayerKillByRankItem(PilotRating pilotRating, uint kills, uint sharedKills)
+            public PlayerKillByRankItem(uint kills, uint sharedKills)
             {
-                this.PilotRating = pilotRating;
                 this.Kills = kills;
                 this.SharedKills = sharedKills;
             }
         }
 
-        public Dictionary<PilotRating, PlayerKillByRankItem> playerKillsByRank;
-        public Dictionary<PilotRating, PlayerKillByRankItem> PlayerKillsByRank
+        public class PlayerKillByRankLine
+        {
+            public Dictionary<MissionType, PlayerKillByRankItem> PlayerKillsByRankByMissionType { get; set; }
+
+            private PilotModel activePilotModel;
+            private Faction activeFaction;
+
+            public PlayerKillByRankLine(PilotModel pilotModel, Faction faction, PilotRating rating)
+            {
+                this.activePilotModel = pilotModel;
+                this.activeFaction = faction;
+
+                this.PlayerKillsByRankByMissionType = new Dictionary<MissionType, PlayerKillByRankItem>();
+                foreach (MissionType missionType in Enum.GetValues<MissionType>())
+                {
+                    PlayerKillsByRankByMissionType.Add(
+                        missionType,
+                        new PlayerKillByRankItem(
+                            activePilotModel.Faction[activeFaction].MissionStats[missionType].PlayerKillsByRank[rating],
+                            activePilotModel.Faction[activeFaction].MissionStats[missionType].PlayerSharedKillsByRank[rating]));
+                }
+            }
+        }
+
+        public Dictionary<PilotRating, PlayerKillByRankLine> playerKillsByRank;
+        public Dictionary<PilotRating, PlayerKillByRankLine> PlayerKillsByRank
         {
             get => playerKillsByRank;
-            set
-            {
-                playerKillsByRank = value;
-            }
         }
 
         private PilotModel activePilotModel;
         private Faction activeFaction;
-        private MissionType activeMissionType;
 
-        internal PlayerKillsByRankViewModel(PilotModel pilotModel, Faction faction, MissionType missionType)
+        internal PlayerKillsByRankViewModel(PilotModel pilotModel, Faction faction)
             : base(pilotModel)
         {
             this.activePilotModel = pilotModel;
             this.activeFaction = faction;
-            this.activeMissionType = missionType;
 
-            this.PlayerKillsByRank = new Dictionary<PilotRating, PlayerKillByRankItem>();
+            this.playerKillsByRank = new Dictionary<PilotRating, PlayerKillByRankLine>();
 
             foreach (PilotRating rating in Enum.GetValues<PilotRating>())
             {
-                PlayerKillsByRank.Add(
+                playerKillsByRank.Add(
                     rating,
-                    new PlayerKillByRankItem(
-                        rating,
-                        activePilotModel.Faction[activeFaction].MissionStats[activeMissionType].PlayerKillsByRank[rating],
-                        activePilotModel.Faction[activeFaction].MissionStats[activeMissionType].PlayerSharedKillsByRank[rating]));
+                    new PlayerKillByRankLine(pilotModel, faction, rating));
             }
         }
     }

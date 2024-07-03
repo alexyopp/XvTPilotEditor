@@ -9,9 +9,7 @@ namespace XvTPilotEditor.ViewModels
         public SummaryOfKillsViewModel MeleeSummaryOfKills { get; }
         public SummaryOfKillsViewModel CombatSummaryOfKills { get; }
 
-        public PlayerKillsByRankViewModel ExercisePlayerKillsByRank { get; }
-        public PlayerKillsByRankViewModel MeleePlayerKillsByRank { get; }
-        public PlayerKillsByRankViewModel CombatPlayerKillsByRank { get; }
+        public PlayerKillsByRankViewModel PlayerKillsByRank { get; }
 
         public AveragesPerMissionViewModel ExerciseAveragesPerMission { get; }
         public AveragesPerMissionViewModel MeleeAveragesPerMission { get; }
@@ -28,9 +26,7 @@ namespace XvTPilotEditor.ViewModels
             MeleeSummaryOfKills = new SummaryOfKillsViewModel(pilotModel, Faction.Rebel, MissionType.Melee);
             CombatSummaryOfKills = new SummaryOfKillsViewModel(pilotModel, Faction.Rebel, MissionType.Combat);
 
-            ExercisePlayerKillsByRank = new PlayerKillsByRankViewModel(pilotModel, Faction.Rebel, MissionType.Exercise);
-            MeleePlayerKillsByRank = new PlayerKillsByRankViewModel(pilotModel, Faction.Rebel, MissionType.Melee);
-            CombatPlayerKillsByRank = new PlayerKillsByRankViewModel(pilotModel, Faction.Rebel, MissionType.Combat);
+            PlayerKillsByRank = new PlayerKillsByRankViewModel(pilotModel, Faction.Rebel);
 
             ExerciseAveragesPerMission = new AveragesPerMissionViewModel(pilotModel, Faction.Rebel, MissionType.Exercise);
             MeleeAveragesPerMission = new AveragesPerMissionViewModel(pilotModel, Faction.Rebel, MissionType.Melee);
