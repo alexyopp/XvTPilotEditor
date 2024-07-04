@@ -11,6 +11,8 @@ namespace XvTPilotEditor.ViewModels
 
         public PlayerKillsByRankViewModel PlayerKillsByRank { get; }
 
+        public CraftKillsByTypeViewModel CraftKillsByType { get; }
+
         public AveragesPerMissionViewModel ExerciseAveragesPerMission { get; }
         public AveragesPerMissionViewModel MeleeAveragesPerMission { get; }
         public AveragesPerMissionViewModel CombatAveragesPerMission { get; }
@@ -18,6 +20,8 @@ namespace XvTPilotEditor.ViewModels
         public TotalLossesViewModel ExerciseTotalLosses { get; }
         public TotalLossesViewModel MeleeTotalLosses { get; }
         public TotalLossesViewModel CombatTotalLosses { get; }
+
+        public TotalLossesByPlayerRankViewModel TotalLossesByPlayerRank { get; }
 
         internal StatisticsPageViewModel(PilotModel pilotModel)
             : base(pilotModel)
@@ -28,6 +32,8 @@ namespace XvTPilotEditor.ViewModels
 
             PlayerKillsByRank = new PlayerKillsByRankViewModel(pilotModel, Faction.Rebel);
 
+            CraftKillsByType = new CraftKillsByTypeViewModel(pilotModel, Faction.Rebel);
+
             ExerciseAveragesPerMission = new AveragesPerMissionViewModel(pilotModel, Faction.Rebel, MissionType.Exercise);
             MeleeAveragesPerMission = new AveragesPerMissionViewModel(pilotModel, Faction.Rebel, MissionType.Melee);
             CombatAveragesPerMission = new AveragesPerMissionViewModel(pilotModel, Faction.Rebel, MissionType.Combat);
@@ -35,6 +41,8 @@ namespace XvTPilotEditor.ViewModels
             ExerciseTotalLosses = new TotalLossesViewModel(pilotModel, Faction.Rebel, MissionType.Exercise);
             MeleeTotalLosses = new TotalLossesViewModel(pilotModel, Faction.Rebel, MissionType.Melee);
             CombatTotalLosses = new TotalLossesViewModel(pilotModel, Faction.Rebel, MissionType.Combat);
+
+            TotalLossesByPlayerRank = new TotalLossesByPlayerRankViewModel(pilotModel, Faction.Rebel);
         }
     }
 }

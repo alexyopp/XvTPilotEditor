@@ -8,11 +8,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <Label>Statistics</Label>
-        <Label>Under construction</Label>
-        <view:SummaryOfKills/>
-        <view:PlayerKillsByRank/>
-        <view:AveragesPerMission/>
-        <view:TotalLosses/>
+        <view:SummaryOfKills Margin="0,0,0,0"/>
+        <view:PlayerKillsByRank Margin="0,10,0,0"/>
+        <view:CraftKillsByType Margin="0,10,0,0"/>
+        <view:AveragesPerMission Margin="0,10,0,0"/>
+        <view:TotalLosses Margin="0,10,0,0"/>
+        <view:TotalLossesByPlayerRank Margin="0,10,0,0"/>
     </StackPanel>
 </UserControl>

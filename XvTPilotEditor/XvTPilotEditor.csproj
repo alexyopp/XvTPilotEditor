@@ -18,6 +18,12 @@
     <Compile Update="Views\Controls\AveragesPerMissionColumn.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\StatisticsControls\TotalLossesByPlayerRank.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\StatisticsControls\CraftKillsByType.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
