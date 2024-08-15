@@ -1,79 +1,81 @@
-﻿namespace XvTPilotEditor
+﻿using System.ComponentModel;
+
+namespace XvTPilotEditor
 {
     //  List in order of BoP Craft Library (different from order shown on Pilot Statistics)
     //  * - ships not showing on Statistics page in game (in some cases, definitely should, cannot confirm that's true for all, though)
     public enum CraftType : uint
     {
-        XWing = 0,
-        YWing,
-        AWing,
-        BWing,                      // BoP
-        Z95Headhunter,
-        TieFighter,
-        TieInterceptor,
-        TieBomber,
-        TieAdvanced,
-        AssaultGunboat,
-        TWing,
-        R41Starchaser,
-        Shuttle,
-        EscortShuttle,
-        StormtrooperTransport,
-        AssaultTransport,
-        EscortTransport,
-        SystemPatrolCraft,
-        CorellianCorvette,
-        ModifiedCorvette,           // BoP
-        NebulonBFrigate,
-        ModifiedFrigate,            //*, BoP
-        ImperialStarDestroyer,
-        VictoryStarDestroyer,
-        Interdictor,
-        SuperStarDestroyer,         //*, BoP
-        CalamariCruiser,            //*
-        LightCalamariCruiser,       // BoP
-        StrikeCruiser,
-        ModifiedStrikeCruiser,      //*, BoP
-        Dreadnaught,
-        EscortCarrier,
-        Tug,                        //*
-        HeavyLifter,
-        CombatUtilityVehicle,       //*
-        CorellianTransport,
-        MuurianTransport,           //*
-        BulkFreighter,
-        CargoFerry,
-        ModularConveyor,
-        MediumTransport,            //*, BoP
-        ContainerClassA,
-        ContainerClassB,            //*
-        ContainerClassC,            //*
-        ContainerClassD,
-        ContainerClassE,
-        ContainerClassF,
-        ContainerClassG,            //*
-        ContainerClassH,            //*
-        ContainerClassI,            //*
-        XQ1Platform,
-        XQ2Platform,
-        XQ3Platform,
-        XQ4Platform,                //*
-        XQ5Platform,
-        XQ6Platform,
-        Factory,                    //*
-        AsteroidHangar,
-        AsteroidLaserBattery,       //*
-        AsteroidWarheadLauncher,    //*
-        Shipyard,                   //*
-        GunEmplacement,             //*
-        RepairYard,                 //*
-        CommSat,                    // Listed twice?
-        MineTypeA,
-        MineTypeB,
-        MineTypeC,
-        Probe,                      //*
-        NavBuoy1,
-        NavBuoy2                    // Not in Craft Library
+        [Description("X-Wing")]                     XWing = 0,
+        [Description("Y-Wing")]                     YWing,
+        [Description("A-Wing")]                     AWing,
+        [Description("B-Wing")]                     BWing,                      // BoP
+        [Description("Z-95 Headhunter")]            Z95Headhunter,
+        [Description("TIE Fighter")]                TieFighter,
+        [Description("TIE Interceptor")]            TieInterceptor,
+        [Description("TIE Bomber")]                 TieBomber,
+        [Description("TIE Advanced")]               TieAdvanced,
+        [Description("Assault Gunboat")]            AssaultGunboat,
+        [Description("T-Wing")]                     TWing,
+        [Description("R-41 Starchaser")]            R41Starchaser,
+        [Description("Shuttle")]                    Shuttle,
+        [Description("Escort Shuttle")]             EscortShuttle,
+        [Description("Stormtrooper Transport")]     StormtrooperTransport,
+        [Description("Assault Transport")]          AssaultTransport,
+        [Description("Escort Transport")]           EscortTransport,
+        [Description("System Patrol Craft")]        SystemPatrolCraft,
+        [Description("Corellian Corvette")]         CorellianCorvette,
+        [Description("Modified Corvette")]          ModifiedCorvette,           // BoP
+        [Description("Nebulon-B Frigate")]          NebulonBFrigate,
+        [Description("Modified Frigate")]           ModifiedFrigate,            //*, BoP
+        [Description("Imperial Star Destroyer")]    ImperialStarDestroyer,
+        [Description("Victory Star Destroyer")]     VictoryStarDestroyer,
+        [Description("Interdictor")]                Interdictor,
+        [Description("Super Star Destroyer")]       SuperStarDestroyer,         //*, BoP
+        [Description("Calamari Cruiser")]           CalamariCruiser,            //*
+        [Description("Light Calarmari Cruiser")]    LightCalamariCruiser,       // BoP
+        [Description("Strike Cruiser")]             StrikeCruiser,
+        [Description("Modified Strike Cruiser")]    ModifiedStrikeCruiser,      //*, BoP
+        [Description("Dreadnaught")]                Dreadnaught,
+        [Description("Escort Carrier")]             EscortCarrier,
+        [Description("Tug")]                        Tug,                        //*
+        [Description("Heavy Lifter")]               HeavyLifter,
+        [Description("Combat Utility Vehicle")]     CombatUtilityVehicle,       //*
+        [Description("Corellian Transport")]        CorellianTransport,
+        [Description("Muurian Transport")]          MuurianTransport,           //*
+        [Description("Bulk Freighter")]             BulkFreighter,
+        [Description("Cargo Ferry")]                CargoFerry,
+        [Description("Modular Conveyor")]           ModularConveyor,
+        [Description("Medium Transport")]           MediumTransport,            //*, BoP
+        [Description("Container Class A")]          ContainerClassA,
+        [Description("Container Class B")]          ContainerClassB,            //*
+        [Description("Container Class C")]          ContainerClassC,            //*
+        [Description("Container Class D")]          ContainerClassD,
+        [Description("Container Class E")]          ContainerClassE,
+        [Description("Container Class F")]          ContainerClassF,
+        [Description("Container Class G")]          ContainerClassG,            //*
+        [Description("Container Class H")]          ContainerClassH,            //*
+        [Description("Container Class I")]          ContainerClassI,            //*
+        [Description("XQ1 Platform")]               XQ1Platform,
+        [Description("XQ2 Platform")]               XQ2Platform,
+        [Description("XQ3 Platform")]               XQ3Platform,
+        [Description("XQ4 Platform")]               XQ4Platform,                //*
+        [Description("XQ5 Platform")]               XQ5Platform,
+        [Description("XQ6 Platform")]               XQ6Platform,
+        [Description("Factory")]                    Factory,                    //*
+        [Description("Asteroid Hangar")]            AsteroidHangar,
+        [Description("Asteroid Laser Battery")]     AsteroidLaserBattery,       //*
+        [Description("Asteroid Warhead Launcher")]  AsteroidWarheadLauncher,    //*
+        [Description("Shipyard")]                   Shipyard,                   //*
+        [Description("Gun Emplacement")]            GunEmplacement,             //*
+        [Description("Repair Yard")]                RepairYard,                 //*
+        [Description("Comm Sat")]                   CommSat,                    // Listed twice?
+        [Description("Mine Type A")]                MineTypeA,
+        [Description("Mine Type B")]                MineTypeB,
+        [Description("Mine Type C")]                MineTypeC,
+        [Description("Probe")]                      Probe,                      //*
+        [Description("Nav Buoy 1")]                 NavBuoy1,
+        [Description("Nav Buoy 2")]                 NavBuoy2                    // Not in Craft Library
     }
 
     public enum Faction : uint
@@ -147,29 +149,29 @@
 
     public enum PilotRating : uint  //  i.e., Pilot Rank
     {
-        Trainee = 0,
-        FlightCadet,
-        Officer4thClass,
-        Officer3rdClass,
-        Officer2ndClass,
-        Officer1stClass,
-        Veteran4thGrade,
-        Veteran3rdGrade,
-        Veteran2ndGrade,
-        Veteran1stGrade,
-        Ace4thLevel,
-        Ace3rdLevel,
-        Ace2ndLevel,
-        Ace1stLevel,
-        TopAce4thOrder,
-        TopAce3rdOrder,
-        TopAce2ndOrder,
-        TopAce1stOrder,
-        Jedi4thDegree,
-        Jedi3rdDegree,
-        Jedi2ndDegree,
-        Jedi1stDegree,
-        JediMaster
+        [Description("Trainee")]                Trainee = 0,
+        [Description("Flight Cadet")]           FlightCadet,
+        [Description("Officer 4th Class")]      Officer4thClass,
+        [Description("Officer 3rd Class")]      Officer3rdClass,
+        [Description("Officer 2nd Class")]      Officer2ndClass,
+        [Description("Officer 1st Class")]      Officer1stClass,
+        [Description("Veteran 4th Grade")]      Veteran4thGrade,
+        [Description("Veteran 3rd Grade")]      Veteran3rdGrade,
+        [Description("Veteran 2nd Grade")]      Veteran2ndGrade,
+        [Description("Veteran 1st Grade")]      Veteran1stGrade,
+        [Description("Ace 4th Level")]          Ace4thLevel,
+        [Description("Ace 3rd Level")]          Ace3rdLevel,
+        [Description("Ace 2nd Level")]          Ace2ndLevel,
+        [Description("Ace 1st Level")]          Ace1stLevel,
+        [Description("Top Ace 4th Order")]      TopAce4thOrder,
+        [Description("Top Ace 3rd Order")]      TopAce3rdOrder,
+        [Description("Top Ace 2nd Order")]      TopAce2ndOrder,
+        [Description("Top Ace 1st Order")]      TopAce1stOrder,
+        [Description("Jedi 4th Degree")]        Jedi4thDegree,
+        [Description("Jedi 3rd Degree")]        Jedi3rdDegree,
+        [Description("Jedi 2nd Degree")]        Jedi2ndDegree,
+        [Description("Jedi 1st Degree")]        Jedi1stDegree,
+        [Description("Jedi Master")]            JediMaster
     }
 
     /*  Alternate ordering of Pilot Ratings
