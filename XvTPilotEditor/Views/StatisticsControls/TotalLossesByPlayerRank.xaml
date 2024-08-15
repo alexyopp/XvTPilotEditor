@@ -43,7 +43,7 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBox x:Name="TotalLossesByPlayerRankTextBox" Text="{Binding Value.Losses}"/>
+                                    <TextBox x:Name="TotalLossesByPlayerRankTextBox" Text="{Binding Value.Losses}" MinWidth="50" Margin="5,5,5,5"/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
