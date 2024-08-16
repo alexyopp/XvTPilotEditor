@@ -4,10 +4,34 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:XvTPilotEditor.Views"
+             xmlns:convert="clr-namespace:XvTPilotEditor.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-        <Label>Rating History</Label>
-        <Label>Under construction</Label>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Player Rank"            Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"/>
+        <Label Content="Achieved on Mission"    Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"/>
+
+        <ItemsControl
+            x:Name="PlayerRankHistoryList"
+            Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+            ItemsSource="{Binding PlayerRankHistory}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Key, Converter={convert:EnumToStringConverter}}"/>
+                        <TextBox x:Name="MissionNumber" Text="{Binding Value.MissionAchieved}" MinWidth="50" Margin="5,5,5,5"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
 </UserControl>
