@@ -1,14 +1,20 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace XvTPilotEditor.Models
 {
     public class MissionResultBase
     {
         public MissionEvaluation Evaluation { get; set; }
-        public string? Name                 { get; set; }
+        public string Name                  { get; set; }
         public int BestScore                { get; set; }
 
         public uint PlayCount               { get; set; }     // TODO: Investigate whether this should be a base property or not
+    
+        public MissionResultBase()
+        {
+            Name = string.Empty;
+        }
     }
 
     public class TrainingResultModel : MissionResultBase
