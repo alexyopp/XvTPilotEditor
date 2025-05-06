@@ -1,1 +1,3 @@
 Mission Achievements is what it's called in XvT, but may be clearer to call it Mission Record in code?
+
+RatingHistory, TotalLossesByPlayerRank, CraftKillsByType, and PlayerKillsByRank all suffer from a similar issue of having static top labels, dynamic side labels and dynamic content in the middle.  Might be worth creating a custom "DynamicGrid" control to house those.

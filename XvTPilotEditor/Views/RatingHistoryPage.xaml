@@ -17,8 +17,8 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Player Rank"            Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"/>
-        <Label Content="Achieved on Mission"    Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"/>
+        <Label Content="Player Rank"            Grid.Column="0" HorizontalAlignment="Left"/>
+        <Label Content="Achieved on Mission"    Grid.Column="1" HorizontalAlignment="Center"/>
 
         <ItemsControl
             x:Name="PlayerRankHistoryList"
@@ -26,10 +26,14 @@
             ItemsSource="{Binding PlayerRankHistory}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding Key, Converter={convert:EnumToStringConverter}}"/>
-                        <TextBox x:Name="MissionNumber" Text="{Binding Value.MissionAchieved}" MinWidth="50" Margin="5,5,5,5"/>
-                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{Binding Key, Converter={convert:EnumToStringConverter}}" Width="120"/>
+                        <TextBox Grid.Column="1" x:Name="MissionNumber" Text="{Binding Value.MissionAchieved}"/>
+                    </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
