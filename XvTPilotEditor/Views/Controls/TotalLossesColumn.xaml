@@ -19,11 +19,11 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox x:Name="TotalCraftLossesTextBox"           Width="75" Margin="5,5,5,5" Grid.Row="0" Text="{Binding TotalCraftLosses}"/>
-        <TextBox x:Name="LossesToPlayerPilotsTextBox"       Width="75" Margin="5,5,5,5" Grid.Row="1" Text="{Binding LossesToPlayerPilots}"/>
-        <TextBox x:Name="LossesToNonPlayerPilotsTextBox"    Width="75" Margin="5,5,5,5" Grid.Row="2" Text="{Binding LossesToNonPlayerPilots}"/>
-        <TextBox x:Name="LossesToStarshipsTextBox"          Width="75" Margin="5,5,5,5" Grid.Row="3" Text="{Binding LossesToStarships}"/>
-        <TextBox x:Name="LossesToMinesTextBox"              Width="75" Margin="5,5,5,5" Grid.Row="4" Text="{Binding LossesToMines}"/>
-        <TextBox x:Name="LossesFromCollisionsTextBox"       Width="75" Margin="5,5,5,5" Grid.Row="5" Text="{Binding LossesFromCollisions}"/>
+        <TextBox x:Name="TotalCraftLossesTextBox"           Grid.Row="0" Text="{Binding TotalCraftLosses}"/>
+        <TextBox x:Name="LossesToPlayerPilotsTextBox"       Grid.Row="1" Text="{Binding LossesToPlayerPilots}"/>
+        <TextBox x:Name="LossesToNonPlayerPilotsTextBox"    Grid.Row="2" Text="{Binding LossesToNonPlayerPilots}"/>
+        <TextBox x:Name="LossesToStarshipsTextBox"          Grid.Row="3" Text="{Binding LossesToStarships}"/>
+        <TextBox x:Name="LossesToMinesTextBox"              Grid.Row="4" Text="{Binding LossesToMines}"/>
+        <TextBox x:Name="LossesFromCollisionsTextBox"       Grid.Row="5" Text="{Binding LossesFromCollisions}"/>
     </Grid>
 </UserControl>

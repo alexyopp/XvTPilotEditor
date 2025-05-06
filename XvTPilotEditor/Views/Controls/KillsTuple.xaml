@@ -18,14 +18,12 @@
         </Grid.ColumnDefinitions>
         <TextBox
             Grid.Column="0"
-            Margin="5"
-            Width="75"
             Text="{Binding KillsValue, ElementName=KillsTupleControl}"/>
         <StackPanel
             Orientation="Horizontal"
             Grid.Column="1">
             <Label>(</Label>
-            <TextBox Margin="0,5" Width="75" Text="{Binding SharedKillsValue, ElementName=KillsTupleControl}"/>
+            <TextBox Margin="0,5" Text="{Binding SharedKillsValue, ElementName=KillsTupleControl}"/>
             <Label>)</Label>
         </StackPanel>
     </Grid>

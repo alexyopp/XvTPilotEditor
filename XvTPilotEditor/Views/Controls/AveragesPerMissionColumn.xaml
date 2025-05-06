@@ -20,9 +20,9 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <local:KillsTuple x:Name="TotalKillsTuple" Grid.Row="0" KillsValue="{Binding TotalKillsPerMission}" SharedKillsValue="{Binding TotalSharedKillsPerMission}"/>
-        <local:KillsTuple x:Name="PlayerKillsTuple" Grid.Row="1" KillsValue="{Binding PlayerKillsPerMission}" SharedKillsValue="{Binding PlayerSharedKillsPerMission}"/>
-        <local:KillsTuple x:Name="NonPlayerKillsTuple" Grid.Row="2" KillsValue="{Binding NonPlayerKillsPerMission}" SharedKillsValue="{Binding NonPlayerSharedKillsPerMission}"/>
-        <TextBox x:Name="AssistsTextBox" Width="75" Margin="5,5,5,5" Grid.Row="3" Text="{Binding AssistsPerMission}"/>
+        <local:KillsTuple x:Name="TotalKillsTuple"      Grid.Row="0" KillsValue="{Binding TotalKillsPerMission}" SharedKillsValue="{Binding TotalSharedKillsPerMission}"/>
+        <local:KillsTuple x:Name="PlayerKillsTuple"     Grid.Row="1" KillsValue="{Binding PlayerKillsPerMission}" SharedKillsValue="{Binding PlayerSharedKillsPerMission}"/>
+        <local:KillsTuple x:Name="NonPlayerKillsTuple"  Grid.Row="2" KillsValue="{Binding NonPlayerKillsPerMission}" SharedKillsValue="{Binding NonPlayerSharedKillsPerMission}"/>
+        <TextBox x:Name="AssistsTextBox"                Grid.Row="3" Text="{Binding AssistsPerMission}"/>
     </Grid>
 </UserControl>

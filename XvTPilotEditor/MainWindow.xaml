@@ -10,6 +10,9 @@
         Title="Xvt/BoP Pilot Editor"
         MaxWidth="1024"
         MaxHeight="768">
+    <Window.Resources>
+        <ResourceDictionary Source="/Dictionary1.xaml"/>
+    </Window.Resources>
     <Grid
             x:Name="MainGrid">
         <Grid.RowDefinitions>
