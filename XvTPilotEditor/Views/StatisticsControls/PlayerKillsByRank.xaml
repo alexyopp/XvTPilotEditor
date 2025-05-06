@@ -15,15 +15,15 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Player Kills By Rank"   Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"/>
-        <Label Content="Exercise"               Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"/>
-        <Label Content="Melee"                  Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"/>
-        <Label Content="Combat"                 Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center"/>
+        <Label Content="Player Kills By Rank"   Grid.Column="0" HorizontalAlignment="Left"/>
+        <Label Content="Exercise"               Grid.Column="1" HorizontalAlignment="Center"/>
+        <Label Content="Melee"                  Grid.Column="2" HorizontalAlignment="Center"/>
+        <Label Content="Combat"                 Grid.Column="3" HorizontalAlignment="Center"/>
 
         <ItemsControl
             x:Name="PlayerKillsByRankList"
@@ -31,14 +31,19 @@
             ItemsSource="{Binding PlayerKillsByRank.PlayerKillsByRank}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding Key, Converter={convert:EnumToStringConverter}}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label              Grid.Column="0" Content="{Binding Key, Converter={convert:EnumToStringConverter}}"/>
                         <ItemsControl
                             x:Name="PlayerKillsByRankLine"
+                            Grid.Column="1" Grid.ColumnSpan="3"
                             ItemsSource="{Binding Value.PlayerKillsByRankByMissionType}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
@@ -47,7 +52,7 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
-                    </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
