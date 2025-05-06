@@ -15,9 +15,9 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Label Content="Craft Kills By Type"    Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"/>
@@ -31,14 +31,19 @@
             ItemsSource="{Binding CraftKillsByType.CraftKillsByType}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding Key, Converter={convert:EnumToStringConverter}}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{Binding Key, Converter={convert:EnumToStringConverter}}"/>
                         <ItemsControl
-                            x:Name="CraftKillsByTypeLine"
-                            ItemsSource="{Binding Value.CraftKillsByTypeByMissionType}">
+                                x:Name="CraftKillsByTypeLine"
+                                Grid.Column="1" Grid.ColumnSpan="3"
+                                ItemsSource="{Binding Value.CraftKillsByTypeByMissionType}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
@@ -47,7 +52,7 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
-                    </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

@@ -11,19 +11,19 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="180"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Total Losses By Player Rank"    Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"/>
-        <Label Content="Exercise"                       Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center"/>
-        <Label Content="Melee"                          Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center"/>
-        <Label Content="Combat"                         Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center"/>
+        <Label Content="Total Losses By Player Rank"    Grid.Column="0" HorizontalAlignment="Left"/>
+        <Label Content="Exercise"                       Grid.Column="1" HorizontalAlignment="Center"/>
+        <Label Content="Melee"                          Grid.Column="2" HorizontalAlignment="Center"/>
+        <Label Content="Combat"                         Grid.Column="3" HorizontalAlignment="Center"/>
 
         <ItemsControl
             x:Name="TotalLossesByPlayerRankList"
@@ -31,23 +31,28 @@
             ItemsSource="{Binding TotalLossesByPlayerRank.TotalLossesByPlayerRank}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="{Binding Key, Converter={convert:EnumToStringConverter}}"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Content="{Binding Key, Converter={convert:EnumToStringConverter}}"/>
                         <ItemsControl
-                            x:Name="TotalLossesByPlayerRankLine"
+                            x:Name="CraftKillsByTypeLine"
+                            Grid.Column="1" Grid.ColumnSpan="3"
                             ItemsSource="{Binding Value.TotalLossesByPlayerRankByMissionType}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"/>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBox x:Name="TotalLossesByPlayerRankTextBox" Text="{Binding Value.Losses}" MinWidth="50" Margin="5,5,5,5"/>
+                                    <TextBox x:Name="TotalLossesByPlayerRankTextBox" Text="{Binding Value.Losses}"/>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
-                    </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

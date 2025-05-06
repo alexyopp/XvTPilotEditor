@@ -36,7 +36,7 @@
                             <ColumnDefinition Width="120"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label              Grid.Column="0" Content="{Binding Key, Converter={convert:EnumToStringConverter}}"/>
+                        <Label Grid.Column="0" Content="{Binding Key, Converter={convert:EnumToStringConverter}}"/>
                         <ItemsControl
                             x:Name="PlayerKillsByRankLine"
                             Grid.Column="1" Grid.ColumnSpan="3"
