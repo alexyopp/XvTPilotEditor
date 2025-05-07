@@ -9,55 +9,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <Label>Mission Achievements</Label>
-
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Label Content="ID"   Grid.Column="0" HorizontalAlignment="Left"/>
-            <Label Content="Evaluation"               Grid.Column="1" HorizontalAlignment="Center"/>
-            <Label Content="Name"                  Grid.Column="2" HorizontalAlignment="Center"/>
-            <Label Content="Score"                 Grid.Column="3" HorizontalAlignment="Center"/>
-            <Label Content="PlayCount"                 Grid.Column="4" HorizontalAlignment="Center"/>
-            <Label Content="????"                 Grid.Column="5" HorizontalAlignment="Center"/>
-
-            <ItemsControl
-                x:Name="MissionList"
-                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
-                ItemsSource="{Binding SingleplayerTrainingMissionData}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="120"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label      x:Name="ID"         Grid.Column="0" Content="{Binding Key}"/>
-                            <Image      x:Name="Evaluation" Grid.Column="1" Source="/Assets/Gold.png"/>
-                            <Label      x:Name="Name"       Grid.Column="2" Content="{Binding Value.Name}"/>
-                            <TextBox    x:Name="Score"      Grid.Column="3" Text="{Binding Value.Score}"/>
-                            <TextBox    x:Name="PlayCount"  Grid.Column="4" Text="{Binding Value.PlayCount}"/>
-                            <TextBox    x:Name="Finish"     Grid.Column="5" Text="{Binding Value.Finish}"/>
-                        </Grid>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </Grid>
+        <DataGrid
+            Name="SingleplayerTrainingMissionHistory"
+            ItemsSource="{Binding SingleplayerTrainingMissionData}"
+            AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Key}"/>
+                <!--<DataGridTextColumn Header="Evaluation" Binding="{Binding Value.Evaluation}"/>-->
+                <DataGridTextColumn Header="Name" Binding="{Binding Value.Name}"/>
+                <DataGridTextColumn Header="Score" Binding="{Binding Value.Score}"/>
+                <DataGridTextColumn Header="Play Count" Binding="{Binding Value.PlayCount}"/>
+                <DataGridTextColumn Header="Best Completion Time" Binding="{Binding Value.Result}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </StackPanel>
 </UserControl>
