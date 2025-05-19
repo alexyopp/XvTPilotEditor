@@ -9,17 +9,24 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
+        <StackPanel.Resources>
+            <DataTemplate x:Key="EvaluationColumnTemplate">
+                <StackPanel>
+                    <Image Source="/Assets/AdequateImperial.png" Stretch="Uniform"/>
+                </StackPanel>
+            </DataTemplate>
+        </StackPanel.Resources>
         <DataGrid
             Name="SingleplayerTrainingMissionHistory"
             ItemsSource="{Binding SingleplayerTrainingMissionData}"
             AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Key}"/>
-                <!--<DataGridTextColumn Header="Evaluation" Binding="{Binding Value.Evaluation}"/>-->
+                <DataGridTemplateColumn Header="Evaluation" CellTemplate="{StaticResource EvaluationColumnTemplate}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Value.Name}"/>
                 <DataGridTextColumn Header="Score" Binding="{Binding Value.Score}"/>
                 <DataGridTextColumn Header="Play Count" Binding="{Binding Value.PlayCount}"/>
-                <DataGridTextColumn Header="Best Completion Time" Binding="{Binding Value.Result}"/>
+                <DataGridTextColumn Header="Best Completion Time" Binding="{Binding Value.Finish}"/>
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
