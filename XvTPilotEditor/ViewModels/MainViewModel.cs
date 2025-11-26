@@ -80,58 +80,71 @@ namespace XvTPilotEditor.ViewModels
 
         private void LoadFileData()
         {
+            PilotFileSchema.PLTFileRecord dataPlt = new PilotFileSchema.PLTFileRecord();
+            PilotFileSchema.PL2FileRecord dataPl2 = new PilotFileSchema.PL2FileRecord();
+
+            string PltFileName = string.Empty;
+            if (FilePicker("XvT pilot files (*.plt)|*.plt", ref PltFileName) == true)
+            {
+                ReadFileBytes<PilotFileSchema.PLTFileRecord>(PltFileName, ref dataPlt);
+            }
+
+            string Pl2FileName = string.Empty;
+            if (FilePicker("BoP pilot files (*.pl2)|*.pl2", ref Pl2FileName) == true)
+            {
+                ReadFileBytes<PilotFileSchema.PL2FileRecord>(Pl2FileName, ref dataPl2);
+            }
+        }
+
+        static private bool? FilePicker(string Filter, ref string FileName)
+        {
             Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog();
-            openFileDlg.Filter = "XvT pilot files (*.plt)|*.plt|BoP pilot files (*.pl2)|*.pl2";
-            openFileDlg.FilterIndex = 2;
+            openFileDlg.Filter = Filter;
+            openFileDlg.FilterIndex = 1;
 
             Nullable<bool> result = openFileDlg.ShowDialog();
 
             if (result == true)
             {
-                string Filename = Path.GetFileName(openFileDlg.FileName);
-                string Directory = Path.GetFullPath(openFileDlg.FileName);
+                FileName = openFileDlg.FileName;
+            }
 
+            return result;
+        }
+
+        private void ReadFileBytes<T>(string FileName, ref T? data)
+        {
+            try
+            {
+                byte[] filebytes = File.ReadAllBytes(FileName);
+
+                GCHandle handle = GCHandle.Alloc(filebytes, GCHandleType.Pinned);
                 try
                 {
-                    byte[] filebytes = File.ReadAllBytes(openFileDlg.FileName);
-
-                    //if (filebytes.Length < Marshal.SizeOf<PilotFileSchema.PLTFileRecord>())
-                    //{
-                    //    Console.WriteLine("File is too small for the expected structure.");
-                    //    return;
-                    //}
-
-                    //PilotFileSchema.PLTFileRecord data = ByteArrayToStructure<PilotFileSchema.PLTFileRecord>(filebytes);
-
-                    if (filebytes.Length < Marshal.SizeOf<PilotFileSchema.PL2FileRecord>())
-                    {
-                        Console.WriteLine("File is too small for the expected structure.");
-                        return;
-                    }
-
-                    PilotFileSchema.PL2FileRecord data = ByteArrayToStructure<PilotFileSchema.PL2FileRecord>(filebytes);
-                    
-
-                    //char[] name = new char[5];
-                    //for (byte i = 0; i < 5; ++i)
-                    //{
-                    //    name[i] = (char)filebytes[i];
-                    //}
-
-                    //string stringName = new string(name);
+                    data = Marshal.PtrToStructure<T>(handle.AddrOfPinnedObject());
                 }
-                catch (FileNotFoundException)
+                finally
                 {
-                    Console.WriteLine("Error: File not found.");
+                    handle.Free();
                 }
-                catch (IOException ex)
+
+                if (filebytes.Length < Marshal.SizeOf<T>())
                 {
-                    Console.WriteLine($"I/O Error: {ex.Message}");
+                    Console.WriteLine("File is too small for the expected structure.");
+                    return;
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Unexpected error: {ex.Message}");
-                }
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("Error: File not found.");
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"I/O Error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error: {ex.Message}");
             }
         }
     }
