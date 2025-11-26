@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Input;
 using XvTPilotEditor.Commands;
 using XvTPilotEditor.Models;
+using static XvTPilotEditor.PilotFileSchema;
 
 namespace XvTPilotEditor.ViewModels
 {
@@ -94,13 +95,22 @@ namespace XvTPilotEditor.ViewModels
                 {
                     byte[] filebytes = File.ReadAllBytes(openFileDlg.FileName);
 
-                    if (filebytes.Length < Marshal.SizeOf<PilotFileSchema.PLTFileRecord>())
+                    //if (filebytes.Length < Marshal.SizeOf<PilotFileSchema.PLTFileRecord>())
+                    //{
+                    //    Console.WriteLine("File is too small for the expected structure.");
+                    //    return;
+                    //}
+
+                    //PilotFileSchema.PLTFileRecord data = ByteArrayToStructure<PilotFileSchema.PLTFileRecord>(filebytes);
+
+                    if (filebytes.Length < Marshal.SizeOf<PilotFileSchema.PL2FileRecord>())
                     {
                         Console.WriteLine("File is too small for the expected structure.");
                         return;
                     }
 
-                    PilotFileSchema.PLTFileRecord data = ByteArrayToStructure<PilotFileSchema.PLTFileRecord>(filebytes);
+                    PilotFileSchema.PL2FileRecord data = ByteArrayToStructure<PilotFileSchema.PL2FileRecord>(filebytes);
+                    
 
                     //char[] name = new char[5];
                     //for (byte i = 0; i < 5; ++i)
