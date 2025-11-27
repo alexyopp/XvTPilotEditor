@@ -1,32 +1,33 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Controls;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static XvTPilotEditor.PilotFileSchema;
 
 namespace XvTPilotEditor
 {
     public class PilotRecord
     {
-        public string PltPilotName { get; private set; } = string.Empty;
-        public string Pl2PilotName { get; private set; } = string.Empty;
+        public string PltPilotName { get; set; } = string.Empty;
+        public string Pl2PilotName { get; set; } = string.Empty;
 
-        public int PltTotalScore { get; private set; }
-        public int Pl2TotalScore { get; private set; }
+        public int PltTotalScore { get; set; }
+        public int Pl2TotalScore { get; set; }
 
-        public uint PltPlayerID { get; private set; }
-        public uint Pl2PlayerID { get; private set; }
+        public uint PltPlayerID { get; set; }
+        public uint Pl2PlayerID { get; set; }
 
-        public int PltContinuedOrReflownMission { get; private set; }
-        public int Pl2ContinuedOrReflownMission { get; private set; }
+        public int PltContinuedOrReflownMission { get; set; }
+        public int Pl2ContinuedOrReflownMission { get; set; }
 
-        public int PltIsHosting { get; private set; }
-        public int Pl2IsHosting { get; private set; }
+        public int PltIsHosting { get; set; }
+        public int Pl2IsHosting { get; set; }
 
-        public int PltNumHumanPlayersInMission { get; private set; }
-        public int Pl2NumHumanPlayersInMission { get; private set; }
+        public int PltNumHumanPlayersInMission { get; set; }
+        public int Pl2NumHumanPlayersInMission { get; set; }
 
-        public int PltFrontFlyMode { get; private set; }
-        public int Pl2FrontFlyMode { get; private set; }
+        public int PltFrontFlyMode { get; set; }
+        public int Pl2FrontFlyMode { get; set; }
 
         public int[] PltUnknown0x26 { get; private set; } = Array.Empty<int>();
         public int[] Pl2Unknown0x26 { get; private set; } = Array.Empty<int>();
@@ -39,17 +40,17 @@ namespace XvTPilotEditor
 
         //...
 
-        public int PltPromoPoints { get; private set; }
-        public int Pl2PromoPoints { get; private set; }
+        public int PltPromoPoints { get; set; }
+        public int Pl2PromoPoints { get; set; }
 
-        public int PltWorsePromoPoints { get; private set; }
-        public int Pl2WorsePromoPoints { get; private set; }
+        public int PltWorsePromoPoints { get; set; }
+        public int Pl2WorsePromoPoints { get; set; }
 
-        public int PltRankAdjustmentApplied { get; private set; }
-        public int Pl2RankAdjustmentApplied { get; private set; }
+        public int PltRankAdjustmentApplied { get; set; }
+        public int Pl2RankAdjustmentApplied { get; set; }
 
-        public int PltPercentToNextRank { get; private set; }
-        public int Pl2PercentToNextRank { get; private set; }
+        public int PltPercentToNextRank { get; set; }
+        public int Pl2PercentToNextRank { get; set; }
 
         public MissionCategoryRecord PltTotalCategoryScore { get; private set; }
         public MissionCategoryRecord Pl2TotalCategoryScore { get; private set; }
@@ -119,20 +120,20 @@ namespace XvTPilotEditor
 
         //...
 
-        public uint PltCurrentRank { get; private set; }
-        public uint Pl2CurrentRank { get; private set; }
+        public uint PltCurrentRank { get; set; }
+        public uint Pl2CurrentRank { get; set; }
 
-        public int PltTotalCountMissionsFlown { get; private set; }
-        public int Pl2TotalCountMissionsFlown { get; private set; }
+        public int PltTotalCountMissionsFlown { get; set; }
+        public int Pl2TotalCountMissionsFlown { get; set; }
 
         public int[] PltRankAchievedOnMissionCount { get; private set; } = Array.Empty<int>();
         public int[] Pl2RankAchievedOnMissionCount { get; private set; } = Array.Empty<int>();
 
-        public string PltRankString { get; private set; } = string.Empty;
-        public string Pl2RankString { get; private set; } = string.Empty;
+        public string PltRankString { get; set; } = string.Empty;
+        public string Pl2RankString { get; set; } = string.Empty;
 
-        public int PltDebriefMissionScore { get; private set; }
-        public int Pl2DebriefMissionScore { get; private set; }
+        public int PltDebriefMissionScore { get; set; }
+        public int Pl2DebriefMissionScore { get; set; }
 
         public int[] PltDebriefFullKillsOnPlayer { get; private set; } = Array.Empty<int>();
         public int[] Pl2DebriefFullKillsOnPlayer { get; private set; } = Array.Empty<int>();
@@ -170,23 +171,23 @@ namespace XvTPilotEditor
         public TeamResultRecord[] Pl2DebriefTeamResult { get; private set; }
 
         //  Note the difference in types between the Plt and Pl2 versions; probably can homogenize these in the future
-        public int PltLastSelectedFaction { get; private set; }
-        public uint Pl2LastSelectedFaction { get; private set; }
+        public int PltLastSelectedFaction { get; set; }
+        public uint Pl2LastSelectedFaction { get; set; }
 
         // --- PLT fields (flattened) ---
-        public int PltlastTeamNumber { get; private set; }
-        public int PltlastSelectedMissionType { get; private set; }
-        public int PltlastSelectedTraining { get; private set; }
-        public int PltlastSelectedMelee { get; private set; }
-        public int PltlastSelectedTournament { get; private set; }
-        public int PltlastSelectedCombat { get; private set; }
-        public int PltlastSelectedBattle { get; private set; }
-        public string PltGameNameString { get; private set; } = string.Empty;
+        public int PltlastTeamNumber { get; set; }
+        public int PltlastSelectedMissionType { get; set; }
+        public int PltlastSelectedTraining { get; set; }
+        public int PltlastSelectedMelee { get; set; }
+        public int PltlastSelectedTournament { get; set; }
+        public int PltlastSelectedCombat { get; set; }
+        public int PltlastSelectedBattle { get; set; }
+        public string PltGameNameString { get; set; } = string.Empty;
         public byte[] Pltunknown0x2F8 { get; private set; } = Array.Empty<byte>();
-        public string PltGameNameString2 { get; private set; } = string.Empty;
+        public string PltGameNameString2 { get; set; } = string.Empty;
         public byte[] Pltunknown0x318 { get; private set; } = Array.Empty<byte>();
-        public int PltlastMissionWasNonSpecific { get; private set; }
-        public int Pltunknown0x326 { get; private set; }
+        public int PltlastMissionWasNonSpecific { get; set; }
+        public int Pltunknown0x326 { get; set; }
         public int[] PlttotalCraftFullKillsExercise { get; private set; } = Array.Empty<int>();
         public int[] PlttotalCraftFullKillsMelee { get; private set; } = Array.Empty<int>();
         public int[] PlttotalCraftFullKillsCombat { get; private set; } = Array.Empty<int>();
@@ -197,17 +198,17 @@ namespace XvTPilotEditor
         public int[] PlttotalCraftAssistKillsMelee { get; private set; } = Array.Empty<int>();
         public int[] PlttotalCraftAssistKillsCombat { get; private set; } = Array.Empty<int>();
         public byte[] Pltunknown0x1612 { get; private set; } = Array.Empty<byte>();
-        public int PltunknownPlaqueWon { get; private set; }
+        public int PltunknownPlaqueWon { get; set; }
         public PilotFileSchema.PLTTournTeamRecord[] PltTournTeamRecords { get; private set; } = Array.Empty<PilotFileSchema.PLTTournTeamRecord>();
-        public int PltnumHumanPlayersUNK { get; private set; }
-        public int PltnumTeamsUNK { get; private set; }
-        public int Pltunknown0x170E { get; private set; }
-        public int Pltunknown0x1712 { get; private set; }
-        public int PltnumCombatFlownInLastBattle { get; private set; }
+        public int PltnumHumanPlayersUNK { get; set; }
+        public int PltnumTeamsUNK { get; set; }
+        public int Pltunknown0x170E { get; set; }
+        public int Pltunknown0x1712 { get; set; }
+        public int PltnumCombatFlownInLastBattle { get; set; }
         public byte[] Pltunknown0x171A { get; private set; } = Array.Empty<byte>();
         public int[] PltbattleCombatMissionID { get; private set; } = Array.Empty<int>();
         public byte[] Pltunknown0x1F2E { get; private set; } = Array.Empty<byte>();
-        public int PlttotalScoreForCurrentBattleUNK { get; private set; }
+        public int PlttotalScoreForCurrentBattleUNK { get; set; }
         public PilotFileSchema.PLTCategoryTypeRecord PltUnknownRecord1 { get; private set; }
         public PilotFileSchema.PLTCategoryTypeRecord PltUnknownRecord2 { get; private set; }
         public PilotFileSchema.PLTCategoryTypeRecord PltUnknownRecord3 { get; private set; }
@@ -246,13 +247,13 @@ namespace XvTPilotEditor
         public PilotFileSchema.PLTFactionRecord PltimperialMultiplayerData { get; private set; }
 
         // --- PL2 fields (flattened) ---
-        public int Pl2activeMissionTeam { get; private set; }
-        public int Pl2MissionFolderIndex { get; private set; }
+        public int Pl2activeMissionTeam { get; set; }
+        public int Pl2MissionFolderIndex { get; set; }
         public int[] Pl2SelectedIDNumOfMissionCategory { get; private set; } = Array.Empty<int>();
-        public string Pl2GameName { get; private set; } = string.Empty;
-        public string Pl2LastGameName { get; private set; } = string.Empty;
-        public int Pl2isMissionCategorySeries { get; private set; }
-        public int Pl2activeMissionIDNum { get; private set; }
+        public string Pl2GameName { get; set; } = string.Empty;
+        public string Pl2LastGameName { get; set; } = string.Empty;
+        public int Pl2isMissionCategorySeries { get; set; }
+        public int Pl2activeMissionIDNum { get; set; }
         public int[] Pl2TotalKillCountByCraftType { get; private set; } = Array.Empty<int>();
         public PilotFileSchema.PLTTournamentProgressState Pl2activeTournament { get; private set; }
         public PilotFileSchema.PLTBattleProgressState Pl2activeBattle { get; private set; }
@@ -267,8 +268,8 @@ namespace XvTPilotEditor
         public PilotFileSchema.PL2CampaignState[] Pl2mpCampaignHostState { get; private set; } = Array.Empty<PilotFileSchema.PL2CampaignState>();
         public PilotFileSchema.PL2CampaignState[] Pl2mpCampaignClientState { get; private set; } = Array.Empty<PilotFileSchema.PL2CampaignState>();
         public int[] Pl2anonymous_259 { get; private set; } = Array.Empty<int>();
-        public ushort Pl2anonymous_260 { get; private set; }
-        public ushort Pl2anonymous_261 { get; private set; }
+        public ushort Pl2anonymous_260 { get; set; }
+        public ushort Pl2anonymous_261 { get; set; }
 
         public PilotRecord()
         {
@@ -408,12 +409,14 @@ namespace XvTPilotEditor
             PltdebriefLossesFromPlayerRank = pltFile.debriefLossesFromPlayerRank;
             PltdebriefLossesFromAIRank = pltFile.debriefLossesFromAIRank;
 
+            PltConnectedPlayer = new ConnectedPlayerRecord[Constants.MAX_CONNECTED_PLAYERS];
             for (uint idx = 0; idx < Constants.MAX_CONNECTED_PLAYERS; ++idx)
             {
                 PltConnectedPlayer[idx] = new ConnectedPlayerRecord(pltFile.connectedPlayerData[idx]);
             }
 
-            for (uint idx = 0; idx < 10; ++idx) // TODO: Why 10?  I mean, that's what's defined in the file, but what is the in-game significance?
+            PltDebriefTeamResult = new TeamResultRecord[10]; // TODO: Why 10?  I mean, that's what's defined in the file, but what is the in-game significance?
+            for (uint idx = 0; idx < 10; ++idx)
             {
                 PltDebriefTeamResult[idx] = new TeamResultRecord(pltFile.debriefTeamResult[idx]);
             }
@@ -489,12 +492,14 @@ namespace XvTPilotEditor
             Pl2DebriefMeleeAIRankFG = pl2File.debriefMeleeAIRankFG ?? Array.Empty<int>();
             Pl2debrief = pl2File.debrief;
 
+            Pl2ConnectedPlayer = new ConnectedPlayerRecord[Constants.MAX_CONNECTED_PLAYERS];
             for (uint idx = 0; idx < Constants.MAX_CONNECTED_PLAYERS; ++idx)
             {
                 Pl2ConnectedPlayer[idx] = new ConnectedPlayerRecord(pl2File.connectedPlayerData[idx]);
             }
 
-            for (uint idx = 0; idx < 10; ++idx) // TODO: Why 10?  I mean, that's what's defined in the file, but what is the in-game significance?
+            Pl2DebriefTeamResult = new TeamResultRecord[10]; // TODO: Why 10?  I mean, that's what's defined in the file, but what is the in-game significance?
+            for (uint idx = 0; idx < 10; ++idx)
             {
                 Pl2DebriefTeamResult[idx] = new TeamResultRecord(pl2File.debriefTeamResult[idx]);
             }
@@ -516,9 +521,9 @@ namespace XvTPilotEditor
 
     public class MissionCategoryRecord
     {
-        public int Exercise { get; private set; }
-        public int Melee { get; private set; }
-        public int CombatEngagement { get; private set; }
+        public int Exercise { get; set; }
+        public int Melee { get; set; }
+        public int CombatEngagement { get; set; }
 
         public MissionCategoryRecord(int exercise, int melee, int combatEngagement)
         {
@@ -637,23 +642,27 @@ namespace XvTPilotEditor
 
     public class ConnectedPlayerRecord
     {
-        public string PilotLongNameUnused { get; private set; } = string.Empty;
-        public string PilotShortName { get; private set; } = string.Empty;
-        public int FGIndex { get; private set; }
-        public uint DPPlayerID { get; private set; }
-        public int PilotRank { get; private set; }
-        public int PlayerScore { get; private set; }
-        public int FullKills { get; private set; }
-        public int SharedKills { get; private set; }
-        public int UnusedInspections { get; private set; }
-        public int AssistKills { get; private set; }
-        public int Losses { get; private set; }
-        public int CraftType { get; private set; }
-        public int OptionalCraftIndex { get; private set; }
-        public int OptionalWarhead { get; private set; }
-        public int OptionalBeam { get; private set; }
-        public int OptionalCountermeasure { get; private set; }
-        public int HasDisconnectedFromHostUNK { get; private set; }
+        public string PilotLongNameUnused { get; set; } = string.Empty;
+        public string PilotShortName { get; set; } = string.Empty;
+        public int FGIndex { get; set; }
+        public uint DPPlayerID { get; set; }
+        public int PilotRank { get; set; }
+        public int PlayerScore { get; set; }
+        public int FullKills { get; set; }
+        public int SharedKills { get; set; }
+        public int UnusedInspections { get; set; }
+        public int AssistKills { get; set; }
+        public int Losses { get; set; }
+        public int CraftType { get; set; }
+        public int OptionalCraftIndex { get; set; }
+        public int OptionalWarhead { get; set; }
+        public int OptionalBeam { get; set; }
+        public int OptionalCountermeasure { get; set; }
+        public int HasDisconnectedFromHostUNK { get; set; }
+
+        public ConnectedPlayerRecord()
+        {
+        }
 
         public ConnectedPlayerRecord(PLTConnectedPlayerData connectedPlayerRecord)
         {
@@ -679,13 +688,17 @@ namespace XvTPilotEditor
 
     public class TeamResultRecord
     {
-        public int TotalMissionScore { get; private set; }
-        public int IsMissionComplete { get; private set; }
-        public int Unknown0x8 { get; private set; }
-        public int TimeMissionComplete { get; private set; }
-        public int FullKills { get; private set; }
-        public int SharedKills { get; private set; }
-        public int Losses { get; private set; }
+        public int TotalMissionScore { get; set; }
+        public int IsMissionComplete { get; set; }
+        public int Unknown0x8 { get; set; }
+        public int TimeMissionComplete { get; set; }
+        public int FullKills { get; set; }
+        public int SharedKills { get; set; }
+        public int Losses { get; set; }
+
+        public TeamResultRecord()
+        {
+        }
 
         public TeamResultRecord(PLTTeamResultRecord teamResultRecord)
         {

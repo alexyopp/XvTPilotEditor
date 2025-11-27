@@ -13,13 +13,14 @@ namespace XvTPilotEditor.ViewModels
     {
         public Page ActivePage { get; set; }
         public Faction ActiveFaction { get; set; }
-        public PageViewModel ActivePageViewModel { get; set; }
+        public ViewModelBase ActivePageViewModel { get; set; }
 
         public ICommand ChangeActivePageCommand { get; private set; }
         public ICommand LoadPilotFileDataCommand { get; private set; }
 
-        private Dictionary<Page, PageViewModel> pageViewModels;
+        private Dictionary<Page, ViewModelBase> pageViewModels;
         private PilotModel pilotModel;
+        private PilotRecord pilotRecord;
 
         public MainViewModel()
         {
@@ -35,9 +36,9 @@ namespace XvTPilotEditor.ViewModels
             ActivePageViewModel = pageViewModels[ActivePage];
         }
 
-        private Dictionary<Page, PageViewModel> BuildViewModels()
+        private Dictionary<Page, ViewModelBase> BuildViewModels()
         {
-            Dictionary<Page, PageViewModel> viewModels = new Dictionary<Page, PageViewModel>();
+            Dictionary<Page, ViewModelBase> viewModels = new Dictionary<Page, ViewModelBase>();
 
             foreach (var page in Enum.GetValues<Page>())
             {
@@ -51,6 +52,9 @@ namespace XvTPilotEditor.ViewModels
                         break;
                     case Page.MissionAchievements:
                         viewModels.Add(Page.MissionAchievements, new MissionAchievementsViewModel(pilotModel));
+                        break;
+                    case Page.CombinedRecord:
+                        viewModels.Add(Page.CombinedRecord, new CombinedPilotRecordPageViewModel(pilotRecord));
                         break;
                 }
             }
@@ -81,7 +85,10 @@ namespace XvTPilotEditor.ViewModels
                 ReadFileBytes<PilotFileSchema.PL2FileRecord>(Pl2FileName, ref dataPl2);
             }
 
-            PilotRecord newPilotRecord = new PilotRecord(dataPlt, dataPl2);
+            pilotRecord = new PilotRecord(dataPlt, dataPl2);
+
+            CombinedPilotRecordPageViewModel combinedViewModel = new CombinedPilotRecordPageViewModel(pilotRecord);
+            pageViewModels = BuildViewModels();
         }
 
         static private bool? FilePicker(string Filter, ref string FileName)

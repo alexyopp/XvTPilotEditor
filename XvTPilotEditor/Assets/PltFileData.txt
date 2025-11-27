@@ -68,8 +68,6 @@ PLTCategoryTypeRecord debriefCraftLossesFromMine;
 PLTPlayerRankCountRecord debriefLossesFromPlayerRank;
 PLTAIRankCountRecord debriefLossesFromAIRank;
 
-PLTTeamResultRecord debriefTeamResult[10];
-int lastSelectedFaction;
 PLTFactionRecord rebelSingleplayerData;
 PLTFactionRecord imperialSingleplayerData;
 PLTFactionRecord rebelMultiplayerData;

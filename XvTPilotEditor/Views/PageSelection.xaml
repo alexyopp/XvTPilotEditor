@@ -11,6 +11,12 @@
     <StackPanel>
         <StackPanel Margin="0,0,0,20">
             <RadioButton
+                x:Name="ShowCombinedRecordButton"
+                GroupName="Page"
+                Content="Combined Record"
+                IsChecked="{Binding ActivePage, Converter={convert:EnumToBooleanConverter}, ConverterParameter={x:Static local:Page.CombinedRecord}}"
+                Command="{Binding ChangeActivePageCommand}"/>
+            <RadioButton
                 x:Name="ShowStatisticsButton"
                 GroupName="Page"
                 Content="Statistics"

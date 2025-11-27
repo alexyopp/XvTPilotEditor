@@ -151,7 +151,8 @@ namespace XvTPilotEditor
     {
         Statistics = 0,
         RatingHistory,
-        MissionAchievements
+        MissionAchievements,
+        CombinedRecord
     }
 
     public enum PilotRating : uint  //  i.e., Pilot Rank

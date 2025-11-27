@@ -14,8 +14,6 @@ PLTBattleProgressState activeBattle;
 //
 PL2DebriefRecord debrief;
 
-PLTTeamResultRecord debriefTeamResult[10];
-DWORD SelectedFaction;
 PL2FactionRecord faction[4];
 PL2CampaignProgressState activeCampaign;
 __int8 gap45E1E[4];

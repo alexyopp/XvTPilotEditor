@@ -51,6 +51,9 @@
                 <DataTemplate DataType="{x:Type vm:MissionAchievementsViewModel}">
                     <view:MissionAchievementsPage/>
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:CombinedPilotRecordPageViewModel}">
+                    <view:CombinedRecordPage/>
+                </DataTemplate>
             </ScrollViewer.Resources>
             <ContentControl Content="{Binding ActivePageViewModel}"/>
         </ScrollViewer>
