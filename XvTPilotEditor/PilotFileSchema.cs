@@ -7,997 +7,1000 @@ using System.Threading.Tasks;
 
 namespace XvTPilotEditor
 {
-    class PilotFileSchema
+    public class PilotFileSchema
     {
+        // Note: Some consolidation can be done; example:
+        //      "PLTCategoryTypeRecord totalCategoryScore" in PltFileRecord is the same as "int totalScoreEMC[3]" in Pl2FileRecord
+
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTCategoryTypeRecord
+        public struct PLTCategoryTypeRecord
         {
-            int exercise;
-            int melee;
-            int combat;
+            public int exercise;
+            public int melee;
+            public int combat;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTPlayerRankCountRecord
+        public struct PLTPlayerRankCountRecord
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            int[] exercise;
-            
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            int[] melee;
+            public int[] exercise;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            int[] combat;
+            public int[] melee;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
+            public int[] combat;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTAIRankCountRecord
+        public struct PLTAIRankCountRecord
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-            int[] exercise;
+            public int[] exercise;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-            int[] melee;
+            public int[] melee;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-            int[] combat;
+            public int[] combat;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTTournTeamRecord
+        public struct PLTTournTeamRecord
         {
-            int teamParticipationState;
-            int totalTeamScore;
-            int numberOfMeleeRankingsFirst;
-            int numberOfMeleeRankingsSecond;
-            int numberOfMeleeRankingsThird;
+            public int teamParticipationState;
+            public int totalTeamScore;
+            public int numberOfMeleeRankingsFirst;
+            public int numberOfMeleeRankingsSecond;
+            public int numberOfMeleeRankingsThird;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTConnectedPlayerData
+        public struct PLTConnectedPlayerData
         {
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
-            string pilotLongNameUnused;     // char[14]
+            public string pilotLongNameUnused;     // char[14]
 
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
-            string pilotShortName;      // char[14]
+            public string pilotShortName;      // char[14]
 
-            int fgIndex;
-            uint DPPlayerID;    // DWORD -> DPID
-            int pilotRank;
-            int playerScore;
-            int fullKills;
-            int sharedKills;
-            int unusedInspections;
-            int assistKills;
-            int losses;
-            int craftType;
-            int optionalCraftIndex;
-            int optionalWarhead;
-            int optionalBeam;
-            int optionalCountermeasure;
-            int hasDisconnectedFromHostUNK;
+            public int fgIndex;
+            public uint DPPlayerID;    // DWORD -> DPID
+            public int pilotRank;
+            public int playerScore;
+            public int fullKills;
+            public int sharedKills;
+            public int unusedInspections;
+            public int assistKills;
+            public int losses;
+            public int craftType;
+            public int optionalCraftIndex;
+            public int optionalWarhead;
+            public int optionalBeam;
+            public int optionalCountermeasure;
+            public int hasDisconnectedFromHostUNK;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTTeamResultRecord
+        public struct PLTTeamResultRecord
         {
-            int totalMissionScore;
-            int isMissionComplete;
-            int unknown0x8;
-            int timeMissionComplete;
-            int fullKills;
-            int sharedKills;
-            int losses;
+            public int totalMissionScore;
+            public int isMissionComplete;
+            public int unknown0x8;
+            public int timeMissionComplete;
+            public int fullKills;
+            public int sharedKills;
+            public int losses;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTEarnedMedalRecord
+        public struct PLTEarnedMedalRecord
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-            int[] meleePlaqueCount;
+            public int[] meleePlaqueCount;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-            int[] tournamentPlaqueCount;
+            public int[] tournamentPlaqueCount;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-            int[] exerciseBadgeCount;
+            public int[] exerciseBadgeCount;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-            int[] battleMedalCount;
+            public int[] battleMedalCount;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTMissionSPRecord
+        public struct PLTMissionSPRecord
         {
-            int unknown0x0;
-            int totalCountFlown;
-            int totalCountVictory;
-            int totalCountFailure;
-            int bestScore;
-            int bestTimeAsSeconds;
-            int bestFinishRank;
-            int bestEvaluationBadge;
-            int bestWinningMargin;
+            public int unknown0x0;
+            public int totalCountFlown;
+            public int totalCountVictory;
+            public int totalCountFailure;
+            public int bestScore;
+            public int bestTimeAsSeconds;
+            public int bestFinishRank;
+            public int bestEvaluationBadge;
+            public int bestWinningMargin;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTMissionMPRecord
+        public struct PLTMissionMPRecord
         {
-            int unknown0x0;
-            int totalCountFlown;
-            int totalCountFinishedFirst;
-            int totalCountFinishedSecond;
-            int totalCountFinishedThird;
-            int totalCountVictory;
-            int totalCountFailure;
-            int bestScore;
-            int bestTimeAsSeconds;
-            int bestFinishPlace;
-            int bestEvaluationBadge;
-            int bestWinningMargin;
+            public int unknown0x0;
+            public int totalCountFlown;
+            public int totalCountFinishedFirst;
+            public int totalCountFinishedSecond;
+            public int totalCountFinishedThird;
+            public int totalCountVictory;
+            public int totalCountFailure;
+            public int bestScore;
+            public int bestTimeAsSeconds;
+            public int bestFinishPlace;
+            public int bestEvaluationBadge;
+            public int bestWinningMargin;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTTournSPRecord
+        public struct PLTTournSPRecord
         {
-            int unknown0x0;
-            int totalCountFlown;
-            int numberOfFinishesAnyUNK;
-            int numberOfFinishesFirst;
-            int numberOfFinishesSecond;
-            int numberOfFinishesThird;
-            int bestScore;
-            int bestFinish;
-            int bestEvaluationMedal;
-            int bestFinishPointMargin;
+            public int unknown0x0;
+            public int totalCountFlown;
+            public int numberOfFinishesAnyUNK;
+            public int numberOfFinishesFirst;
+            public int numberOfFinishesSecond;
+            public int numberOfFinishesThird;
+            public int bestScore;
+            public int bestFinish;
+            public int bestEvaluationMedal;
+            public int bestFinishPointMargin;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTTournMPRecord
+        public struct PLTTournMPRecord
         {
-            int unknown0x0;
-            int totalCountFlown;
-            int numberOfFinishesAnyUNK;
-            int numberOfFinishesFirst;
-            int numberOfFinishesSecond;
-            int numberOfFinishesThird;
-            int bestScore;
-            int bestFinish;
-            int unknown0x20;
-            int bestEvaluationMedal;
-            int bestFinishPointMargin;
+            public int unknown0x0;
+            public int totalCountFlown;
+            public int numberOfFinishesAnyUNK;
+            public int numberOfFinishesFirst;
+            public int numberOfFinishesSecond;
+            public int numberOfFinishesThird;
+            public int bestScore;
+            public int bestFinish;
+            public int unknown0x20;
+            public int bestEvaluationMedal;
+            public int bestFinishPointMargin;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTBattleSPRecord
+        public struct PLTBattleSPRecord
         {
-            int unknown0x0;
-            int totalCountFlown;
-            int totalCountVictory;
-            int totalCountFailure;
-            int totalCount10MissionMarathonUNK;
-            int bestScore;
-            int unknown0x18;
-            int bestEvaluationMedal;
-            int bestVictoryMargin;
+            public int unknown0x0;
+            public int totalCountFlown;
+            public int totalCountVictory;
+            public int totalCountFailure;
+            public int totalCount10MissionMarathonUNK;
+            public int bestScore;
+            public int unknown0x18;
+            public int bestEvaluationMedal;
+            public int bestVictoryMargin;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTBattleMPRecord
+        public struct PLTBattleMPRecord
         {
-            int unknown0x0;
-            int totalCountFlown;
-            int totalCountVictory;
-            int totalCountFailure;
-            int totalCount10MissionMarathonUNK;
-            int bestScore;
-            int unknown0x18;
-            int unknown0x1C;
-            int bestEvaluationMedal;
-            int bestVictoryMargin;
+            public int unknown0x0;
+            public int totalCountFlown;
+            public int totalCountVictory;
+            public int totalCountFailure;
+            public int totalCount10MissionMarathonUNK;
+            public int bestScore;
+            public int unknown0x18;
+            public int unknown0x1C;
+            public int bestEvaluationMedal;
+            public int bestVictoryMargin;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTFactionRecord
+        public struct PLTFactionRecord
         {
-            int totalMissionsFlown;
-            int lastMissionTeam;
-            int lastMissionType;
-            int lastMissionTrainingSelected;
-            int lastMissionMeleeSelected;
-            int lastMissionTournamentSelected;
-            int lastMissionCombatSelected;
-            int lastMissionBattleSelected;
+            public int totalMissionsFlown;
+            public int lastMissionTeam;
+            public int lastMissionType;
+            public int lastMissionTrainingSelected;
+            public int lastMissionMeleeSelected;
+            public int lastMissionTournamentSelected;
+            public int lastMissionCombatSelected;
+            public int lastMissionBattleSelected;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-            int[] unknown0x20;
+            public int[] unknown0x20;
 
-            PLTEarnedMedalRecord earnedMedalCount;
-            int debriefMeleePlaqueType;
-            int debriefTournamentTrophyType;
-            int debriefMissionBadgeType;
-            int debriefBattleMedalType;
+            public PLTEarnedMedalRecord earnedMedalCount;
+            public int debriefMeleePlaqueType;
+            public int debriefTournamentTrophyType;
+            public int debriefMissionBadgeType;
+            public int debriefBattleMedalType;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-            int[] UnknownRecord4;
+            public int[] UnknownRecord4;
 
-            int totalFactionScore;
-            PLTCategoryTypeRecord totalCategoryScore;
-            PLTCategoryTypeRecord totalCategoryFlown;
-            int totalCampaignExerciseFlown;
-            int totalTournamentMeleeFlown;
-            int totalBattleCombatFlown;
-            PLTCategoryTypeRecord totalFullKills;
-            PLTCategoryTypeRecord totalFriendlyFullKills;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalFullKillsByShipExercise;
+            public int totalFactionScore;
+            public PLTCategoryTypeRecord totalCategoryScore;
+            public PLTCategoryTypeRecord totalCategoryFlown;
+            public int totalCampaignExerciseFlown;
+            public int totalTournamentMeleeFlown;
+            public int totalBattleCombatFlown;
+            public PLTCategoryTypeRecord totalFullKills;
+            public PLTCategoryTypeRecord totalFriendlyFullKills;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalFullKillsByShipMelee;
+            public int[] totalFullKillsByShipExercise;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalFullKillsByShipCombat;
+            public int[] totalFullKillsByShipMelee;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalSharedKillsOfShipExercise;
+            public int[] totalFullKillsByShipCombat;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalSharedKillsOfShipMelee;
+            public int[] totalSharedKillsOfShipExercise;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalSharedKillsOfShipCombat;
+            public int[] totalSharedKillsOfShipMelee;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalAssistKillsOfShipExercise;
+            public int[] totalSharedKillsOfShipCombat;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalAssistKillsOfShipMelee;
+            public int[] totalAssistKillsOfShipExercise;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalAssistKillsOfShipCombat;
+            public int[] totalAssistKillsOfShipMelee;
 
-            PLTPlayerRankCountRecord totalFullKillsOfPlayerRank;
-            PLTPlayerRankCountRecord totalSharedKillsOfPlayerRank;
-            PLTPlayerRankCountRecord totalAssistKillsOfPlayerRank;
-            PLTAIRankCountRecord totalFullKillsOfAIRank;
-            PLTAIRankCountRecord totalSharedKillsOfAIRank;
-            PLTAIRankCountRecord totalAssistKillsOfAIRank;
-            PLTCategoryTypeRecord totalHiddenCargoFound;
-            PLTCategoryTypeRecord totalCannonHit;
-            PLTCategoryTypeRecord totalCannonFired;
-            PLTCategoryTypeRecord totalWarheadHit;
-            PLTCategoryTypeRecord totalWarheadFired;
-            PLTCategoryTypeRecord totalLosses;
-            PLTCategoryTypeRecord totalLossesByCollision;
-            PLTCategoryTypeRecord totalLossesByStarship;
-            PLTCategoryTypeRecord totalLossesByMines;
-            PLTPlayerRankCountRecord totalLossesByPlayerRank;
-            PLTAIRankCountRecord totalLossesByAIRank;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] totalAssistKillsOfShipCombat;
+
+            public PLTPlayerRankCountRecord totalFullKillsOfPlayerRank;
+            public PLTPlayerRankCountRecord totalSharedKillsOfPlayerRank;
+            public PLTPlayerRankCountRecord totalAssistKillsOfPlayerRank;
+            public PLTAIRankCountRecord totalFullKillsOfAIRank;
+            public PLTAIRankCountRecord totalSharedKillsOfAIRank;
+            public PLTAIRankCountRecord totalAssistKillsOfAIRank;
+            public PLTCategoryTypeRecord totalHiddenCargoFound;
+            public PLTCategoryTypeRecord totalCannonHit;
+            public PLTCategoryTypeRecord totalCannonFired;
+            public PLTCategoryTypeRecord totalWarheadHit;
+            public PLTCategoryTypeRecord totalWarheadFired;
+            public PLTCategoryTypeRecord totalLosses;
+            public PLTCategoryTypeRecord totalLossesByCollision;
+            public PLTCategoryTypeRecord totalLossesByStarship;
+            public PLTCategoryTypeRecord totalLossesByMines;
+            public PLTPlayerRankCountRecord totalLossesByPlayerRank;
+            public PLTAIRankCountRecord totalLossesByAIRank;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)]
-            PLTMissionSPRecord[] missionSPExercise;
+            public PLTMissionSPRecord[] missionSPExercise;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 250)]
-            PLTMissionSPRecord[] missionSPMelee;
+            public PLTMissionSPRecord[] missionSPMelee;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 250)]
-            PLTMissionSPRecord[] missionSPCombat;
+            public PLTMissionSPRecord[] missionSPCombat;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)]
-            PLTMissionMPRecord[] missionMPExercise;
+            public PLTMissionMPRecord[] missionMPExercise;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 250)]
-            PLTMissionMPRecord[] missionMPMelee;
+            public PLTMissionMPRecord[] missionMPMelee;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 250)]
-            PLTMissionMPRecord[] missionMPCombat;
+            public PLTMissionMPRecord[] missionMPCombat;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PLTTournSPRecord[] missionSPTourn;
+            public PLTTournSPRecord[] missionSPTourn;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PLTTournMPRecord[] missionMPTourn;
+            public PLTTournMPRecord[] missionMPTourn;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PLTBattleSPRecord[] missionSPBattle;
+            public PLTBattleSPRecord[] missionSPBattle;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PLTBattleMPRecord[] missionMPBattle;
+            public PLTBattleMPRecord[] missionMPBattle;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
         public struct PLTFileRecord
         {
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
-            string PilotName;   // char[14]
+            public string PilotName;   // char[14]
 
-            int TotalScore;
-            uint PlayerID;      // DWORD -> DPID
-            int continuedOrReflownMission;
-            int isHosting;
-            int numHumanPlayersInMission;
-            int frontFlyMode;
+            public int TotalScore;
+            public uint PlayerID;      // DWORD -> DPID
+            public int continuedOrReflownMission;
+            public int isHosting;
+            public int numHumanPlayersInMission;
+            public int frontFlyMode;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 80)]
-            int[] unknown0x26;
+            public int[] unknown0x26;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            int[] unknown0x166;
+            public int[] unknown0x166;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 80)]
-            int[] unknown0x186;
+            public int[] unknown0x186;
 
-            int lastTeamNumber;
-            int lastSelectedMissionType;
-            int lastSelectedTraining;
-            int lastSelectedMelee;
-            int lastSelectedTournament;
-            int lastSelectedCombat;
-            int lastSelectedBattle;
-
-            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 22)]
-            string GameNameString;  // char[22]
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-            byte[] unknown0x2F8;    // BYTE
+            public int lastTeamNumber;
+            public int lastSelectedMissionType;
+            public int lastSelectedTraining;
+            public int lastSelectedMelee;
+            public int lastSelectedTournament;
+            public int lastSelectedCombat;
+            public int lastSelectedBattle;
 
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 22)]
-            string GameNameString2;     // char[22]
+            public string GameNameString;  // char[22]
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-            byte[] unknown0x318;    // BYTE
+            public byte[] unknown0x2F8;    // BYTE
 
-            int lastMissionWasNonSpecific;
-            int unknown0x326;
-            int PromoPoints;
-            int WorsePromoPoints;
-            int RankAdjustmentApplied;
-            int PercentToNextRank;
-            PLTCategoryTypeRecord totalCategoryScore;
-            PLTCategoryTypeRecord numFlownNonSeries;
-            PLTCategoryTypeRecord numFlownSeries;
-            PLTCategoryTypeRecord totalKillCount;
-            PLTCategoryTypeRecord numVanillaFriendlyKills;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 22)]
+            public string GameNameString2;     // char[22]
 
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalCraftFullKillsExercise;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
+            public byte[] unknown0x318;    // BYTE
 
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalCraftFullKillsMelee;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalCraftFullKillsCombat;
+            public int lastMissionWasNonSpecific;
+            public int unknown0x326;
+            public int PromoPoints;
+            public int WorsePromoPoints;
+            public int RankAdjustmentApplied;
+            public int PercentToNextRank;
+            public PLTCategoryTypeRecord totalCategoryScore;
+            public PLTCategoryTypeRecord numFlownNonSeries;
+            public PLTCategoryTypeRecord numFlownSeries;
+            public PLTCategoryTypeRecord totalKillCount;
+            public PLTCategoryTypeRecord numVanillaFriendlyKills;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalCraftSharedKillsExercise;
+            public int[] totalCraftFullKillsExercise;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalCraftSharedKillsMelee;
+            public int[] totalCraftFullKillsMelee;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalCraftSharedKillsCombat;
+            public int[] totalCraftFullKillsCombat;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalCraftAssistKillsExercise;
+            public int[] totalCraftSharedKillsExercise;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalCraftAssistKillsMelee;
+            public int[] totalCraftSharedKillsMelee;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] totalCraftAssistKillsCombat;
+            public int[] totalCraftSharedKillsCombat;
 
-            PLTPlayerRankCountRecord TotalFullKillsOnPlayerRank;
-            PLTPlayerRankCountRecord TotalSharedKillsOnPlayerRank;
-            PLTPlayerRankCountRecord TotalAssistKillsOnPlayerRank;
-            PLTAIRankCountRecord TotalFullKillsOnAIRank;
-            PLTAIRankCountRecord TotalSharedKillsOnAIRank;
-            PLTAIRankCountRecord TotalAssistKillsOnAIRank;
-            PLTCategoryTypeRecord totalHiddenCargoFound;
-            PLTCategoryTypeRecord totalLaserHit;
-            int totalLaserFiredExercise;
-            int totalLaserFiredMelee;
-            int totalLaserFiredCombat;
-            int totalWarheadHitExercise;
-            int totalWarheadHitMelee;
-            int totalWarheadHitCombat;
-            int totalWarheadFiredExercise;
-            int totalWarheadFiredMelee;
-            int totalWarheadFiredCombat;
-            int totalCraftLossesExercise;
-            int totalCraftLossesMelee;
-            int totalCraftLossesCombat;
-            int totalLossesFromCollisionExercise;
-            int totalLossesFromCollisionMelee;
-            int totalLossesFromCollisionCombat;
-            int totalLossesFromStarshipsExercise;
-            int totalLossesFromStarshipsMelee;
-            int totalLossesFromStarshipsCombat;
-            int totalLossesFromMinesExercise;
-            int totalLossesFromMinesMelee;
-            int totalLossesFromMinesCombat;
-            PLTPlayerRankCountRecord TotalLossesFromPlayerRank;
-            PLTAIRankCountRecord TotalLossesFromAIRank;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] totalCraftAssistKillsExercise;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] totalCraftAssistKillsMelee;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] totalCraftAssistKillsCombat;
+
+            public PLTPlayerRankCountRecord TotalFullKillsOnPlayerRank;
+            public PLTPlayerRankCountRecord TotalSharedKillsOnPlayerRank;
+            public PLTPlayerRankCountRecord TotalAssistKillsOnPlayerRank;
+            public PLTAIRankCountRecord TotalFullKillsOnAIRank;
+            public PLTAIRankCountRecord TotalSharedKillsOnAIRank;
+            public PLTAIRankCountRecord TotalAssistKillsOnAIRank;
+            public PLTCategoryTypeRecord totalHiddenCargoFound;
+            public PLTCategoryTypeRecord totalLaserHit;
+            public int totalLaserFiredExercise;
+            public int totalLaserFiredMelee;
+            public int totalLaserFiredCombat;
+            public int totalWarheadHitExercise;
+            public int totalWarheadHitMelee;
+            public int totalWarheadHitCombat;
+            public int totalWarheadFiredExercise;
+            public int totalWarheadFiredMelee;
+            public int totalWarheadFiredCombat;
+            public int totalCraftLossesExercise;
+            public int totalCraftLossesMelee;
+            public int totalCraftLossesCombat;
+            public int totalLossesFromCollisionExercise;
+            public int totalLossesFromCollisionMelee;
+            public int totalLossesFromCollisionCombat;
+            public int totalLossesFromStarshipsExercise;
+            public int totalLossesFromStarshipsMelee;
+            public int totalLossesFromStarshipsCombat;
+            public int totalLossesFromMinesExercise;
+            public int totalLossesFromMinesMelee;
+            public int totalLossesFromMinesCombat;
+            public PLTPlayerRankCountRecord TotalLossesFromPlayerRank;
+            public PLTAIRankCountRecord TotalLossesFromAIRank;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 40)]
-            byte[] unknown0x1612;       // BYTE
+            public byte[] unknown0x1612;       // BYTE
 
-            int unknownPlaqueWon;
+            public int unknownPlaqueWon;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-            PLTTournTeamRecord[] TournTeamRecords;
+            public PLTTournTeamRecord[] TournTeamRecords;
 
-            int numHumanPlayersUNK;
-            int numTeamsUNK;
-            int unknown0x170E;
-            int unknown0x1712;
-            int numCombatFlownInLastBattle;
+            public int numHumanPlayersUNK;
+            public int numTeamsUNK;
+            public int unknown0x170E;
+            public int unknown0x1712;
+            public int numCombatFlownInLastBattle;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2052)]
-            byte[] unknown0x171A;       // BYTE
+            public byte[] unknown0x171A;       // BYTE
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-            int[] battleCombatMissionID;
+            public int[] battleCombatMissionID;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1012)]
-            byte[] unknown0x1F2E;       // BYTE
+            public byte[] unknown0x1F2E;       // BYTE
 
-            int totalScoreForCurrentBattleUNK;
-            uint CurrentRank;
-            int TotalCountMissionsFlown;
+            public int totalScoreForCurrentBattleUNK;
+            public uint CurrentRank;
+            public int TotalCountMissionsFlown;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            int[] RankAchievedOnMissionCount;
+            public int[] RankAchievedOnMissionCount;
 
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-            string RankString;      // char[32]
+            public string RankString;      // char[32]
 
-            int debriefMissionScore;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            int[] debriefFullKillsOnPlayer;
+            public int debriefMissionScore;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            int[] debriefSharedKillsOnPlayer;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
-            int[] debriefFullKillsOnFG;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
-            int[] debriefSharedKillsOnFG;
+            public int[] debriefFullKillsOnPlayer;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            int[] debriefFullKillsByPlayer;
+            public int[] debriefSharedKillsOnPlayer;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
+            public int[] debriefFullKillsOnFG;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
+            public int[] debriefSharedKillsOnFG;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            int[] debriefSharedKillsByPlayer;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
-            int[] debriefFullKillsByFG;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
-            int[] debriefSharedKillsByFG;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
-            int[] debriefMeleeAIRankFG;
-
-            PLTCategoryTypeRecord UnknownRecord1;
-            PLTCategoryTypeRecord UnknownRecord2;
-            PLTCategoryTypeRecord UnknownRecord3;
-            PLTCategoryTypeRecord debriefEnemyKills;
-            PLTCategoryTypeRecord debriefFriendlyKills;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] debriefFullKillsByShipTypeA;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] debriefFullKillsByShipTypeB;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] debriefFullKillsByShipTypeC;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] debriefSharedKillsByShipTypeA;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] debriefSharedKillsByShipTypeB;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] debriefSharedKillsByShipTypeC;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] debriefAssistKillsByShipTypeA;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] debriefAssistKillsByShipTypeB;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
-            int[] debriefAssistKillsByShipTypeC;
-
-            PLTPlayerRankCountRecord debriefFullKillsOnPlayerRank;
-            PLTPlayerRankCountRecord debriefSharedKillsOnPlayerRank;
-            PLTPlayerRankCountRecord debriefAssistKillsOnPlayerRank;
-            PLTAIRankCountRecord debriefFullKillsOnAIRank;
-            PLTAIRankCountRecord debriefSharedKillsOnAIRank;
-            PLTAIRankCountRecord debriefAssistKillsOnAIRank;
-            PLTCategoryTypeRecord debriefNumHiddenCargoFound;
-            PLTCategoryTypeRecord debriefNumCannonHits;
-            PLTCategoryTypeRecord debriefNumCannonFired;
-            PLTCategoryTypeRecord debriefNumWarheadHits;
-            PLTCategoryTypeRecord debriefNumWarheadFired;
-            PLTCategoryTypeRecord debriefNumCraftLosses;
-            PLTCategoryTypeRecord debriefCraftLossesFromCollision;
-            PLTCategoryTypeRecord debriefCraftLossesFromStarship;
-            PLTCategoryTypeRecord debriefCraftLossesFromMine;
-            PLTPlayerRankCountRecord debriefLossesFromPlayerRank;
-            PLTAIRankCountRecord debriefLossesFromAIRank;
+            public int[] debriefFullKillsByPlayer;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            PLTConnectedPlayerData[] connectedPlayerData;
+            public int[] debriefSharedKillsByPlayer;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
+            public int[] debriefFullKillsByFG;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
+            public int[] debriefSharedKillsByFG;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
+            public int[] debriefMeleeAIRankFG;
+
+            public PLTCategoryTypeRecord UnknownRecord1;
+            public PLTCategoryTypeRecord UnknownRecord2;
+            public PLTCategoryTypeRecord UnknownRecord3;
+            public PLTCategoryTypeRecord debriefEnemyKills;
+            public PLTCategoryTypeRecord debriefFriendlyKills;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] debriefFullKillsByShipTypeA;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] debriefFullKillsByShipTypeB;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] debriefFullKillsByShipTypeC;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] debriefSharedKillsByShipTypeA;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] debriefSharedKillsByShipTypeB;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] debriefSharedKillsByShipTypeC;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] debriefAssistKillsByShipTypeA;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] debriefAssistKillsByShipTypeB;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 88)]
+            public int[] debriefAssistKillsByShipTypeC;
+
+            public PLTPlayerRankCountRecord debriefFullKillsOnPlayerRank;
+            public PLTPlayerRankCountRecord debriefSharedKillsOnPlayerRank;
+            public PLTPlayerRankCountRecord debriefAssistKillsOnPlayerRank;
+            public PLTAIRankCountRecord debriefFullKillsOnAIRank;
+            public PLTAIRankCountRecord debriefSharedKillsOnAIRank;
+            public PLTAIRankCountRecord debriefAssistKillsOnAIRank;
+            public PLTCategoryTypeRecord debriefNumHiddenCargoFound;
+            public PLTCategoryTypeRecord debriefNumCannonHits;
+            public PLTCategoryTypeRecord debriefNumCannonFired;
+            public PLTCategoryTypeRecord debriefNumWarheadHits;
+            public PLTCategoryTypeRecord debriefNumWarheadFired;
+            public PLTCategoryTypeRecord debriefNumCraftLosses;
+            public PLTCategoryTypeRecord debriefCraftLossesFromCollision;
+            public PLTCategoryTypeRecord debriefCraftLossesFromStarship;
+            public PLTCategoryTypeRecord debriefCraftLossesFromMine;
+            public PLTPlayerRankCountRecord debriefLossesFromPlayerRank;
+            public PLTAIRankCountRecord debriefLossesFromAIRank;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+            public PLTConnectedPlayerData[] connectedPlayerData;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-            PLTTeamResultRecord[] debriefTeamResult;
+            public PLTTeamResultRecord[] debriefTeamResult;
 
-            int lastSelectedFaction;
-            PLTFactionRecord rebelSingleplayerData;
-            PLTFactionRecord imperialSingleplayerData;
-            PLTFactionRecord rebelMultiplayerData;
-            PLTFactionRecord imperialMultiplayerData;
+            public int lastSelectedFaction;
+            public PLTFactionRecord rebelSingleplayerData;
+            public PLTFactionRecord imperialSingleplayerData;
+            public PLTFactionRecord rebelMultiplayerData;
+            public PLTFactionRecord imperialMultiplayerData;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTTournamentProgressState
+        public struct PLTTournamentProgressState
         {
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 36)]
-            char[] unknown1;    // char[36]
+            public char[] unknown1;    // char[36]
 
-            int completedMissionCount;
-            int totalMissionCount;
+            public int completedMissionCount;
+            public int totalMissionCount;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-            PLTTournTeamRecord[] teamRecord;
+            public PLTTournTeamRecord[] teamRecord;
 
-            int playersActive;
-            int teamsActive;
-            int unknown2;
+            public int playersActive;
+            public int teamsActive;
+            public int unknown2;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTBattleProgressState
+        public struct PLTBattleProgressState
         {
-            int MissionsFlown;
-            int CombatMissionID;
-            int TotalMissionCount;
+            public int MissionsFlown;
+            public int CombatMissionID;
+            public int TotalMissionCount;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-            int[] Outcome;
+            public int[] Outcome;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-            int[] BattleListIndex;
+            public int[] BattleListIndex;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-            int[] CombatMissionListIndex;
+            public int[] CombatMissionListIndex;
 
-            int NumPlayers;
-            int TotalScore;
+            public int NumPlayers;
+            public int TotalScore;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PL2DebriefRecord
+        public struct PL2DebriefRecord
         {
-            PLTCategoryTypeRecord UnknownRecord1;
-            PLTCategoryTypeRecord UnknownRecord2;
-            PLTCategoryTypeRecord UnknownRecord3;
+            public PLTCategoryTypeRecord UnknownRecord1;
+            public PLTCategoryTypeRecord UnknownRecord2;
+            public PLTCategoryTypeRecord UnknownRecord3;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] enemyKillsEXX;
+            public int[] enemyKillsEXX;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] friendlyKillsEXX;
+            public int[] friendlyKillsEXX;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 900)]
-            int[] TotalKillCountByCraftType;
+            public int[] TotalKillCountByCraftType;
 
-            PLTPlayerRankCountRecord FullKillsOnPlayerRank;
-            PLTPlayerRankCountRecord SharedKillsOnPlayerRank;
-            PLTPlayerRankCountRecord AssistKillsOnPlayerRank;
-            PLTAIRankCountRecord FullKillsOnAIRank;
-            PLTAIRankCountRecord SharedKillsOnAIRank;
-            PLTAIRankCountRecord AssistKillsOnAIRank;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] NumHiddenCargoFoundEXX;
+            public PLTPlayerRankCountRecord FullKillsOnPlayerRank;
+            public PLTPlayerRankCountRecord SharedKillsOnPlayerRank;
+            public PLTPlayerRankCountRecord AssistKillsOnPlayerRank;
+            public PLTAIRankCountRecord FullKillsOnAIRank;
+            public PLTAIRankCountRecord SharedKillsOnAIRank;
+            public PLTAIRankCountRecord AssistKillsOnAIRank;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] NumCannonHitsEXX;
+            public int[] NumHiddenCargoFoundEXX;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] NumCannonFiredEXX;
+            public int[] NumCannonHitsEXX;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] NumWarheadHitsEXX;
+            public int[] NumCannonFiredEXX;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] NumWarheadFiredEXX;
+            public int[] NumWarheadHitsEXX;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] NumCraftLossesEXX;
+            public int[] NumWarheadFiredEXX;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] CraftLossesFromCollisionEXX;
+            public int[] NumCraftLossesEXX;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] CraftLossesFromStarshipEXX;
+            public int[] CraftLossesFromCollisionEXX;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] CraftLossesFromMineEXX;
+            public int[] CraftLossesFromStarshipEXX;
 
-            PLTPlayerRankCountRecord LossesFromPlayerRank;
-            PLTAIRankCountRecord LossesFromAIRank;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
+            public int[] CraftLossesFromMineEXX;
+
+            public PLTPlayerRankCountRecord LossesFromPlayerRank;
+            public PLTAIRankCountRecord LossesFromAIRank;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PL2CampaignStatusSPRecord
+        public struct PL2CampaignStatusSPRecord
         {
-            int unknown0x0;
-            int isStartedUNK;
-            int missionNumber;
-            int isFinished;
-            int bestScore;
-            int unknown0x14;
-            int unknown0x18;
-            int unknown0x1C;
-            int unknown0x20;
+            public int unknown0x0;
+            public int isStartedUNK;
+            public int missionNumber;
+            public int isFinished;
+            public int bestScore;
+            public int unknown0x14;
+            public int unknown0x18;
+            public int unknown0x1C;
+            public int unknown0x20;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PL2CampaignRecord
+        public struct PL2CampaignRecord
         {
-            int IDNumber;
-            int totalCountFlown;
-            int isMissionCompleteWithoutCheat;
-            int bestScore;
-            int bestEvaluationBadge;
-            int bestTimeAsSeconds;
-            int isMissionComplete;
-            int UIFrameTimerHelper;
+            public int IDNumber;
+            public int totalCountFlown;
+            public int isMissionCompleteWithoutCheat;
+            public int bestScore;
+            public int bestEvaluationBadge;
+            public int bestTimeAsSeconds;
+            public int isMissionComplete;
+            public int UIFrameTimerHelper;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PL2FactionRecord
+        public struct PL2FactionRecord
         {
-            int totalMissionsFlown;
-            int lastKnownTeam;
-            int lastKnownFolderIndex;
+            public int totalMissionsFlown;
+            public int lastKnownTeam;
+            public int lastKnownFolderIndex;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-            int[] selectedMissionIDNum;
+            public int[] selectedMissionIDNum;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            int[] unknown0x24;
+            public int[] unknown0x24;
 
-            int isMissionCategorySeries;
-            int activeMissionIDNum;
-            PLTEarnedMedalRecord earnedMedalCount;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-            int[] debriefMedalTypeMTEB;
+            public int isMissionCategorySeries;
+            public int activeMissionIDNum;
+            public PLTEarnedMedalRecord earnedMedalCount;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-            int[] UnknownRecord4;
-            
-            int totalFactionScore;
+            public int[] debriefMedalTypeMTEB;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+            public int[] UnknownRecord4;
+
+            public int totalFactionScore;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalScoreEMC;
+            public int[] totalScoreEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalFlownNonSeriesEMC;
+            public int[] totalFlownNonSeriesEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalFlownSeriesEMC;
+            public int[] totalFlownSeriesEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalFullKillsEMC;
+            public int[] totalFullKillsEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalFriendlyFullKillsEMC;
+            public int[] totalFriendlyFullKillsEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 300)]
-            int[] totalFullKillsOnCraftEMC;
+            public int[] totalFullKillsOnCraftEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 300)]
-            int[] totalSharedKillsOnCraftEMC;
+            public int[] totalSharedKillsOnCraftEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 300)]
-            int[] totalAssistKillsOnCraftEMC;
+            public int[] totalAssistKillsOnCraftEMC;
 
-            PLTPlayerRankCountRecord totalFullKillsOfPlayerRank;
-            PLTPlayerRankCountRecord totalSharedKillsOfPlayerRank;
-            PLTPlayerRankCountRecord totalAssistKillsOfPlayerRank;
-            PLTAIRankCountRecord totalFullKillsOfAIRank;
-            PLTAIRankCountRecord totalSharedKillsOfAIRank;
-            PLTAIRankCountRecord totalAssistKillsOfAIRank;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalHiddenCargoFoundEMC;
+            public PLTPlayerRankCountRecord totalFullKillsOfPlayerRank;
+            public PLTPlayerRankCountRecord totalSharedKillsOfPlayerRank;
+            public PLTPlayerRankCountRecord totalAssistKillsOfPlayerRank;
+            public PLTAIRankCountRecord totalFullKillsOfAIRank;
+            public PLTAIRankCountRecord totalSharedKillsOfAIRank;
+            public PLTAIRankCountRecord totalAssistKillsOfAIRank;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalCannonHitEMC;
+            public int[] totalHiddenCargoFoundEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalCannonFiredEMC;
+            public int[] totalCannonHitEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalWarheadHitEMC;
+            public int[] totalCannonFiredEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalWarheadFiredEMC;
+            public int[] totalWarheadHitEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalLossesEMC;
+            public int[] totalWarheadFiredEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalLossesByCollisionEMC;
+            public int[] totalLossesEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalLossesByStarshipEMC;
+            public int[] totalLossesByCollisionEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalLossesByMinesEMC;
+            public int[] totalLossesByStarshipEMC;
 
-            PLTPlayerRankCountRecord totalLossesByPlayerRank;
-            PLTAIRankCountRecord totalLossesByAIRank;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
+            public int[] totalLossesByMinesEMC;
+
+            public PLTPlayerRankCountRecord totalLossesByPlayerRank;
+            public PLTAIRankCountRecord totalLossesByAIRank;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)]
-            PLTMissionSPRecord[] missionSPExercise;
+            public PLTMissionSPRecord[] missionSPExercise;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 250)]
-            PLTMissionSPRecord[] missionSPMelee;
+            public PLTMissionSPRecord[] missionSPMelee;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 250)]
-            PLTMissionSPRecord[] missionSPCombat;
+            public PLTMissionSPRecord[] missionSPCombat;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)]
-            PLTMissionMPRecord[] missionMPExercise;
+            public PLTMissionMPRecord[] missionMPExercise;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 250)]
-            PLTMissionMPRecord[] missionMPMelee;
+            public PLTMissionMPRecord[] missionMPMelee;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 250)]
-            PLTMissionMPRecord[] missionMPCombat;
+            public PLTMissionMPRecord[] missionMPCombat;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PLTTournSPRecord[] missionSPTourn;
+            public PLTTournSPRecord[] missionSPTourn;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PLTTournMPRecord[] missionMPTourn;
+            public PLTTournMPRecord[] missionMPTourn;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PLTBattleSPRecord[] missionSPBattle;
+            public PLTBattleSPRecord[] missionSPBattle;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PLTBattleMPRecord[] missionMPBattle;
+            public PLTBattleMPRecord[] missionMPBattle;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PL2CampaignStatusSPRecord[] statusSPCampaign;
+            public PL2CampaignStatusSPRecord[] statusSPCampaign;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PL2CampaignStatusSPRecord[] statusMPCampaignUNK;
+            public PL2CampaignStatusSPRecord[] statusMPCampaignUNK;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)]
-            PL2CampaignRecord[] missionSPCampaign;
+            public PL2CampaignRecord[] missionSPCampaign;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 100)]
-            PL2CampaignRecord[] missionMPCampaign;
+            public PL2CampaignRecord[] missionMPCampaign;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PL2CampaignProgressState
+        public struct PL2CampaignProgressState
         {
-            int unknown1;
-            int CurrentMissionNumber;
-            int TotalMissionCount;
-            int CurrentMissionComplete;
-            int PlayerCount;
-            int TotalScore;
+            public int unknown1;
+            public int CurrentMissionNumber;
+            public int TotalMissionCount;
+            public int CurrentMissionComplete;
+            public int PlayerCount;
+            public int TotalScore;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PLTBattleState
+        public struct PLTBattleState
         {
-            int ConfigRandomSeed;
-            int IsInProgressUNK;
-            int ConfigBattleLength;
-            int ConfigGameRandomizeLevel;
-            PLTBattleProgressState saveState;
-            int unknown2;
+            public int ConfigRandomSeed;
+            public int IsInProgressUNK;
+            public int ConfigBattleLength;
+            public int ConfigGameRandomizeLevel;
+            public PLTBattleProgressState saveState;
+            public int unknown2;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
-        struct PL2CampaignState
+        public struct PL2CampaignState
         {
-            int ConfigRandomSeed;
-            int IsInProgressUNK;
-            int ConfigGameRandomizeLevel;
-            PL2CampaignProgressState saveState;
-            int unknown2;
+            public int ConfigRandomSeed;
+            public int IsInProgressUNK;
+            public int ConfigGameRandomizeLevel;
+            public PL2CampaignProgressState saveState;
+            public int unknown2;
         };
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)] // Pack=1 ensures no padding
         public struct PL2FileRecord
         {
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 14)]
-            string PilotName;   // char[14]
+            public string PilotName;   // char[14]
 
-            int TotalScore;
-            uint PlayerID;      // DWORD -> DPID
-            int continuedOrReflownMission;
-            int isHosting;
-            int numHumanPlayersInMission;
-            int frontFlyMode;
+            public int TotalScore;
+            public uint PlayerID;      // DWORD -> DPID
+            public int continuedOrReflownMission;
+            public int isHosting;
+            public int numHumanPlayersInMission;
+            public int frontFlyMode;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 80)]
-            int[] unknown0x26;
+            public int[] unknown0x26;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            int[] unknown0x166;
+            public int[] unknown0x166;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 80)]
-            int[] unknown0x186;
+            public int[] unknown0x186;
 
-            int activeMissionTeam;
-            int MissionFolderIndex;
+            public int activeMissionTeam;
+            public int MissionFolderIndex;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-            int[] SelectedIDNumOfMissionCategory;
+            public int[] SelectedIDNumOfMissionCategory;
 
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-            string GameName;      // char[32]
+            public string GameName;      // char[32]
 
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-            string LastGameName;
+            public string LastGameName;
 
-            int isMissionCategorySeries;
-            int activeMissionIDNum;
-            int PromoPoints;
-            int WorsePromoPoints;
-            int RankAdjustmentApplied;
-            int PercentToNextRank;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalScoreEMC;
+            public int isMissionCategorySeries;
+            public int activeMissionIDNum;
+            public int PromoPoints;
+            public int WorsePromoPoints;
+            public int RankAdjustmentApplied;
+            public int PercentToNextRank;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] numFlownNonSeriesEMC;
+            public int[] totalScoreEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] numFlownSeriesEMC;
+            public int[] numFlownNonSeriesEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalKillCountEMC;
+            public int[] numFlownSeriesEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] totalFriendlyKillCountEMC;
+            public int[] totalKillCountEMC;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
+            public int[] totalFriendlyKillCountEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 900)]
-            int[] TotalKillCountByCraftType;
+            public int[] TotalKillCountByCraftType;
 
-            PLTPlayerRankCountRecord TotalFullKillsOnPlayerRank;
-            PLTPlayerRankCountRecord TotalSharedKillsOnPlayerRank;
-            PLTPlayerRankCountRecord TotalAssistKillsOnPlayerRank;
-            PLTAIRankCountRecord TotalFullKillsOnAIRank;
-            PLTAIRankCountRecord TotalSharedKillsOnAIRank;
-            PLTAIRankCountRecord TotalAssistKillsOnAIRank;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] TotalHiddenCargoFoundEMC;
+            public PLTPlayerRankCountRecord TotalFullKillsOnPlayerRank;
+            public PLTPlayerRankCountRecord TotalSharedKillsOnPlayerRank;
+            public PLTPlayerRankCountRecord TotalAssistKillsOnPlayerRank;
+            public PLTAIRankCountRecord TotalFullKillsOnAIRank;
+            public PLTAIRankCountRecord TotalSharedKillsOnAIRank;
+            public PLTAIRankCountRecord TotalAssistKillsOnAIRank;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] TotalLaserHitEMC;
+            public int[] TotalHiddenCargoFoundEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] TotalLaserFiredEMC;
+            public int[] TotalLaserHitEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] TotalWarheadHitEMC;
+            public int[] TotalLaserFiredEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] TotalWarheadFiredEMC;
+            public int[] TotalWarheadHitEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] TotalCraftLossesEMC;
+            public int[] TotalWarheadFiredEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] TotalLossesFromCollisionEMC;
+            public int[] TotalCraftLossesEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] TotalLossesFromStarshipsEMC;
+            public int[] TotalLossesFromCollisionEMC;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-            int[] TotalLossesFromMinesEMC;
+            public int[] TotalLossesFromStarshipsEMC;
 
-            PLTPlayerRankCountRecord TotalLossesFromPlayerRank;
-            PLTAIRankCountRecord TotalLossesFromAIRank;
-            PLTTournamentProgressState activeTournament;
-            PLTBattleProgressState activeBattle;
-            uint CurrentRank;
-            int TotalCountMissionsFlown;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
+            public int[] TotalLossesFromMinesEMC;
+
+            public PLTPlayerRankCountRecord TotalLossesFromPlayerRank;
+            public PLTAIRankCountRecord TotalLossesFromAIRank;
+            public PLTTournamentProgressState activeTournament;
+            public PLTBattleProgressState activeBattle;
+            public uint CurrentRank;
+            public int TotalCountMissionsFlown;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            int[] RankAchievedOnMissionCount;
+            public int[] RankAchievedOnMissionCount;
 
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-            string RankString;        // char[32]
+            public string RankString;        // char[32]
 
-            int debriefMissionScore;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            int[] debriefFullKillsOnPlayer;
+            public int debriefMissionScore;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            int[] debriefSharedKillsOnPlayer;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
-            int[] debriefFullKillsOnFG;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
-            int[] debriefSharedKillsOnFG;
+            public int[] debriefFullKillsOnPlayer;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            int[] debriefFullKillsByPlayer;
+            public int[] debriefSharedKillsOnPlayer;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
+            public int[] debriefFullKillsOnFG;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
+            public int[] debriefSharedKillsOnFG;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            int[] debriefSharedKillsByPlayer;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
-            int[] debriefFullKillsByFG;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
-            int[] debriefSharedKillsByFG;
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
-            int[] debriefMeleeAIRankFG;
-
-            PL2DebriefRecord debrief;
+            public int[] debriefFullKillsByPlayer;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            PLTConnectedPlayerData[] connectedPlayerData;
+            public int[] debriefSharedKillsByPlayer;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
+            public int[] debriefFullKillsByFG;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
+            public int[] debriefSharedKillsByFG;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 48)]
+            public int[] debriefMeleeAIRankFG;
+
+            public PL2DebriefRecord debrief;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+            public PLTConnectedPlayerData[] connectedPlayerData;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 10)]
-            PLTTeamResultRecord[] debriefTeamResult;
+            public PLTTeamResultRecord[] debriefTeamResult;
 
-            uint SelectedFaction;   // DWORD -> DPID
-
-            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-            PL2FactionRecord[] faction;
-
-            PL2CampaignProgressState activeCampaign;
+            public uint SelectedFaction;   // DWORD -> DPID
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-            sbyte[] gap45E1E;     // __int8
+            public PL2FactionRecord[] faction;
+
+            public PL2CampaignProgressState activeCampaign;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+            public sbyte[] gap45E1E;     // __int8
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PLTBattleState[] spBattleState;
+            public PLTBattleState[] spBattleState;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PLTBattleState[] mpBattleState;
+            public PLTBattleState[] mpBattleState;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 25)]
-            PL2CampaignState[] spCampaignState;
+            public PL2CampaignState[] spCampaignState;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
-            PL2CampaignState[] mpCampaignHostState;
+            public PL2CampaignState[] mpCampaignHostState;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 12)]
-            PL2CampaignState[] mpCampaignClientState;
+            public PL2CampaignState[] mpCampaignClientState;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
-            int[] anonymous_259;
+            public int[] anonymous_259;
 
-            ushort anonymous_260;     // WORD
-            ushort anonymous_261;     // WORD
+            public ushort anonymous_260;     // WORD
+            public ushort anonymous_261;     // WORD
         };
     }
 }

@@ -2,6 +2,13 @@
 
 namespace XvTPilotEditor
 {
+    public static class Constants
+    {   public const uint PILOT_NAME_MAX_LENGTH = 12;           // ?
+        public const uint RATING_HISTORY_ENTRIES = 100;         // ?
+        public const uint MAX_MISSIONS_PER_FACTION = 200;       // ?
+        public const uint MAX_CONNECTED_PLAYERS = 8;
+    }
+
     //  List in order of BoP Craft Library (different from order shown on Pilot Statistics)
     //  * - ships not showing on Statistics page in game (in some cases, definitely should, cannot confirm that's true for all, though)
     public enum CraftType : uint

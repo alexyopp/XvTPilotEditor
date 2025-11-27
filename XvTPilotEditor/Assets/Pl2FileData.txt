@@ -1,0 +1,29 @@
+//
+int activeMissionTeam;
+int MissionFolderIndex;
+int SelectedIDNumOfMissionCategory[6];
+char GameName[32];
+char LastGameName[32];
+int isMissionCategorySeries;
+int activeMissionIDNum;
+//
+int TotalKillCountByCraftType[900];
+//
+PLTTournamentProgressState activeTournament;
+PLTBattleProgressState activeBattle;
+//
+PL2DebriefRecord debrief;
+
+PLTTeamResultRecord debriefTeamResult[10];
+DWORD SelectedFaction;
+PL2FactionRecord faction[4];
+PL2CampaignProgressState activeCampaign;
+__int8 gap45E1E[4];
+PLTBattleState spBattleState[25];
+PLTBattleState mpBattleState[25];
+PL2CampaignState spCampaignState[25];
+PL2CampaignState mpCampaignHostState[12];
+PL2CampaignState mpCampaignClientState[12];
+int anonymous_259[8];
+WORD anonymous_260;
+WORD anonymous_261;
