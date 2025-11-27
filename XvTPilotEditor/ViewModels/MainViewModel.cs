@@ -64,20 +64,6 @@ namespace XvTPilotEditor.ViewModels
             OnPropertyChanged(nameof(ActivePageViewModel));
         }
 
-        // Convert a byte array to a struct
-        private static T ByteArrayToStructure<T>(byte[] bytes) where T : struct
-        {
-            GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
-            try
-            {
-                return Marshal.PtrToStructure<T>(handle.AddrOfPinnedObject());
-            }
-            finally
-            {
-                handle.Free();
-            }
-        }
-
         private void LoadFileData()
         {
             PilotFileSchema.PLTFileRecord dataPlt = new PilotFileSchema.PLTFileRecord();
@@ -94,6 +80,8 @@ namespace XvTPilotEditor.ViewModels
             {
                 ReadFileBytes<PilotFileSchema.PL2FileRecord>(Pl2FileName, ref dataPl2);
             }
+
+            PilotRecord newPilotRecord = new PilotRecord(dataPlt, dataPl2);
         }
 
         static private bool? FilePicker(string Filter, ref string FileName)
@@ -112,7 +100,7 @@ namespace XvTPilotEditor.ViewModels
             return result;
         }
 
-        private void ReadFileBytes<T>(string FileName, ref T? data)
+        static private void ReadFileBytes<T>(string FileName, ref T? data)
         {
             try
             {
