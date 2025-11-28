@@ -48,8 +48,5 @@
                 Content="Imperial"
                 IsChecked="{Binding ActiveFaction, Converter={convert:EnumToBooleanConverter}, ConverterParameter={x:Static local:Faction.Imperial}}"/>
         </StackPanel>
-
-        <!--TODO: Just loads a plt file; eventually needs to be replaced with actual functionality-->
-        <Button Margin="0,20,0,0" Content="Fill Pilot Data" Command="{Binding LoadPilotFileDataCommand}"/>
     </StackPanel>
 </UserControl>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using XvTPilotEditor.Models;
 using XvTPilotEditor.Views;
 
@@ -221,6 +222,25 @@ namespace XvTPilotEditor.ViewModels
         internal CombinedPilotRecordPageViewModel(PilotRecord pilotRecord)
         {
             this.pilotRecord = pilotRecord;
+        }
+
+        public void UpdatePilotRecord(PilotRecord pilotRecord)
+        {
+            this.pilotRecord = pilotRecord;
+
+            // Notify the UI that all public properties may have changed
+            NotifyAllPublicPropertiesChanged();
+        }
+
+        private void NotifyAllPublicPropertiesChanged()
+        {
+            //  I.E., OnPropertyChanged(nameof(PltPilotName)); ... etc. for all public properties
+
+            var props = this.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            foreach (var p in props)
+            {
+                OnPropertyChanged(p.Name);
+            }
         }
     }
 }

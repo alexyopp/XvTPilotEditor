@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Windows;
 using System.Windows.Input;
 using XvTPilotEditor.Commands;
 using XvTPilotEditor.Models;
@@ -11,62 +12,75 @@ namespace XvTPilotEditor.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public Page ActivePage { get; set; }
-        public Faction ActiveFaction { get; set; }
-        public ViewModelBase ActivePageViewModel { get; set; }
+        //public Page ActivePage { get; set; }
+        //public Faction ActiveFaction { get; set; }
+        //public ViewModelBase ActivePageViewModel { get; set; }
 
-        public ICommand ChangeActivePageCommand { get; private set; }
-        public ICommand LoadPilotFileDataCommand { get; private set; }
+        public CombinedPilotRecordPageViewModel ViewModel { get; private set; }
 
-        private Dictionary<Page, ViewModelBase> pageViewModels;
-        private PilotModel pilotModel;
-        private PilotRecord pilotRecord;
+        //public ICommand ChangeActivePageCommand { get; private set; }
+
+        public ICommand OpenCommand { get; private set; }
+        public ICommand ExitCommand { get; private set; }
+        public ICommand AboutCommand { get; private set; }
+
+        //private Dictionary<Page, ViewModelBase> pageViewModels;
+        //private PilotModel pilotModel;
+        private PilotRecord pilotRecord = new PilotRecord();
 
         public MainViewModel()
         {
-            pilotModel = new PilotModel();
-            pageViewModels = BuildViewModels();
+            //pilotModel = new PilotModel();
+            //pageViewModels = BuildViewModels();
 
-            ChangeActivePageCommand = new DelegateCommand(o => this.UpdateActivePageViewModel());
-            LoadPilotFileDataCommand = new DelegateCommand(o => this.LoadFileData());
+            //ChangeActivePageCommand = new DelegateCommand(o => this.UpdateActivePageViewModel());
+            OpenCommand = new DelegateCommand(o => LoadFileData());
+            ExitCommand = new DelegateCommand(o => ExitApplication());
+            AboutCommand = new DelegateCommand(o => ShowAboutMessage());
 
             // Initial UI state
-            ActiveFaction = Faction.Rebel;
-            ActivePage = Page.Statistics;
-            ActivePageViewModel = pageViewModels[ActivePage];
+            //ActiveFaction = Faction.Rebel;
+            //ActivePage = Page.CombinedRecord;
+            //ActivePageViewModel = pageViewModels[ActivePage];
+            ViewModel = new CombinedPilotRecordPageViewModel(pilotRecord);
         }
 
-        private Dictionary<Page, ViewModelBase> BuildViewModels()
+        //private Dictionary<Page, ViewModelBase> BuildViewModels()
+        //{
+        //    Dictionary<Page, ViewModelBase> viewModels = new Dictionary<Page, ViewModelBase>();
+
+        //    foreach (var page in Enum.GetValues<Page>())
+        //    {
+        //        switch (page)
+        //        {
+        //            case Page.Statistics:
+        //                viewModels.Add(Page.Statistics, new StatisticsPageViewModel(pilotModel));
+        //                break;
+        //            case Page.RatingHistory:
+        //                viewModels.Add(Page.RatingHistory, new RatingHistoryViewModel(pilotModel));
+        //                break;
+        //            case Page.MissionAchievements:
+        //                viewModels.Add(Page.MissionAchievements, new MissionAchievementsViewModel(pilotModel));
+        //                break;
+        //            case Page.CombinedRecord:
+        //                viewModels.Add(Page.CombinedRecord, new CombinedPilotRecordPageViewModel(pilotRecord));
+        //                break;
+        //        }
+        //    }
+
+        //    return viewModels;
+        //}
+
+        private void UpdateViewModel()
         {
-            Dictionary<Page, ViewModelBase> viewModels = new Dictionary<Page, ViewModelBase>();
-
-            foreach (var page in Enum.GetValues<Page>())
-            {
-                switch (page)
-                {
-                    case Page.Statistics:
-                        viewModels.Add(Page.Statistics, new StatisticsPageViewModel(pilotModel));
-                        break;
-                    case Page.RatingHistory:
-                        viewModels.Add(Page.RatingHistory, new RatingHistoryViewModel(pilotModel));
-                        break;
-                    case Page.MissionAchievements:
-                        viewModels.Add(Page.MissionAchievements, new MissionAchievementsViewModel(pilotModel));
-                        break;
-                    case Page.CombinedRecord:
-                        viewModels.Add(Page.CombinedRecord, new CombinedPilotRecordPageViewModel(pilotRecord));
-                        break;
-                }
-            }
-
-            return viewModels;
+            ViewModel.UpdatePilotRecord(pilotRecord);
         }
 
-        private void UpdateActivePageViewModel()
-        {
-            ActivePageViewModel = pageViewModels[ActivePage];
-            OnPropertyChanged(nameof(ActivePageViewModel));
-        }
+        //private void UpdateActivePageViewModel()
+        //{
+        //    ActivePageViewModel = pageViewModels[ActivePage];
+        //    OnPropertyChanged(nameof(ActivePageViewModel));
+        //}
 
         private void LoadFileData()
         {
@@ -86,9 +100,7 @@ namespace XvTPilotEditor.ViewModels
             }
 
             pilotRecord = new PilotRecord(dataPlt, dataPl2);
-
-            CombinedPilotRecordPageViewModel combinedViewModel = new CombinedPilotRecordPageViewModel(pilotRecord);
-            pageViewModels = BuildViewModels();
+            UpdateViewModel();
         }
 
         static private bool? FilePicker(string Filter, ref string FileName)
@@ -141,6 +153,16 @@ namespace XvTPilotEditor.ViewModels
             {
                 Console.WriteLine($"Unexpected error: {ex.Message}");
             }
+        }
+
+        private void ExitApplication()
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ShowAboutMessage()
+        {
+            MessageBox.Show("Thanks to TRA for always providing me with a reason to play XvT after all these years.\n\nSpecial Thanks to TRA_Scorer for his support\n\nVery Special Thanks to RandomStarfighter for providing the plt/pl2 file schemas.\n\nReleased under the GNU General Public License\n© 2025", "About");
         }
     }
 }
