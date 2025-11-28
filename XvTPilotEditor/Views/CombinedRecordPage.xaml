@@ -7,30 +7,26 @@
              xmlns:view="clr-namespace:XvTPilotEditor.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Pilot Name"/>
 
-        <Label Content="PltName:"               Grid.Row="0" Grid.Column="0"/>
-        <TextBox                                Grid.Row="0" Grid.Column="1" Text="{Binding PltPilotName}"/>
+            <Label Content="PltName:"/>
+            <TextBox Text="{Binding PltPilotName}"/>
 
-        <Label Content="Pl2Name:"               Grid.Row="0" Grid.Column="2"/>
-        <TextBox                                Grid.Row="0" Grid.Column="3" Text="{Binding Pl2PilotName}"/>
+            <Label Content="Pl2Name:"/>
+            <TextBox Text="{Binding Pl2PilotName}"/>
+        </StackPanel>
 
-        <Label Content="PltTotalScore:"         Grid.Row="1" Grid.Column="0"/>
-        <TextBox                                Grid.Row="1" Grid.Column="1" Text="{Binding PltTotalScore}"/>
-                                                          
-        <Label Content="Pl2TotalScore:"         Grid.Row="1" Grid.Column="2"/>
-        <TextBox                                Grid.Row="1" Grid.Column="3" Text="{Binding Pl2TotalScore}"/>
-    </Grid>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Total Score"/>
+
+            <Label Content="PltTotalScore:"/>
+            <TextBox Text="{Binding PltTotalScore}"/>
+
+            <Label Content="Pl2TotalScore:"/>
+            <TextBox Text="{Binding Pl2TotalScore}"/>
+        </StackPanel>
+        
+    </StackPanel>
 </UserControl>

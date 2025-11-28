@@ -42,6 +42,8 @@ namespace XvTPilotEditor.ViewModels
             //ActiveFaction = Faction.Rebel;
             //ActivePage = Page.CombinedRecord;
             //ActivePageViewModel = pageViewModels[ActivePage];
+
+            AutoLoadFileData();     // TODO: Remove this line for production release; only for testing.
             ViewModel = new CombinedPilotRecordPageViewModel(pilotRecord);
         }
 
@@ -81,6 +83,19 @@ namespace XvTPilotEditor.ViewModels
         //    ActivePageViewModel = pageViewModels[ActivePage];
         //    OnPropertyChanged(nameof(ActivePageViewModel));
         //}
+
+        private void AutoLoadFileData()
+        {
+            PilotFileSchema.PLTFileRecord dataPlt = new PilotFileSchema.PLTFileRecord();
+            string PltFileName = "C:\\Dev\\XvTPilotEditor\\XvTPilotEditor\\Assets\\LandoRasputi0.plt";
+            ReadFileBytes<PilotFileSchema.PLTFileRecord>(PltFileName, ref dataPlt);
+
+            PilotFileSchema.PL2FileRecord dataPl2 = new PilotFileSchema.PL2FileRecord();
+            string Pl2FileName = "C:\\Dev\\XvTPilotEditor\\XvTPilotEditor\\Assets\\LandoRasputi0.pl2";
+            ReadFileBytes<PilotFileSchema.PL2FileRecord>(Pl2FileName, ref dataPl2);
+
+            pilotRecord = new PilotRecord(dataPlt, dataPl2);
+        }
 
         private void LoadFileData()
         {
