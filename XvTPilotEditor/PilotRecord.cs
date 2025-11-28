@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Windows;
 using System.Windows.Controls;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static XvTPilotEditor.PilotFileSchema;
@@ -8,11 +9,59 @@ namespace XvTPilotEditor
 {
     public class PilotRecord
     {
-        public string PltPilotName { get; set; } = string.Empty;
-        public string Pl2PilotName { get; set; } = string.Empty;
+        // PilotName
+        private string _pltPilotName = string.Empty;
+        public string PltPilotName
+        {
+            get => _pltPilotName;
+            set
+            {
+                if (value.Length > Constants.PILOT_NAME_MAX_LENGTH)
+                {
+                    throw new ArgumentException($"Pilot name cannot exceed {Constants.PILOT_NAME_MAX_LENGTH} characters.");
+                }
+                _pltPilotName = value;
+                _pltData.PilotName = value;
+            }
+        }
 
-        public int PltTotalScore { get; set; }
-        public int Pl2TotalScore { get; set; }
+        private string _pl2PilotName = string.Empty;
+        public string Pl2PilotName
+        {
+            get => _pl2PilotName;
+            set
+            {
+                if (value.Length > Constants.PILOT_NAME_MAX_LENGTH)
+                {
+                    throw new ArgumentException($"Pilot name cannot exceed {Constants.PILOT_NAME_MAX_LENGTH} characters.");
+                }
+                _pl2PilotName = value;
+                _pl2Data.PilotName = value;
+            }
+        }
+
+        // TotalScore
+        private int _pltTotalScore;
+        public int PltTotalScore
+        {
+            get => _pltTotalScore;
+            set
+            {
+                _pltTotalScore = value;
+                _pltData.TotalScore = value;
+            }
+        }
+
+        private int _pl2TotalScore;
+        public int Pl2TotalScore
+        {
+            get => _pl2TotalScore;
+            set
+            {
+                _pl2TotalScore = value;
+                _pl2Data.TotalScore = value;
+            }
+        }
 
         public uint PltPlayerID { get; set; }
         public uint Pl2PlayerID { get; set; }
@@ -271,6 +320,12 @@ namespace XvTPilotEditor
         public ushort Pl2anonymous_260 { get; set; }
         public ushort Pl2anonymous_261 { get; set; }
 
+        private PilotFileSchema.PLTFileRecord _pltData;
+        public PilotFileSchema.PLTFileRecord PltData { get => _pltData; }
+
+        private PilotFileSchema.PL2FileRecord _pl2Data;
+        public PilotFileSchema.PL2FileRecord Pl2Data { get => _pl2Data; }
+
         public PilotRecord()
         {
         }
@@ -293,6 +348,8 @@ namespace XvTPilotEditor
 
         public void FillFromPlt(PilotFileSchema.PLTFileRecord pltFile)
         {
+            _pltData = pltFile;
+
             PltPilotName = pltFile.PilotName ?? string.Empty;
             PltTotalScore = pltFile.TotalScore;
             PltPlayerID = pltFile.PlayerID;
@@ -430,6 +487,8 @@ namespace XvTPilotEditor
 
         public void FillFromPl2(PilotFileSchema.PL2FileRecord pl2File)
         {
+            _pl2Data = pl2File;
+
             Pl2PilotName = pl2File.PilotName ?? string.Empty;
             Pl2TotalScore = pl2File.TotalScore;
             Pl2PlayerID = pl2File.PlayerID;

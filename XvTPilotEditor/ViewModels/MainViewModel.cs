@@ -21,6 +21,7 @@ namespace XvTPilotEditor.ViewModels
         //public ICommand ChangeActivePageCommand { get; private set; }
 
         public ICommand OpenCommand { get; private set; }
+        public ICommand SaveCommand { get; private set; }
         public ICommand ExitCommand { get; private set; }
         public ICommand AboutCommand { get; private set; }
 
@@ -35,6 +36,7 @@ namespace XvTPilotEditor.ViewModels
 
             //ChangeActivePageCommand = new DelegateCommand(o => this.UpdateActivePageViewModel());
             OpenCommand = new DelegateCommand(o => LoadFileData());
+            SaveCommand = new DelegateCommand(o => WriteFileData());
             ExitCommand = new DelegateCommand(o => ExitApplication());
             AboutCommand = new DelegateCommand(o => ShowAboutMessage());
 
@@ -159,6 +161,45 @@ namespace XvTPilotEditor.ViewModels
             catch (FileNotFoundException)
             {
                 Console.WriteLine("Error: File not found.");
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"I/O Error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+            }
+        }
+
+        private void WriteFileData()
+        {
+            WriteFileBytes<PilotFileSchema.PLTFileRecord>("Test.plt", pilotRecord.PltData);
+            WriteFileBytes<PilotFileSchema.PL2FileRecord>("Test.pl2", pilotRecord.Pl2Data);
+        }
+
+        private void WriteFileBytes<T>(string FileName, T data)
+        {
+            if (data == null)
+            {
+                Console.WriteLine("Error: Data to write is null.");
+                return;
+            }
+
+            try
+            {
+                int size = Marshal.SizeOf<T>();
+                byte[] filebytes = new byte[size];
+                GCHandle handle = GCHandle.Alloc(filebytes, GCHandleType.Pinned);
+                try
+                {
+                    Marshal.StructureToPtr<T>(data, handle.AddrOfPinnedObject(), false);
+                }
+                finally
+                {
+                    handle.Free();
+                }
+                File.WriteAllBytes(FileName, filebytes);
             }
             catch (IOException ex)
             {

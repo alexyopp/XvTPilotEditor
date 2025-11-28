@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Windows;
 using XvTPilotEditor.Models;
 using XvTPilotEditor.Views;
 
@@ -12,6 +13,12 @@ namespace XvTPilotEditor.ViewModels
             get => pilotRecord.PltPilotName;
             set
             {
+                if (value.Length > Constants.PILOT_NAME_MAX_LENGTH)
+                {
+                    MessageBox.Show("Pilot name must be no more than " + Constants.PILOT_NAME_MAX_LENGTH + " characters long.", "Invalid Pilot Name");
+                    return;
+                }
+
                 pilotRecord.PltPilotName = value;
             }
         }
@@ -20,6 +27,12 @@ namespace XvTPilotEditor.ViewModels
             get => pilotRecord.Pl2PilotName;
             set
             {
+                if (value.Length > Constants.PILOT_NAME_MAX_LENGTH)
+                {
+                    MessageBox.Show("Pilot name must be no more than " + Constants.PILOT_NAME_MAX_LENGTH + " characters long.", "Invalid Pilot Name");
+                    return;
+                }
+
                 pilotRecord.Pl2PilotName = value;
             }
         }
