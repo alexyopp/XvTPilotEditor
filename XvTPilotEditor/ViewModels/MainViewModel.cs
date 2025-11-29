@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Input;
 using XvTPilotEditor.Commands;
 using XvTPilotEditor.Models;
-using static XvTPilotEditor.PilotFileSchema;
+using static XvTPilotEditor.Models.PilotFileSchema;
 
 namespace XvTPilotEditor.ViewModels
 {
@@ -27,7 +27,8 @@ namespace XvTPilotEditor.ViewModels
 
         //private Dictionary<Page, ViewModelBase> pageViewModels;
         //private PilotModel pilotModel;
-        private PilotRecord pilotRecord = new PilotRecord();
+        private PltRecord pltRecord = new PltRecord();
+        private Pl2Record pl2Record = new Pl2Record();
 
         public MainViewModel()
         {
@@ -46,7 +47,7 @@ namespace XvTPilotEditor.ViewModels
             //ActivePageViewModel = pageViewModels[ActivePage];
 
             AutoLoadFileData();     // TODO: Remove this line for production release; only for testing.
-            ViewModel = new CombinedPilotRecordPageViewModel(pilotRecord);
+            ViewModel = new CombinedPilotRecordPageViewModel(pltRecord, pl2Record);
         }
 
         //private Dictionary<Page, ViewModelBase> BuildViewModels()
@@ -77,7 +78,7 @@ namespace XvTPilotEditor.ViewModels
 
         private void UpdateViewModel()
         {
-            ViewModel.UpdatePilotRecord(pilotRecord);
+            ViewModel.UpdatePilotRecord(pltRecord, pl2Record);
         }
 
         //private void UpdateActivePageViewModel()
@@ -96,7 +97,8 @@ namespace XvTPilotEditor.ViewModels
             string Pl2FileName = "C:\\Dev\\XvTPilotEditor\\XvTPilotEditor\\Assets\\LandoRasputi0.pl2";
             ReadFileBytes<PilotFileSchema.PL2FileRecord>(Pl2FileName, ref dataPl2);
 
-            pilotRecord = new PilotRecord(dataPlt, dataPl2);
+            pltRecord = new PltRecord(dataPlt);
+            pl2Record = new Pl2Record(dataPl2);
         }
 
         private void LoadFileData()
@@ -116,7 +118,8 @@ namespace XvTPilotEditor.ViewModels
                 ReadFileBytes<PilotFileSchema.PL2FileRecord>(Pl2FileName, ref dataPl2);
             }
 
-            pilotRecord = new PilotRecord(dataPlt, dataPl2);
+            pltRecord = new PltRecord(dataPlt);
+            pl2Record = new Pl2Record(dataPl2);
             UpdateViewModel();
         }
 
@@ -174,8 +177,8 @@ namespace XvTPilotEditor.ViewModels
 
         private void WriteFileData()
         {
-            WriteFileBytes<PilotFileSchema.PLTFileRecord>("Test.plt", pilotRecord.ToPltFileRecord());
-            WriteFileBytes<PilotFileSchema.PL2FileRecord>("Test.pl2", pilotRecord.ToPl2FileRecord());
+            WriteFileBytes<PilotFileSchema.PLTFileRecord>("Test.plt", pltRecord.ToPltFileRecord());
+            WriteFileBytes<PilotFileSchema.PL2FileRecord>("Test.pl2", pl2Record.ToPl2FileRecord());
         }
 
         private void WriteFileBytes<T>(string FileName, T data)

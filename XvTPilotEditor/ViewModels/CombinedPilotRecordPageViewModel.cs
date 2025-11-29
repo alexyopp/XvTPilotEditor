@@ -10,7 +10,7 @@ namespace XvTPilotEditor.ViewModels
     {
         public string PltPilotName
         {
-            get => pilotRecord.PltPilotName;
+            get => pltRecord.PilotName;
             set
             {
                 if (value.Length > Constants.PILOT_NAME_MAX_LENGTH)
@@ -19,12 +19,12 @@ namespace XvTPilotEditor.ViewModels
                     return;
                 }
 
-                pilotRecord.PltPilotName = value;
+                pltRecord.PilotName = value;
             }
         }
         public string Pl2PilotName
         {
-            get => pilotRecord.Pl2PilotName;
+            get => pl2Record.PilotName;
             set
             {
                 if (value.Length > Constants.PILOT_NAME_MAX_LENGTH)
@@ -33,19 +33,19 @@ namespace XvTPilotEditor.ViewModels
                     return;
                 }
 
-                pilotRecord.Pl2PilotName = value;
+                pl2Record.PilotName = value;
             }
         }
 
         public string PltTotalScore
         {
-            get => pilotRecord.PltTotalScore.ToString();
+            get => pltRecord.TotalScore.ToString();
             set
             {
                 int totalScore;
                 if (int.TryParse(value, out totalScore))
                 {
-                    pilotRecord.PltTotalScore = totalScore;
+                    pltRecord.TotalScore = totalScore;
                 }
                 else
                 {
@@ -55,13 +55,13 @@ namespace XvTPilotEditor.ViewModels
         }
         public string Pl2TotalScore
         {
-            get => pilotRecord.Pl2TotalScore.ToString();
+            get => pl2Record.TotalScore.ToString();
             set
             {
                 int totalScore;
                 if (int.TryParse(value, out totalScore))
                 {
-                    pilotRecord.Pl2TotalScore = totalScore;
+                    pl2Record.TotalScore = totalScore;
                 }
                 else
                 {
@@ -230,16 +230,19 @@ namespace XvTPilotEditor.ViewModels
         public int PltLastSelectedFaction { get; private set; }
         public uint Pl2LastSelectedFaction { get; private set; }
 
-        private PilotRecord pilotRecord;
+        private PltRecord pltRecord;
+        private Pl2Record pl2Record;
 
-        internal CombinedPilotRecordPageViewModel(PilotRecord pilotRecord)
+        internal CombinedPilotRecordPageViewModel(PltRecord pltRecord, Pl2Record pl2Record)
         {
-            this.pilotRecord = pilotRecord;
+            this.pltRecord = pltRecord;
+            this.pl2Record = pl2Record;
         }
 
-        public void UpdatePilotRecord(PilotRecord pilotRecord)
+        public void UpdatePilotRecord(PltRecord pltRecord, Pl2Record pl2Record)
         {
-            this.pilotRecord = pilotRecord;
+            this.pltRecord = pltRecord;
+            this.pl2Record = pl2Record;
 
             // Notify the UI that all public properties may have changed
             NotifyAllPublicPropertiesChanged();
