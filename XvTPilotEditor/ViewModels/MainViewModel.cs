@@ -174,8 +174,8 @@ namespace XvTPilotEditor.ViewModels
 
         private void WriteFileData()
         {
-            WriteFileBytes<PilotFileSchema.PLTFileRecord>("Test.plt", pilotRecord.PltData);
-            WriteFileBytes<PilotFileSchema.PL2FileRecord>("Test.pl2", pilotRecord.Pl2Data);
+            WriteFileBytes<PilotFileSchema.PLTFileRecord>("Test.plt", pilotRecord.ToPltFileRecord());
+            WriteFileBytes<PilotFileSchema.PL2FileRecord>("Test.pl2", pilotRecord.ToPl2FileRecord());
         }
 
         private void WriteFileBytes<T>(string FileName, T data)

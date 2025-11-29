@@ -3,7 +3,7 @@
 namespace XvTPilotEditor
 {
     public static class Constants
-    {   public const uint PILOT_NAME_MAX_LENGTH = 12;           // ?
+    {   public const uint PILOT_NAME_MAX_LENGTH = 12;
         public const uint RATING_HISTORY_ENTRIES = 100;         // ?
         public const uint MAX_MISSIONS_PER_FACTION = 200;       // ?
         public const uint MAX_CONNECTED_PLAYERS = 8;
@@ -157,7 +157,9 @@ namespace XvTPilotEditor
 
     public enum PilotRating : uint  //  i.e., Pilot Rank
     {
-        [Description("Trainee")]                Trainee = 0,
+        [Description("TargetDrone?")]           TargetDrone = 0,
+        [Description("GroundCrew?")]            GroundCrew,
+        [Description("Trainee")]                Trainee,
         [Description("Flight Cadet")]           FlightCadet,
         [Description("Officer 4th Class")]      Officer4thClass,
         [Description("Officer 3rd Class")]      Officer3rdClass,
