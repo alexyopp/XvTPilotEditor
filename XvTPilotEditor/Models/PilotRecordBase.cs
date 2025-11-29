@@ -11,67 +11,67 @@ namespace XvTPilotEditor.Models
     {
         // TODO: Consider creating directly from filebytes/exporting filebytes, rather than PilotFileSchema objects.
 
-        public string PilotName { get; set; } = string.Empty;                                                 // char[14]
-        public int TotalScore { get; set; }
-        public uint PlayerID { get; set; }
-        public int ContinuedOrReflownMission { get; set; }
-        public int IsHosting { get; set; }
-        public int NumHumanPlayersInMission { get; set; }
-        public int FrontFlyMode { get; set; }
-        public int[] Unknown0x26 { get; set; } = Array.Empty<int>();                                           // int[10]
-        public int[] Unknown0x166 { get; set; } = Array.Empty<int>();                                           // int[10]
-        public int[] Unknown0x186 { get; set; } = Array.Empty<int>();                                           // int[10]
+        public string                               PilotName                       { get; set; } = string.Empty;                                                 // char[14]
+        public int                                  TotalScore                      { get; set; }
+        public uint                                 PlayerID                        { get; set; }
+        public int                                  ContinuedOrReflownMission       { get; set; }
+        public int                                  IsHosting                       { get; set; }
+        public int                                  NumHumanPlayersInMission        { get; set; }
+        public int                                  FrontFlyMode                    { get; set; }
+        public int[]                                Unknown0x26                     { get; set; } = Array.Empty<int>();                                           // int[10]
+        public int[]                                Unknown0x166                    { get; set; } = Array.Empty<int>();                                           // int[10]
+        public int[]                                Unknown0x186                    { get; set; } = Array.Empty<int>();                                           // int[10]
 
         //...
 
-        public int PromoPoints { get; set; }
-        public int WorsePromoPoints { get; set; }
-        public int RankAdjustmentApplied { get; set; }
-        public int PercentToNextRank { get; set; }
-        public MissionCategoryRecord TotalCategoryScore { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord NumFlownNonSeries { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord NumFlownSeries { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord TotalKills { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord FriendlyKills { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecordByPlayerRating TotalFullKillsOnPlayerRating { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
-        public MissionCategoryRecordByPlayerRating TotalSharedKillsOnPlayerRating { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
-        public MissionCategoryRecordByPlayerRating TotalAssistsOnPlayerRating { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
-        public MissionCategoryRecordByAIRating TotalFullKillsOnAIRank { get; set; } = new MissionCategoryRecordByAIRating();                        // int[3][6]
-        public MissionCategoryRecordByAIRating TotalSharedKillsOnAIRank { get; set; } = new MissionCategoryRecordByAIRating();                        // int[3][6]
-        public MissionCategoryRecordByAIRating TotalAssistsOnAIRank { get; set; } = new MissionCategoryRecordByAIRating();                        // int[3][6]
-        public MissionCategoryRecord TotalHiddenCargoFound { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord TotalLaserHit { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord TotalLaserFired { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord TotalWarheadHit { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord TotalWarheadFired { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord TotalCraftLosses { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord TotalLossesFromCollisions { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord TotalLossesFromStarships { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord TotalLossesFromMines { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecordByPlayerRating TotalLossesFromPlayerRank { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
-        public MissionCategoryRecordByAIRating TotalLossesFromAIRank { get; set; } = new MissionCategoryRecordByAIRating();                        // int[3][6]
+        public int                                  PromoPoints                     { get; set; }
+        public int                                  WorsePromoPoints                { get; set; }
+        public int                                  RankAdjustmentApplied           { get; set; }
+        public int                                  PercentToNextRank               { get; set; }
+        public MissionCategoryRecord                TotalCategoryScore              { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                NumFlownNonSeries               { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                NumFlownSeries                  { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                TotalKills                      { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                FriendlyKills                   { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecordByPlayerRating  TotalFullKillsOnPlayerRating    { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
+        public MissionCategoryRecordByPlayerRating  TotalSharedKillsOnPlayerRating  { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
+        public MissionCategoryRecordByPlayerRating  TotalAssistsOnPlayerRating      { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
+        public MissionCategoryRecordByAIRating      TotalFullKillsOnAIRank          { get; set; } = new MissionCategoryRecordByAIRating();                        // int[3][6]
+        public MissionCategoryRecordByAIRating      TotalSharedKillsOnAIRank        { get; set; } = new MissionCategoryRecordByAIRating();                        // int[3][6]
+        public MissionCategoryRecordByAIRating      TotalAssistsOnAIRank            { get; set; } = new MissionCategoryRecordByAIRating();                        // int[3][6]
+        public MissionCategoryRecord                TotalHiddenCargoFound           { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                TotalLaserHit                   { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                TotalLaserFired                 { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                TotalWarheadHit                 { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                TotalWarheadFired               { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                TotalCraftLosses                { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                TotalLossesFromCollisions       { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                TotalLossesFromStarships        { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                TotalLossesFromMines            { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecordByPlayerRating  TotalLossesFromPlayerRank       { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
+        public MissionCategoryRecordByAIRating      TotalLossesFromAIRank           { get; set; } = new MissionCategoryRecordByAIRating();                        // int[3][6]
 
         //...
 
-        public uint CurrentRank { get; set; }
-        public int TotalCountMissionsFlown { get; set; }
-        public int[] RankAchievedOnMissionCount { get; set; } = Array.Empty<int>();                                           // int[25]
-        public string RankString { get; set; } = string.Empty;                                                 // char[32]
-        public int DebriefMissionScore { get; set; }
-        public int[] DebriefFullKillsOnPlayer { get; set; } = Array.Empty<int>();                                           // int[8]
-        public int[] DebriefSharedKillsOnPlayer { get; set; } = Array.Empty<int>();                                           // int[8]
-        public int[] DebriefFullKillsOnFG { get; set; } = Array.Empty<int>();                                           // int[48]
-        public int[] DebriefSharedKillsOnFG { get; set; } = Array.Empty<int>();                                           // int[48]
-        public int[] DebriefFullKillsByPlayer { get; set; } = Array.Empty<int>();                                           // int[8]
-        public int[] DebriefSharedKillsByPlayer { get; set; } = Array.Empty<int>();                                           // int[8]
-        public int[] DebriefFullKillsByFG { get; set; } = Array.Empty<int>();                                           // int[48]
-        public int[] DebriefSharedKillsByFG { get; set; } = Array.Empty<int>();                                           // int[48]
-        public int[] DebriefMeleeAIRankFG { get; set; } = Array.Empty<int>();                                           // int[48]
+        public uint                                 CurrentRank                     { get; set; }
+        public int                                  TotalCountMissionsFlown         { get; set; }
+        public int[]                                RankAchievedOnMissionCount      { get; set; } = Array.Empty<int>();                                           // int[25]
+        public string                               RankString                      { get; set; } = string.Empty;                                                 // char[32]
+        public int                                  DebriefMissionScore             { get; set; }
+        public int[]                                DebriefFullKillsOnPlayer        { get; set; } = Array.Empty<int>();                                           // int[8]
+        public int[]                                DebriefSharedKillsOnPlayer      { get; set; } = Array.Empty<int>();                                           // int[8]
+        public int[]                                DebriefFullKillsOnFG            { get; set; } = Array.Empty<int>();                                           // int[48]
+        public int[]                                DebriefSharedKillsOnFG          { get; set; } = Array.Empty<int>();                                           // int[48]
+        public int[]                                DebriefFullKillsByPlayer        { get; set; } = Array.Empty<int>();                                           // int[8]
+        public int[]                                DebriefSharedKillsByPlayer      { get; set; } = Array.Empty<int>();                                           // int[8]
+        public int[]                                DebriefFullKillsByFG            { get; set; } = Array.Empty<int>();                                           // int[48]
+        public int[]                                DebriefSharedKillsByFG          { get; set; } = Array.Empty<int>();                                           // int[48]
+        public int[]                                DebriefMeleeAIRankFG            { get; set; } = Array.Empty<int>();                                           // int[48]
 
         //...
 
-        public ConnectedPlayerRecord[] ConnectedPlayer { get; set; } = new ConnectedPlayerRecord[Constants.MAX_CONNECTED_PLAYERS];   // ConnectedPlayerRecord[8]
-        public TeamResultRecord[] DebriefTeamResult { get; set; } = new TeamResultRecord[10];                                     // int[10][6]
+        public ConnectedPlayerRecord[]              ConnectedPlayer                 { get; set; } = new ConnectedPlayerRecord[Constants.MAX_CONNECTED_PLAYERS];   // ConnectedPlayerRecord[8]
+        public TeamResultRecord[]                   DebriefTeamResult               { get; set; } = new TeamResultRecord[10];                                     // int[10][6]
 
         public PilotRecordBase()
         {
