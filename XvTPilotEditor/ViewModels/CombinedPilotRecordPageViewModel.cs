@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Reflection;
 using System.Windows;
 using XvTPilotEditor.Models;
@@ -8,6 +10,8 @@ namespace XvTPilotEditor.ViewModels
 {
     public class CombinedPilotRecordPageViewModel : ViewModelBase
     {
+        private bool _suppressFieldValueChange;
+
         public string PltPilotName
         {
             get => pltRecord.PilotName;
@@ -20,6 +24,7 @@ namespace XvTPilotEditor.ViewModels
                 }
 
                 pltRecord.PilotName = value;
+                OnPropertyChanged(nameof(PltPilotName));
             }
         }
         public string Pl2PilotName
@@ -34,6 +39,7 @@ namespace XvTPilotEditor.ViewModels
                 }
 
                 pl2Record.PilotName = value;
+                OnPropertyChanged(nameof(Pl2PilotName));
             }
         }
 
@@ -230,28 +236,113 @@ namespace XvTPilotEditor.ViewModels
         public int PltLastSelectedFaction { get; private set; }
         public uint Pl2LastSelectedFaction { get; private set; }
 
+        // Exposed collection the FilterableCompoundList will bind to
+        public ObservableCollection<ViewModels.CompoundFieldItem> Fields { get; } = new ObservableCollection<ViewModels.CompoundFieldItem>();
+
         private PltRecord pltRecord;
         private Pl2Record pl2Record;
 
         internal CombinedPilotRecordPageViewModel(PltRecord pltRecord, Pl2Record pl2Record)
         {
-            this.pltRecord = pltRecord;
-            this.pl2Record = pl2Record;
+            this.pltRecord = pltRecord ?? new PltRecord();
+            this.pl2Record = pl2Record ?? new Pl2Record();
+
+            BuildFields();
+            RefreshFieldsFromRecords();
         }
 
         public void UpdatePilotRecord(PltRecord pltRecord, Pl2Record pl2Record)
         {
-            this.pltRecord = pltRecord;
-            this.pl2Record = pl2Record;
+            this.pltRecord = pltRecord ?? new PltRecord();
+            this.pl2Record = pl2Record ?? new Pl2Record();
 
-            // Notify the UI that all public properties may have changed
+            // Notify all public properties
             NotifyAllPublicPropertiesChanged();
+
+            // Update UI field items to reflect new underlying records
+            RefreshFieldsFromRecords();
+        }
+
+        private void BuildFields()
+        {
+            Fields.Clear();
+
+            var pltItem = new ViewModels.CompoundFieldItem
+            {
+                Key = nameof(PltPilotName),
+                Label = "PLT Pilot Name",
+                Metadata = "PLT;PilotName"
+            };
+            pltItem.PropertyChanged += Field_PropertyChanged;
+
+            var pl2Item = new ViewModels.CompoundFieldItem
+            {
+                Key = nameof(Pl2PilotName),
+                Label = "PL2 Pilot Name",
+                Metadata = "PL2;PilotName"
+            };
+            pl2Item.PropertyChanged += Field_PropertyChanged;
+
+            Fields.Add(pltItem);
+            Fields.Add(pl2Item);
+        }
+
+        private void Field_PropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (_suppressFieldValueChange) return;
+            if (e.PropertyName != nameof(ViewModels.CompoundFieldItem.Value)) return;
+            if (sender is not ViewModels.CompoundFieldItem item) return;
+
+            try
+            {
+                _suppressFieldValueChange = true;
+
+                switch (item.Key)
+                {
+                    case nameof(PltPilotName):
+                        // route through property to run validation and raise OnPropertyChanged
+                        PltPilotName = item.Value ?? string.Empty;
+                        break;
+                    case nameof(Pl2PilotName):
+                        Pl2PilotName = item.Value ?? string.Empty;
+                        break;
+                }
+
+                // After underlying record changed, re-sync the Fields with canonical values
+                RefreshFieldsFromRecords();
+            }
+            finally
+            {
+                _suppressFieldValueChange = false;
+            }
+        }
+
+        private void RefreshFieldsFromRecords()
+        {
+            try
+            {
+                _suppressFieldValueChange = true;
+
+                foreach (var f in Fields)
+                {
+                    if (f.Key == nameof(PltPilotName))
+                    {
+                        f.Value = this.PltPilotName ?? string.Empty;
+                    }
+                    else if (f.Key == nameof(Pl2PilotName))
+                    {
+                        f.Value = this.Pl2PilotName ?? string.Empty;
+                    }
+                }
+            }
+            finally
+            {
+                _suppressFieldValueChange = false;
+            }
         }
 
         private void NotifyAllPublicPropertiesChanged()
         {
-            //  I.E., OnPropertyChanged(nameof(PltPilotName)); ... etc. for all public properties
-
             var props = this.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
             foreach (var p in props)
             {
