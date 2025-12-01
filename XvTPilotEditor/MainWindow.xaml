@@ -24,6 +24,11 @@
                 <MenuItem Header="E_xit" Command="{Binding ExitCommand}"/>
             </MenuItem>
 
+            <MenuItem Header="_View">
+                <MenuItem Header="Complete" IsCheckable="True" IsChecked="{Binding IsCompleteViewChecked, Mode=TwoWay}"/>
+                <MenuItem Header="Plt" IsCheckable="True" IsChecked="{Binding IsPltViewChecked, Mode=TwoWay}"/>
+            </MenuItem>
+            
             <!-- Help Menu -->
             <MenuItem Header="_Help">
                 <MenuItem Header="_About" Command="{Binding AboutCommand}"/>
@@ -38,8 +43,11 @@
                 <DataTemplate DataType="{x:Type vm:CombinedPilotRecordPageViewModel}">
                     <view:CombinedRecordPage/>
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:PltRecordPageViewModel}">
+                    <view:PltRecordPage/>
+                </DataTemplate>
             </ScrollViewer.Resources>
-            <ContentControl Content="{Binding ViewModel}"/>
+            <ContentControl Content="{Binding ActiveViewModel}"/>
         </ScrollViewer>
     </DockPanel>
     

@@ -2,21 +2,20 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
-using System.Transactions;
 using System.Windows;
 using XvTPilotEditor.Models;
 using XvTPilotEditor.Views;
 
 namespace XvTPilotEditor.ViewModels
 {
-    public class CombinedPilotRecordPageViewModel : PilotRecordViewModel
+    public class PltRecordPageViewModel : PilotRecordViewModel
     {
         private bool _suppressFieldValueChange;
 
         // Exposed collection the FilterableCompoundList will bind to
         public ObservableCollection<ViewModels.CompoundFieldItem> Fields { get; } = new ObservableCollection<ViewModels.CompoundFieldItem>();
 
-        internal CombinedPilotRecordPageViewModel(CompletePilotRecord pilotRecord) : base(pilotRecord)
+        internal PltRecordPageViewModel(CompletePilotRecord pilotRecord) : base(pilotRecord)
         {
             BuildFields();
             RefreshFieldsFromRecords();
@@ -40,16 +39,16 @@ namespace XvTPilotEditor.ViewModels
             var pltItem = new ViewModels.CompoundFieldItem
             {
                 Key = nameof(PltPilotName),
-                Label = "PLT Pilot Name",
-                Metadata = "PLT;PilotName"
+                Label = "Pilot Name",
+                Metadata = "PilotName"
             };
             pltItem.PropertyChanged += Field_PropertyChanged;
 
             var pl2Item = new ViewModels.CompoundFieldItem
             {
-                Key = nameof(Pl2PilotName),
-                Label = "PL2 Pilot Name",
-                Metadata = "PL2;PilotName"
+                Key = nameof(PltTotalScore),
+                Label = "Total Score",
+                Metadata = "TotalScore"
             };
             pl2Item.PropertyChanged += Field_PropertyChanged;
 
@@ -73,8 +72,8 @@ namespace XvTPilotEditor.ViewModels
                         // route through property to run validation and raise OnPropertyChanged
                         PltPilotName = item.Value ?? string.Empty;
                         break;
-                    case nameof(Pl2PilotName):
-                        Pl2PilotName = item.Value ?? string.Empty;
+                    case nameof(PltTotalScore):
+                        PltTotalScore = item.Value ?? string.Empty;
                         break;
                 }
 
@@ -99,9 +98,9 @@ namespace XvTPilotEditor.ViewModels
                     {
                         f.Value = this.PltPilotName ?? string.Empty;
                     }
-                    else if (f.Key == nameof(Pl2PilotName))
+                    else if (f.Key == nameof(PltTotalScore))
                     {
-                        f.Value = this.Pl2PilotName ?? string.Empty;
+                        f.Value = this.PltTotalScore ?? string.Empty;
                     }
                 }
             }

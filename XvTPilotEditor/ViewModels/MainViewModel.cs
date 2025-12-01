@@ -12,28 +12,54 @@ namespace XvTPilotEditor.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        //public Page ActivePage { get; set; }
-        //public Faction ActiveFaction { get; set; }
-        //public ViewModelBase ActivePageViewModel { get; set; }
-
-        public CombinedPilotRecordPageViewModel ViewModel { get; private set; }
+        public Page ActivePage { get; set; }
+        public PilotRecordViewModel ActiveViewModel { get; private set; }
 
         //public ICommand ChangeActivePageCommand { get; private set; }
-
         public ICommand OpenCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
         public ICommand ExitCommand { get; private set; }
         public ICommand AboutCommand { get; private set; }
 
-        //private Dictionary<Page, ViewModelBase> pageViewModels;
+        // Boolean properties for binding
+        public bool IsCompleteViewChecked
+        {
+            get => ActivePage == Page.CombinedRecord;
+            set
+            {
+                if (value)
+                {
+                    ActivePage = Page.CombinedRecord;
+                    OnPropertyChanged(nameof(ActivePage));
+                    this.UpdateActivePageViewModel();
+                    OnPropertyChanged(nameof(IsPltViewChecked));
+                }
+            }
+        }
+
+        public bool IsPltViewChecked
+        {
+            get => ActivePage == Page.PltRecord;
+            set
+            {
+                if (value)
+                {
+                    ActivePage = Page.PltRecord;
+                    OnPropertyChanged(nameof(ActivePage));
+                    this.UpdateActivePageViewModel();
+                    OnPropertyChanged(nameof(IsCompleteViewChecked));
+                }
+            }
+        }
+
+        private Dictionary<Page, PilotRecordViewModel> viewModels;
         //private PilotModel pilotModel;
-        private PltRecord pltRecord = new PltRecord();
-        private Pl2Record pl2Record = new Pl2Record();
+        private CompletePilotRecord pilotRecord = new CompletePilotRecord();
 
         public MainViewModel()
         {
-            //pilotModel = new PilotModel();
-            //pageViewModels = BuildViewModels();
+            AutoLoadFileData();     // TODO: Remove this line for production release; only for testing.
+            viewModels = BuildViewModels();
 
             //ChangeActivePageCommand = new DelegateCommand(o => this.UpdateActivePageViewModel());
             OpenCommand = new DelegateCommand(o => LoadFileData());
@@ -43,49 +69,50 @@ namespace XvTPilotEditor.ViewModels
 
             // Initial UI state
             //ActiveFaction = Faction.Rebel;
-            //ActivePage = Page.CombinedRecord;
-            //ActivePageViewModel = pageViewModels[ActivePage];
-
-            AutoLoadFileData();     // TODO: Remove this line for production release; only for testing.
-            ViewModel = new CombinedPilotRecordPageViewModel(pltRecord, pl2Record);
+            ActivePage = Page.CombinedRecord;
+            ActiveViewModel = viewModels[ActivePage];
         }
 
-        //private Dictionary<Page, ViewModelBase> BuildViewModels()
-        //{
-        //    Dictionary<Page, ViewModelBase> viewModels = new Dictionary<Page, ViewModelBase>();
-
-        //    foreach (var page in Enum.GetValues<Page>())
-        //    {
-        //        switch (page)
-        //        {
-        //            case Page.Statistics:
-        //                viewModels.Add(Page.Statistics, new StatisticsPageViewModel(pilotModel));
-        //                break;
-        //            case Page.RatingHistory:
-        //                viewModels.Add(Page.RatingHistory, new RatingHistoryViewModel(pilotModel));
-        //                break;
-        //            case Page.MissionAchievements:
-        //                viewModels.Add(Page.MissionAchievements, new MissionAchievementsViewModel(pilotModel));
-        //                break;
-        //            case Page.CombinedRecord:
-        //                viewModels.Add(Page.CombinedRecord, new CombinedPilotRecordPageViewModel(pilotRecord));
-        //                break;
-        //        }
-        //    }
-
-        //    return viewModels;
-        //}
-
-        private void UpdateViewModel()
+        private Dictionary<Page, PilotRecordViewModel> BuildViewModels()
         {
-            ViewModel.UpdatePilotRecord(pltRecord, pl2Record);
+            Dictionary<Page, PilotRecordViewModel> viewModels = new Dictionary<Page, PilotRecordViewModel>();
+
+            foreach (var page in Enum.GetValues<Page>())
+            {
+                switch (page)
+                {
+                    //case Page.Statistics:
+                    //    viewModels.Add(Page.Statistics, new StatisticsPageViewModel(pilotModel));
+                    //    break;
+                    //case Page.RatingHistory:
+                    //    viewModels.Add(Page.RatingHistory, new RatingHistoryViewModel(pilotModel));
+                    //    break;
+                    //case Page.MissionAchievements:
+                    //    viewModels.Add(Page.MissionAchievements, new MissionAchievementsViewModel(pilotModel));
+                    //    break;
+                    case Page.CombinedRecord:
+                        viewModels.Add(Page.CombinedRecord, new CombinedPilotRecordPageViewModel(pilotRecord));
+                        break;
+                    case Page.PltRecord:
+                        viewModels.Add(Page.PltRecord, new PltRecordPageViewModel(pilotRecord));
+                        break;
+                }
+            }
+
+            return viewModels;
         }
 
-        //private void UpdateActivePageViewModel()
-        //{
-        //    ActivePageViewModel = pageViewModels[ActivePage];
-        //    OnPropertyChanged(nameof(ActivePageViewModel));
-        //}
+        private void UpdateViewModels()
+        {
+            foreach (var vm in viewModels.Values)
+                vm.UpdatePilotRecord(pilotRecord);
+        }
+
+        private void UpdateActivePageViewModel()
+        {
+            ActiveViewModel = viewModels[ActivePage];
+            OnPropertyChanged(nameof(ActiveViewModel));
+        }
 
         private void AutoLoadFileData()
         {
@@ -97,8 +124,8 @@ namespace XvTPilotEditor.ViewModels
             string Pl2FileName = "C:\\Dev\\XvTPilotEditor\\XvTPilotEditor\\Assets\\LandoRasputi0.pl2";
             ReadFileBytes<PilotFileSchema.PL2FileRecord>(Pl2FileName, ref dataPl2);
 
-            pltRecord = new PltRecord(dataPlt);
-            pl2Record = new Pl2Record(dataPl2);
+            pilotRecord.Plt.FillFromPlt(dataPlt);
+            pilotRecord.Pl2.FillFromPl2(dataPl2);
         }
 
         private void LoadFileData()
@@ -118,9 +145,9 @@ namespace XvTPilotEditor.ViewModels
                 ReadFileBytes<PilotFileSchema.PL2FileRecord>(Pl2FileName, ref dataPl2);
             }
 
-            pltRecord = new PltRecord(dataPlt);
-            pl2Record = new Pl2Record(dataPl2);
-            UpdateViewModel();
+            pilotRecord.Plt.FillFromPlt(dataPlt);
+            pilotRecord.Pl2.FillFromPl2(dataPl2);
+            UpdateViewModels();
         }
 
         static private bool? FilePicker(string Filter, ref string FileName)
@@ -177,8 +204,8 @@ namespace XvTPilotEditor.ViewModels
 
         private void WriteFileData()
         {
-            WriteFileBytes<PilotFileSchema.PLTFileRecord>("Test.plt", pltRecord.ToPltFileRecord());
-            WriteFileBytes<PilotFileSchema.PL2FileRecord>("Test.pl2", pl2Record.ToPl2FileRecord());
+            WriteFileBytes<PilotFileSchema.PLTFileRecord>("Test.plt", pilotRecord.Plt.ToPltFileRecord());
+            WriteFileBytes<PilotFileSchema.PL2FileRecord>("Test.pl2", pilotRecord.Pl2.ToPl2FileRecord());
         }
 
         private void WriteFileBytes<T>(string FileName, T data)
