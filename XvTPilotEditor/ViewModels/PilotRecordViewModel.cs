@@ -7,84 +7,89 @@ namespace XvTPilotEditor.ViewModels
 {
     public class PilotRecordViewModel : ViewModelBase
     {
+        // PilotName
         public string PltPilotName
         {
             get => pilotRecord.Plt.PilotName;
-            set
-            {
-                if (value.Length > Constants.PILOT_NAME_MAX_LENGTH)
-                {
-                    MessageBox.Show("Pilot name must be no more than " + Constants.PILOT_NAME_MAX_LENGTH + " characters long.", "Invalid Pilot Name");
-                    return;
-                }
-
-                pilotRecord.Plt.PilotName = value;
-                OnPropertyChanged(nameof(PltPilotName));
-            }
+            set{ pilotRecord.Plt.PilotName = SetStringProperty(value, Constants.PILOT_NAME_MAX_LENGTH); }
         }
         public string Pl2PilotName
         {
             get => pilotRecord.Pl2.PilotName;
-            set
-            {
-                if (value.Length > Constants.PILOT_NAME_MAX_LENGTH)
-                {
-                    MessageBox.Show("Pilot name must be no more than " + Constants.PILOT_NAME_MAX_LENGTH + " characters long.", "Invalid Pilot Name");
-                    return;
-                }
-
-                pilotRecord.Pl2.PilotName = value;
-                OnPropertyChanged(nameof(Pl2PilotName));
-            }
+            set { pilotRecord.Pl2.PilotName = SetStringProperty(value, Constants.PILOT_NAME_MAX_LENGTH); }
         }
 
+        // TotalScore
         public string PltTotalScore
         {
             get => pilotRecord.Plt.TotalScore.ToString();
-            set
-            {
-                int totalScore;
-                if (int.TryParse(value, out totalScore))
-                {
-                    pilotRecord.Plt.TotalScore = totalScore;
-                }
-                else
-                {
-                    throw new ArgumentException();
-                }
-            }
+            set { pilotRecord.Plt.TotalScore = SetIntProperty(value); }
         }
         public string Pl2TotalScore
         {
             get => pilotRecord.Pl2.TotalScore.ToString();
-            set
-            {
-                int totalScore;
-                if (int.TryParse(value, out totalScore))
-                {
-                    pilotRecord.Pl2.TotalScore = totalScore;
-                }
-                else
-                {
-                    throw new ArgumentException();
-                }
-            }
+            set { pilotRecord.Pl2.TotalScore = SetIntProperty(value); }
         }
 
-        public uint PltPlayerID { get; private set; }
-        public uint Pl2PlayerID { get; private set; }
+        // PlayerID
+        public string PltPlayerID
+        {
+            get => pilotRecord.Plt.PlayerID.ToString();
+            set { pilotRecord.Plt.PlayerID = SetUIntProperty(value); }
+        }
+        public string Pl2PlayerID
+        {
+            get => pilotRecord.Pl2.PlayerID.ToString();
+            set { pilotRecord.Pl2.PlayerID = SetUIntProperty(value); }
+        }
 
-        public int PltContinuedOrReflownMission { get; private set; }
-        public int Pl2ContinuedOrReflownMission { get; private set; }
+        // ContinuedOrReflownMission
+        public string PltContinuedOrReflownMission
+        {
+            get => pilotRecord.Plt.ContinuedOrReflownMission.ToString();
+            set { pilotRecord.Plt.ContinuedOrReflownMission = SetIntProperty(value); }
+        }
+        public string Pl2ContinuedOrReflownMission
+        {
+            get => pilotRecord.Pl2.ContinuedOrReflownMission.ToString();
+            set { pilotRecord.Pl2.ContinuedOrReflownMission = SetIntProperty(value); }
+        }
 
-        public int PltIsHosting { get; private set; }
-        public int Pl2IsHosting { get; private set; }
+        // IsHosting
+        public string PltIsHosting
+        {
+            get => pilotRecord.Plt.IsHosting.ToString();
+            set { pilotRecord.Plt.IsHosting = SetIntProperty(value); }
+        }
+        public string Pl2IsHosting
+        {
+            get => pilotRecord.Pl2.IsHosting.ToString();
+            set { pilotRecord.Pl2.IsHosting = SetIntProperty(value); }
+        }
 
-        public int PltNumHumanPlayersInMission { get; private set; }
-        public int Pl2NumHumanPlayersInMission { get; private set; }
+        // NumHumanPlayersInMission
+        public string PltNumHumanPlayersInMission
+        {
+            get => pilotRecord.Plt.NumHumanPlayersInMission.ToString();
+            set { pilotRecord.Plt.NumHumanPlayersInMission = SetIntProperty(value); }
+        }
+        public string Pl2NumHumanPlayersInMission
+        {
+            get => pilotRecord.Pl2.NumHumanPlayersInMission.ToString();
+            set { pilotRecord.Pl2.NumHumanPlayersInMission = SetIntProperty(value); }
+        }
 
-        public int PltFrontFlyMode { get; private set; }
-        public int Pl2FrontFlyMode { get; private set; }
+        // FrontFlyMode
+        public string PltFrontFlyMode
+        {
+            get => pilotRecord.Plt.FrontFlyMode.ToString();
+            set { pilotRecord.Plt.FrontFlyMode = SetIntProperty(value); }
+        }
+        public string Pl2FrontFlyMode
+        {
+            get => pilotRecord.Pl2.FrontFlyMode.ToString();
+            set { pilotRecord.Pl2.FrontFlyMode = SetIntProperty(value); }
+        }
 
         public int[] PltUnknown0x26 { get; private set; } = Array.Empty<int>();
         public int[] Pl2Unknown0x26 { get; private set; } = Array.Empty<int>();
@@ -97,17 +102,53 @@ namespace XvTPilotEditor.ViewModels
 
         //...
 
-        public int PltPromoPoints { get; private set; }
-        public int Pl2PromoPoints { get; private set; }
+        // PromoPoints
+        public string PltPromoPoints
+        {
+            get => pilotRecord.Plt.PromoPoints.ToString();
+            set { pilotRecord.Plt.PromoPoints = SetIntProperty(value); }
+        }
+        public string Pl2PromoPoints
+        {
+            get => pilotRecord.Pl2.PromoPoints.ToString();
+            set { pilotRecord.Pl2.PromoPoints = SetIntProperty(value); }
+        }
 
-        public int PltWorsePromoPoints { get; private set; }
-        public int Pl2WorsePromoPoints { get; private set; }
+        // WorsePromoPoints
+        public string PltWorsePromoPoints
+        {
+            get => pilotRecord.Plt.WorsePromoPoints.ToString();
+            set { pilotRecord.Plt.WorsePromoPoints = SetIntProperty(value); }
+        }
+        public string Pl2WorsePromoPoints
+        {
+            get => pilotRecord.Pl2.WorsePromoPoints.ToString();
+            set { pilotRecord.Pl2.WorsePromoPoints = SetIntProperty(value); }
+        }
 
-        public int PltRankAdjustmentApplied { get; private set; }
-        public int Pl2RankAdjustmentApplied { get; private set; }
+        // RankAdjustmentApplied
+        public string PltRankAdjustmentApplied
+        {
+            get => pilotRecord.Plt.RankAdjustmentApplied.ToString();
+            set { pilotRecord.Plt.RankAdjustmentApplied = SetIntProperty(value); }
+        }
+        public string Pl2RankAdjustmentApplied
+        {
+            get => pilotRecord.Pl2.RankAdjustmentApplied.ToString();
+            set { pilotRecord.Pl2.RankAdjustmentApplied = SetIntProperty(value); }
+        }
 
-        public int PltPercentToNextRank { get; private set; }
-        public int Pl2PercentToNextRank { get; private set; }
+        // PercentToNextRank
+        public string PltPercentToNextRank
+        {
+            get => pilotRecord.Plt.PercentToNextRank.ToString();
+            set { pilotRecord.Plt.PercentToNextRank = SetIntProperty(value); }
+        }
+        public string Pl2PercentToNextRank
+        {
+            get => pilotRecord.Pl2.PercentToNextRank.ToString();
+            set { pilotRecord.Pl2.PercentToNextRank = SetIntProperty(value); }
+        }
 
         public MissionCategoryRecord PltTotalCategoryScore { get; private set; } = new MissionCategoryRecord();
         public MissionCategoryRecord Pl2TotalCategoryScore { get; private set; } = new MissionCategoryRecord();
@@ -177,20 +218,57 @@ namespace XvTPilotEditor.ViewModels
 
         //...
 
-        public uint PltCurrentRank { get; private set; }
-        public uint Pl2CurrentRank { get; private set; }
+        // CurrentRank
+        // TODO: Sync with PilotRating enum?
+        public string PltCurrentRank
+        {
+            get => pilotRecord.Plt.CurrentRank.ToString();
+            set { pilotRecord.Plt.CurrentRank = SetUIntProperty(value); }
+        }
+        public string Pl2CurrentRank
+        {
+            get => pilotRecord.Pl2.CurrentRank.ToString();
+            set { pilotRecord.Pl2.CurrentRank = SetUIntProperty(value); }
+        }
 
-        public int PltTotalCountMissionsFlown { get; private set; }
-        public int Pl2TotalCountMissionsFlown { get; private set; }
+        // TotalCountMissionsFlown
+        public string PltTotalCountMissionsFlown
+        {
+            get => pilotRecord.Plt.TotalCountMissionsFlown.ToString();
+            set { pilotRecord.Plt.TotalCountMissionsFlown = SetIntProperty(value); }
+        }
+        public string Pl2TotalCountMissionsFlown
+        {
+            get => pilotRecord.Pl2.TotalCountMissionsFlown.ToString();
+            set { pilotRecord.Pl2.TotalCountMissionsFlown = SetIntProperty(value); }
+        }
 
         public int[] PltRankAchievedOnMissionCount { get; private set; } = Array.Empty<int>();
         public int[] Pl2RankAchievedOnMissionCount { get; private set; } = Array.Empty<int>();
 
-        public string PltRankString { get; private set; } = string.Empty;
-        public string Pl2RankString { get; private set; } = string.Empty;
+        // RankString
+        public string PltRankString
+        {
+            get => pilotRecord.Plt.RankString;
+            set { pilotRecord.Plt.RankString = SetStringProperty(value, Constants.PILOT_RATING_NAME_MAX_LENGTH); }
+        }
+        public string Pl2RankString
+        {
+            get => pilotRecord.Pl2.RankString;
+            set { pilotRecord.Pl2.RankString = SetStringProperty(value, Constants.PILOT_RATING_NAME_MAX_LENGTH); }
+        }
 
-        public int PltDebriefMissionScore { get; private set; }
-        public int Pl2DebriefMissionScore { get; private set; }
+        // DebriefMissionScore
+        public string PltDebriefMissionScore
+        {
+            get => pilotRecord.Plt.DebriefMissionScore.ToString();
+            set { pilotRecord.Plt.DebriefMissionScore = SetIntProperty(value); }
+        }
+        public string Pl2DebriefMissionScore
+        {
+            get => pilotRecord.Pl2.DebriefMissionScore.ToString();
+            set { pilotRecord.Pl2.DebriefMissionScore = SetIntProperty(value); }
+        }
 
         public int[] PltDebriefFullKillsOnPlayer { get; private set; } = Array.Empty<int>();
         public int[] Pl2DebriefFullKillsOnPlayer { get; private set; } = Array.Empty<int>();
@@ -227,9 +305,18 @@ namespace XvTPilotEditor.ViewModels
         public TeamResultRecord[] PltDebriefTeamResult { get; private set; } = new TeamResultRecord[10];
         public TeamResultRecord[] Pl2DebriefTeamResult { get; private set; } = new TeamResultRecord[10];
 
+        // LastSelectedFaction
         //  Note the difference in types between the Plt and Pl2 versions; probably can homogenize these in the future
-        public int PltLastSelectedFaction { get; private set; }
-        public uint Pl2LastSelectedFaction { get; private set; }
+        public string PltLastSelectedFaction
+        {
+            get => pilotRecord.Plt.LastSelectedFaction.ToString();
+            set { pilotRecord.Plt.LastSelectedFaction = SetIntProperty(value); }
+        }
+        public string Pl2LastSelectedFaction
+        {
+            get => pilotRecord.Pl2.LastSelectedFaction.ToString();
+            set { pilotRecord.Pl2.LastSelectedFaction = SetUIntProperty(value); }
+        }
 
         protected CompletePilotRecord pilotRecord;
 
@@ -250,6 +337,42 @@ namespace XvTPilotEditor.ViewModels
             foreach (var p in props)
             {
                 OnPropertyChanged(p.Name);
+            }
+        }
+
+        private string SetStringProperty(string newValue, uint maxLength)
+        {
+            if (newValue.Length > maxLength)
+            {
+                MessageBox.Show("Pilot name must be no more than " + maxLength + " characters long.", "Invalid Pilot Name");
+            }
+
+            return newValue;
+        }
+
+        private int SetIntProperty(string newValue)
+        {
+            int intValue;
+            if (int.TryParse(newValue, out intValue))
+            {
+                return intValue;
+            }
+            else
+            {
+                throw new ArgumentException($"{newValue} must be an integer");
+            }
+        }
+
+        private uint SetUIntProperty(string newValue)
+        {
+            uint uintValue;
+            if (uint.TryParse(newValue, out uintValue))
+            {
+                return uintValue;
+            }
+            else
+            {
+                throw new ArgumentException($"{newValue} must be an unsigned integer");
             }
         }
     }

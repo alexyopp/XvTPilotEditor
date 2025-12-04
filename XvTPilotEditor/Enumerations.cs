@@ -4,6 +4,7 @@ namespace XvTPilotEditor
 {
     public static class Constants
     {   public const uint PILOT_NAME_MAX_LENGTH = 12;
+        public const uint PILOT_RATING_NAME_MAX_LENGTH = 32;
         public const uint RATING_HISTORY_ENTRIES = 100;         // ?
         public const uint MAX_MISSIONS_PER_FACTION = 200;       // ?
         public const uint MAX_CONNECTED_PLAYERS = 8;
