@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System;
-using XvTPilotEditor.Models;
+using XvTPilotEditor.Models.OLD;
 
-namespace XvTPilotEditor.ViewModels
+namespace XvTPilotEditor.ViewModels.OLD
 {
     public class RatingHistoryItem
     {
@@ -10,7 +10,7 @@ namespace XvTPilotEditor.ViewModels
 
         public RatingHistoryItem(uint missionAchieved)
         {
-            this.MissionAchieved = missionAchieved;
+            MissionAchieved = missionAchieved;
         }
     }
 
@@ -23,9 +23,9 @@ namespace XvTPilotEditor.ViewModels
         internal RatingHistoryViewModel(PilotModel pilotModel)
             : base(pilotModel)
         {
-            this.activePilotModel = pilotModel;
+            activePilotModel = pilotModel;
 
-            this.PlayerRankHistory = new Dictionary<PilotRating, RatingHistoryItem>();
+            PlayerRankHistory = new Dictionary<PilotRating, RatingHistoryItem>();
 
             foreach (PilotRating rating in Enum.GetValues<PilotRating>())
             {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace XvTPilotEditor.Models
+namespace XvTPilotEditor.Models.OLD
 {
     public class RatingHistoryModel
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XvTPilotEditor.Models;
+using XvTPilotEditor.Models.OLD;
 
-namespace XvTPilotEditor.ViewModels
+namespace XvTPilotEditor.ViewModels.OLD
 {
     public class CraftKillsByTypeViewModel : PageViewModel
     {
@@ -16,8 +16,8 @@ namespace XvTPilotEditor.ViewModels
 
             public CraftKillsByTypeItem(uint kills, uint sharedKills)
             {
-                this.Kills = kills;
-                this.SharedKills = sharedKills;
+                Kills = kills;
+                SharedKills = sharedKills;
             }
         }
 
@@ -30,10 +30,10 @@ namespace XvTPilotEditor.ViewModels
 
             public CraftKillsByTypeLine(PilotModel pilotModel, Faction faction, CraftType type)
             {
-                this.activePilotModel = pilotModel;
-                this.activeFaction = faction;
+                activePilotModel = pilotModel;
+                activeFaction = faction;
 
-                this.CraftKillsByTypeByMissionType = new Dictionary<MissionType, CraftKillsByTypeItem>();
+                CraftKillsByTypeByMissionType = new Dictionary<MissionType, CraftKillsByTypeItem>();
                 foreach (MissionType missionType in Enum.GetValues<MissionType>())
                 {
                     CraftKillsByTypeByMissionType.Add(
@@ -57,10 +57,10 @@ namespace XvTPilotEditor.ViewModels
         internal CraftKillsByTypeViewModel(PilotModel pilotModel, Faction faction)
             : base(pilotModel)
         {
-            this.activePilotModel = pilotModel;
-            this.activeFaction = faction;
+            activePilotModel = pilotModel;
+            activeFaction = faction;
 
-            this.craftKillsByType = new Dictionary<CraftType, CraftKillsByTypeLine>();
+            craftKillsByType = new Dictionary<CraftType, CraftKillsByTypeLine>();
 
             foreach (CraftType type in Enum.GetValues<CraftType>())
             {

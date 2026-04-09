@@ -6,14 +6,14 @@ using System.Windows;
 using XvTPilotEditor.Models;
 using XvTPilotEditor.Views;
 
-namespace XvTPilotEditor.ViewModels
+namespace XvTPilotEditor.ViewModels.OLD
 {
     public class PltRecordPageViewModel : PilotRecordViewModel
     {
         private bool _suppressFieldValueChange;
 
         // Exposed collection the FilterableCompoundList will bind to
-        public ObservableCollection<ViewModels.CompoundFieldItem> Fields { get; } = new ObservableCollection<ViewModels.CompoundFieldItem>();
+        public ObservableCollection<CompoundFieldItem> Fields { get; } = new ObservableCollection<CompoundFieldItem>();
 
         internal PltRecordPageViewModel(CompletePilotRecord pilotRecord) : base(pilotRecord)
         {
@@ -54,7 +54,7 @@ namespace XvTPilotEditor.ViewModels
 
         private void AddField(string key, string label, string metadata)
         {
-            var item = new ViewModels.CompoundFieldItem { Key = key, Label = label, Metadata = metadata };
+            var item = new ViewModels.OLD.CompoundFieldItem { Key = key, Label = label, Metadata = metadata };
             item.PropertyChanged += Field_PropertyChanged;
             Fields.Add(item);
         }
@@ -62,8 +62,8 @@ namespace XvTPilotEditor.ViewModels
         private void Field_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             if (_suppressFieldValueChange) return;
-            if (e.PropertyName != nameof(ViewModels.CompoundFieldItem.Value)) return;
-            if (sender is not ViewModels.CompoundFieldItem item) return;
+            if (e.PropertyName != nameof(CompoundFieldItem.Value)) return;
+            if (sender is not CompoundFieldItem item) return;
 
             try
             {
@@ -138,63 +138,63 @@ namespace XvTPilotEditor.ViewModels
                 {
                     if (f.Key == nameof(PltPilotName))
                     {
-                        f.Value = this.PltPilotName ?? string.Empty;
+                        f.Value = PltPilotName ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltTotalScore))
                     {
-                        f.Value = this.PltTotalScore ?? string.Empty;
+                        f.Value = PltTotalScore ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltPlayerID))
                     {
-                        f.Value = this.PltPlayerID ?? string.Empty;
+                        f.Value = PltPlayerID ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltContinuedOrReflownMission))
                     {
-                        f.Value = this.PltContinuedOrReflownMission ?? string.Empty;
+                        f.Value = PltContinuedOrReflownMission ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltIsHosting))
                     {
-                        f.Value = this.PltIsHosting ?? string.Empty;
+                        f.Value = PltIsHosting ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltNumHumanPlayersInMission))
                     {
-                        f.Value = this.PltNumHumanPlayersInMission ?? string.Empty;
+                        f.Value = PltNumHumanPlayersInMission ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltFrontFlyMode))
                     {
-                        f.Value = this.PltFrontFlyMode ?? string.Empty;
+                        f.Value = PltFrontFlyMode ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltPromoPoints))
                     {
-                        f.Value = this.PltPromoPoints ?? string.Empty;
+                        f.Value = PltPromoPoints ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltWorsePromoPoints))
                     {
-                        f.Value = this.PltWorsePromoPoints ?? string.Empty;
+                        f.Value = PltWorsePromoPoints ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltRankAdjustmentApplied))
                     {
-                        f.Value = this.PltRankAdjustmentApplied ?? string.Empty;
+                        f.Value = PltRankAdjustmentApplied ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltPercentToNextRank))
                     {
-                        f.Value = this.PltPercentToNextRank ?? string.Empty;
+                        f.Value = PltPercentToNextRank ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltCurrentRank))
                     {
-                        f.Value = this.PltCurrentRank ?? string.Empty;
+                        f.Value = PltCurrentRank ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltTotalCountMissionsFlown))
                     {
-                        f.Value = this.PltTotalCountMissionsFlown ?? string.Empty;
+                        f.Value = PltTotalCountMissionsFlown ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltRankString))
                     {
-                        f.Value = this.PltRankString ?? string.Empty;
+                        f.Value = PltRankString ?? string.Empty;
                     }
                     else if (f.Key == nameof(PltDebriefMissionScore))
                     {
-                        f.Value = this.PltDebriefMissionScore ?? string.Empty;
+                        f.Value = PltDebriefMissionScore ?? string.Empty;
                     }
                 }
             }
@@ -206,7 +206,7 @@ namespace XvTPilotEditor.ViewModels
 
         private void NotifyAllPublicPropertiesChanged()
         {
-            var props = this.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            var props = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
             foreach (var p in props)
             {
                 OnPropertyChanged(p.Name);

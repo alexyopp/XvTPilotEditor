@@ -8,12 +8,12 @@ namespace XvTPilotEditor.ViewModels
 
         protected void OnPropertyChanged(string propertyName)
         {
-            this.OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
         }
 
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
         {
-            var handler = this.PropertyChanged;
+            var handler = PropertyChanged;
 
             if (handler != null)
             {

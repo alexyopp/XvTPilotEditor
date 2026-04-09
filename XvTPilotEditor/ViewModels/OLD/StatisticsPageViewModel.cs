@@ -1,7 +1,7 @@
-﻿using XvTPilotEditor.Models;
+﻿using XvTPilotEditor.Models.OLD;
 using XvTPilotEditor.Views;
 
-namespace XvTPilotEditor.ViewModels
+namespace XvTPilotEditor.ViewModels.OLD
 {
     public class StatisticsPageViewModel : PageViewModel
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XvTPilotEditor.Models;
+using XvTPilotEditor.Models.OLD;
 
-namespace XvTPilotEditor.ViewModels
+namespace XvTPilotEditor.ViewModels.OLD
 {
     public class TotalLossesByPlayerRankViewModel : PageViewModel
     {
@@ -15,7 +15,7 @@ namespace XvTPilotEditor.ViewModels
 
             public TotalLossesByPlayerRankItem(uint losses)
             {
-                this.Losses = losses;
+                Losses = losses;
             }
         }
 
@@ -28,10 +28,10 @@ namespace XvTPilotEditor.ViewModels
 
             public TotalLossesByPlayerRankLine(PilotModel pilotModel, Faction faction, PilotRating rating)
             {
-                this.activePilotModel = pilotModel;
-                this.activeFaction = faction;
+                activePilotModel = pilotModel;
+                activeFaction = faction;
 
-                this.TotalLossesByPlayerRankByMissionType = new Dictionary<MissionType, TotalLossesByPlayerRankItem>();
+                TotalLossesByPlayerRankByMissionType = new Dictionary<MissionType, TotalLossesByPlayerRankItem>();
                 foreach (MissionType missionType in Enum.GetValues<MissionType>())
                 {
                     TotalLossesByPlayerRankByMissionType.Add(
@@ -54,10 +54,10 @@ namespace XvTPilotEditor.ViewModels
         internal TotalLossesByPlayerRankViewModel(PilotModel pilotModel, Faction faction)
             : base(pilotModel)
         {
-            this.activePilotModel = pilotModel;
-            this.activeFaction = faction;
+            activePilotModel = pilotModel;
+            activeFaction = faction;
 
-            this.totalLossesByPlayerRank = new Dictionary<PilotRating, TotalLossesByPlayerRankLine>();
+            totalLossesByPlayerRank = new Dictionary<PilotRating, TotalLossesByPlayerRankLine>();
 
             foreach (PilotRating rating in Enum.GetValues<PilotRating>())
             {

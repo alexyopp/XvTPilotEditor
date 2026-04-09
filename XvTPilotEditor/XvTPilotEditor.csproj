@@ -82,22 +82,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Controls\TotalLossesColumn.xaml.cs">
+    <Compile Update="Views\OLD\Controls\TotalLossesColumn.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Controls\AveragesPerMissionColumn.xaml.cs">
+    <Compile Update="Views\OLD\Controls\AveragesPerMissionColumn.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\StatisticsControls\TotalLossesByPlayerRank.xaml.cs">
+    <Compile Update="Views\OLD\StatisticsControls\TotalLossesByPlayerRank.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\StatisticsControls\CraftKillsByType.xaml.cs">
+    <Compile Update="Views\OLD\StatisticsControls\CraftKillsByType.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Views\Controls\AveragesPerMissionColumn.xaml">
+    <Page Update="Views\OLD\Controls\AveragesPerMissionColumn.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace XvTPilotEditor.Models
+namespace XvTPilotEditor.Models.OLD
 {
     public class PilotModel
     {
@@ -37,12 +37,12 @@ namespace XvTPilotEditor.Models
 
         public PilotModel()
         {
-            this.RatingHistory = new RatingHistoryModel();
+            RatingHistory = new RatingHistoryModel();
 
-            this.Faction = new Dictionary<Faction, FactionModel>();
+            Faction = new Dictionary<Faction, FactionModel>();
             foreach (Faction faction in Enum.GetValues<Faction>())
             {
-                this.Faction.Add(faction, new FactionModel());
+                Faction.Add(faction, new FactionModel());
             }
         }
     }

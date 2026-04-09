@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace XvTPilotEditor.ViewModels
+namespace XvTPilotEditor.ViewModels.OLD
 {
     // Generic data item that the compound list can render and filter.
     public class CompoundFieldItem : INotifyPropertyChanged

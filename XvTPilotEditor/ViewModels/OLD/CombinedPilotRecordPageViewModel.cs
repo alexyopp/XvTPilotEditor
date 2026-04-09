@@ -7,14 +7,14 @@ using System.Windows;
 using XvTPilotEditor.Models;
 using XvTPilotEditor.Views;
 
-namespace XvTPilotEditor.ViewModels
+namespace XvTPilotEditor.ViewModels.OLD
 {
     public class CombinedPilotRecordPageViewModel : PilotRecordViewModel
     {
         private bool _suppressFieldValueChange;
 
         // Exposed collection the FilterableCompoundList will bind to
-        public ObservableCollection<ViewModels.CompoundFieldItem> Fields { get; } = new ObservableCollection<ViewModels.CompoundFieldItem>();
+        public ObservableCollection<CompoundFieldItem> Fields { get; } = new ObservableCollection<CompoundFieldItem>();
 
         internal CombinedPilotRecordPageViewModel(CompletePilotRecord pilotRecord) : base(pilotRecord)
         {
@@ -37,7 +37,7 @@ namespace XvTPilotEditor.ViewModels
         {
             Fields.Clear();
 
-            var pltItem = new ViewModels.CompoundFieldItem
+            var pltItem = new CompoundFieldItem
             {
                 Key = nameof(PltPilotName),
                 Label = "PLT Pilot Name",
@@ -45,7 +45,7 @@ namespace XvTPilotEditor.ViewModels
             };
             pltItem.PropertyChanged += Field_PropertyChanged;
 
-            var pl2Item = new ViewModels.CompoundFieldItem
+            var pl2Item = new CompoundFieldItem
             {
                 Key = nameof(Pl2PilotName),
                 Label = "PL2 Pilot Name",
@@ -60,8 +60,8 @@ namespace XvTPilotEditor.ViewModels
         private void Field_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             if (_suppressFieldValueChange) return;
-            if (e.PropertyName != nameof(ViewModels.CompoundFieldItem.Value)) return;
-            if (sender is not ViewModels.CompoundFieldItem item) return;
+            if (e.PropertyName != nameof(CompoundFieldItem.Value)) return;
+            if (sender is not CompoundFieldItem item) return;
 
             try
             {
@@ -97,11 +97,11 @@ namespace XvTPilotEditor.ViewModels
                 {
                     if (f.Key == nameof(PltPilotName))
                     {
-                        f.Value = this.PltPilotName ?? string.Empty;
+                        f.Value = PltPilotName ?? string.Empty;
                     }
                     else if (f.Key == nameof(Pl2PilotName))
                     {
-                        f.Value = this.Pl2PilotName ?? string.Empty;
+                        f.Value = Pl2PilotName ?? string.Empty;
                     }
                 }
             }
@@ -113,7 +113,7 @@ namespace XvTPilotEditor.ViewModels
 
         private void NotifyAllPublicPropertiesChanged()
         {
-            var props = this.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            var props = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
             foreach (var p in props)
             {
                 OnPropertyChanged(p.Name);

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XvTPilotEditor"
         xmlns:view="clr-namespace:XvTPilotEditor.Views"
-        xmlns:vm="clr-namespace:XvTPilotEditor.ViewModels"
+
         mc:Ignorable="d"
         Title="Xvt/BoP Pilot Editor"
         MaxWidth="1024"
@@ -24,18 +24,24 @@
                 <MenuItem Header="E_xit" Command="{Binding ExitCommand}"/>
             </MenuItem>
 
+            <!-- File Menu -->
             <MenuItem Header="_View">
-                <MenuItem Header="Complete" IsCheckable="True" IsChecked="{Binding IsCompleteViewChecked, Mode=TwoWay}"/>
-                <MenuItem Header="Plt" IsCheckable="True" IsChecked="{Binding IsPltViewChecked, Mode=TwoWay}"/>
+                <MenuItem Header="Show Hidden Items"    IsCheckable="True" IsChecked="false"/>
+                <Separator/>
+                <MenuItem Header="Exclusive, Plt"       IsCheckable="True" IsChecked="false"/>
+                <MenuItem Header="Exclusive, Pl2"       IsCheckable="True" IsChecked="true"/>
+                <MenuItem Header="Side-By-Side"         IsCheckable="True" IsChecked="false"/>
+                <MenuItem Header="Combined, Favor Plt"  IsCheckable="True" IsChecked="false"/>
+                <MenuItem Header="Combined, Favor Pl2"  IsCheckable="True" IsChecked="false"/>
             </MenuItem>
-            
+
             <!-- Help Menu -->
             <MenuItem Header="_Help">
                 <MenuItem Header="_About" Command="{Binding AboutCommand}"/>
             </MenuItem>
         </Menu>
 
-        <ScrollViewer
+        <!--<ScrollViewer
             CanContentScroll="True"
             HorizontalScrollBarVisibility = "Auto"
             VerticalScrollBarVisibility = "Auto">
@@ -48,7 +54,7 @@
                 </DataTemplate>
             </ScrollViewer.Resources>
             <ContentControl Content="{Binding ActiveViewModel}"/>
-        </ScrollViewer>
+        </ScrollViewer>-->
     </DockPanel>
     
     <!--<Grid x:Name="MainGrid">

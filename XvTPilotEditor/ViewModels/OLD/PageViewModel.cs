@@ -1,6 +1,6 @@
-﻿using XvTPilotEditor.Models;
+﻿using XvTPilotEditor.Models.OLD;
 
-namespace XvTPilotEditor.ViewModels
+namespace XvTPilotEditor.ViewModels.OLD
 {
     public class PageViewModel : ViewModelBase
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using XvTPilotEditor.Models;
+using XvTPilotEditor.Models.OLD;
 
-namespace XvTPilotEditor.ViewModels
+namespace XvTPilotEditor.ViewModels.OLD
 {
     public class TotalLossesViewModel : PageViewModel
     {
@@ -117,9 +117,9 @@ namespace XvTPilotEditor.ViewModels
         internal TotalLossesViewModel(PilotModel pilotModel, Faction faction, MissionType missionType)
             : base(pilotModel)
         {
-            this.activePilotModel = pilotModel;
-            this.activeFaction = faction;
-            this.activeMissionType = missionType;
+            activePilotModel = pilotModel;
+            activeFaction = faction;
+            activeMissionType = missionType;
         }
     }
 }

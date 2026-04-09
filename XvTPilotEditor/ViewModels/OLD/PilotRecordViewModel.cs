@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Windows;
 using XvTPilotEditor.Models;
 
-namespace XvTPilotEditor.ViewModels
+namespace XvTPilotEditor.ViewModels.OLD
 {
     public class PilotRecordViewModel : ViewModelBase
     {
@@ -333,7 +333,7 @@ namespace XvTPilotEditor.ViewModels
 
         private void NotifyAllPublicPropertiesChanged()
         {
-            var props = this.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
+            var props = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
             foreach (var p in props)
             {
                 OnPropertyChanged(p.Name);
