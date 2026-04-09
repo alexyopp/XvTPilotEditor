@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using XvTPilotEditor.Commands;
 using XvTPilotEditor.Models;
+using XvTPilotEditor.Views;
 using static XvTPilotEditor.Models.PilotFileSchema;
 
 namespace XvTPilotEditor.ViewModels
@@ -22,7 +22,7 @@ namespace XvTPilotEditor.ViewModels
 
         public MainViewModel()
         {
-            AutoLoadFileData();     // TODO: Remove this line for production release; only for testing.
+            //AutoLoadFileData();     // TODO: Remove this line for production release; only for testing.
 
             //ChangeActivePageCommand = new DelegateCommand(o => this.UpdateActivePageViewModel());
             OpenCommand = new DelegateCommand(o => LoadFileData());
@@ -47,39 +47,26 @@ namespace XvTPilotEditor.ViewModels
 
         private void LoadFileData()
         {
-            PLTFileRecord dataPlt = new PLTFileRecord();
-            PL2FileRecord dataPl2 = new PL2FileRecord();
-
-            string PltFileName = string.Empty;
-            if (FilePicker("XvT pilot files (*.plt)|*.plt", ref PltFileName) == true)
-            {
-                ReadFileBytes(PltFileName, ref dataPlt);
-            }
-
-            string Pl2FileName = string.Empty;
-            if (FilePicker("BoP pilot files (*.pl2)|*.pl2", ref Pl2FileName) == true)
-            {
-                ReadFileBytes(Pl2FileName, ref dataPl2);
-            }
-
-            pilotRecord.Plt.FillFromPlt(dataPlt);
-            pilotRecord.Pl2.FillFromPl2(dataPl2);
-        }
-
-        static private bool? FilePicker(string Filter, ref string FileName)
-        {
-            Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog();
-            openFileDlg.Filter = Filter;
-            openFileDlg.FilterIndex = 1;
-
-            bool? result = openFileDlg.ShowDialog();
+            NewPilotDialogue dialogue = new NewPilotDialogue();
+            bool? result = dialogue.ShowDialog();
 
             if (result == true)
             {
-                FileName = openFileDlg.FileName;
-            }
+                PLTFileRecord dataPlt = new PLTFileRecord();
+                PL2FileRecord dataPl2 = new PL2FileRecord();
 
-            return result;
+                if (!string.IsNullOrWhiteSpace(dialogue.PltFilePath))
+                {
+                    ReadFileBytes(dialogue.PltFilePath, ref dataPlt);
+                    pilotRecord.Plt.FillFromPlt(dataPlt);
+                }
+
+                if (!string.IsNullOrWhiteSpace(dialogue.Pl2FilePath))
+                {
+                    ReadFileBytes(dialogue.Pl2FilePath, ref dataPl2);
+                    pilotRecord.Pl2.FillFromPl2(dataPl2);
+                }
+            }
         }
 
         static private void ReadFileBytes<T>(string FileName, ref T? data)
