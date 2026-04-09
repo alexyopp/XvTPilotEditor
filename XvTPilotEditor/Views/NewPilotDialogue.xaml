@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XvTPilotEditor.Views"
         mc:Ignorable="d"
-        Title="Open a Pilot File" Width="600">
+        Title="Open a Pilot File" Height="375" Width="600">
     <StackPanel>
         <Label Content="Select an XvT Pilot File to Open" HorizontalAlignment="Left" Margin="10"/>
         <Grid>
