@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XvTPilotEditor"
         xmlns:view="clr-namespace:XvTPilotEditor.Views"
-
+        xmlns:vm="clr-namespace:XvTPilotEditor.ViewModels"
         mc:Ignorable="d"
         Title="Xvt/BoP Pilot Editor"
         MaxWidth="1024"
@@ -41,64 +41,17 @@
             </MenuItem>
         </Menu>
 
-        <!--<ScrollViewer
+        <ScrollViewer
             CanContentScroll="True"
             HorizontalScrollBarVisibility = "Auto"
             VerticalScrollBarVisibility = "Auto">
             <ScrollViewer.Resources>
-                <DataTemplate DataType="{x:Type vm:CombinedPilotRecordPageViewModel}">
-                    <view:CombinedRecordPage/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type vm:PltRecordPageViewModel}">
-                    <view:PltRecordPage/>
+                <DataTemplate DataType="{x:Type vm:Pl2DataViewModel}">
+                    <view:Pl2DataView/>
                 </DataTemplate>
             </ScrollViewer.Resources>
-            <ContentControl Content="{Binding ActiveViewModel}"/>
-        </ScrollViewer>-->
-    </DockPanel>
-    
-    <!--<Grid x:Name="MainGrid">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-
-        <view:PilotUniversals
-                Grid.Row="0"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                HorizontalAlignment="Center"/>
-
-        <view:PageSelection
-                Grid.Row="1"
-                Grid.Column="0"
-                HorizontalAlignment="Left"/>
-
-        <ScrollViewer
-                Grid.Row="1"
-                Grid.Column="1"
-                CanContentScroll="True"
-                HorizontalScrollBarVisibility = "Hidden" 
-                VerticalScrollBarVisibility = "Auto">
-            <ScrollViewer.Resources>
-                <DataTemplate DataType="{x:Type vm:StatisticsPageViewModel}">
-                    <view:StatisticsPage/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type vm:RatingHistoryViewModel}">
-                    <view:RatingHistoryPage/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type vm:MissionAchievementsViewModel}">
-                    <view:MissionAchievementsPage/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type vm:CombinedPilotRecordPageViewModel}">
-                    <view:CombinedRecordPage/>
-                </DataTemplate>
-            </ScrollViewer.Resources>
-            <ContentControl Content="{Binding ActivePageViewModel}"/>
+            <ContentControl Content="{Binding ActivePilotVM.Pl2DataVM}"/>
         </ScrollViewer>
-    </Grid>-->
+    </DockPanel>
+
 </Window>

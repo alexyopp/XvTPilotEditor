@@ -18,11 +18,11 @@ namespace XvTPilotEditor.ViewModels
         public ICommand ExitCommand { get; private set; }
         public ICommand AboutCommand { get; private set; }
 
-        private PilotViewModel? ActivePilotVM;
+        public PilotViewModel? ActivePilotVM { get; private set; }
 
         public MainViewModel()
         {
-            //AutoLoadFileData();     // TODO: Remove this line for production release; only for testing.
+            AutoLoadFileData();     // TODO: Remove this line for production release; only for testing.
 
             OpenCommand = new DelegateCommand(o => CreateNewPilot());       // From the user's perspective, we're opening pilot files, but from our perpsective, we're creating a Pilot Entity that contains the data of a plt and/or pl2 file
             SaveCommand = new DelegateCommand(o => SavePilot());
@@ -34,6 +34,7 @@ namespace XvTPilotEditor.ViewModels
         {
             // TODO: Validate the new pilot VM before setting it as active. If invalid, show an error message and do not update the active pilot.
             ActivePilotVM = newPilotVM;
+            OnPropertyChanged(nameof(ActivePilotVM));
         }
 
         // TODO: Remove after testing is complete
@@ -43,6 +44,7 @@ namespace XvTPilotEditor.ViewModels
                                             "AutoLoadPilot",
                                             "C:\\Dev\\XvTPilotEditor\\XvTPilotEditor\\Assets\\LandoRasputi0.plt",
                                             "C:\\Dev\\XvTPilotEditor\\XvTPilotEditor\\Assets\\LandoRasputi0.pl2");
+            UpdateActivePilot(pilotVM);
         }
 
         private void CreateNewPilot()

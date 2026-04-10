@@ -10,11 +10,14 @@ using static XvTPilotEditor.Models.PilotFileSchema;
 
 namespace XvTPilotEditor.ViewModels
 {
-    class PilotViewModel
+    public class PilotViewModel : ViewModelBase
     {
-        public string Name { get; private set; }        = string.Empty;
-        public string PltFileName { get; private set; } = string.Empty;
-        public string Pl2FileName { get; private set; } = string.Empty;
+        public string? Name { get; private set; }
+        public string? PltFileName { get; private set; }
+        public string? Pl2FileName { get; private set; }
+
+        public PltDataViewModel? PltDataVM { get; private set; }
+        public Pl2DataViewModel? Pl2DataVM { get; private set; }
 
         private PltRecord PltRecord = new PltRecord();
         private Pl2Record Pl2Record = new Pl2Record();
@@ -30,6 +33,7 @@ namespace XvTPilotEditor.ViewModels
         {
             // TODO: Add validation for the new name if necessary (e.g., check for null or empty string, conflict another PilotVM, etc.).
             this.Name = newName;
+            OnPropertyChanged(nameof(Name));
         }
 
         public void UpdatePltFileName(string newPltFileName)
@@ -40,6 +44,9 @@ namespace XvTPilotEditor.ViewModels
             PLTFileRecord dataPlt = new PLTFileRecord();
             ReadFileBytes(newPltFileName, ref dataPlt);
             this.PltRecord.FillFromPlt(dataPlt);
+
+            PltDataVM = new PltDataViewModel(PltRecord);
+            OnPropertyChanged(nameof(PltDataVM));
         }
 
         public void UpdatePl2FileName(string newPl2FileName)
@@ -50,6 +57,9 @@ namespace XvTPilotEditor.ViewModels
             PL2FileRecord dataPl2 = new PL2FileRecord();
             ReadFileBytes(newPl2FileName, ref dataPl2);
             this.Pl2Record.FillFromPl2(dataPl2);
+
+            Pl2DataVM = new Pl2DataViewModel(Pl2Record);
+            OnPropertyChanged(nameof(Pl2DataVM));
         }
 
         // TODO: Repalce with writing to the actual files
