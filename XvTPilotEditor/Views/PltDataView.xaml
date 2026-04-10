@@ -45,16 +45,27 @@
                 <TextBox Text="{Binding FrontFlyMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
-            <!-- TODO -->
             <!-- Arrays as expanders (simple indexed list) -->
-
-            <Expander Header="Unknown0x166" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding Unknown0x166}">
+            <Expander Header="Unknown0x26" IsExpanded="False" Margin="0,6,0,6">
+                <ItemsControl ItemsSource="{Binding Unknown0x26}" AlternationCount="1000">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="4">
+                            <StackPanel Orientation="Horizontal" Margin="25,4">
                                 <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding ., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Expander>
+
+            <Expander Header="Unknown0x166" IsExpanded="False" Margin="0,6,0,6">
+                <ItemsControl ItemsSource="{Binding Unknown0x166}" AlternationCount="1000">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="25,4">
+                                <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -62,18 +73,17 @@
             </Expander>
 
             <Expander Header="Unknown0x186" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding Unknown0x186}">
+                <ItemsControl ItemsSource="{Binding Unknown0x186}" AlternationCount="1000">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="4">
+                            <StackPanel Orientation="Horizontal" Margin="25,4">
                                 <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding ., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </Expander>
-
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
                 <Label Content="Promo Points:" VerticalAlignment="Center"/>

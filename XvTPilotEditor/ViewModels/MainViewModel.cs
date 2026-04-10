@@ -1,16 +1,12 @@
-﻿using System;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using XvTPilotEditor.Commands;
-using XvTPilotEditor.Models;
+using XvTPilotEditor.Utilities;
 using XvTPilotEditor.Views;
-using static XvTPilotEditor.Models.PilotFileSchema;
 
 namespace XvTPilotEditor.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : NotifyingBase
     {
         //public ICommand ChangeActivePageCommand { get; private set; }
         public ICommand OpenCommand { get; private set; }

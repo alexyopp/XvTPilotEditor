@@ -18,9 +18,9 @@ namespace XvTPilotEditor.Models
         public int                                  IsHosting                       { get; set; }
         public int                                  NumHumanPlayersInMission        { get; set; }
         public int                                  FrontFlyMode                    { get; set; }
-        public int[]                                Unknown0x26                     { get; set; } = Array.Empty<int>();                                           // int[10]
-        public int[]                                Unknown0x166                    { get; set; } = Array.Empty<int>();                                           // int[10]
-        public int[]                                Unknown0x186                    { get; set; } = Array.Empty<int>();                                           // int[10]
+        public int[]                                Unknown0x26                     { get; set; } = Array.Empty<int>();                                           // int[80]
+        public int[]                                Unknown0x166                    { get; set; } = Array.Empty<int>();                                           // int[8]
+        public int[]                                Unknown0x186                    { get; set; } = Array.Empty<int>();                                           // int[80]
 
         //...
 

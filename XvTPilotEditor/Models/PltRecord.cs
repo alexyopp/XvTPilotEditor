@@ -251,9 +251,9 @@ namespace XvTPilotEditor.Models
             rec.isHosting                           = IsHosting;
             rec.numHumanPlayersInMission            = NumHumanPlayersInMission;
             rec.frontFlyMode                        = FrontFlyMode;
-            rec.unknown0x26                         = Unknown0x26;                                                  // int[10]
-            rec.unknown0x166                        = Unknown0x166;                                                 // int[10]
-            rec.unknown0x186                        = Unknown0x186;                                                 // int[10]
+            rec.unknown0x26                         = Unknown0x26;                                                  // int[80]
+            rec.unknown0x166                        = Unknown0x166;                                                 // int[8]
+            rec.unknown0x186                        = Unknown0x186;                                                 // int[80]
             rec.lastTeamNumber                      = lastTeamNumber;
             rec.lastSelectedMissionType             = lastSelectedMissionType;
             rec.lastSelectedTraining                = lastSelectedTraining;

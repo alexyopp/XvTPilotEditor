@@ -46,11 +46,11 @@
             HorizontalScrollBarVisibility = "Auto"
             VerticalScrollBarVisibility = "Auto">
             <ScrollViewer.Resources>
-                <DataTemplate DataType="{x:Type vm:Pl2DataViewModel}">
-                    <view:Pl2DataView/>
+                <DataTemplate DataType="{x:Type vm:PltDataViewModel}">
+                    <view:PltDataView/>
                 </DataTemplate>
             </ScrollViewer.Resources>
-            <ContentControl Content="{Binding ActivePilotVM.Pl2DataVM}"/>
+            <ContentControl Content="{Binding ActivePilotVM.PltDataVM}"/>
         </ScrollViewer>
     </DockPanel>
 

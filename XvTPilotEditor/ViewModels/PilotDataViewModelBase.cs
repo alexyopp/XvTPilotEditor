@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using XvTPilotEditor.Utilities;
 
 namespace XvTPilotEditor.ViewModels
 {
-    public class PilotDataViewModelBase : ViewModelBase
+    public class PilotDataViewModelBase : NotifyingBase
     {
         protected internal string SetStringProperty(string newValue, uint maxLength)
         {

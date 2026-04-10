@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using XvTPilotEditor.Models;
+using XvTPilotEditor.Utilities;
 
 namespace XvTPilotEditor.ViewModels
 {
@@ -14,6 +13,37 @@ namespace XvTPilotEditor.ViewModels
         public PltDataViewModel(PltRecord initPltRecord)
         {
             this.PltRecord = initPltRecord;
+
+            // TODO: Investigate other ways to handle the array property update, or at least condense the different PropertyChanged handlers into one
+            if (PltRecord.Unknown0x26 != null)
+            {
+                foreach (int item in PltRecord.Unknown0x26)
+                {
+                    NotifyingInt notifyingInt = new NotifyingInt(item);
+                    notifyingInt.PropertyChanged += Unknown0x26_PropertyChanged;
+                    Unknown0x26.Add(notifyingInt);
+                }
+            }
+
+            if (PltRecord.Unknown0x166 != null)
+            {
+                foreach (int item in PltRecord.Unknown0x166)
+                {
+                    NotifyingInt notifyingInt = new NotifyingInt(item);
+                    notifyingInt.PropertyChanged += Unknown0x166_PropertyChanged;
+                    Unknown0x166.Add(notifyingInt);
+                }
+            }
+
+            if (PltRecord.Unknown0x186 != null)
+            {
+                foreach (int item in PltRecord.Unknown0x186)
+                {
+                    NotifyingInt notifyingInt = new NotifyingInt(item);
+                    notifyingInt.PropertyChanged += Unknown0x186_PropertyChanged;
+                    Unknown0x186.Add(notifyingInt);
+                }
+            }
         }
 
         public string PilotName
@@ -58,11 +88,9 @@ namespace XvTPilotEditor.ViewModels
             set { PltRecord.FrontFlyMode = SetIntProperty(value); }
         }
 
-        public int[] Unknown0x26 { get; private set; } = Array.Empty<int>();
-
-        public int[] Unknown0x166 { get; private set; } = Array.Empty<int>();
-
-        public int[] Unknown0x186 { get; private set; } = Array.Empty<int>();
+        public ObservableCollection<NotifyingInt> Unknown0x26 { get; set; } = new ObservableCollection<NotifyingInt>();
+        public ObservableCollection<NotifyingInt> Unknown0x166 { get; set; } = new ObservableCollection<NotifyingInt>();
+        public ObservableCollection<NotifyingInt> Unknown0x186 { get; set; } = new ObservableCollection<NotifyingInt>();
 
         //...
 
@@ -192,6 +220,46 @@ namespace XvTPilotEditor.ViewModels
         {
             get => PltRecord.LastSelectedFaction.ToString();
             set { PltRecord.LastSelectedFaction = SetIntProperty(value); }
+        }
+
+        // Helpers
+        void Unknown0x26_PropertyChanged(object? sender, PropertyChangedEventArgs? e)
+        {
+            if (e?.PropertyName == nameof(NotifyingInt.Value))
+            {
+                NotifyingInt changedItem = (NotifyingInt)sender!;
+                int index = Unknown0x26.IndexOf(changedItem);
+                if (index >= 0 && index < PltRecord.Unknown0x26.Length)
+                {
+                    PltRecord.Unknown0x26[index] = changedItem.Value;
+                }
+            }
+        }
+
+        void Unknown0x166_PropertyChanged(object? sender, PropertyChangedEventArgs? e)
+        {
+            if (e?.PropertyName == nameof(NotifyingInt.Value))
+            {
+                NotifyingInt changedItem = (NotifyingInt)sender!;
+                int index = Unknown0x166.IndexOf(changedItem);
+                if (index >= 0 && index < PltRecord.Unknown0x166.Length)
+                {
+                    PltRecord.Unknown0x166[index] = changedItem.Value;
+                }
+            }
+        }
+
+        void Unknown0x186_PropertyChanged(object? sender, PropertyChangedEventArgs? e)
+        {
+            if (e?.PropertyName == nameof(NotifyingInt.Value))
+            {
+                NotifyingInt changedItem = (NotifyingInt)sender!;
+                int index = Unknown0x186.IndexOf(changedItem);
+                if (index >= 0 && index < PltRecord.Unknown0x186.Length)
+                {
+                    PltRecord.Unknown0x186[index] = changedItem.Value;
+                }
+            }
         }
     }
 }

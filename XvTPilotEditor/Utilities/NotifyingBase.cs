@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace XvTPilotEditor.ViewModels
+namespace XvTPilotEditor.Utilities
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    public abstract class NotifyingBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

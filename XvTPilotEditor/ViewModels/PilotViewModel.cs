@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using XvTPilotEditor.Models;
+using XvTPilotEditor.Utilities;
 using static XvTPilotEditor.Models.PilotFileSchema;
 
 namespace XvTPilotEditor.ViewModels
 {
-    public class PilotViewModel : ViewModelBase
+    public class PilotViewModel : NotifyingBase
     {
         public string? Name { get; private set; }
         public string? PltFileName { get; private set; }
