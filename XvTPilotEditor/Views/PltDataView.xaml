@@ -4,45 +4,53 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:XvTPilotEditor.Views"
+             xmlns:ctrl="clr-namespace:XvTPilotEditor.Views.Controls"
              mc:Ignorable="d">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical" VerticalAlignment="Top">
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Pilot Name:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding PilotName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Pilot Name:"
+                    Value="{Binding PilotName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Total Score:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding TotalScore, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Total Score:"
+                    Value="{Binding TotalScore, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
             
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Player ID:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding PlayerID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Player ID:"
+                    Value="{Binding PlayerID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Continued / Reflown Mission:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding ContinuedOrReflownMission, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Continued / Reflown Mission:"
+                    Value="{Binding ContinuedOrReflownMission, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Is Hosting:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding IsHosting, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Is Hosting:"
+                    Value="{Binding IsHosting, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Num Human Players In Mission:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding NumHumanPlayersInMission, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Num Human Players In Mission:"
+                    Value="{Binding NumHumanPlayersInMission, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Front Fly Mode:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding FrontFlyMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Front Fly Mode:"
+                    Value="{Binding FrontFlyMode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <!-- Arrays as expanders (simple indexed list) -->
@@ -86,23 +94,27 @@
             </Expander>
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Promo Points:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding PromoPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Promo Points:"
+                    Value="{Binding PromoPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Worse Promo Points:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding WorsePromoPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Worse Promo Points:"
+                    Value="{Binding WorsePromoPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Rank Adjustment Applied:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding RankAdjustmentApplied, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Rank Adjustment Applied:"
+                    Value="{Binding RankAdjustmentApplied, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Percent To Next Rank:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding PercentToNextRank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Percent To Next Rank:"
+                    Value="{Binding PercentToNextRank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <!-- TODO -->
@@ -197,23 +209,27 @@
             
             <!-- More scalar / array items -->
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Current Rank:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding CurrentRank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Current Rank:"
+                    Value="{Binding CurrentRank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Total Count Missions Flown:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding TotalCountMissionsFlown, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Total Count Missions Flown:"
+                    Value="{Binding TotalCountMissionsFlown, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Rank String:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding RankString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Rank String:"
+                    Value="{Binding RankString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Debrief Mission Score:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding DebriefMissionScore, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Debrief Mission Score:"
+                    Value="{Binding DebriefMissionScore, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
 
             <!-- TODO -->
@@ -357,8 +373,9 @@
             </Expander>
 
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <Label Content="Last Selected Faction:" VerticalAlignment="Center"/>
-                <TextBox Text="{Binding LastSelectedFaction, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <ctrl:LabeledTextBox Label="Last Selected Faction:"
+                    Value="{Binding LastSelectedFaction, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Metadata=""/>
             </StackPanel>
             
         </StackPanel>
