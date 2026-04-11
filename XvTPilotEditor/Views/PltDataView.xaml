@@ -118,6 +118,8 @@
             </StackPanel>
 
             <!-- TODO -->
+            <ctrl:ExerciseMeleeCombatHeader/>
+
             <!-- Mission category records (shown as expandable content) -->
             <Expander Header="Total Category Score" IsExpanded="False" Margin="0,6,0,6">
                 <TextBlock Text="{Binding TotalCategoryScore}" TextWrapping="Wrap"/>
