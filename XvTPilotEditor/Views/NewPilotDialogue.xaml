@@ -5,41 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XvTPilotEditor.Views"
         mc:Ignorable="d"
-        Title="Open a Pilot File" Height="375" Width="600">
+        Title="Open a Pilot File" Height="325" Width="600">
     <StackPanel>
-        <Label Content="Select an XvT Pilot File to Open" HorizontalAlignment="Left" Margin="10"/>
+        <TextBlock Text="Select an XvT Pilot File to Open" HorizontalAlignment="Left" Margin="10"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label      Grid.Column="0" Content="File Path:" Margin="10,0,10,0"/>
-            <TextBox    x:Name="PltFilePathTextBox" Grid.Column="1" Height="25"/>
-            <Button     Grid.Column="2" Content="Browse..." Margin="10,0,10,0" Command="{Binding OpenPltCommand}"/>
+            <TextBlock Grid.Column="0" Text="File Path:" Margin="10,0,10,0"/>
+            <TextBox x:Name="PltFilePathTextBox" Grid.Column="1" Height="25"/>
+            <Button Grid.Column="2" Content="Browse..." Margin="10,0,10,0" Command="{Binding OpenPltCommand}"/>
         </Grid>
-        <Label Content="" HorizontalAlignment="Center" Margin="5"/>
-        <Label Content="Select a BoP Pilot File to Open" HorizontalAlignment="Left" Margin="10"/>
+        <TextBlock Text="" HorizontalAlignment="Center" Margin="5"/>
+        <TextBlock Text="Select a BoP Pilot File to Open" HorizontalAlignment="Left" Margin="10"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label      Grid.Column="0" Content="File Path:" Margin="10,0,10,0"/>
-            <TextBox    x:Name="Pl2FilePathTextBox" Grid.Column="1" Height="25"/>
-            <Button     Grid.Column="2" Content="Browse..." Margin="10,0,10,0" Command="{Binding OpenPl2Command}"/>
+            <TextBlock Grid.Column="0" Text="File Path:" Margin="10,0,10,0"/>
+            <TextBox x:Name="Pl2FilePathTextBox" Grid.Column="1" Height="25"/>
+            <Button Grid.Column="2" Content="Browse..." Margin="10,0,10,0" Command="{Binding OpenPl2Command}"/>
         </Grid>
-        <Label Content="" HorizontalAlignment="Center" Margin="5"/>
+        <TextBlock Text="" HorizontalAlignment="Center" Margin="5"/>
         <Grid HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="200"/>
             </Grid.ColumnDefinitions>
-            <Label      Grid.Column="0" Content="Pilot Name" Margin="10,0,10,0"/>
-            <TextBox    x:Name="PilotNameTextBox" Grid.Column="1" Height="25"/>
+            <TextBlock Grid.Column="0" Text="Pilot Name" Margin="10,0,10,0"/>
+            <TextBox x:Name="PilotNameTextBox" Grid.Column="1" Height="25"/>
         </Grid>
-        <Label Content="" HorizontalAlignment="Center" Margin="5"/>
+        <TextBlock Text="" HorizontalAlignment="Center" Margin="5"/>
         <Button Content="Open Pilot" HorizontalAlignment="Center" Margin="10" Command="{Binding CreatePilotCommand}"/>
     </StackPanel>
 </Window>
