@@ -64,7 +64,7 @@ namespace XvTPilotEditor.ViewModels
 
         public int[] Unknown0x186 { get; private set; } = Array.Empty<int>();
 
-        //...
+        // TODO: Pl2-specific properties (i.e., not present in Plt) are skipped here for now, but will need to be added in the future.
 
         public string PromoPoints
         {
@@ -134,7 +134,7 @@ namespace XvTPilotEditor.ViewModels
 
         public MissionCategoryRecordByAIRating TotalLossesFromAIRank { get; private set; } = new MissionCategoryRecordByAIRating();
 
-        //...
+        // TODO: Pl2-specific properties (i.e., not present in Plt) are skipped here for now, but will need to be added in the future.
 
         // TODO: Sync with PilotRating enum?
         public string CurrentRank
@@ -181,7 +181,7 @@ namespace XvTPilotEditor.ViewModels
 
         public int[] DebriefMeleeAIRankFG { get; private set; } = Array.Empty<int>();
 
-        //...
+        // TODO: Pl2-specific properties (i.e., not present in Plt) are skipped here for now, but will need to be added in the future.
 
         public ConnectedPlayerRecord[] ConnectedPlayer { get; private set; } = new ConnectedPlayerRecord[8];
 
@@ -193,5 +193,7 @@ namespace XvTPilotEditor.ViewModels
             get => Pl2Record.LastSelectedFaction.ToString();
             set { Pl2Record.LastSelectedFaction = SetUIntProperty(value); }
         }
+
+        // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
     }
 }

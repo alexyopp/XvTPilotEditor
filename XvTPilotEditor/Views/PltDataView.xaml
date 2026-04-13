@@ -116,31 +116,45 @@
                     Value="{Binding PercentToNextRank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Metadata=""/>
             </StackPanel>
-
-            <!-- TODO -->
+            
             <ctrl:ExerciseMeleeCombatHeader/>
 
-            <!-- Mission category records (shown as expandable content) -->
-            <Expander Header="Total Category Score" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalCategoryScore}" TextWrapping="Wrap"/>
-            </Expander>
+            <!-- TotalCategoryScore -->
+            <ctrl:LabeledTripleTextBox
+                Label="Total Category Score:"
+                TextBox1Content="{Binding TotalCategoryScoreExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding TotalCategoryScoreMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding TotalCategoryScoreCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Expander Header="Num Flown Non-Series" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding NumFlownNonSeries}" TextWrapping="Wrap"/>
-            </Expander>
+            <!-- NumFlownNonSeries -->
+            <ctrl:LabeledTripleTextBox
+                Label="Num Flown Non Series:"
+                TextBox1Content="{Binding NumFlownNonSeriesExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding NumFlownNonSeriesMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding NumFlownNonSeriesCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Expander Header="Num Flown Series" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding NumFlownSeries}" TextWrapping="Wrap"/>
-            </Expander>
+            <!-- NumFlownSeries -->
+            <ctrl:LabeledTripleTextBox
+                Label="Num Flown Series:"
+                TextBox1Content="{Binding NumFlownSeriesExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding NumFlownSeriesMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding NumFlownSeriesCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Expander Header="Total Kills" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalKills}" TextWrapping="Wrap"/>
-            </Expander>
+            <!-- TotalKills -->
+            <ctrl:LabeledTripleTextBox
+                Label="Total Kills:"
+                TextBox1Content="{Binding TotalKillsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding TotalKillsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding TotalKillsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Expander Header="Friendly Kills" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding FriendlyKills}" TextWrapping="Wrap"/>
-            </Expander>
+            <!-- FriendlyKills -->
+            <ctrl:LabeledTripleTextBox
+                Label="Friendly Kills:"
+                TextBox1Content="{Binding FriendlyKillsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding FriendlyKillsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding FriendlyKillsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
+            <!-- TODO -->
             <Expander Header="Total Full Kills On Player Rating" IsExpanded="False" Margin="0,6,0,6">
                 <TextBlock Text="{Binding TotalFullKillsOnPlayerRating}" TextWrapping="Wrap"/>
             </Expander>

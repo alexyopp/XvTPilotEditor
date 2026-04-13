@@ -6,16 +6,19 @@
              xmlns:local="clr-namespace:XvTPilotEditor.Views.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <DataTemplate x:Key="HeaderTextTemplate">
+            <TextBlock HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Margin="5" Text="{Binding}"/>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="175"/>
-            <ColumnDefinition Width="175"/>
-            <ColumnDefinition Width="175"/>
-        </Grid.ColumnDefinitions>
+        <local:QuadBase
+            Column1Content="Exercise"
+            Column2Content="Melee"
+            Column3Content="Combat"
 
-        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Exercise" FontSize="16" FontWeight="Bold" Margin="5"/>
-        <TextBlock Grid.Column="2" HorizontalAlignment="Center" Text="Melee" FontSize="16" FontWeight="Bold" Margin="5"/>
-        <TextBlock Grid.Column="3" HorizontalAlignment="Center" Text="Combat" FontSize="16" FontWeight="Bold" Margin="5"/>
+            Column1ContentTemplate="{StaticResource HeaderTextTemplate}"
+            Column2ContentTemplate="{StaticResource HeaderTextTemplate}"
+            Column3ContentTemplate="{StaticResource HeaderTextTemplate}"/>
     </Grid>
 </UserControl>

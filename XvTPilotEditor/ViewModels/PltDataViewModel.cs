@@ -92,7 +92,7 @@ namespace XvTPilotEditor.ViewModels
         public ObservableCollection<NotifyingInt> Unknown0x166 { get; set; } = new ObservableCollection<NotifyingInt>();
         public ObservableCollection<NotifyingInt> Unknown0x186 { get; set; } = new ObservableCollection<NotifyingInt>();
 
-        //...
+        // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
 
         public string PromoPoints
         {
@@ -118,15 +118,90 @@ namespace XvTPilotEditor.ViewModels
             set { PltRecord.PercentToNextRank = SetIntProperty(value); }
         }
 
-        public MissionCategoryRecord TotalCategoryScore { get; private set; } = new MissionCategoryRecord();
+        // TotalCategoryScore
+        public string TotalCategoryScoreExercise
+        {
+            get => PltRecord.TotalCategoryScore.Exercise.ToString();
+            set { PltRecord.TotalCategoryScore.Exercise = SetIntProperty(value); }
+        }
+        public string TotalCategoryScoreMelee
+        {
+            get => PltRecord.TotalCategoryScore.Melee.ToString();
+            set { PltRecord.TotalCategoryScore.Melee = SetIntProperty(value); }
+        }
+        public string TotalCategoryScoreCombatEngagement
+        {
+            get => PltRecord.TotalCategoryScore.CombatEngagement.ToString();
+            set { PltRecord.TotalCategoryScore.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecord NumFlownNonSeries { get; private set; } = new MissionCategoryRecord();
+        // NumFlownNonSeries
+        public string NumFlownNonSeriesExercise
+        {
+            get => PltRecord.NumFlownNonSeries.Exercise.ToString();
+            set { PltRecord.NumFlownNonSeries.Exercise = SetIntProperty(value); }
+        }
+        public string NumFlownNonSeriesMelee
+        {
+            get => PltRecord.NumFlownNonSeries.Melee.ToString();
+            set { PltRecord.NumFlownNonSeries.Melee = SetIntProperty(value); }
+        }
+        public string NumFlownNonSeriesCombatEngagement
+        {
+            get => PltRecord.NumFlownNonSeries.CombatEngagement.ToString();
+            set { PltRecord.NumFlownNonSeries.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecord NumFlownSeries { get; private set; } = new MissionCategoryRecord();
+        // NumFlownSeries
+        public string NumFlownSeriesExercise
+        {
+            get => PltRecord.NumFlownSeries.Exercise.ToString();
+            set { PltRecord.NumFlownSeries.Exercise = SetIntProperty(value); }
+        }
+        public string NumFlownSeriesMelee
+        {
+            get => PltRecord.NumFlownSeries.Melee.ToString();
+            set { PltRecord.NumFlownSeries.Melee = SetIntProperty(value); }
+        }
+        public string NumFlownSeriesCombatEngagement
+        {
+            get => PltRecord.NumFlownSeries.CombatEngagement.ToString();
+            set { PltRecord.NumFlownSeries.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecord TotalKills { get; private set; } = new MissionCategoryRecord();
+        // TotalKills
+        public string TotalKillsExercise
+        {
+            get => PltRecord.TotalKills.Exercise.ToString();
+            set { PltRecord.TotalKills.Exercise = SetIntProperty(value); }
+        }
+        public string TotalKillsMelee
+        {
+            get => PltRecord.TotalKills.Melee.ToString();
+            set { PltRecord.TotalKills.Melee = SetIntProperty(value); }
+        }
+        public string TotalKillsCombatEngagement
+        {
+            get => PltRecord.TotalKills.CombatEngagement.ToString();
+            set { PltRecord.TotalKills.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecord FriendlyKills { get; private set; } = new MissionCategoryRecord();
+        // FriendlyKills
+        public string FriendlyKillsExercise
+        {
+            get => PltRecord.FriendlyKills.Exercise.ToString();
+            set { PltRecord.FriendlyKills.Exercise = SetIntProperty(value); }
+        }
+        public string FriendlyKillsMelee
+        {
+            get => PltRecord.FriendlyKills.Melee.ToString();
+            set { PltRecord.FriendlyKills.Melee = SetIntProperty(value); }
+        }
+        public string FriendlyKillsCombatEngagement
+        {
+            get => PltRecord.FriendlyKills.CombatEngagement.ToString();
+            set { PltRecord.FriendlyKills.CombatEngagement = SetIntProperty(value); }
+        }
 
         public MissionCategoryRecordByPlayerRating TotalFullKillsOnPlayerRating { get; private set; } = new MissionCategoryRecordByPlayerRating();
 
@@ -162,7 +237,7 @@ namespace XvTPilotEditor.ViewModels
 
         public MissionCategoryRecordByAIRating TotalLossesFromAIRank { get; private set; } = new MissionCategoryRecordByAIRating();
 
-        //...
+        // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
 
         // TODO: Sync with PilotRating enum?
         public string CurrentRank
@@ -209,7 +284,7 @@ namespace XvTPilotEditor.ViewModels
 
         public int[] DebriefMeleeAIRankFG { get; private set; } = Array.Empty<int>();
 
-        //...
+        // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
 
         public ConnectedPlayerRecord[] ConnectedPlayer { get; private set; } = new ConnectedPlayerRecord[8];
 
@@ -221,6 +296,8 @@ namespace XvTPilotEditor.ViewModels
             get => PltRecord.LastSelectedFaction.ToString();
             set { PltRecord.LastSelectedFaction = SetIntProperty(value); }
         }
+
+        // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
 
         // Helpers
         void Unknown0x26_PropertyChanged(object? sender, PropertyChangedEventArgs? e)

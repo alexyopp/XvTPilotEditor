@@ -13,26 +13,26 @@ namespace XvTPilotEditor.Models
 
         public string                               PilotName                       { get; set; } = string.Empty;                                                 // char[14]
         public int                                  TotalScore                      { get; set; }
-        public uint                                 PlayerID                        { get; set; }
-        public int                                  ContinuedOrReflownMission       { get; set; }
-        public int                                  IsHosting                       { get; set; }
-        public int                                  NumHumanPlayersInMission        { get; set; }
-        public int                                  FrontFlyMode                    { get; set; }
-        public int[]                                Unknown0x26                     { get; set; } = Array.Empty<int>();                                           // int[80]
-        public int[]                                Unknown0x166                    { get; set; } = Array.Empty<int>();                                           // int[8]
-        public int[]                                Unknown0x186                    { get; set; } = Array.Empty<int>();                                           // int[80]
+        public uint                                 PlayerID                        { get; set; }   // TODO: Investigate; where does this come from,, how is this generated, what is its significance?
+        public int                                  ContinuedOrReflownMission       { get; set; }   // TODO: Find out what this actually is and give it a better name
+        public int                                  IsHosting                       { get; set; }   // TODO: Investigate; probably just a boolean indicating whather the last multiplayer game was joined or hosted?
+        public int                                  NumHumanPlayersInMission        { get; set; }   // TODO: Investigate; proably just a count of the number of human players in the last multiplayer game?
+        public int                                  FrontFlyMode                    { get; set; }   // TODO: Find out what this actually is and give it a better name
+        public int[]                                Unknown0x26                     { get; set; } = Array.Empty<int>();                                           // int[80]        TODO: Find out what this actually is and give it a better name
+        public int[]                                Unknown0x166                    { get; set; } = Array.Empty<int>();                                           // int[8]         TODO: Find out what this actually is and give it a better name
+        public int[]                                Unknown0x186                    { get; set; } = Array.Empty<int>();                                           // int[80]        TODO: Find out what this actually is and give it a better name
 
-        //...
+        // Plt and Pl2 schemas diverge here; refer to PltRecord and Pl2Record for those properties.
 
         public int                                  PromoPoints                     { get; set; }
         public int                                  WorsePromoPoints                { get; set; }
         public int                                  RankAdjustmentApplied           { get; set; }
         public int                                  PercentToNextRank               { get; set; }
-        public MissionCategoryRecord                TotalCategoryScore              { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord                NumFlownNonSeries               { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord                NumFlownSeries                  { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord                TotalKills                      { get; set; } = new MissionCategoryRecord();                                  // int[3]
-        public MissionCategoryRecord                FriendlyKills                   { get; set; } = new MissionCategoryRecord();                                  // int[3]
+        public MissionCategoryRecord                TotalCategoryScore              { get; set; } = new MissionCategoryRecord();                                  // int[3]         TODO: Investigate; giving values that don't seem correct, is this maybe just the last session?
+        public MissionCategoryRecord                NumFlownNonSeries               { get; set; } = new MissionCategoryRecord();                                  // int[3]         TODO: Find out what this actually is and give it a better name
+        public MissionCategoryRecord                NumFlownSeries                  { get; set; } = new MissionCategoryRecord();                                  // int[3]         TODO: Find out what this actually is and give it a better name
+        public MissionCategoryRecord                TotalKills                      { get; set; } = new MissionCategoryRecord();                                  // int[3]         TODO: Investigate; giving values that don't seem correct, is this maybe just the last session?
+        public MissionCategoryRecord                FriendlyKills                   { get; set; } = new MissionCategoryRecord();                                  // int[3]         TODO: Investigate; giving values that don't seem correct, is this maybe just the last session?
         public MissionCategoryRecordByPlayerRating  TotalFullKillsOnPlayerRating    { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
         public MissionCategoryRecordByPlayerRating  TotalSharedKillsOnPlayerRating  { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
         public MissionCategoryRecordByPlayerRating  TotalAssistsOnPlayerRating      { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
@@ -51,7 +51,7 @@ namespace XvTPilotEditor.Models
         public MissionCategoryRecordByPlayerRating  TotalLossesFromPlayerRank       { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
         public MissionCategoryRecordByAIRating      TotalLossesFromAIRank           { get; set; } = new MissionCategoryRecordByAIRating();                        // int[3][6]
 
-        //...
+        // Plt and Pl2 schemas diverge here; refer to PltRecord and Pl2Record for those properties.
 
         public uint                                 CurrentRank                     { get; set; }
         public int                                  TotalCountMissionsFlown         { get; set; }
@@ -68,10 +68,12 @@ namespace XvTPilotEditor.Models
         public int[]                                DebriefSharedKillsByFG          { get; set; } = Array.Empty<int>();                                           // int[48]
         public int[]                                DebriefMeleeAIRankFG            { get; set; } = Array.Empty<int>();                                           // int[48]
 
-        //...
+        // Plt and Pl2 schemas diverge here; refer to PltRecord and Pl2Record for those properties.
 
         public ConnectedPlayerRecord[]              ConnectedPlayer                 { get; set; } = new ConnectedPlayerRecord[Constants.MAX_CONNECTED_PLAYERS];   // ConnectedPlayerRecord[8]
         public TeamResultRecord[]                   DebriefTeamResult               { get; set; } = new TeamResultRecord[10];                                     // int[10][6]
+
+        // Plt and Pl2 schemas diverge here; refer to PltRecord and Pl2Record for those properties.
 
         public PilotRecordBase()
         {
