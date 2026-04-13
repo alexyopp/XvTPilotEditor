@@ -154,19 +154,132 @@
                 TextBox2Content="{Binding FriendlyKillsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                 TextBox3Content="{Binding FriendlyKillsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <!-- TODO -->
-            <Expander Header="Total Full Kills On Player Rating" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalFullKillsOnPlayerRating}" TextWrapping="Wrap"/>
+            <!-- TODO: Fix display so that indices are only listed once on the left, and replaced by rating strings, remove extraneous Exercise/Melee/Combat labels, Shared Kills and Full Kills are integrated into KillTuples, and line up columns with the QuadBase layout; remove Expander once item filtering is in place  -->
+            <!-- TotalFullKillsOnPlayerRating -->
+            <Expander Header="Total Kills On Player Rating" IsExpanded="False" Margin="0,6,0,6">
+                <StackPanel Margin="8" Orientation="Horizontal">
+                    <TextBlock FontWeight="Bold" Text="Exercise" Margin="4,2"/>
+                    <ItemsControl ItemsSource="{Binding TotalFullKillsOnPlayerRatingExercise}" AlternationCount="1000">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="8,2">
+                                    <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                    <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock FontWeight="Bold" Text="Melee" Margin="4,8,4,2"/>
+                    <ItemsControl ItemsSource="{Binding TotalFullKillsOnPlayerRatingMelee}" AlternationCount="1000">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="8,2">
+                                    <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                    <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock FontWeight="Bold" Text="Combat" Margin="4,8,4,2"/>
+                    <ItemsControl ItemsSource="{Binding TotalFullKillsOnPlayerRatingCombat}" AlternationCount="1000">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="8,2">
+                                    <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                    <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
             </Expander>
 
+            <!-- TotalSharedKillsOnPlayerRating -->
             <Expander Header="Total Shared Kills On Player Rating" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalSharedKillsOnPlayerRating}" TextWrapping="Wrap"/>
+                <StackPanel Margin="8" Orientation="Horizontal">
+                    <TextBlock FontWeight="Bold" Text="Exercise" Margin="4,2"/>
+                    <ItemsControl ItemsSource="{Binding TotalSharedKillsOnPlayerRatingExercise}" AlternationCount="1000">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="8,2">
+                                    <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                    <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock FontWeight="Bold" Text="Melee" Margin="4,8,4,2"/>
+                    <ItemsControl ItemsSource="{Binding TotalSharedKillsOnPlayerRatingMelee}" AlternationCount="1000">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="8,2">
+                                    <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                    <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock FontWeight="Bold" Text="Combat" Margin="4,8,4,2"/>
+                    <ItemsControl ItemsSource="{Binding TotalSharedKillsOnPlayerRatingCombat}" AlternationCount="1000">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="8,2">
+                                    <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                    <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
             </Expander>
 
+            <!-- TODO: Fix display so that indices are only listed once on the left, and replaced by rating strings, remove extraneous Exercise/Melee/Combat labels and line up columns with the QuadBase layout; remove Expander once item filtering is in place  -->
+            <!-- TotalAssistsOnPlayerRating -->
             <Expander Header="Total Assists On Player Rating" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalAssistsOnPlayerRating}" TextWrapping="Wrap"/>
+                <StackPanel Margin="8"  Orientation="Horizontal">
+                    <TextBlock FontWeight="Bold" Text="Exercise" Margin="4,2"/>
+                    <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRatingExercise}" AlternationCount="1000">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="8,2">
+                                    <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                    <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock FontWeight="Bold" Text="Melee" Margin="4,8,4,2"/>
+                    <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRatingMelee}" AlternationCount="1000">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="8,2">
+                                    <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                    <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <TextBlock FontWeight="Bold" Text="Combat" Margin="4,8,4,2"/>
+                    <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRatingCombat}" AlternationCount="1000">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="8,2">
+                                    <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                    <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
             </Expander>
 
+            <!-- TODO: Properly integrate below items -->
             <Expander Header="Total Full Kills On AI Rank" IsExpanded="False" Margin="0,6,0,6">
                 <TextBlock Text="{Binding TotalFullKillsOnAIRank}" TextWrapping="Wrap"/>
             </Expander>

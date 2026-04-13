@@ -14,36 +14,24 @@ namespace XvTPilotEditor.ViewModels
         {
             this.PltRecord = initPltRecord;
 
-            // TODO: Investigate other ways to handle the array property update, or at least condense the different PropertyChanged handlers into one
-            if (PltRecord.Unknown0x26 != null)
-            {
-                foreach (int item in PltRecord.Unknown0x26)
-                {
-                    NotifyingInt notifyingInt = new NotifyingInt(item);
-                    notifyingInt.PropertyChanged += Unknown0x26_PropertyChanged;
-                    Unknown0x26.Add(notifyingInt);
-                }
-            }
+            PopulateNotifyingIntCollection(Unknown0x26, PltRecord.Unknown0x26, Unknown0x26_PropertyChanged);
+            PopulateNotifyingIntCollection(Unknown0x166, PltRecord.Unknown0x166, Unknown0x166_PropertyChanged);
+            PopulateNotifyingIntCollection(Unknown0x186, PltRecord.Unknown0x186, Unknown0x186_PropertyChanged);
 
-            if (PltRecord.Unknown0x166 != null)
-            {
-                foreach (int item in PltRecord.Unknown0x166)
-                {
-                    NotifyingInt notifyingInt = new NotifyingInt(item);
-                    notifyingInt.PropertyChanged += Unknown0x166_PropertyChanged;
-                    Unknown0x166.Add(notifyingInt);
-                }
-            }
+            // TotalFullKillsOnPlayerRating
+            PopulateNotifyingIntCollection(TotalFullKillsOnPlayerRatingExercise, PltRecord.TotalFullKillsOnPlayerRating?.Exercise, TotalFullKillsOnPlayerRatingExercise_PropertyChanged);
+            PopulateNotifyingIntCollection(TotalFullKillsOnPlayerRatingMelee, PltRecord.TotalFullKillsOnPlayerRating?.Melee, TotalFullKillsOnPlayerRatingMelee_PropertyChanged);
+            PopulateNotifyingIntCollection(TotalFullKillsOnPlayerRatingCombat, PltRecord.TotalFullKillsOnPlayerRating?.CombatEngagement, TotalFullKillsOnPlayerRatingCombat_PropertyChanged);
 
-            if (PltRecord.Unknown0x186 != null)
-            {
-                foreach (int item in PltRecord.Unknown0x186)
-                {
-                    NotifyingInt notifyingInt = new NotifyingInt(item);
-                    notifyingInt.PropertyChanged += Unknown0x186_PropertyChanged;
-                    Unknown0x186.Add(notifyingInt);
-                }
-            }
+            // TotalSharedKillsOnPlayerRating
+            PopulateNotifyingIntCollection(TotalSharedKillsOnPlayerRatingExercise, PltRecord.TotalSharedKillsOnPlayerRating?.Exercise, TotalSharedKillsOnPlayerRatingExercise_PropertyChanged);
+            PopulateNotifyingIntCollection(TotalSharedKillsOnPlayerRatingMelee, PltRecord.TotalSharedKillsOnPlayerRating?.Melee, TotalSharedKillsOnPlayerRatingMelee_PropertyChanged);
+            PopulateNotifyingIntCollection(TotalSharedKillsOnPlayerRatingCombat, PltRecord.TotalSharedKillsOnPlayerRating?.CombatEngagement, TotalSharedKillsOnPlayerRatingCombat_PropertyChanged);
+
+            // TotalAssistsOnPlayerRating
+            PopulateNotifyingIntCollection(TotalAssistsOnPlayerRatingExercise, PltRecord.TotalAssistsOnPlayerRating?.Exercise, TotalAssistsOnPlayerRatingExercise_PropertyChanged);
+            PopulateNotifyingIntCollection(TotalAssistsOnPlayerRatingMelee, PltRecord.TotalAssistsOnPlayerRating?.Melee, TotalAssistsOnPlayerRatingMelee_PropertyChanged);
+            PopulateNotifyingIntCollection(TotalAssistsOnPlayerRatingCombat, PltRecord.TotalAssistsOnPlayerRating?.CombatEngagement, TotalAssistsOnPlayerRatingCombat_PropertyChanged);
         }
 
         public string PilotName
@@ -203,11 +191,20 @@ namespace XvTPilotEditor.ViewModels
             set { PltRecord.FriendlyKills.CombatEngagement = SetIntProperty(value); }
         }
 
-        public MissionCategoryRecordByPlayerRating TotalFullKillsOnPlayerRating { get; private set; } = new MissionCategoryRecordByPlayerRating();
+        // TotalFullKillsOnPlayerRating
+        public ObservableCollection<NotifyingInt> TotalFullKillsOnPlayerRatingExercise { get; } = new ObservableCollection<NotifyingInt>();
+        public ObservableCollection<NotifyingInt> TotalFullKillsOnPlayerRatingMelee { get; } = new ObservableCollection<NotifyingInt>();
+        public ObservableCollection<NotifyingInt> TotalFullKillsOnPlayerRatingCombat { get; } = new ObservableCollection<NotifyingInt>();
 
-        public MissionCategoryRecordByPlayerRating TotalSharedKillsOnPlayerRating { get; private set; } = new MissionCategoryRecordByPlayerRating();
+        // TotalSharedKillsOnPlayerRating
+        public ObservableCollection<NotifyingInt> TotalSharedKillsOnPlayerRatingExercise { get; } = new ObservableCollection<NotifyingInt>();
+        public ObservableCollection<NotifyingInt> TotalSharedKillsOnPlayerRatingMelee { get; } = new ObservableCollection<NotifyingInt>();
+        public ObservableCollection<NotifyingInt> TotalSharedKillsOnPlayerRatingCombat { get; } = new ObservableCollection<NotifyingInt>();
 
-        public MissionCategoryRecordByPlayerRating TotalAssistsOnPlayerRating { get; private set; } = new MissionCategoryRecordByPlayerRating();
+        // TotalAssistsOnPlayerRating
+        public ObservableCollection<NotifyingInt> TotalAssistsOnPlayerRatingExercise { get; } = new ObservableCollection<NotifyingInt>();
+        public ObservableCollection<NotifyingInt> TotalAssistsOnPlayerRatingMelee { get; } = new ObservableCollection<NotifyingInt>();
+        public ObservableCollection<NotifyingInt> TotalAssistsOnPlayerRatingCombat { get; } = new ObservableCollection<NotifyingInt>();
 
         public MissionCategoryRecordByAIRating TotalFullKillsOnAIRank { get; private set; } = new MissionCategoryRecordByAIRating();
 
@@ -336,6 +333,155 @@ namespace XvTPilotEditor.ViewModels
                 {
                     PltRecord.Unknown0x186[index] = changedItem.Value;
                 }
+            }
+        }
+
+        void TotalFullKillsOnPlayerRatingExercise_PropertyChanged(object? sender, PropertyChangedEventArgs? e)
+        {
+            if (e?.PropertyName == nameof(NotifyingInt.Value))
+            {
+                var changed = (NotifyingInt)sender!;
+                int index = TotalFullKillsOnPlayerRatingExercise.IndexOf(changed);
+                if (PltRecord.TotalFullKillsOnPlayerRating?.Exercise != null &&
+                    index >= 0 && index < PltRecord.TotalFullKillsOnPlayerRating.Exercise.Length)
+                {
+                    PltRecord.TotalFullKillsOnPlayerRating.Exercise[index] = changed.Value;
+                }
+            }
+        }
+
+        void TotalFullKillsOnPlayerRatingMelee_PropertyChanged(object? sender, PropertyChangedEventArgs? e)
+        {
+            if (e?.PropertyName == nameof(NotifyingInt.Value))
+            {
+                var changed = (NotifyingInt)sender!;
+                int index = TotalFullKillsOnPlayerRatingMelee.IndexOf(changed);
+                if (PltRecord.TotalFullKillsOnPlayerRating?.Melee != null &&
+                    index >= 0 && index < PltRecord.TotalFullKillsOnPlayerRating.Melee.Length)
+                {
+                    PltRecord.TotalFullKillsOnPlayerRating.Melee[index] = changed.Value;
+                }
+            }
+        }
+
+        void TotalFullKillsOnPlayerRatingCombat_PropertyChanged(object? sender, PropertyChangedEventArgs? e)
+        {
+            if (e?.PropertyName == nameof(NotifyingInt.Value))
+            {
+                var changed = (NotifyingInt)sender!;
+                int index = TotalFullKillsOnPlayerRatingCombat.IndexOf(changed);
+                if (PltRecord.TotalFullKillsOnPlayerRating?.CombatEngagement != null &&
+                    index >= 0 && index < PltRecord.TotalFullKillsOnPlayerRating.CombatEngagement.Length)
+                {
+                    PltRecord.TotalFullKillsOnPlayerRating.CombatEngagement[index] = changed.Value;
+                }
+            }
+        }
+
+        void TotalSharedKillsOnPlayerRatingExercise_PropertyChanged(object? sender, PropertyChangedEventArgs? e)
+        {
+            if (e?.PropertyName == nameof(NotifyingInt.Value))
+            {
+                var changed = (NotifyingInt)sender!;
+                int index = TotalSharedKillsOnPlayerRatingExercise.IndexOf(changed);
+                if (PltRecord.TotalSharedKillsOnPlayerRating?.Exercise != null &&
+                    index >= 0 && index < PltRecord.TotalSharedKillsOnPlayerRating.Exercise.Length)
+                {
+                    PltRecord.TotalSharedKillsOnPlayerRating.Exercise[index] = changed.Value;
+                }
+            }
+        }
+
+        void TotalSharedKillsOnPlayerRatingMelee_PropertyChanged(object? sender, PropertyChangedEventArgs? e)
+        {
+            if (e?.PropertyName == nameof(NotifyingInt.Value))
+            {
+                var changed = (NotifyingInt)sender!;
+                int index = TotalSharedKillsOnPlayerRatingMelee.IndexOf(changed);
+                if (PltRecord.TotalSharedKillsOnPlayerRating?.Melee != null &&
+                    index >= 0 && index < PltRecord.TotalSharedKillsOnPlayerRating.Melee.Length)
+                {
+                    PltRecord.TotalSharedKillsOnPlayerRating.Melee[index] = changed.Value;
+                }
+            }
+        }
+
+        void TotalSharedKillsOnPlayerRatingCombat_PropertyChanged(object? sender, PropertyChangedEventArgs? e)
+        {
+            if (e?.PropertyName == nameof(NotifyingInt.Value))
+            {
+                var changed = (NotifyingInt)sender!;
+                int index = TotalSharedKillsOnPlayerRatingCombat.IndexOf(changed);
+                if (PltRecord.TotalSharedKillsOnPlayerRating?.CombatEngagement != null &&
+                    index >= 0 && index < PltRecord.TotalSharedKillsOnPlayerRating.CombatEngagement.Length)
+                {
+                    PltRecord.TotalSharedKillsOnPlayerRating.CombatEngagement[index] = changed.Value;
+                }
+            }
+        }
+
+        void TotalAssistsOnPlayerRatingExercise_PropertyChanged(object? sender, PropertyChangedEventArgs? e)
+        {
+            if (e?.PropertyName == nameof(NotifyingInt.Value))
+            {
+                var changed = (NotifyingInt)sender!;
+                int index = TotalAssistsOnPlayerRatingExercise.IndexOf(changed);
+                if (PltRecord.TotalAssistsOnPlayerRating?.Exercise != null &&
+                    index >= 0 && index < PltRecord.TotalAssistsOnPlayerRating.Exercise.Length)
+                {
+                    PltRecord.TotalAssistsOnPlayerRating.Exercise[index] = changed.Value;
+                }
+            }
+        }
+
+        void TotalAssistsOnPlayerRatingMelee_PropertyChanged(object? sender, PropertyChangedEventArgs? e)
+        {
+            if (e?.PropertyName == nameof(NotifyingInt.Value))
+            {
+                var changed = (NotifyingInt)sender!;
+                int index = TotalAssistsOnPlayerRatingMelee.IndexOf(changed);
+                if (PltRecord.TotalAssistsOnPlayerRating?.Melee != null &&
+                    index >= 0 && index < PltRecord.TotalAssistsOnPlayerRating.Melee.Length)
+                {
+                    PltRecord.TotalAssistsOnPlayerRating.Melee[index] = changed.Value;
+                }
+            }
+        }
+
+        void TotalAssistsOnPlayerRatingCombat_PropertyChanged(object? sender, PropertyChangedEventArgs? e)
+        {
+            if (e?.PropertyName == nameof(NotifyingInt.Value))
+            {
+                var changed = (NotifyingInt)sender!;
+                int index = TotalAssistsOnPlayerRatingCombat.IndexOf(changed);
+                if (PltRecord.TotalAssistsOnPlayerRating?.CombatEngagement != null &&
+                    index >= 0 && index < PltRecord.TotalAssistsOnPlayerRating.CombatEngagement.Length)
+                {
+                    PltRecord.TotalAssistsOnPlayerRating.CombatEngagement[index] = changed.Value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Helper to populate an ObservableCollection<NotifyingInt> from a source int[] and attach a PropertyChanged handler.
+        /// Clears target collection before populating. Safe if source is null.
+        /// </summary>
+        private void PopulateNotifyingIntCollection(ObservableCollection<NotifyingInt> target, int[]? source, PropertyChangedEventHandler handler)
+        {
+            target.Clear();
+            if (source == null)
+            {
+                return;
+            }
+
+            foreach (int item in source)
+            {
+                NotifyingInt notifyingInt = new NotifyingInt(item);
+                if (handler != null)
+                {
+                    notifyingInt.PropertyChanged += handler;
+                }
+                target.Add(notifyingInt);
             }
         }
     }
