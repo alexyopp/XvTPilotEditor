@@ -55,7 +55,7 @@
 
             <!-- Arrays as expanders (simple indexed list) -->
             <Expander Header="Unknown0x26" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding Unknown0x26}" AlternationCount="1000">
+                <ItemsControl ItemsSource="{Binding Unknown0x26.Values}" AlternationCount="1000">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="25,4">
@@ -68,7 +68,7 @@
             </Expander>
 
             <Expander Header="Unknown0x166" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding Unknown0x166}" AlternationCount="1000">
+                <ItemsControl ItemsSource="{Binding Unknown0x166.Values}" AlternationCount="1000">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="25,4">
@@ -81,7 +81,7 @@
             </Expander>
 
             <Expander Header="Unknown0x186" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding Unknown0x186}" AlternationCount="1000">
+                <ItemsControl ItemsSource="{Binding Unknown0x186.Values}" AlternationCount="1000">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="25,4">
@@ -159,7 +159,7 @@
             <Expander Header="Total Kills On Player Rating" IsExpanded="False" Margin="0,6,0,6">
                 <StackPanel Margin="8" Orientation="Horizontal">
                     <TextBlock FontWeight="Bold" Text="Exercise" Margin="4,2"/>
-                    <ItemsControl ItemsSource="{Binding TotalFullKillsOnPlayerRatingExercise}" AlternationCount="1000">
+                    <ItemsControl ItemsSource="{Binding TotalFullKillsOnPlayerRating.Exercise}" AlternationCount="1000">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="8,2">
@@ -171,7 +171,7 @@
                     </ItemsControl>
 
                     <TextBlock FontWeight="Bold" Text="Melee" Margin="4,8,4,2"/>
-                    <ItemsControl ItemsSource="{Binding TotalFullKillsOnPlayerRatingMelee}" AlternationCount="1000">
+                    <ItemsControl ItemsSource="{Binding TotalFullKillsOnPlayerRating.Melee}" AlternationCount="1000">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="8,2">
@@ -183,7 +183,7 @@
                     </ItemsControl>
 
                     <TextBlock FontWeight="Bold" Text="Combat" Margin="4,8,4,2"/>
-                    <ItemsControl ItemsSource="{Binding TotalFullKillsOnPlayerRatingCombat}" AlternationCount="1000">
+                    <ItemsControl ItemsSource="{Binding TotalFullKillsOnPlayerRating.Combat}" AlternationCount="1000">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="8,2">
@@ -200,7 +200,7 @@
             <Expander Header="Total Shared Kills On Player Rating" IsExpanded="False" Margin="0,6,0,6">
                 <StackPanel Margin="8" Orientation="Horizontal">
                     <TextBlock FontWeight="Bold" Text="Exercise" Margin="4,2"/>
-                    <ItemsControl ItemsSource="{Binding TotalSharedKillsOnPlayerRatingExercise}" AlternationCount="1000">
+                    <ItemsControl ItemsSource="{Binding TotalSharedKillsOnPlayerRating.Exercise}" AlternationCount="1000">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="8,2">
@@ -212,7 +212,7 @@
                     </ItemsControl>
 
                     <TextBlock FontWeight="Bold" Text="Melee" Margin="4,8,4,2"/>
-                    <ItemsControl ItemsSource="{Binding TotalSharedKillsOnPlayerRatingMelee}" AlternationCount="1000">
+                    <ItemsControl ItemsSource="{Binding TotalSharedKillsOnPlayerRating.Melee}" AlternationCount="1000">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="8,2">
@@ -224,7 +224,7 @@
                     </ItemsControl>
 
                     <TextBlock FontWeight="Bold" Text="Combat" Margin="4,8,4,2"/>
-                    <ItemsControl ItemsSource="{Binding TotalSharedKillsOnPlayerRatingCombat}" AlternationCount="1000">
+                    <ItemsControl ItemsSource="{Binding TotalSharedKillsOnPlayerRating.Combat}" AlternationCount="1000">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="8,2">
@@ -242,7 +242,7 @@
             <Expander Header="Total Assists On Player Rating" IsExpanded="False" Margin="0,6,0,6">
                 <StackPanel Margin="8"  Orientation="Horizontal">
                     <TextBlock FontWeight="Bold" Text="Exercise" Margin="4,2"/>
-                    <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRatingExercise}" AlternationCount="1000">
+                    <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRating.Exercise}" AlternationCount="1000">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="8,2">
@@ -254,7 +254,7 @@
                     </ItemsControl>
 
                     <TextBlock FontWeight="Bold" Text="Melee" Margin="4,8,4,2"/>
-                    <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRatingMelee}" AlternationCount="1000">
+                    <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRating.Melee}" AlternationCount="1000">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="8,2">
@@ -266,7 +266,7 @@
                     </ItemsControl>
 
                     <TextBlock FontWeight="Bold" Text="Combat" Margin="4,8,4,2"/>
-                    <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRatingCombat}" AlternationCount="1000">
+                    <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRating.Combat}" AlternationCount="1000">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="8,2">
