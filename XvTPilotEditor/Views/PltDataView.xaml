@@ -652,6 +652,19 @@
                     Metadata=""/>
             </StackPanel>
 
+            <Expander Header="Rank Achieved On Mission #" IsExpanded="False" Margin="0,6,0,6">
+                <ItemsControl ItemsSource="{Binding RankAchievedOnMissionCount.Values}" AlternationCount="1000">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="25,4">
+                                <TextBlock Width="125" FontWeight="Bold" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, Converter={conv:UIntToPilotRatingConverter}}"/>
+                                <TextBox Width="75" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Expander>
+
             <!-- TODO: Combine CurrentRank and RankString into a single control? Remember EH uses different strings, so don't just use a dropdown populated by the vanilla rank strings -->
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
                 <ctrl:LabeledTextBox Label="Rank String:"
@@ -665,125 +678,101 @@
                     Metadata=""/>
             </StackPanel>
 
-            <!-- TODO: Properly integrate below items -->
-            <!-- Debrief arrays -->
-            <Expander Header="Debrief Full Kills On Player" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding DebriefFullKillsOnPlayer}">
+            <!-- DebriefFullKillsOnPlayer, DebriefSharedKillsOnPlayer -->
+            <Expander Header="Debrief Kills On Player" IsExpanded="False" Margin="0,6,0,6">
+                <ItemsControl ItemsSource="{Binding CombinedDebriefKillsOnPlayer}" AlternationCount="1000">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="4">
-                                <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding ., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                            </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" Width="40" Margin="25,4" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                <ctrl:KillsTuple Grid.Column="1"
+                                                 KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </Expander>
 
-            <Expander Header="Debrief Shared Kills On Player" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding DebriefSharedKillsOnPlayer}">
+            <!-- DebriefFullKillsOnFG, DebriefSharedKillsOnFG -->
+            <Expander Header="Debrief Kills On Flight Group" IsExpanded="False" Margin="0,6,0,6">
+                <ItemsControl ItemsSource="{Binding CombinedDebriefKillsOnFG}" AlternationCount="1000">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="4">
-                                <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding ., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                            </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" Width="40" Margin="25,4" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                <ctrl:KillsTuple Grid.Column="1"
+                                                 KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </Expander>
 
-            <Expander Header="Debrief Full Kills On FG" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding DebriefFullKillsOnFG}">
+            <!-- DebriefFullKillsByPlayer, DebriefSharedKillsByPlayer -->
+            <Expander Header="Debrief Kills By Player" IsExpanded="False" Margin="0,6,0,6">
+                <ItemsControl ItemsSource="{Binding CombinedDebriefKillsByPlayer}" AlternationCount="1000">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="4">
-                                <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding ., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                            </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" Width="40" Margin="25,4" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                <ctrl:KillsTuple Grid.Column="1"
+                                     KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </Expander>
 
-            <Expander Header="Debrief Shared Kills On FG" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding DebriefSharedKillsOnFG}">
+            <!-- DebriefFullKillsByFG, DebriefSharedKillsByFG -->
+            <Expander Header="Debrief Kills By Flight Group" IsExpanded="False" Margin="0,6,0,6">
+                <ItemsControl ItemsSource="{Binding CombinedDebriefKillsByFG}" AlternationCount="1000">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="4">
-                                <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding ., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                            </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" VerticalAlignment="Center" Width="40" Margin="25,4" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                <ctrl:KillsTuple Grid.Column="1"
+                                     KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </Expander>
 
-            <Expander Header="Debrief Full Kills By Player" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding DebriefFullKillsByPlayer}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="4">
-                                <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding ., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </Expander>
-
-            <Expander Header="Debrief Shared Kills By Player" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding DebriefSharedKillsByPlayer}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="4">
-                                <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding ., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </Expander>
-
-            <Expander Header="Debrief Full Kills By FG" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding DebriefFullKillsByFG}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="4">
-                                <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding ., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </Expander>
-
-            <Expander Header="Debrief Shared Kills By FG" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding DebriefSharedKillsByFG}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="4">
-                                <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding ., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </Expander>
-
+            <!-- TODO: Find out what this means -->
             <Expander Header="Debrief Melee AI Rank FG" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding DebriefMeleeAIRankFG}">
+                <ItemsControl ItemsSource="{Binding DebriefMeleeAIRankFG.Values}" AlternationCount="1000">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="4">
+                            <StackPanel Orientation="Horizontal" Margin="25,4">
                                 <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                <TextBox Width="200" Margin="8,0,0,0" Text="{Binding ., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBox Width="75" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </Expander>
-            
+
+            <!-- TODO: Properly integrate below items -->
             <!-- Connected players and team results -->
             <Expander Header="Connected Players" IsExpanded="False" Margin="0,6,0,6">
                 <ItemsControl ItemsSource="{Binding ConnectedPlayer}">

@@ -20,36 +20,32 @@ namespace XvTPilotEditor.ViewModels
             TotalFullKillsOnPlayerRating = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalFullKillsOnPlayerRating?.Exercise,
                                                                                     PltRecord.TotalFullKillsOnPlayerRating?.Melee,
                                                                                     PltRecord.TotalFullKillsOnPlayerRating?.CombatEngagement);
-
             TotalSharedKillsOnPlayerRating = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalSharedKillsOnPlayerRating?.Exercise,
                                                                                       PltRecord.TotalSharedKillsOnPlayerRating?.Melee,
                                                                                       PltRecord.TotalSharedKillsOnPlayerRating?.CombatEngagement);
-
-            TotalAssistsOnPlayerRating = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalAssistsOnPlayerRating?.Exercise,
-                                                                                  PltRecord.TotalAssistsOnPlayerRating?.Melee,
-                                                                                  PltRecord.TotalAssistsOnPlayerRating?.CombatEngagement);
-
             // Build combined collections (Full + Shared) so columns can render both values aligned by index.
             CombinedTotalKillsOnPlayerRatingExercise = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Exercise, TotalSharedKillsOnPlayerRating.Exercise);
             CombinedTotalKillsOnPlayerRatingMelee = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Melee, TotalSharedKillsOnPlayerRating.Melee);
             CombinedTotalKillsOnPlayerRatingCombat = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Combat, TotalSharedKillsOnPlayerRating.Combat);
 
+            TotalAssistsOnPlayerRating = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalAssistsOnPlayerRating?.Exercise,
+                                                                      PltRecord.TotalAssistsOnPlayerRating?.Melee,
+                                                                      PltRecord.TotalAssistsOnPlayerRating?.CombatEngagement);
+
             TotalFullKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalFullKillsOnAIRank?.Exercise,
                                                                               PltRecord.TotalFullKillsOnAIRank?.Melee,
                                                                               PltRecord.TotalFullKillsOnAIRank?.CombatEngagement);
-
             TotalSharedKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalSharedKillsOnAIRank?.Exercise,
                                                                                 PltRecord.TotalSharedKillsOnAIRank?.Melee,
                                                                                 PltRecord.TotalSharedKillsOnAIRank?.CombatEngagement);
-
-            TotalAssistsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalAssistsOnAIRank?.Exercise,
-                                                                            PltRecord.TotalAssistsOnAIRank?.Melee,
-                                                                            PltRecord.TotalAssistsOnAIRank?.CombatEngagement);
-
             // Build combined collections (Full + Shared) so columns can render both values aligned by index.
             CombinedTotalKillsOnAIRankExercise = CollectionHelpers.Combine(TotalFullKillsOnAIRank.Exercise, TotalSharedKillsOnAIRank.Exercise);
             CombinedTotalKillsOnAIRankMelee = CollectionHelpers.Combine(TotalFullKillsOnAIRank.Melee, TotalSharedKillsOnAIRank.Melee);
             CombinedTotalKillsOnAIRankCombat = CollectionHelpers.Combine(TotalFullKillsOnAIRank.Combat, TotalSharedKillsOnAIRank.Combat);
+
+            TotalAssistsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalAssistsOnAIRank?.Exercise,
+                                                                PltRecord.TotalAssistsOnAIRank?.Melee,
+                                                                PltRecord.TotalAssistsOnAIRank?.CombatEngagement);
 
             TotalLossesFromPlayerRank = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalLossesFromPlayerRank?.Exercise,
                                                                                  PltRecord.TotalLossesFromPlayerRank?.Melee,
@@ -58,6 +54,30 @@ namespace XvTPilotEditor.ViewModels
             TotalLossesFromAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalLossesFromAIRank?.Exercise,
                                                                              PltRecord.TotalLossesFromAIRank?.Melee,
                                                                              PltRecord.TotalLossesFromAIRank?.CombatEngagement);
+
+            RankAchievedOnMissionCount = new IntArrayViewModel(PltRecord.RankAchievedOnMissionCount);
+
+            DebriefFullKillsOnPlayer = new IntArrayViewModel(PltRecord.DebriefFullKillsOnPlayer);
+            DebriefSharedKillsOnPlayer = new IntArrayViewModel(PltRecord.DebriefSharedKillsOnPlayer);
+            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
+            CombinedDebriefKillsOnPlayer = CollectionHelpers.Combine(DebriefFullKillsOnPlayer.Values, DebriefSharedKillsOnPlayer.Values);
+
+            DebriefFullKillsOnFG = new IntArrayViewModel(PltRecord.DebriefFullKillsOnFG);
+            DebriefSharedKillsOnFG = new IntArrayViewModel(PltRecord.DebriefSharedKillsOnFG);
+            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
+            CombinedDebriefKillsOnFG = CollectionHelpers.Combine(DebriefFullKillsOnFG.Values, DebriefSharedKillsOnFG.Values);
+
+            DebriefFullKillsByPlayer = new IntArrayViewModel(PltRecord.DebriefFullKillsByPlayer);
+            DebriefSharedKillsByPlayer = new IntArrayViewModel(PltRecord.DebriefSharedKillsByPlayer);
+            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
+            CombinedDebriefKillsByPlayer = CollectionHelpers.Combine(DebriefFullKillsByPlayer.Values, DebriefSharedKillsByPlayer.Values);
+
+            DebriefFullKillsByFG = new IntArrayViewModel(PltRecord.DebriefFullKillsByFG);
+            DebriefSharedKillsByFG = new IntArrayViewModel(PltRecord.DebriefSharedKillsByFG);
+            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
+            CombinedDebriefKillsByFG = CollectionHelpers.Combine(DebriefFullKillsByFG.Values, DebriefSharedKillsByFG.Values);
+
+            DebriefMeleeAIRankFG = new IntArrayViewModel(PltRecord.DebriefMeleeAIRankFG);
         }
 
         public string PilotName
@@ -219,7 +239,6 @@ namespace XvTPilotEditor.ViewModels
 
         private MissionCategoryRecordMatrixViewModel TotalFullKillsOnPlayerRating;
         private MissionCategoryRecordMatrixViewModel TotalSharedKillsOnPlayerRating;
-
         // Combined collections for UI (Full + Shared pairs)
         public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnPlayerRatingExercise { get; private set; } = new();
         public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnPlayerRatingMelee { get; private set; } = new();
@@ -229,7 +248,6 @@ namespace XvTPilotEditor.ViewModels
 
         private MissionCategoryRecordMatrixViewModel TotalFullKillsOnAIRank;
         private MissionCategoryRecordMatrixViewModel TotalSharedKillsOnAIRank;
-
         // Combined collections for UI (Full + Shared pairs)
         public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnAIRankExercise { get; private set; } = new();
         public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnAIRankMelee { get; private set; } = new();
@@ -409,7 +427,7 @@ namespace XvTPilotEditor.ViewModels
             set { PltRecord.TotalCountMissionsFlown = SetIntProperty(value); }
         }
 
-        public int[] RankAchievedOnMissionCount { get; private set; } = Array.Empty<int>();
+        public IntArrayViewModel RankAchievedOnMissionCount { get; private set; }
 
         public string RankString
         {
@@ -423,23 +441,27 @@ namespace XvTPilotEditor.ViewModels
             set { PltRecord.DebriefMissionScore = SetIntProperty(value); }
         }
 
-        public int[] DebriefFullKillsOnPlayer { get; private set; } = Array.Empty<int>();
+        private IntArrayViewModel DebriefFullKillsOnPlayer;
+        private IntArrayViewModel DebriefSharedKillsOnPlayer;
+        // Combined collections for UI (Full + Shared pairs)
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsOnPlayer { get; private set; } = new();
 
-        public int[] DebriefSharedKillsOnPlayer { get; private set; } = Array.Empty<int>();
+        private IntArrayViewModel DebriefFullKillsOnFG;
+        private IntArrayViewModel DebriefSharedKillsOnFG;
+        // Combined collections for UI (Full + Shared pairs)
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsOnFG { get; private set; } = new();
 
-        public int[] DebriefFullKillsOnFG { get; private set; } = Array.Empty<int>();
+        private IntArrayViewModel DebriefFullKillsByPlayer;
+        private IntArrayViewModel DebriefSharedKillsByPlayer;
+        // Combined collections for UI (Full + Shared pairs)
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsByPlayer { get; private set; } = new();
 
-        public int[] DebriefSharedKillsOnFG { get; private set; } = Array.Empty<int>();
+        private IntArrayViewModel DebriefFullKillsByFG;
+        private IntArrayViewModel DebriefSharedKillsByFG;
+        // Combined collections for UI (Full + Shared pairs)
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsByFG { get; private set; } = new();
 
-        public int[] DebriefFullKillsByPlayer { get; private set; } = Array.Empty<int>();
-
-        public int[] DebriefSharedKillsByPlayer { get; private set; } = Array.Empty<int>();
-
-        public int[] DebriefFullKillsByFG { get; private set; } = Array.Empty<int>();
-
-        public int[] DebriefSharedKillsByFG { get; private set; } = Array.Empty<int>();
-
-        public int[] DebriefMeleeAIRankFG { get; private set; } = Array.Empty<int>();
+        public IntArrayViewModel DebriefMeleeAIRankFG { get; private set; }
 
         // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
 
