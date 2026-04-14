@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Windows.Markup;
 
 namespace XvTPilotEditor.Converters
 {
-    public sealed class UIntToPilotRatingConverter : MarkupExtension, IValueConverter
+    public sealed class UIntToAIRankConverter : MarkupExtension, IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -16,12 +16,12 @@ namespace XvTPilotEditor.Converters
             if (!uint.TryParse(System.Convert.ToString(value, culture), out var idx))
                 return value;
 
-            if (!Enum.IsDefined(typeof(PilotRating), idx))
+            if (!Enum.IsDefined(typeof(AIRank), idx))
                 return idx.ToString(culture);
 
-            var rating = (PilotRating)idx;
-            var name = Enum.GetName(typeof(PilotRating), rating);
-            var desc = (typeof(PilotRating).GetField(name!)?
+            var rating = (AIRank)idx;
+            var name = Enum.GetName(typeof(AIRank), rating);
+            var desc = (typeof(AIRank).GetField(name!)?
                 .GetCustomAttributes(typeof(DescriptionAttribute), false)
                 .FirstOrDefault() as DescriptionAttribute)?.Description;
 

@@ -157,10 +157,11 @@ namespace XvTPilotEditor
         PltRecord
     }
 
+    // TODO: Confirm this enumeration is consistent with the game's ordering
     public enum PilotRating : uint  //  i.e., Pilot Rank
     {
-        [Description("TargetDrone?")]           TargetDrone = 0,
-        [Description("GroundCrew?")]            GroundCrew,
+        [Description("TargetDrone")]            TargetDrone = 0,
+        [Description("GroundCrew")]             GroundCrew,
         [Description("Trainee")]                Trainee,
         [Description("Flight Cadet")]           FlightCadet,
         [Description("Officer 4th Class")]      Officer4thClass,
@@ -214,4 +215,15 @@ namespace XvTPilotEditor
         FlightCadet,
         Trainee
     }*/
+
+    // TODO: Confirm this enumeration is consistent with the game's ordering
+    public enum AIRank : uint
+    {
+        [Description("Novice")]     Novice = 0,
+        [Description("Officer")]    Officer,
+        [Description("Veteran")]    Veteran,
+        [Description("Ace")]        Ace,
+        [Description("Top Ace")]    TopAce,
+        [Description("Jedi")]       Jedi
+    }
 }

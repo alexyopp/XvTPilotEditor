@@ -27,7 +27,7 @@ namespace XvTPilotEditor.Views.Controls
             DependencyProperty.Register(nameof(Column3Content), typeof(object), typeof(QuadBase), new PropertyMetadata(null));
         public object? Column3Content { get => GetValue(Column3ContentProperty); set => SetValue(Column3ContentProperty, value); }
 
-        // Templates (optional)
+        // Templates
         public static readonly DependencyProperty Column0ContentTemplateProperty =
             DependencyProperty.Register(nameof(Column0ContentTemplate), typeof(DataTemplate), typeof(QuadBase), new PropertyMetadata(null));
         public DataTemplate? Column0ContentTemplate { get => (DataTemplate?)GetValue(Column0ContentTemplateProperty); set => SetValue(Column0ContentTemplateProperty, value); }

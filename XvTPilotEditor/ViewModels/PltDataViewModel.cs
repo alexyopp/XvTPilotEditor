@@ -33,6 +33,31 @@ namespace XvTPilotEditor.ViewModels
             CombinedTotalKillsOnPlayerRatingExercise = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Exercise, TotalSharedKillsOnPlayerRating.Exercise);
             CombinedTotalKillsOnPlayerRatingMelee = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Melee, TotalSharedKillsOnPlayerRating.Melee);
             CombinedTotalKillsOnPlayerRatingCombat = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Combat, TotalSharedKillsOnPlayerRating.Combat);
+
+            TotalFullKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalFullKillsOnAIRank?.Exercise,
+                                                                              PltRecord.TotalFullKillsOnAIRank?.Melee,
+                                                                              PltRecord.TotalFullKillsOnAIRank?.CombatEngagement);
+
+            TotalSharedKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalSharedKillsOnAIRank?.Exercise,
+                                                                                PltRecord.TotalSharedKillsOnAIRank?.Melee,
+                                                                                PltRecord.TotalSharedKillsOnAIRank?.CombatEngagement);
+
+            TotalAssistsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalAssistsOnAIRank?.Exercise,
+                                                                            PltRecord.TotalAssistsOnAIRank?.Melee,
+                                                                            PltRecord.TotalAssistsOnAIRank?.CombatEngagement);
+
+            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
+            CombinedTotalKillsOnAIRankExercise = CollectionHelpers.Combine(TotalFullKillsOnAIRank.Exercise, TotalSharedKillsOnAIRank.Exercise);
+            CombinedTotalKillsOnAIRankMelee = CollectionHelpers.Combine(TotalFullKillsOnAIRank.Melee, TotalSharedKillsOnAIRank.Melee);
+            CombinedTotalKillsOnAIRankCombat = CollectionHelpers.Combine(TotalFullKillsOnAIRank.Combat, TotalSharedKillsOnAIRank.Combat);
+
+            TotalLossesFromPlayerRank = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalLossesFromPlayerRank?.Exercise,
+                                                                                 PltRecord.TotalLossesFromPlayerRank?.Melee,
+                                                                                 PltRecord.TotalLossesFromPlayerRank?.CombatEngagement);
+
+            TotalLossesFromAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalLossesFromAIRank?.Exercise,
+                                                                             PltRecord.TotalLossesFromAIRank?.Melee,
+                                                                             PltRecord.TotalLossesFromAIRank?.CombatEngagement);
         }
 
         public string PilotName
@@ -202,33 +227,172 @@ namespace XvTPilotEditor.ViewModels
 
         public MissionCategoryRecordMatrixViewModel TotalAssistsOnPlayerRating { get; private set; }
 
-        public MissionCategoryRecordByAIRating TotalFullKillsOnAIRank { get; private set; } = new MissionCategoryRecordByAIRating();
+        private MissionCategoryRecordMatrixViewModel TotalFullKillsOnAIRank;
+        private MissionCategoryRecordMatrixViewModel TotalSharedKillsOnAIRank;
 
-        public MissionCategoryRecordByAIRating TotalSharedKillsOnAIRank { get; private set; } = new MissionCategoryRecordByAIRating();
+        // Combined collections for UI (Full + Shared pairs)
+        public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnAIRankExercise { get; private set; } = new();
+        public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnAIRankMelee { get; private set; } = new();
+        public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnAIRankCombat { get; private set; } = new();
 
-        public MissionCategoryRecordByAIRating TotalAssistsOnAIRank { get; private set; } = new MissionCategoryRecordByAIRating();
+        public MissionCategoryRecordMatrixViewModel TotalAssistsOnAIRank { get; private set; }
 
-        public MissionCategoryRecord TotalHiddenCargoFound { get; private set; } = new MissionCategoryRecord();
+        // TotalHiddenCargoFound
+        public string TotalHiddenCargoFoundExercise
+        {
+            get => PltRecord.TotalHiddenCargoFound.Exercise.ToString();
+            set { PltRecord.TotalHiddenCargoFound.Exercise = SetIntProperty(value); }
+        }
+        public string TotalHiddenCargoFoundMelee
+        {
+            get => PltRecord.TotalHiddenCargoFound.Melee.ToString();
+            set { PltRecord.TotalHiddenCargoFound.Melee = SetIntProperty(value); }
+        }
+        public string TotalHiddenCargoFoundCombatEngagement
+        {
+            get => PltRecord.TotalHiddenCargoFound.CombatEngagement.ToString();
+            set { PltRecord.TotalHiddenCargoFound.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecord TotalLaserHit { get; private set; } = new MissionCategoryRecord();
+        // TotalLaserHit
+        public string TotalLaserHitExercise
+        {
+            get => PltRecord.TotalLaserHit.Exercise.ToString();
+            set { PltRecord.TotalLaserHit.Exercise = SetIntProperty(value); }
+        }
+        public string TotalLaserHitMelee
+        {
+            get => PltRecord.TotalLaserHit.Melee.ToString();
+            set { PltRecord.TotalLaserHit.Melee = SetIntProperty(value); }
+        }
+        public string TotalLaserHitCombatEngagement
+        {
+            get => PltRecord.TotalLaserHit.CombatEngagement.ToString();
+            set { PltRecord.TotalLaserHit.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecord TotalLaserFired { get; private set; } = new MissionCategoryRecord();
+        // TotalLaserFired
+        public string TotalLaserFiredExercise
+        {
+            get => PltRecord.TotalLaserFired.Exercise.ToString();
+            set { PltRecord.TotalLaserFired.Exercise = SetIntProperty(value); }
+        }
+        public string TotalLaserFiredMelee
+        {
+            get => PltRecord.TotalLaserFired.Melee.ToString();
+            set { PltRecord.TotalLaserFired.Melee = SetIntProperty(value); }
+        }
+        public string TotalLaserFiredCombatEngagement
+        {
+            get => PltRecord.TotalLaserFired.CombatEngagement.ToString();
+            set { PltRecord.TotalLaserFired.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecord TotalWarheadHit { get; private set; } = new MissionCategoryRecord();
+        // TotalWarheadHit
+        public string TotalWarheadHitExercise
+        {
+            get => PltRecord.TotalWarheadHit.Exercise.ToString();
+            set { PltRecord.TotalWarheadHit.Exercise = SetIntProperty(value); }
+        }
+        public string TotalWarheadHitMelee
+        {
+            get => PltRecord.TotalWarheadHit.Melee.ToString();
+            set { PltRecord.TotalWarheadHit.Melee = SetIntProperty(value); }
+        }
+        public string TotalWarheadHitCombatEngagement
+        {
+            get => PltRecord.TotalWarheadHit.CombatEngagement.ToString();
+            set { PltRecord.TotalWarheadHit.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecord TotalWarheadFired { get; private set; } = new MissionCategoryRecord();
+        // TotalWarheadFired
+        public string TotalWarheadFiredExercise
+        {
+            get => PltRecord.TotalWarheadFired.Exercise.ToString();
+            set { PltRecord.TotalWarheadFired.Exercise = SetIntProperty(value); }
+        }
+        public string TotalWarheadFiredMelee
+        {
+            get => PltRecord.TotalWarheadFired.Melee.ToString();
+            set { PltRecord.TotalWarheadFired.Melee = SetIntProperty(value); }
+        }
+        public string TotalWarheadFiredCombatEngagement
+        {
+            get => PltRecord.TotalWarheadFired.CombatEngagement.ToString();
+            set { PltRecord.TotalWarheadFired.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecord TotalCraftLosses { get; private set; } = new MissionCategoryRecord();
+        // TotalCraftLosses
+        public string TotalCraftLossesExercise
+        {
+            get => PltRecord.TotalCraftLosses.Exercise.ToString();
+            set { PltRecord.TotalCraftLosses.Exercise = SetIntProperty(value); }
+        }
+        public string TotalCraftLossesMelee
+        {
+            get => PltRecord.TotalCraftLosses.Melee.ToString();
+            set { PltRecord.TotalCraftLosses.Melee = SetIntProperty(value); }
+        }
+        public string TotalCraftLossesCombatEngagement
+        {
+            get => PltRecord.TotalCraftLosses.CombatEngagement.ToString();
+            set { PltRecord.TotalCraftLosses.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecord TotalLossesFromCollisions { get; private set; } = new MissionCategoryRecord();
+        // TotalLossesFromCollisions
+        public string TotalLossesFromCollisionsExercise
+        {
+            get => PltRecord.TotalLossesFromCollisions.Exercise.ToString();
+            set { PltRecord.TotalLossesFromCollisions.Exercise = SetIntProperty(value); }
+        }
+        public string TotalLossesFromCollisionsMelee
+        {
+            get => PltRecord.TotalLossesFromCollisions.Melee.ToString();
+            set { PltRecord.TotalLossesFromCollisions.Melee = SetIntProperty(value); }
+        }
+        public string TotalLossesFromCollisionsCombatEngagement
+        {
+            get => PltRecord.TotalLossesFromCollisions.CombatEngagement.ToString();
+            set { PltRecord.TotalLossesFromCollisions.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecord TotalLossesFromStarships { get; private set; } = new MissionCategoryRecord();
+        // TotalLossesFromStarships
+        public string TotalLossesFromStarshipsExercise
+        {
+            get => PltRecord.TotalLossesFromStarships.Exercise.ToString();
+            set { PltRecord.TotalLossesFromStarships.Exercise = SetIntProperty(value); }
+        }
+        public string TotalLossesFromStarshipsMelee
+        {
+            get => PltRecord.TotalLossesFromStarships.Melee.ToString();
+            set { PltRecord.TotalLossesFromStarships.Melee = SetIntProperty(value); }
+        }
+        public string TotalLossesFromStarshipsCombatEngagement
+        {
+            get => PltRecord.TotalLossesFromStarships.CombatEngagement.ToString();
+            set { PltRecord.TotalLossesFromStarships.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecord TotalLossesFromMines { get; private set; } = new MissionCategoryRecord();
+        // TotalLossesFromMines
+        public string TotalLossesFromMinesExercise
+        {
+            get => PltRecord.TotalLossesFromMines.Exercise.ToString();
+            set { PltRecord.TotalLossesFromMines.Exercise = SetIntProperty(value); }
+        }
+        public string TotalLossesFromMinesMelee
+        {
+            get => PltRecord.TotalLossesFromMines.Melee.ToString();
+            set { PltRecord.TotalLossesFromMines.Melee = SetIntProperty(value); }
+        }
+        public string TotalLossesFromMinesCombatEngagement
+        {
+            get => PltRecord.TotalLossesFromMines.CombatEngagement.ToString();
+            set { PltRecord.TotalLossesFromMines.CombatEngagement = SetIntProperty(value); }
+        }
 
-        public MissionCategoryRecordByPlayerRating TotalLossesFromPlayerRank { get; private set; } = new MissionCategoryRecordByPlayerRating();
+        public MissionCategoryRecordMatrixViewModel TotalLossesFromPlayerRank { get; private set; }
 
-        public MissionCategoryRecordByAIRating TotalLossesFromAIRank { get; private set; } = new MissionCategoryRecordByAIRating();
+        public MissionCategoryRecordMatrixViewModel TotalLossesFromAIRank { get; private set; }
 
         // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
 

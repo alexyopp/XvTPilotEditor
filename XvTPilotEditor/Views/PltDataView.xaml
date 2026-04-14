@@ -297,62 +297,348 @@
             </Expander>
 
             <!-- TODO: Properly integrate below items -->
-            <Expander Header="Total Full Kills On AI Rank" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalFullKillsOnAIRank}" TextWrapping="Wrap"/>
+            <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
+            <!-- TotalFullKillsOnAIRank, TotalSharedKillsOnAIRank -->
+            <Expander Header="Total Kills On AI Rank" IsExpanded="False">
+                <ctrl:QuadBase>
+                    <!-- Index column -->
+                    <ctrl:QuadBase.Column0Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding CombinedTotalKillsOnAIRankExercise}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Height="30">
+                                            <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                         Text="{Binding (ItemsControl.AlternationIndex),
+                                                        RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                        Converter={conv:UIntToAIRankConverter}}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column0Content>
+
+                    <!-- Exercise column (Full + Shared) -->
+                    <ctrl:QuadBase.Column1Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding CombinedTotalKillsOnAIRankExercise}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column1Content>
+
+                    <!-- Melee column (Full + Shared) -->
+                    <ctrl:QuadBase.Column2Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding CombinedTotalKillsOnAIRankMelee}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column2Content>
+
+                    <!-- Combat column (Full + Shared) -->
+                    <ctrl:QuadBase.Column3Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding CombinedTotalKillsOnAIRankCombat}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                 SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column3Content>
+                </ctrl:QuadBase>
             </Expander>
 
-            <Expander Header="Total Shared Kills On AI Rank" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalSharedKillsOnAIRank}" TextWrapping="Wrap"/>
+            <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
+            <!-- TotalAssistsOnPlayerRating -->
+            <Expander Header="Total Assists On AI Rank" IsExpanded="False">
+                <ctrl:QuadBase>
+                    <!-- Index column -->
+                    <ctrl:QuadBase.Column0Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalAssistsOnAIRank.Exercise}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Height="30">
+                                            <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                     Text="{Binding (ItemsControl.AlternationIndex),
+                                                    RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                    Converter={conv:UIntToAIRankConverter}}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column0Content>
+
+                    <!-- Exercise column -->
+                    <ctrl:QuadBase.Column1Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalAssistsOnAIRank.Exercise}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column1Content>
+
+                    <!-- Melee column -->
+                    <ctrl:QuadBase.Column2Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalAssistsOnAIRank.Melee}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column2Content>
+
+                    <!-- Combat column -->
+                    <ctrl:QuadBase.Column3Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalAssistsOnAIRank.Combat}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column3Content>
+                </ctrl:QuadBase>
             </Expander>
 
-            <Expander Header="Total Assists On AI Rank" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalAssistsOnAIRank}" TextWrapping="Wrap"/>
+            <!-- TotalHiddenCargoFound -->
+            <ctrl:LabeledTripleTextBox
+                Label="Total Hidden Cargo Found:"
+                TextBox1Content="{Binding TotalHiddenCargoFoundExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding TotalHiddenCargoFoundMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding TotalHiddenCargoFoundCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <!-- TotalLaserHit -->
+            <ctrl:LabeledTripleTextBox
+                Label="Total Laser Hits:"
+                TextBox1Content="{Binding TotalLaserHitExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding TotalLaserHitMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding TotalLaserHitCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <!-- TotalLaserFired -->
+            <ctrl:LabeledTripleTextBox
+                Label="Total Lasers Fired:"
+                TextBox1Content="{Binding TotalLaserFiredExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding TotalLaserFiredMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding TotalLaserFiredCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <!-- TotalWarheadHit -->
+            <ctrl:LabeledTripleTextBox
+                Label="Total Warhead Hits:"
+                TextBox1Content="{Binding TotalWarheadHitExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding TotalWarheadHitMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding TotalWarheadHitCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <!-- TotalWarheadFired -->
+            <ctrl:LabeledTripleTextBox
+                Label="Total Warheads Fired:"
+                TextBox1Content="{Binding TotalWarheadFiredExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding TotalWarheadFiredMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding TotalWarheadFiredCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <!-- TotalCraftLosses -->
+            <ctrl:LabeledTripleTextBox
+                Label="Total Craft Losses:"
+                TextBox1Content="{Binding TotalCraftLossesExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding TotalCraftLossesMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding TotalCraftLossesCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <!-- TotalLossesFromCollisions -->
+            <ctrl:LabeledTripleTextBox
+                Label="Total Losses From Collisions:"
+                TextBox1Content="{Binding TotalLossesFromCollisionsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding TotalLossesFromCollisionsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding TotalLossesFromCollisionsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <!-- TotalLossesFromStarships -->
+            <ctrl:LabeledTripleTextBox
+                Label="Total Losses From Starships:"
+                TextBox1Content="{Binding TotalLossesFromStarshipsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding TotalLossesFromStarshipsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding TotalLossesFromStarshipsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <!-- TotalLossesFromMines -->
+            <ctrl:LabeledTripleTextBox
+                Label="Total Losses From Mines:"
+                TextBox1Content="{Binding TotalLossesFromMinesExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox2Content="{Binding TotalLossesFromMinesMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                TextBox3Content="{Binding TotalLossesFromMinesCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
+            <!-- TotalLossesFromPlayerRank -->
+            <Expander Header="Total Losses From Player Rank" IsExpanded="False">
+                <ctrl:QuadBase>
+                    <!-- Index column -->
+                    <ctrl:QuadBase.Column0Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalLossesFromPlayerRank.Exercise}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Height="30">
+                                            <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                                Text="{Binding (ItemsControl.AlternationIndex),
+                                                    RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                    Converter={conv:UIntToPilotRatingConverter}}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column0Content>
+
+                    <!-- Exercise column -->
+                    <ctrl:QuadBase.Column1Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalLossesFromPlayerRank.Exercise}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column1Content>
+
+                    <!-- Melee column -->
+                    <ctrl:QuadBase.Column2Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalLossesFromPlayerRank.Melee}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column2Content>
+
+                    <!-- Combat column -->
+                    <ctrl:QuadBase.Column3Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalLossesFromPlayerRank.Combat}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column3Content>
+                </ctrl:QuadBase>
             </Expander>
 
-            <Expander Header="Total Hidden Cargo Found" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalHiddenCargoFound}" TextWrapping="Wrap"/>
+            <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
+            <!-- TotalLossesFromAIRank -->
+            <Expander Header="Total Losses From AI Rank" IsExpanded="False">
+                <ctrl:QuadBase>
+                    <!-- Index column -->
+                    <ctrl:QuadBase.Column0Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalLossesFromAIRank.Exercise}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Height="30">
+                                            <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                                Text="{Binding (ItemsControl.AlternationIndex),
+                                                    RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                    Converter={conv:UIntToAIRankConverter}}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column0Content>
+
+                    <!-- Exercise column -->
+                    <ctrl:QuadBase.Column1Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalLossesFromAIRank.Exercise}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column1Content>
+
+                    <!-- Melee column -->
+                    <ctrl:QuadBase.Column2Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalLossesFromAIRank.Melee}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column2Content>
+
+                    <!-- Combat column -->
+                    <ctrl:QuadBase.Column3Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalLossesFromAIRank.Combat}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column3Content>
+                </ctrl:QuadBase>
             </Expander>
 
-            <Expander Header="Total Laser Hit" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalLaserHit}" TextWrapping="Wrap"/>
-            </Expander>
-
-            <Expander Header="Total Laser Fired" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalLaserFired}" TextWrapping="Wrap"/>
-            </Expander>
-
-            <Expander Header="Total Warhead Hit" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalWarheadHit}" TextWrapping="Wrap"/>
-            </Expander>
-
-            <Expander Header="Total Warhead Fired" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalWarheadFired}" TextWrapping="Wrap"/>
-            </Expander>
-
-            <Expander Header="Total Craft Losses" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalCraftLosses}" TextWrapping="Wrap"/>
-            </Expander>
-
-            <Expander Header="Total Losses From Collisions" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalLossesFromCollisions}" TextWrapping="Wrap"/>
-            </Expander>
-
-            <Expander Header="Total Losses From Starships" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalLossesFromStarships}" TextWrapping="Wrap"/>
-            </Expander>
-
-            <Expander Header="Total Losses From Mines" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalLossesFromMines}" TextWrapping="Wrap"/>
-            </Expander>
-
-            <Expander Header="Total Losses From Player Rank" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalLossesFromPlayerRank}" TextWrapping="Wrap"/>
-            </Expander>
-
-            <Expander Header="Total Losses From AI Rank" IsExpanded="False" Margin="0,6,0,6">
-                <TextBlock Text="{Binding TotalLossesFromAIRank}" TextWrapping="Wrap"/>
-            </Expander>
-            
             <!-- More scalar / array items -->
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
                 <ctrl:LabeledTextBox Label="Current Rank:"

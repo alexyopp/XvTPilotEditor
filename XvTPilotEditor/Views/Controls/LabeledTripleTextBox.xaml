@@ -28,7 +28,7 @@
              Text="{Binding Path=TextBox3Content, RelativeSource={RelativeSource AncestorType=local:LabeledTripleTextBox}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         </DataTemplate>
     </UserControl.Resources>
-        <Grid>
+    <Grid>
         <local:QuadBase
             Column0Content="{Binding Label, RelativeSource={RelativeSource AncestorType=UserControl}}"
             Column1Content="{Binding TextBox1Content, RelativeSource={RelativeSource AncestorType=UserControl}}"
