@@ -227,46 +227,73 @@
                 </ctrl:QuadBase>
             </Expander>
 
-            <!-- TODO: Fix display so that indices are only listed once on the left, and replaced by rating strings, remove extraneous Exercise/Melee/Combat labels and line up columns with the QuadBase layout; remove Expander once item filtering is in place  -->
+            <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
             <!-- TotalAssistsOnPlayerRating -->
-            <Expander Header="Total Assists On Player Rating" IsExpanded="False" Margin="0,6,0,6">
-                <StackPanel Margin="8"  Orientation="Horizontal">
-                    <TextBlock FontWeight="Bold" Text="Exercise" Margin="4,2"/>
-                    <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRating.Exercise}" AlternationCount="1000">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="8,2">
-                                    <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                    <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+            <Expander Header="Total Assists On Player Rating" IsExpanded="False">
+                <ctrl:QuadBase>
+                    <!-- Index column -->
+                    <ctrl:QuadBase.Column0Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRating.Exercise}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Height="30">
+                                            <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                                 Text="{Binding (ItemsControl.AlternationIndex),
+                                                                RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                                Converter={conv:UIntToPilotRatingConverter}}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column0Content>
 
-                    <TextBlock FontWeight="Bold" Text="Melee" Margin="4,8,4,2"/>
-                    <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRating.Melee}" AlternationCount="1000">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="8,2">
-                                    <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                    <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                    <!-- Exercise column -->
+                    <ctrl:QuadBase.Column1Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRating.Exercise}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column1Content>
 
-                    <TextBlock FontWeight="Bold" Text="Combat" Margin="4,8,4,2"/>
-                    <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRating.Combat}" AlternationCount="1000">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal" Margin="8,2">
-                                    <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
-                                    <TextBox Width="200" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </StackPanel>
+                    <!-- Melee column -->
+                    <ctrl:QuadBase.Column2Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRating.Melee}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column2Content>
+
+                    <!-- Combat column -->
+                    <ctrl:QuadBase.Column3Content>
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding TotalAssistsOnPlayerRating.Combat}" AlternationCount="1000">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                            <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </ctrl:QuadBase.Column3Content>
+                </ctrl:QuadBase>
             </Expander>
 
             <!-- TODO: Properly integrate below items -->
