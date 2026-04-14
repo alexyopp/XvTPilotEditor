@@ -772,18 +772,25 @@
                 </ItemsControl>
             </Expander>
 
-            <!-- TODO: Properly integrate below items -->
-            <!-- Connected players and team results -->
             <Expander Header="Connected Players" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding ConnectedPlayer}">
+                <ItemsControl ItemsSource="{Binding ConnectedPlayer}" AlternationCount="1000">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="20" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                <ctrl:ConnectedPlayerRecordView Margin="0,0,20,0"/>
+                            </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </Expander>
 
+            <!-- TODO: Properly integrate below items -->
             <Expander Header="Debrief Team Result" IsExpanded="False" Margin="0,6,0,6">
                 <ItemsControl ItemsSource="{Binding DebriefTeamResult}">
                     <ItemsControl.ItemTemplate>

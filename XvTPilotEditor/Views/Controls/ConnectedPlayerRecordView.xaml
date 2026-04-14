@@ -1,0 +1,127 @@
+﻿<UserControl x:Class="XvTPilotEditor.Views.Controls.ConnectedPlayerRecordView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:XvTPilotEditor.Views.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300">
+    <!-- TODO: Fix alignment of ConnectedPlayerRecordView internal elements -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <local:LabeledTextBox Label="Pilot Long Name (Unused):"
+                              Value="{Binding PilotLongNameUnused, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="0"/>
+
+        <local:LabeledTextBox Label="Pilot Short Name:"
+                              Value="{Binding PilotShortName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="1"/>
+
+        <!-- TODO: Limit to 0-48? -->
+        <local:LabeledTextBox Label="Flight Group Index:"
+                              Value="{Binding FGIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="2"/>
+
+        <!-- TODO: What is the significance of DP? -->
+        <local:LabeledTextBox Label="DP Player ID:"
+                              Value="{Binding DPPlayerID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="3"/>
+
+        <!-- TODO: Should we convert this to display the Pilot Rating description (e.g., "Officer 1st Class")? -->
+        <local:LabeledTextBox Label="Pilot Rating:"
+                              Value="{Binding PilotRank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="4"/>
+
+        <local:LabeledTextBox Label="Player Score:"
+                              Value="{Binding PlayerScore, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="5"/>
+        
+        <Grid Grid.Row="6" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="Kills (Shared Kills): "/>
+            <local:KillsTuple Grid.Column="1"
+                              HorizontalAlignment="Right"
+                              KillsValue="{Binding FullKills, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              SharedKillsValue="{Binding SharedKills, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+
+        <!-- TODO: What is this? -->
+        <local:LabeledTextBox Label="Unused Inspections:"
+                              Value="{Binding UnusedInspections, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="7"/>
+
+        <!-- TODO: Should this be renamed to just "Assists"? -->
+        <local:LabeledTextBox Label="Assist Kills:"
+                              Value="{Binding AssistKills, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="8"/>
+
+        <local:LabeledTextBox Label="Losses:"
+                              Value="{Binding Losses, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="9"/>
+        
+        <!-- TODO: Should we convert this to display the Craft Type description (e.g., "X-Wing")? -->
+        <local:LabeledTextBox Label="Craft Type:"
+                              Value="{Binding CraftType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="10"/>
+
+        <!-- TODO: What is this? Why "Optional"? -->
+        <local:LabeledTextBox Label="Optional Craft Index:"
+                              Value="{Binding OptionalCraftIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="11"/>
+
+        <!-- TODO: What is this? Why "Optional"? -->
+        <local:LabeledTextBox Label="Optional Warhead:"
+                              Value="{Binding OptionalWarhead, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="12"/>
+
+        <!-- TODO: What is this? Why "Optional"? -->
+        <local:LabeledTextBox Label="Optional Beam:"
+                              Value="{Binding OptionalBeam, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="13"/>
+
+        <!-- TODO: What is this? Why "Optional"? -->
+        <local:LabeledTextBox Label="Optional Countermeasure:"
+                              Value="{Binding OptionalCountermeasure, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="14"/>
+
+        <!-- TODO: Assuming this is confirmed to be a boolean indicating if the player has disconnected, can we remove the UNK from the property name? -->
+        <local:LabeledTextBox Label="Has Disconnected From Host:"
+                              Value="{Binding HasDisconnectedFromHostUNK, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Metadata=""
+                              Grid.Row="15"/>
+    </Grid>
+</UserControl>

@@ -78,6 +78,11 @@ namespace XvTPilotEditor.ViewModels
             CombinedDebriefKillsByFG = CollectionHelpers.Combine(DebriefFullKillsByFG.Values, DebriefSharedKillsByFG.Values);
 
             DebriefMeleeAIRankFG = new IntArrayViewModel(PltRecord.DebriefMeleeAIRankFG);
+
+            foreach (var connectedPlayerRecord in PltRecord.ConnectedPlayer)
+            {
+                ConnectedPlayer.Add(new ConnectedPlayerRecordViewModel(connectedPlayerRecord));
+            }
         }
 
         public string PilotName
@@ -465,7 +470,7 @@ namespace XvTPilotEditor.ViewModels
 
         // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
 
-        public ConnectedPlayerRecord[] ConnectedPlayer { get; private set; } = new ConnectedPlayerRecord[8];
+        public ObservableCollection<ConnectedPlayerRecordViewModel> ConnectedPlayer { get; private set; } = new();
 
         public TeamResultRecord[] DebriefTeamResult { get; private set; } = new TeamResultRecord[10];
 
