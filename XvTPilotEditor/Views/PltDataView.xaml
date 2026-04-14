@@ -296,7 +296,6 @@
                 </ctrl:QuadBase>
             </Expander>
 
-            <!-- TODO: Properly integrate below items -->
             <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
             <!-- TotalFullKillsOnAIRank, TotalSharedKillsOnAIRank -->
             <Expander Header="Total Kills On AI Rank" IsExpanded="False">
@@ -639,7 +638,8 @@
                 </ctrl:QuadBase>
             </Expander>
 
-            <!-- More scalar / array items -->
+            <!-- TODO: Combine CurrentRank and RankString into a single control? -->
+            <!-- Leave this number value as-is; do not convert to a Pilot Rating description -->
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
                 <ctrl:LabeledTextBox Label="Current Rank:"
                     Value="{Binding CurrentRank, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -652,6 +652,7 @@
                     Metadata=""/>
             </StackPanel>
 
+            <!-- TODO: Combine CurrentRank and RankString into a single control? Remember EH uses different strings, so don't just use a dropdown populated by the vanilla rank strings -->
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
                 <ctrl:LabeledTextBox Label="Rank String:"
                     Value="{Binding RankString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -664,7 +665,7 @@
                     Metadata=""/>
             </StackPanel>
 
-            <!-- TODO -->
+            <!-- TODO: Properly integrate below items -->
             <!-- Debrief arrays -->
             <Expander Header="Debrief Full Kills On Player" IsExpanded="False" Margin="0,6,0,6">
                 <ItemsControl ItemsSource="{Binding DebriefFullKillsOnPlayer}">

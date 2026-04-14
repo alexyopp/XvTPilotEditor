@@ -396,7 +396,7 @@ namespace XvTPilotEditor.ViewModels
 
         // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
 
-        // TODO: Sync with PilotRating enum?
+        // Leave this number value as-is; do not convert to a Pilot Rating description.  That is handled by the RankString property.
         public string CurrentRank
         {
             get => PltRecord.CurrentRank.ToString();
