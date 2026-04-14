@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using XvTPilotEditor.Models;
 using XvTPilotEditor.Utilities;
 
@@ -29,6 +28,11 @@ namespace XvTPilotEditor.ViewModels
             TotalAssistsOnPlayerRating = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalAssistsOnPlayerRating?.Exercise,
                                                                                   PltRecord.TotalAssistsOnPlayerRating?.Melee,
                                                                                   PltRecord.TotalAssistsOnPlayerRating?.CombatEngagement);
+
+            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
+            CombinedTotalKillsOnPlayerRatingExercise = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Exercise, TotalSharedKillsOnPlayerRating.Exercise);
+            CombinedTotalKillsOnPlayerRatingMelee = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Melee, TotalSharedKillsOnPlayerRating.Melee);
+            CombinedTotalKillsOnPlayerRatingCombat = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Combat, TotalSharedKillsOnPlayerRating.Combat);
         }
 
         public string PilotName
@@ -188,8 +192,14 @@ namespace XvTPilotEditor.ViewModels
             set { PltRecord.FriendlyKills.CombatEngagement = SetIntProperty(value); }
         }
 
-        public MissionCategoryRecordMatrixViewModel TotalFullKillsOnPlayerRating { get; private set; }
-        public MissionCategoryRecordMatrixViewModel TotalSharedKillsOnPlayerRating { get; private set; }
+        private MissionCategoryRecordMatrixViewModel TotalFullKillsOnPlayerRating;
+        private MissionCategoryRecordMatrixViewModel TotalSharedKillsOnPlayerRating;
+
+        // Combined collections for UI (Full + Shared pairs)
+        public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnPlayerRatingExercise { get; private set; } = new();
+        public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnPlayerRatingMelee { get; private set; } = new();
+        public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnPlayerRatingCombat { get; private set; } = new();
+
         public MissionCategoryRecordMatrixViewModel TotalAssistsOnPlayerRating { get; private set; }
 
         public MissionCategoryRecordByAIRating TotalFullKillsOnAIRank { get; private set; } = new MissionCategoryRecordByAIRating();

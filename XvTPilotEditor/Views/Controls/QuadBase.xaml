@@ -4,10 +4,10 @@
              x:Name="Root">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="175"/>
-            <ColumnDefinition Width="175"/>
-            <ColumnDefinition Width="175"/>
+            <ColumnDefinition Width="225"/>
+            <ColumnDefinition Width="225"/>
+            <ColumnDefinition Width="225"/>
         </Grid.ColumnDefinitions>
 
         <ContentPresenter Grid.Column="0" Content="{Binding Column0Content, ElementName=Root}" ContentTemplate="{Binding Column0ContentTemplate, ElementName=Root}"/>
