@@ -46,7 +46,7 @@
             HorizontalScrollBarVisibility = "Auto"
             VerticalScrollBarVisibility = "Auto">
             <ScrollViewer.Resources>
-                <DataTemplate DataType="{x:Type vm:PltDataViewModel}">
+                <DataTemplate DataType="{x:Type vm:PilotRecordBaseViewModel}">
                     <view:PltDataView/>
                 </DataTemplate>
             </ScrollViewer.Resources>

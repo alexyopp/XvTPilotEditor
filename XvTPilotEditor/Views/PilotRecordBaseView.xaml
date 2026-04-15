@@ -808,13 +808,6 @@
                 </ItemsControl>
             </Expander>
 
-            <!-- TODO: Properly integrate below items -->
-            <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-                <ctrl:LabeledTextBox Label="Last Selected Faction:"
-                    Value="{Binding LastSelectedFaction, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                    Metadata=""/>
-            </StackPanel>
-            
         </StackPanel>
     </ScrollViewer>
 </UserControl>
