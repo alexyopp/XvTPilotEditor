@@ -8,13 +8,13 @@ namespace XvTPilotEditor.Models
         // Note: these five paragraphs correlate to the gaps in the PilotRecordBase properties; integrating them reveals the structure of the pl2 file
         // TODO: Consider creating directly from filebytes/exporting filebytes, rather than PilotFileSchema objects.
 
-        public int                          activeMissionTeam               { get; set; }
-        public int                          MissionFolderIndex              { get; set; }
-        public int[]                        SelectedIDNumOfMissionCategory  { get; private set; }   = Array.Empty<int>();
-        public string                       GameName                        { get; set; }           = string.Empty;
-        public string                       LastGameName                    { get; set; }           = string.Empty;
-        public int                          isMissionCategorySeries         { get; set; }
-        public int                          activeMissionIDNum              { get; set; }
+        public int                          activeMissionTeam               { get; set; }                                                       //              TODO: Investigate if this is the same as Plt's LastTeamNumber
+        public int                          MissionFolderIndex              { get; set; }                                                       //              TODO: Investigate if this is the same as Plt's LastSelectedMissionType
+        public int[]                        SelectedIDNumOfMissionCategory  { get; private set; }   = Array.Empty<int>();                       // int[6]       TODO: Investigate if this is the same as Plt's LastSelectedTraining, LastSelectedMelee, LastSelectedTournament, LastSelectedCombat, LastSelectedBattle
+        public string                       GameName                        { get; set; }           = string.Empty;                             // char[32]     TODO: Pretty sure the string is just length 22 with 10 bytes of padding, meaning this can be pulled into the Base class along with Plt's GameNameString
+        public string                       LastGameName                    { get; set; }           = string.Empty;                             // char[32]     TODO: Pretty sure the string is just length 22 with 10 bytes of padding, meaning this can be pulled into the Base class along with Plt's GameNameString2
+        public int                          isMissionCategorySeries         { get; set; }                                                       //              TODO: What is this?  Is it the same as Plt's LastMissionWasNonSpecific?
+        public int                          activeMissionIDNum              { get; set; }                                                       //              TODO: What is this?  Is it the same as Plt's Unknown0x326?
 
         //  Note the difference in types between the Plt and Pl2 versions
         //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)

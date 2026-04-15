@@ -53,7 +53,6 @@
                 Metadata=""/>
         </StackPanel>
 
-        <!-- Arrays as expanders (simple indexed list) -->
         <Expander Header="Unknown0x26" IsExpanded="False" Margin="0,6,0,6">
             <ItemsControl ItemsSource="{Binding Unknown0x26.Values}" AlternationCount="1000">
                 <ItemsControl.ItemTemplate>

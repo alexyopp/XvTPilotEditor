@@ -5,9 +5,13 @@ namespace XvTPilotEditor
     public static class Constants
     {   public const uint PILOT_NAME_MAX_LENGTH = 12;
         public const uint PILOT_RATING_NAME_MAX_LENGTH = 32;
-        public const uint RATING_HISTORY_ENTRIES = 100;         // ?
-        public const uint MAX_MISSIONS_PER_FACTION = 200;       // ?
+        public const uint RATING_HISTORY_ENTRIES = 100;         // TODO: Confirm this is correct
+        public const uint MAX_MISSIONS_PER_FACTION = 200;       // TODO: Confirm this is correct
         public const uint MAX_CONNECTED_PLAYERS = 8;
+        public const uint MAX_TEAMS = 10;
+        public const uint MAX_FLIGHT_GROUPS = 48;
+        public const uint PLT_GAME_NAME_MAX_LENGTH = 22;        // TODO: Confirm this is correct (and not actually 32 like it seems to be in Pl2)
+        public const uint PL2_GAME_NAME_MAX_LENGTH = 32;
     }
 
     //  List in order of BoP Craft Library (different from order shown on Pilot Statistics)

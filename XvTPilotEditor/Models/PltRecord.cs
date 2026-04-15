@@ -8,19 +8,20 @@ namespace XvTPilotEditor.Models
         // Note: these five paragraphs correlate to the gaps in the PilotRecordBase properties; integrating them reveals the structure of the plt file
         // TODO: Consider creating directly from filebytes/exporting filebytes, rather than PilotFileSchema objects.
 
-        public int                      lastTeamNumber                  { get; set; }
-        public int                      lastSelectedMissionType         { get; set; }
-        public int                      lastSelectedTraining            { get; set; }
-        public int                      lastSelectedMelee               { get; set; }
-        public int                      lastSelectedTournament          { get; set; }
-        public int                      lastSelectedCombat              { get; set; }
-        public int                      lastSelectedBattle              { get; set; }
-        public string                   GameNameString                  { get; set; }           = string.Empty;
-        public byte[]                   unknown0x2F8                    { get; private set; }   = Array.Empty<byte>();
-        public string                   GameNameString2                 { get; set; }           = string.Empty;
-        public byte[]                   unknown0x318                    { get; private set; }   = Array.Empty<byte>();
-        public int                      lastMissionWasNonSpecific       { get; set; }
-        public int                      unknown0x326                    { get; set; }
+        //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
+        public int                      LastTeamNumber                  { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's activeMissionTeam
+        public int                      LastSelectedMissionType         { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's MissionFolderIndex
+        public int                      LastSelectedTraining            { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[0]
+        public int                      LastSelectedMelee               { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[1]
+        public int                      LastSelectedTournament          { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[2]
+        public int                      LastSelectedCombat              { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[3]
+        public int                      LastSelectedBattle              { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[4]
+        public string                   GameNameString                  { get; set; }           = string.Empty;                                 // char[22]     TODO: Investigate if this is the same as Pl2's GameName
+        public byte[]                   Unknown0x2F8                    { get; set; }           = Array.Empty<byte>();                          // byte[10]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
+        public string                   GameNameString2                 { get; set; }           = string.Empty;                                 // char[22]     TODO: Investigate if this is the same as Pl2's LastGameName
+        public byte[]                   Unknown0x318                    { get; set; }           = Array.Empty<byte>();                          // byte[10]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
+        public int                      LastMissionWasNonSpecific       { get; set; }                                                           //              TODO: What is this?  Is it the same as Pl2's isMissionCategorySeries?
+        public int                      Unknown0x326                    { get; set; }                                                           //              TODO: What is this?  Is it the same as Pl2's activeMissionIDNum?
 
         //  Note the difference in types between the Plt and Pl2 versions
         //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
@@ -80,8 +81,8 @@ namespace XvTPilotEditor.Models
         public PLTAIRankCountRecord     debriefLossesFromAIRank         { get; private set; }
 
         //  Note the difference in types between the Plt and Pl2 versions
-        //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
-        public int LastSelectedFaction { get; set; }
+
+        public int LastSelectedFaction { get; set; }                                                                                            //          TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
         public PLTFactionRecord         rebelSingleplayerData           { get; private set; }
         public PLTFactionRecord         imperialSingleplayerData        { get; private set; }
         public PLTFactionRecord         rebelMultiplayerData            { get; private set; }
@@ -113,19 +114,19 @@ namespace XvTPilotEditor.Models
             Unknown0x26                         = pltFile.unknown0x26 ?? Array.Empty<int>();
             Unknown0x166                        = pltFile.unknown0x166 ?? Array.Empty<int>();
             Unknown0x186                        = pltFile.unknown0x186 ?? Array.Empty<int>();
-            lastTeamNumber                      = pltFile.lastTeamNumber;
-            lastSelectedMissionType             = pltFile.lastSelectedMissionType;
-            lastSelectedTraining                = pltFile.lastSelectedTraining;
-            lastSelectedMelee                   = pltFile.lastSelectedMelee;
-            lastSelectedTournament              = pltFile.lastSelectedTournament;
-            lastSelectedCombat                  = pltFile.lastSelectedCombat;
-            lastSelectedBattle                  = pltFile.lastSelectedBattle;
+            LastTeamNumber                      = pltFile.lastTeamNumber;
+            LastSelectedMissionType             = pltFile.lastSelectedMissionType;
+            LastSelectedTraining                = pltFile.lastSelectedTraining;
+            LastSelectedMelee                   = pltFile.lastSelectedMelee;
+            LastSelectedTournament              = pltFile.lastSelectedTournament;
+            LastSelectedCombat                  = pltFile.lastSelectedCombat;
+            LastSelectedBattle                  = pltFile.lastSelectedBattle;
             GameNameString                      = pltFile.GameNameString ?? string.Empty;
-            unknown0x2F8                        = pltFile.unknown0x2F8 ?? Array.Empty<byte>();
+            Unknown0x2F8                        = pltFile.unknown0x2F8 ?? Array.Empty<byte>();
             GameNameString2                     = pltFile.GameNameString2 ?? string.Empty;
-            unknown0x318                        = pltFile.unknown0x318 ?? Array.Empty<byte>();
-            lastMissionWasNonSpecific           = pltFile.lastMissionWasNonSpecific;
-            unknown0x326                        = pltFile.unknown0x326;
+            Unknown0x318                        = pltFile.unknown0x318 ?? Array.Empty<byte>();
+            LastMissionWasNonSpecific           = pltFile.lastMissionWasNonSpecific;
+            Unknown0x326                        = pltFile.unknown0x326;
             PromoPoints                         = pltFile.PromoPoints;
             WorsePromoPoints                    = pltFile.WorsePromoPoints;
             RankAdjustmentApplied               = pltFile.RankAdjustmentApplied;
@@ -256,19 +257,19 @@ namespace XvTPilotEditor.Models
             rec.unknown0x26                         = Unknown0x26;                                                  // int[80]
             rec.unknown0x166                        = Unknown0x166;                                                 // int[8]
             rec.unknown0x186                        = Unknown0x186;                                                 // int[80]
-            rec.lastTeamNumber                      = lastTeamNumber;
-            rec.lastSelectedMissionType             = lastSelectedMissionType;
-            rec.lastSelectedTraining                = lastSelectedTraining;
-            rec.lastSelectedMelee                   = lastSelectedMelee;
-            rec.lastSelectedTournament              = lastSelectedTournament;
-            rec.lastSelectedCombat                  = lastSelectedCombat;
-            rec.lastSelectedBattle                  = lastSelectedBattle;
+            rec.lastTeamNumber                      = LastTeamNumber;
+            rec.lastSelectedMissionType             = LastSelectedMissionType;
+            rec.lastSelectedTraining                = LastSelectedTraining;
+            rec.lastSelectedMelee                   = LastSelectedMelee;
+            rec.lastSelectedTournament              = LastSelectedTournament;
+            rec.lastSelectedCombat                  = LastSelectedCombat;
+            rec.lastSelectedBattle                  = LastSelectedBattle;
             rec.GameNameString                      = GameNameString;                                               // int[22]
-            rec.unknown0x2F8                        = unknown0x2F8;                                                 // int[10]
+            rec.unknown0x2F8                        = Unknown0x2F8;                                                 // byte[10]
             rec.GameNameString2                     = GameNameString2;                                              // int[22]
-            rec.unknown0x318                        = unknown0x318;                                                 // int[10]
-            rec.lastMissionWasNonSpecific           = lastMissionWasNonSpecific;
-            rec.unknown0x326                        = unknown0x326;
+            rec.unknown0x318                        = Unknown0x318;                                                 // int[10]
+            rec.lastMissionWasNonSpecific           = LastMissionWasNonSpecific;
+            rec.unknown0x326                        = Unknown0x326;
             rec.PromoPoints                         = PromoPoints;
             rec.WorsePromoPoints                    = WorsePromoPoints;
             rec.RankAdjustmentApplied               = RankAdjustmentApplied;
