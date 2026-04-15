@@ -13,8 +13,11 @@ namespace XvTPilotEditor.ViewModels
         public string? PltFileName { get; private set; }
         public string? Pl2FileName { get; private set; }
 
-        public PilotRecordBaseViewModel? PltDataVM { get; private set; }
-        public PilotRecordBaseViewModel? Pl2DataVM { get; private set; }
+        // TODO: Remove the extraneous PilotRecordBaseVMs once they're no longer needed.
+        public PilotRecordBaseViewModel? PltDataBaseVM { get; private set; }
+        public PilotRecordBaseViewModel? Pl2DataBaseVM { get; private set; }
+        public PltRecordViewModel? PltDataVM { get; private set; }
+        public Pl2RecordViewModel? Pl2DataVM { get; private set; }
 
         private PltRecord PltRecord = new PltRecord();
         private Pl2Record Pl2Record = new Pl2Record();
@@ -42,7 +45,10 @@ namespace XvTPilotEditor.ViewModels
             ReadFileBytes(newPltFileName, ref dataPlt);
             this.PltRecord.FillFromPlt(dataPlt);
 
-            PltDataVM = new PilotRecordBaseViewModel(PltRecord);
+            PltDataBaseVM = new PilotRecordBaseViewModel(PltRecord);
+            OnPropertyChanged(nameof(PltDataBaseVM));
+
+            PltDataVM = new PltRecordViewModel(PltRecord);
             OnPropertyChanged(nameof(PltDataVM));
         }
 
@@ -55,7 +61,10 @@ namespace XvTPilotEditor.ViewModels
             ReadFileBytes(newPl2FileName, ref dataPl2);
             this.Pl2Record.FillFromPl2(dataPl2);
 
-            Pl2DataVM = new PilotRecordBaseViewModel(Pl2Record);
+            Pl2DataBaseVM = new PilotRecordBaseViewModel(Pl2Record);
+            OnPropertyChanged(nameof(Pl2DataBaseVM));
+
+            Pl2DataVM = new Pl2RecordViewModel(Pl2Record);
             OnPropertyChanged(nameof(Pl2DataVM));
         }
 

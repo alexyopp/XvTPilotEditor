@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace XvTPilotEditor.Views
 {
     /// <summary>
-    /// Interaction logic for PilotRecordBaseView.xaml
+    /// Interaction logic for PltRecordView.xaml
     /// </summary>
-    public partial class PilotRecordBaseView : UserControl
+    public partial class PltRecordView : UserControl
     {
-        public PilotRecordBaseView()
+        public PltRecordView()
         {
             InitializeComponent();
         }

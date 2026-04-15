@@ -47,10 +47,19 @@
             VerticalScrollBarVisibility = "Auto">
             <ScrollViewer.Resources>
                 <DataTemplate DataType="{x:Type vm:PilotRecordBaseViewModel}">
-                    <view:PltDataView/>
+                    <view:PilotRecordBaseView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:PltRecordViewModel}">
+                    <view:PltRecordView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:Pl2RecordViewModel}">
+                    <view:Pl2RecordView/>
                 </DataTemplate>
             </ScrollViewer.Resources>
+            <!--<ContentControl Content="{Binding ActivePilotVM.PltDataBaseVM}"/>-->
+            <!--<ContentControl Content="{Binding ActivePilotVM.Pl2DataBaseVM}"/>-->
             <ContentControl Content="{Binding ActivePilotVM.PltDataVM}"/>
+            <!--<ContentControl Content="{Binding ActivePilotVM.Pl2DataVM}"/>-->
         </ScrollViewer>
     </DockPanel>
 
