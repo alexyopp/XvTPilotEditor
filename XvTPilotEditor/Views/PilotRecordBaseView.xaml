@@ -153,7 +153,9 @@
             TextBox2Content="{Binding FriendlyKillsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             TextBox3Content="{Binding FriendlyKillsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalFullKillsOnPlayerRating, TotalSharedKillsOnPlayerRating -->
         <Expander Header="Total Kills On Player Rating" IsExpanded="False">
             <ctrl:QuadBase>
@@ -225,7 +227,9 @@
             </ctrl:QuadBase>
         </Expander>
 
-        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalAssistsOnPlayerRating -->
         <Expander Header="Total Assists On Player Rating" IsExpanded="False">
             <ctrl:QuadBase>
@@ -294,7 +298,9 @@
             </ctrl:QuadBase>
         </Expander>
 
-        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalFullKillsOnAIRank, TotalSharedKillsOnAIRank -->
         <Expander Header="Total Kills On AI Rank" IsExpanded="False">
             <ctrl:QuadBase>
@@ -366,7 +372,9 @@
             </ctrl:QuadBase>
         </Expander>
 
-        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalAssistsOnPlayerRating -->
         <Expander Header="Total Assists On AI Rank" IsExpanded="False">
             <ctrl:QuadBase>
@@ -498,7 +506,9 @@
             TextBox2Content="{Binding TotalLossesFromMinesMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             TextBox3Content="{Binding TotalLossesFromMinesCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalLossesFromPlayerRank -->
         <Expander Header="Total Losses From Player Rank" IsExpanded="False">
             <ctrl:QuadBase>
@@ -567,7 +577,9 @@
             </ctrl:QuadBase>
         </Expander>
 
-        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalLossesFromAIRank -->
         <Expander Header="Total Losses From AI Rank" IsExpanded="False">
             <ctrl:QuadBase>

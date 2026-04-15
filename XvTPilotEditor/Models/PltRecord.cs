@@ -81,7 +81,6 @@ namespace XvTPilotEditor.Models
         public PLTAIRankCountRecord     debriefLossesFromAIRank         { get; private set; }
 
         //  Note the difference in types between the Plt and Pl2 versions
-
         public int LastSelectedFaction { get; set; }                                                                                            //          TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
         public PLTFactionRecord         rebelSingleplayerData           { get; private set; }
         public PLTFactionRecord         imperialSingleplayerData        { get; private set; }

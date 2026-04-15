@@ -16,7 +16,6 @@ namespace XvTPilotEditor.Models
         public int                          isMissionCategorySeries         { get; set; }                                                       //              TODO: What is this?  Is it the same as Plt's LastMissionWasNonSpecific?
         public int                          activeMissionIDNum              { get; set; }                                                       //              TODO: What is this?  Is it the same as Plt's Unknown0x326?
 
-        //  Note the difference in types between the Plt and Pl2 versions
         //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
         public int[]                        TotalKillCountByCraftType       { get; private set; }   = Array.Empty<int>();
 

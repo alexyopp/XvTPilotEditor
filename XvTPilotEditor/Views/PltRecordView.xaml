@@ -92,7 +92,9 @@
                                  Metadata=""/>
         </StackPanel>
 
-        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalCraftFullKills, TotalCraftSharedKills -->
         <Expander Header="Total Kills On Player Rating" IsExpanded="False">
             <ctrl:QuadBase>
@@ -164,7 +166,10 @@
             </ctrl:QuadBase>
         </Expander>
 
-        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, consider renaming as "Assists" instead of "AssistKills", remove Expander once item filtering is in place  -->
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Consider renaming as "Assists" instead of "AssistKills" -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalCraftAssistKills -->
         <Expander Header="Total Craft Assist Kills" IsExpanded="False">
             <ctrl:QuadBase>

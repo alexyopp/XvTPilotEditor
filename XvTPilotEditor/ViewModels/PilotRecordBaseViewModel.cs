@@ -52,8 +52,6 @@ namespace XvTPilotEditor.ViewModels
         public IntArrayViewModel Unknown0x166 { get; private set; }
         public IntArrayViewModel Unknown0x186 { get; private set; }
 
-        // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
-
         public string PromoPoints
         {
             get => PilotRecordBase.PromoPoints.ToString();
@@ -338,8 +336,6 @@ namespace XvTPilotEditor.ViewModels
 
         public MissionCategoryRecordMatrixViewModel TotalLossesFromAIRank { get; private set; }
 
-        // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
-
         // Leave this number value as-is; do not convert to a Pilot Rating description.  That is handled by the RankString property.
         public string CurrentRank
         {
@@ -389,13 +385,9 @@ namespace XvTPilotEditor.ViewModels
 
         public IntArrayViewModel DebriefMeleeAIRankFG { get; private set; }
 
-        // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
-
         public ObservableCollection<ConnectedPlayerRecordViewModel> ConnectedPlayer { get; private set; } = new();
 
         public ObservableCollection<TeamResultRecordViewModel> DebriefTeamResult { get; private set; } = new();
-
-        // TODO: Plt-specific properties (i.e., not present in Pl2) are skipped here for now, but will need to be added in the future.
 
         protected PilotRecordBase PilotRecordBase;
 
