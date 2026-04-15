@@ -83,6 +83,11 @@ namespace XvTPilotEditor.ViewModels
             {
                 ConnectedPlayer.Add(new ConnectedPlayerRecordViewModel(connectedPlayerRecord));
             }
+
+            foreach (var teamResultRecord in PltRecord.DebriefTeamResult)
+            {
+                DebriefTeamResult.Add(new TeamResultRecordViewModel(teamResultRecord));
+            }
         }
 
         public string PilotName
@@ -472,7 +477,7 @@ namespace XvTPilotEditor.ViewModels
 
         public ObservableCollection<ConnectedPlayerRecordViewModel> ConnectedPlayer { get; private set; } = new();
 
-        public TeamResultRecord[] DebriefTeamResult { get; private set; } = new TeamResultRecord[10];
+        public ObservableCollection<TeamResultRecordViewModel> DebriefTeamResult { get; private set; } = new();
 
         //  Note the difference in types between the Plt (int) and Pl2 (uint) versions; probably can homogenize these in the future
         public string LastSelectedFaction

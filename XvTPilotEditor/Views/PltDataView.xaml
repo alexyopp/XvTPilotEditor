@@ -790,17 +790,25 @@
                 </ItemsControl>
             </Expander>
 
-            <!-- TODO: Properly integrate below items -->
-            <Expander Header="Debrief Team Result" IsExpanded="False" Margin="0,6,0,6">
-                <ItemsControl ItemsSource="{Binding DebriefTeamResult}">
+            <Expander Header="Debrief Team Results" IsExpanded="False" Margin="0,6,0,6">
+                <ItemsControl ItemsSource="{Binding DebriefTeamResult}" AlternationCount="1000">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="20" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                                <ctrl:TeamResultRecordView Margin="0,0,20,0"/>
+                            </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </Expander>
 
+            <!-- TODO: Properly integrate below items -->
             <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
                 <ctrl:LabeledTextBox Label="Last Selected Faction:"
                     Value="{Binding LastSelectedFaction, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
