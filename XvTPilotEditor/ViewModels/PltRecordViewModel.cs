@@ -89,11 +89,36 @@ namespace XvTPilotEditor.ViewModels
             set { PltRecord.Unknown0x326 = SetIntProperty(value); }
         }
 
+        private MissionCategoryRecordMatrixViewModel TotalCraftFullKills;
+        private MissionCategoryRecordMatrixViewModel TotalCraftSharedKills;
+        // Combined collections for UI (Full + Shared pairs)
+        public ObservableCollection<KillPairViewModel> CombinedCraftKillsExercise { get; private set; } = new();
+        public ObservableCollection<KillPairViewModel> CombinedCraftKillsMelee { get; private set; } = new();
+        public ObservableCollection<KillPairViewModel> CombinedCraftKillsCombat { get; private set; } = new();
+
+        // TODO: Consider renaming "...Assists" instead of "...AssistKills"
+        public MissionCategoryRecordMatrixViewModel TotalCraftAssistKills { get; private set; }
+
         private PltRecord PltRecord;
 
         public PltRecordViewModel(PltRecord initPltRecord) : base(initPltRecord)
         {
             this.PltRecord = initPltRecord;
+
+            TotalCraftFullKills = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalCraftFullKillsExercise,
+                                                                           PltRecord.TotalCraftFullKillsMelee,
+                                                                           PltRecord.TotalCraftFullKillsCombat);
+            TotalCraftSharedKills = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalCraftSharedKillsExercise,
+                                                                             PltRecord.TotalCraftSharedKillsMelee,
+                                                                             PltRecord.TotalCraftSharedKillsCombat);
+            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
+            CombinedCraftKillsExercise = CollectionHelpers.Combine(TotalCraftFullKills.Exercise, TotalCraftSharedKills.Exercise);
+            CombinedCraftKillsMelee = CollectionHelpers.Combine(TotalCraftFullKills.Melee, TotalCraftSharedKills.Melee);
+            CombinedCraftKillsCombat = CollectionHelpers.Combine(TotalCraftFullKills.Combat, TotalCraftSharedKills.Combat);
+
+            TotalCraftAssistKills = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalCraftAssistKillsExercise,
+                                                                             PltRecord.TotalCraftAssistKillsMelee,
+                                                                             PltRecord.TotalCraftAssistKillsCombat);
         }
     }
 }

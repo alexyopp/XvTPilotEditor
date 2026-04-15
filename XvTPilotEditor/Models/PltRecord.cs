@@ -25,15 +25,15 @@ namespace XvTPilotEditor.Models
 
         //  Note the difference in types between the Plt and Pl2 versions
         //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
-        public int[]                    totalCraftFullKillsExercise     { get; private set; }   = Array.Empty<int>();
-        public int[]                    totalCraftFullKillsMelee        { get; private set; }   = Array.Empty<int>();
-        public int[]                    totalCraftFullKillsCombat       { get; private set; }   = Array.Empty<int>();
-        public int[]                    totalCraftSharedKillsExercise   { get; private set; }   = Array.Empty<int>();
-        public int[]                    totalCraftSharedKillsMelee      { get; private set; }   = Array.Empty<int>();
-        public int[]                    totalCraftSharedKillsCombat     { get; private set; }   = Array.Empty<int>();
-        public int[]                    totalCraftAssistKillsExercise   { get; private set; }   = Array.Empty<int>();
-        public int[]                    totalCraftAssistKillsMelee      { get; private set; }   = Array.Empty<int>();
-        public int[]                    totalCraftAssistKillsCombat     { get; private set; }   = Array.Empty<int>();
+        public int[]                    TotalCraftFullKillsExercise     { get; set; }   = Array.Empty<int>();                                   // int[88]
+        public int[]                    TotalCraftFullKillsMelee        { get; set; }   = Array.Empty<int>();                                   // int[88]
+        public int[]                    TotalCraftFullKillsCombat       { get; set; }   = Array.Empty<int>();                                   // int[88]
+        public int[]                    TotalCraftSharedKillsExercise   { get; set; }   = Array.Empty<int>();                                   // int[88]
+        public int[]                    TotalCraftSharedKillsMelee      { get; set; }   = Array.Empty<int>();                                   // int[88]
+        public int[]                    TotalCraftSharedKillsCombat     { get; set; }   = Array.Empty<int>();                                   // int[88]
+        public int[]                    TotalCraftAssistKillsExercise   { get; set; }   = Array.Empty<int>();                                   // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
+        public int[]                    TotalCraftAssistKillsMelee      { get; set; }   = Array.Empty<int>();                                   // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
+        public int[]                    TotalCraftAssistKillsCombat     { get; set; }   = Array.Empty<int>();                                   // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
 
         public byte[]                   unknown0x1612                   { get; private set; }   = Array.Empty<byte>();
         public int                      unknownPlaqueWon                { get; set; }
@@ -136,15 +136,15 @@ namespace XvTPilotEditor.Models
             NumFlownSeries                      = new MissionCategoryRecord(pltFile.numFlownSeries);
             TotalKills                          = new MissionCategoryRecord(pltFile.totalKillCount);
             FriendlyKills                       = new MissionCategoryRecord(pltFile.numVanillaFriendlyKills);
-            totalCraftFullKillsExercise         = pltFile.totalCraftFullKillsExercise ?? Array.Empty<int>();
-            totalCraftFullKillsMelee            = pltFile.totalCraftFullKillsMelee ?? Array.Empty<int>();
-            totalCraftFullKillsCombat           = pltFile.totalCraftFullKillsCombat ?? Array.Empty<int>();
-            totalCraftSharedKillsExercise       = pltFile.totalCraftSharedKillsExercise ?? Array.Empty<int>();
-            totalCraftSharedKillsMelee          = pltFile.totalCraftSharedKillsMelee ?? Array.Empty<int>();
-            totalCraftSharedKillsCombat         = pltFile.totalCraftSharedKillsCombat ?? Array.Empty<int>();
-            totalCraftAssistKillsExercise       = pltFile.totalCraftAssistKillsExercise ?? Array.Empty<int>();
-            totalCraftAssistKillsMelee          = pltFile.totalCraftAssistKillsMelee ?? Array.Empty<int>();
-            totalCraftAssistKillsCombat         = pltFile.totalCraftAssistKillsCombat ?? Array.Empty<int>();
+            TotalCraftFullKillsExercise         = pltFile.totalCraftFullKillsExercise ?? Array.Empty<int>();
+            TotalCraftFullKillsMelee            = pltFile.totalCraftFullKillsMelee ?? Array.Empty<int>();
+            TotalCraftFullKillsCombat           = pltFile.totalCraftFullKillsCombat ?? Array.Empty<int>();
+            TotalCraftSharedKillsExercise       = pltFile.totalCraftSharedKillsExercise ?? Array.Empty<int>();
+            TotalCraftSharedKillsMelee          = pltFile.totalCraftSharedKillsMelee ?? Array.Empty<int>();
+            TotalCraftSharedKillsCombat         = pltFile.totalCraftSharedKillsCombat ?? Array.Empty<int>();
+            TotalCraftAssistKillsExercise       = pltFile.totalCraftAssistKillsExercise ?? Array.Empty<int>();
+            TotalCraftAssistKillsMelee          = pltFile.totalCraftAssistKillsMelee ?? Array.Empty<int>();
+            TotalCraftAssistKillsCombat         = pltFile.totalCraftAssistKillsCombat ?? Array.Empty<int>();
             TotalFullKillsOnPlayerRating        = new MissionCategoryRecordByPlayerRating(pltFile.TotalFullKillsOnPlayerRank);
             TotalSharedKillsOnPlayerRating      = new MissionCategoryRecordByPlayerRating(pltFile.TotalSharedKillsOnPlayerRank);
             TotalAssistsOnPlayerRating          = new MissionCategoryRecordByPlayerRating(pltFile.TotalAssistKillsOnPlayerRank);
@@ -279,15 +279,15 @@ namespace XvTPilotEditor.Models
             rec.numFlownSeries                      = ToPLTCategoryTypeRecord(NumFlownSeries);                      // int[3]
             rec.totalKillCount                      = ToPLTCategoryTypeRecord(TotalKills);                          // int[3]
             rec.numVanillaFriendlyKills             = ToPLTCategoryTypeRecord(FriendlyKills);                       // int[3]
-            rec.totalCraftFullKillsExercise         = totalCraftFullKillsExercise;                                  // int[88]
-            rec.totalCraftFullKillsMelee            = totalCraftFullKillsMelee;                                     // int[88]
-            rec.totalCraftFullKillsCombat           = totalCraftFullKillsCombat;                                    // int[88]
-            rec.totalCraftSharedKillsExercise       = totalCraftSharedKillsExercise;                                // int[88]
-            rec.totalCraftSharedKillsMelee          = totalCraftSharedKillsMelee;                                   // int[88]
-            rec.totalCraftSharedKillsCombat         = totalCraftSharedKillsCombat;                                  // int[88]
-            rec.totalCraftAssistKillsExercise       = totalCraftAssistKillsExercise;                                // int[88]
-            rec.totalCraftAssistKillsMelee          = totalCraftAssistKillsMelee;                                   // int[88]
-            rec.totalCraftAssistKillsCombat         = totalCraftAssistKillsCombat;                                  // int[88]
+            rec.totalCraftFullKillsExercise         = TotalCraftFullKillsExercise;                                  // int[88]
+            rec.totalCraftFullKillsMelee            = TotalCraftFullKillsMelee;                                     // int[88]
+            rec.totalCraftFullKillsCombat           = TotalCraftFullKillsCombat;                                    // int[88]
+            rec.totalCraftSharedKillsExercise       = TotalCraftSharedKillsExercise;                                // int[88]
+            rec.totalCraftSharedKillsMelee          = TotalCraftSharedKillsMelee;                                   // int[88]
+            rec.totalCraftSharedKillsCombat         = TotalCraftSharedKillsCombat;                                  // int[88]
+            rec.totalCraftAssistKillsExercise       = TotalCraftAssistKillsExercise;                                // int[88]
+            rec.totalCraftAssistKillsMelee          = TotalCraftAssistKillsMelee;                                   // int[88]
+            rec.totalCraftAssistKillsCombat         = TotalCraftAssistKillsCombat;                                  // int[88]
             rec.TotalFullKillsOnPlayerRank          = ToPLTPlayerRankCountRecord(TotalFullKillsOnPlayerRating);     // int[3][25]
             rec.TotalSharedKillsOnPlayerRank        = ToPLTPlayerRankCountRecord(TotalSharedKillsOnPlayerRating);   // int[3][25]
             rec.TotalAssistKillsOnPlayerRank        = ToPLTPlayerRankCountRecord(TotalAssistsOnPlayerRating);       // int[3][25]

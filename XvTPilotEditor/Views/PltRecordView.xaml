@@ -88,9 +88,150 @@
         <!-- TODO: What is this? -->
         <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
             <ctrl:LabeledTextBox Label="Unknown0x326:"
-                         Value="{Binding Unknown0x326, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         Metadata=""/>
+                                 Value="{Binding Unknown0x326, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Metadata=""/>
         </StackPanel>
+
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, remove Expander once item filtering is in place  -->
+        <!-- TotalCraftFullKills, TotalCraftSharedKills -->
+        <Expander Header="Total Kills On Player Rating" IsExpanded="False">
+            <ctrl:QuadBase>
+                <!-- Index column -->
+                <ctrl:QuadBase.Column0Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding CombinedCraftKillsExercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="30">
+                                        <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                                    Text="{Binding (ItemsControl.AlternationIndex),
+                                                                RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                                Converter={conv:UIntToCraftTypeConverter}}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column0Content>
+
+                <!-- Exercise column (Full + Shared) -->
+                <ctrl:QuadBase.Column1Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding CombinedCraftKillsExercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column1Content>
+
+                <!-- Melee column (Full + Shared) -->
+                <ctrl:QuadBase.Column2Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding CombinedCraftKillsMelee}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column2Content>
+
+                <!-- Combat column (Full + Shared) -->
+                <ctrl:QuadBase.Column3Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding CombinedCraftKillsCombat}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column3Content>
+            </ctrl:QuadBase>
+        </Expander>
+
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?), highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability, consider renaming as "Assists" instead of "AssistKills", remove Expander once item filtering is in place  -->
+        <!-- TotalCraftAssistKills -->
+        <Expander Header="Total Craft Assist Kills" IsExpanded="False">
+            <ctrl:QuadBase>
+                <!-- Index column -->
+                <ctrl:QuadBase.Column0Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding TotalCraftAssistKills.Exercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="30">
+                                        <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                        Text="{Binding (ItemsControl.AlternationIndex),
+                                                    RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                    Converter={conv:UIntToCraftTypeConverter}}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column0Content>
+
+                <!-- Exercise column -->
+                <ctrl:QuadBase.Column1Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding TotalCraftAssistKills.Exercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column1Content>
+
+                <!-- Melee column -->
+                <ctrl:QuadBase.Column2Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding TotalCraftAssistKills.Melee}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column2Content>
+
+                <!-- Combat column -->
+                <ctrl:QuadBase.Column3Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding TotalCraftAssistKills.Combat}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column3Content>
+            </ctrl:QuadBase>
+        </Expander>
 
     </StackPanel>
 </UserControl>
