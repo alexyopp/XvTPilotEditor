@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using System.Windows;
-using System.Windows.Controls;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using static XvTPilotEditor.Models.PilotFileSchema;
 
 namespace XvTPilotEditor.Models
@@ -33,6 +29,9 @@ namespace XvTPilotEditor.Models
         public MissionCategoryRecord                NumFlownSeries                  { get; set; } = new MissionCategoryRecord();                                  // int[3]         TODO: Find out what this actually is and give it a better name
         public MissionCategoryRecord                TotalKills                      { get; set; } = new MissionCategoryRecord();                                  // int[3]         TODO: Investigate; giving values that don't seem correct, is this maybe just the last session?
         public MissionCategoryRecord                FriendlyKills                   { get; set; } = new MissionCategoryRecord();                                  // int[3]         TODO: Investigate; giving values that don't seem correct, is this maybe just the last session?
+
+        // Plt and Pl2 schemas diverge here; refer to PltRecord and Pl2Record for those properties.
+
         public MissionCategoryRecordByPlayerRating  TotalFullKillsOnPlayerRating    { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
         public MissionCategoryRecordByPlayerRating  TotalSharedKillsOnPlayerRating  { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]
         public MissionCategoryRecordByPlayerRating  TotalAssistsOnPlayerRating      { get; set; } = new MissionCategoryRecordByPlayerRating();                    // int[3][25]

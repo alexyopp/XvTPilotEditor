@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using System.Windows;
-using System.Windows.Controls;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using static XvTPilotEditor.Models.PilotFileSchema;
 
 namespace XvTPilotEditor.Models
 {
     public class PltRecord : PilotRecordBase
     {
+        // Note: these five paragraphs correlate to the gaps in the PilotRecordBase properties; integrating them reveals the structure of the plt file
         // TODO: Consider creating directly from filebytes/exporting filebytes, rather than PilotFileSchema objects.
-
-        //  Note the difference in types between the Plt and Pl2 versions; probably can homogenize these in the future
-        public int                      LastSelectedFaction { get; set; }
 
         public int                      lastTeamNumber                  { get; set; }
         public int                      lastSelectedMissionType         { get; set; }
@@ -27,6 +21,9 @@ namespace XvTPilotEditor.Models
         public byte[]                   unknown0x318                    { get; private set; }   = Array.Empty<byte>();
         public int                      lastMissionWasNonSpecific       { get; set; }
         public int                      unknown0x326                    { get; set; }
+
+        //  Note the difference in types between the Plt and Pl2 versions
+        //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
         public int[]                    totalCraftFullKillsExercise     { get; private set; }   = Array.Empty<int>();
         public int[]                    totalCraftFullKillsMelee        { get; private set; }   = Array.Empty<int>();
         public int[]                    totalCraftFullKillsCombat       { get; private set; }   = Array.Empty<int>();
@@ -36,6 +33,7 @@ namespace XvTPilotEditor.Models
         public int[]                    totalCraftAssistKillsExercise   { get; private set; }   = Array.Empty<int>();
         public int[]                    totalCraftAssistKillsMelee      { get; private set; }   = Array.Empty<int>();
         public int[]                    totalCraftAssistKillsCombat     { get; private set; }   = Array.Empty<int>();
+
         public byte[]                   unknown0x1612                   { get; private set; }   = Array.Empty<byte>();
         public int                      unknownPlaqueWon                { get; set; }
         public PLTTournTeamRecord[]     TournTeamRecords                { get; private set; }   = Array.Empty<PLTTournTeamRecord>();
@@ -48,6 +46,7 @@ namespace XvTPilotEditor.Models
         public int[]                    battleCombatMissionID           { get; private set; }   = Array.Empty<int>();
         public byte[]                   unknown0x1F2E                   { get; private set; }   = Array.Empty<byte>();
         public int                      totalScoreForCurrentBattleUNK   { get; set; }
+
         public PLTCategoryTypeRecord    UnknownRecord1                  { get; private set; }
         public PLTCategoryTypeRecord    UnknownRecord2                  { get; private set; }
         public PLTCategoryTypeRecord    UnknownRecord3                  { get; private set; }
@@ -80,6 +79,9 @@ namespace XvTPilotEditor.Models
         public PLTPlayerRankCountRecord debriefLossesFromPlayerRank     { get; private set; }
         public PLTAIRankCountRecord     debriefLossesFromAIRank         { get; private set; }
 
+        //  Note the difference in types between the Plt and Pl2 versions
+        //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
+        public int LastSelectedFaction { get; set; }
         public PLTFactionRecord         rebelSingleplayerData           { get; private set; }
         public PLTFactionRecord         imperialSingleplayerData        { get; private set; }
         public PLTFactionRecord         rebelMultiplayerData            { get; private set; }

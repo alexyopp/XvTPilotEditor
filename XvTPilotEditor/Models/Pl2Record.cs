@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using System.Windows;
-using System.Windows.Controls;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using static XvTPilotEditor.Models.PilotFileSchema;
 
 namespace XvTPilotEditor.Models
 {
     public class Pl2Record : PilotRecordBase
     {
+        // Note: these five paragraphs correlate to the gaps in the PilotRecordBase properties; integrating them reveals the structure of the pl2 file
         // TODO: Consider creating directly from filebytes/exporting filebytes, rather than PilotFileSchema objects.
-
-        //  Note the difference in types between the Plt and Pl2 versions; probably can homogenize these in the future
-        public uint                         LastSelectedFaction             { get; set; }
 
         public int                          activeMissionTeam               { get; set; }
         public int                          MissionFolderIndex              { get; set; }
@@ -21,11 +15,19 @@ namespace XvTPilotEditor.Models
         public string                       LastGameName                    { get; set; }           = string.Empty;
         public int                          isMissionCategorySeries         { get; set; }
         public int                          activeMissionIDNum              { get; set; }
+
+        //  Note the difference in types between the Plt and Pl2 versions
+        //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
         public int[]                        TotalKillCountByCraftType       { get; private set; }   = Array.Empty<int>();
+
         public PLTTournamentProgressState   activeTournament                { get; private set; }
         public PLTBattleProgressState       activeBattle                    { get; private set; }
+
         public PL2DebriefRecord             debrief                         { get; private set; }
 
+        //  Note the difference in types between the Plt and Pl2 versions
+        //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
+        public uint LastSelectedFaction { get; set; }
         public PL2FactionRecord[]           faction                         { get; private set; }   = Array.Empty<PL2FactionRecord>();
         public PL2CampaignProgressState     activeCampaign                  { get; private set; }
         public sbyte[]                      gap45E1E                        { get; private set; }   = Array.Empty<sbyte>();
