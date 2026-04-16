@@ -9,35 +9,35 @@ namespace XvTPilotEditor.Models
         // TODO: Consider creating directly from filebytes/exporting filebytes, rather than PilotFileSchema objects.
 
         //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
-        public int                      LastTeamNumber                  { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's activeMissionTeam
-        public int                      LastSelectedMissionType         { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's MissionFolderIndex
-        public int                      LastSelectedTraining            { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[0]
-        public int                      LastSelectedMelee               { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[1]
-        public int                      LastSelectedTournament          { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[2]
-        public int                      LastSelectedCombat              { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[3]
-        public int                      LastSelectedBattle              { get; set; }                                                           //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[4]
-        public string                   GameNameString                  { get; set; }           = string.Empty;                                 // char[22]     TODO: Investigate if this is the same as Pl2's GameName
-        public byte[]                   Unknown0x2F8                    { get; set; }           = Array.Empty<byte>();                          // byte[10]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
-        public string                   GameNameString2                 { get; set; }           = string.Empty;                                 // char[22]     TODO: Investigate if this is the same as Pl2's LastGameName
-        public byte[]                   Unknown0x318                    { get; set; }           = Array.Empty<byte>();                          // byte[10]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
-        public int                      LastMissionWasNonSpecific       { get; set; }                                                           //              TODO: What is this?  Is it the same as Pl2's isMissionCategorySeries?
-        public int                      Unknown0x326                    { get; set; }                                                           //              TODO: What is this?  Is it the same as Pl2's activeMissionIDNum?
+        public int                      LastTeamNumber                  { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's activeMissionTeam
+        public int                      LastSelectedMissionType         { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's MissionFolderIndex
+        public int                      LastSelectedTraining            { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[0]
+        public int                      LastSelectedMelee               { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[1]
+        public int                      LastSelectedTournament          { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[2]
+        public int                      LastSelectedCombat              { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[3]
+        public int                      LastSelectedBattle              { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[4]
+        public string                   GameNameString                  { get; set; }           = string.Empty;                                     // char[22]     TODO: Investigate if this is the same as Pl2's GameName
+        public byte[]                   Unknown0x2F8                    { get; set; }           = Array.Empty<byte>();                              // byte[10]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
+        public string                   GameNameString2                 { get; set; }           = string.Empty;                                     // char[22]     TODO: Investigate if this is the same as Pl2's LastGameName
+        public byte[]                   Unknown0x318                    { get; set; }           = Array.Empty<byte>();                              // byte[10]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
+        public int                      LastMissionWasNonSpecific       { get; set; }                                                               //              TODO: What is this?  Is it the same as Pl2's isMissionCategorySeries?
+        public int                      Unknown0x326                    { get; set; }                                                               //              TODO: What is this?  Is it the same as Pl2's activeMissionIDNum?
 
         //  Note the difference in types between the Plt and Pl2 versions
         //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
-        public int[]                    TotalCraftFullKillsExercise     { get; set; }   = Array.Empty<int>();                                   // int[88]
-        public int[]                    TotalCraftFullKillsMelee        { get; set; }   = Array.Empty<int>();                                   // int[88]
-        public int[]                    TotalCraftFullKillsCombat       { get; set; }   = Array.Empty<int>();                                   // int[88]
-        public int[]                    TotalCraftSharedKillsExercise   { get; set; }   = Array.Empty<int>();                                   // int[88]
-        public int[]                    TotalCraftSharedKillsMelee      { get; set; }   = Array.Empty<int>();                                   // int[88]
-        public int[]                    TotalCraftSharedKillsCombat     { get; set; }   = Array.Empty<int>();                                   // int[88]
-        public int[]                    TotalCraftAssistKillsExercise   { get; set; }   = Array.Empty<int>();                                   // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
-        public int[]                    TotalCraftAssistKillsMelee      { get; set; }   = Array.Empty<int>();                                   // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
-        public int[]                    TotalCraftAssistKillsCombat     { get; set; }   = Array.Empty<int>();                                   // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
+        public int[]                    TotalCraftFullKillsExercise     { get; set; }           = Array.Empty<int>();                               // int[88]
+        public int[]                    TotalCraftFullKillsMelee        { get; set; }           = Array.Empty<int>();                               // int[88]
+        public int[]                    TotalCraftFullKillsCombat       { get; set; }           = Array.Empty<int>();                               // int[88]
+        public int[]                    TotalCraftSharedKillsExercise   { get; set; }           = Array.Empty<int>();                               // int[88]
+        public int[]                    TotalCraftSharedKillsMelee      { get; set; }           = Array.Empty<int>();                               // int[88]
+        public int[]                    TotalCraftSharedKillsCombat     { get; set; }           = Array.Empty<int>();                               // int[88]
+        public int[]                    TotalCraftAssistKillsExercise   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
+        public int[]                    TotalCraftAssistKillsMelee      { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
+        public int[]                    TotalCraftAssistKillsCombat     { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
 
-        public byte[]                   unknown0x1612                   { get; private set; }   = Array.Empty<byte>();
-        public int                      unknownPlaqueWon                { get; set; }
-        public PLTTournTeamRecord[]     TournTeamRecords                { get; private set; }   = Array.Empty<PLTTournTeamRecord>();
+        public byte[]                   Unknown0x1612                   { get; set; }           = Array.Empty<byte>();                              // byte[40]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
+        public int                      UnknownPlaqueWon                { get; set; }                                                               //              TODO: What is this? Give it a better name and remove the "Unknown" prefix
+        public TournamentTeamRecord[]   TournamentTeamRecord            { get; set; }           = new TournamentTeamRecord[Constants.MAX_TEAMS];    // int[10][5]
         public int                      numHumanPlayersUNK              { get; set; }
         public int                      numTeamsUNK                     { get; set; }
         public int                      unknown0x170E                   { get; set; }
@@ -161,9 +161,15 @@ namespace XvTPilotEditor.Models
             TotalLossesFromMines                = new MissionCategoryRecord(pltFile.totalLossesFromMinesExercise, pltFile.totalLossesFromMinesMelee, pltFile.totalLossesFromMinesCombat);
             TotalLossesFromPlayerRank           = new MissionCategoryRecordByPlayerRating(pltFile.TotalLossesFromPlayerRank);
             TotalLossesFromAIRank               = new MissionCategoryRecordByAIRating(pltFile.TotalLossesFromAIRank);
-            unknown0x1612                       = pltFile.unknown0x1612 ?? Array.Empty<byte>();
-            unknownPlaqueWon                    = pltFile.unknownPlaqueWon;
-            TournTeamRecords                    = pltFile.TournTeamRecords ?? Array.Empty<PLTTournTeamRecord>();
+            Unknown0x1612                       = pltFile.unknown0x1612 ?? Array.Empty<byte>();
+            UnknownPlaqueWon                    = pltFile.unknownPlaqueWon;
+
+            TournamentTeamRecord = new TournamentTeamRecord[Constants.MAX_TEAMS];
+            for (uint idx = 0; idx < Constants.MAX_TEAMS; ++idx)
+            {
+                TournamentTeamRecord[idx] = new TournamentTeamRecord(pltFile.TournTeamRecords[idx]);
+            }
+
             numHumanPlayersUNK                  = pltFile.numHumanPlayersUNK;
             numTeamsUNK                         = pltFile.numTeamsUNK;
             unknown0x170E                       = pltFile.unknown0x170E;
@@ -225,8 +231,8 @@ namespace XvTPilotEditor.Models
                 ConnectedPlayer[idx] = new ConnectedPlayerRecord(pltFile.connectedPlayerData[idx]);
             }
 
-            DebriefTeamResult = new TeamResultRecord[10]; // TODO: Why 10?  I mean, that's what's defined in the file, but what is the in-game significance?
-            for (uint idx = 0; idx < 10; ++idx)
+            DebriefTeamResult = new TeamResultRecord[Constants.MAX_TEAMS];
+            for (uint idx = 0; idx < Constants.MAX_TEAMS; ++idx)
             {
                 DebriefTeamResult[idx] = new TeamResultRecord(pltFile.debriefTeamResult[idx]);
             }
@@ -318,9 +324,9 @@ namespace XvTPilotEditor.Models
             rec.totalLossesFromMinesCombat          = TotalLossesFromMines.CombatEngagement;
             rec.TotalLossesFromPlayerRank           = ToPLTPlayerRankCountRecord(TotalLossesFromPlayerRank);        // int[3][25]
             rec.TotalLossesFromAIRank               = ToPLTAIRankCountRecord(TotalLossesFromAIRank);                // int[3][6]
-            rec.unknown0x1612                       = unknown0x1612;                                                // byte[40]
-            rec.unknownPlaqueWon                    = unknownPlaqueWon;
-            rec.TournTeamRecords                    = TournTeamRecords;                                             // int[10][5]
+            rec.unknown0x1612                       = Unknown0x1612;                                                // byte[40]
+            rec.unknownPlaqueWon                    = UnknownPlaqueWon;
+            rec.TournTeamRecords                    = ToPLTTournTeamRecordArray(TournamentTeamRecord);              // PLTTournTeamRecord[10]  (int[10][5])
             rec.numHumanPlayersUNK                  = numHumanPlayersUNK;
             rec.numTeamsUNK                         = numTeamsUNK;
             rec.unknown0x170E                       = unknown0x170E;
@@ -384,6 +390,44 @@ namespace XvTPilotEditor.Models
             rec.imperialMultiplayerData             = imperialMultiplayerData;
 
             return rec;
+        }
+
+        // Convert helper for TournamentTeamRecord[] -> PLTTournTeamRecord[]
+        public static PLTTournTeamRecord[] ToPLTTournTeamRecordArray(TournamentTeamRecord[] tournamentTeamRecord)
+        {
+            PLTTournTeamRecord[] pltTournTeamRecordArray = new PLTTournTeamRecord[Constants.MAX_TEAMS];
+            for (uint idx = 0; idx < 10; ++idx)
+            {
+                pltTournTeamRecordArray[idx].teamParticipationState = tournamentTeamRecord[idx].TeamParticipationState;
+                pltTournTeamRecordArray[idx].totalTeamScore = tournamentTeamRecord[idx].TotalTeamScore;
+                pltTournTeamRecordArray[idx].numberOfMeleeRankingsFirst = tournamentTeamRecord[idx].NumberOfMeleeRankingsFirst;
+                pltTournTeamRecordArray[idx].numberOfMeleeRankingsSecond = tournamentTeamRecord[idx].NumberOfMeleeRankingsSecond;
+                pltTournTeamRecordArray[idx].numberOfMeleeRankingsThird = tournamentTeamRecord[idx].NumberOfMeleeRankingsThird;
+            }
+
+            return pltTournTeamRecordArray;
+        }
+    }
+
+    public class TournamentTeamRecord
+    {
+        public int TeamParticipationState { get; set; }
+        public int TotalTeamScore { get; set; }
+        public int NumberOfMeleeRankingsFirst { get; set; }
+        public int NumberOfMeleeRankingsSecond { get; set; }
+        public int NumberOfMeleeRankingsThird { get; set; }
+
+        public TournamentTeamRecord()
+        {
+        }
+
+        public TournamentTeamRecord(PLTTournTeamRecord tournamentTeamRecord)
+        {
+            TeamParticipationState = tournamentTeamRecord.teamParticipationState;
+            TotalTeamScore = tournamentTeamRecord.totalTeamScore;
+            NumberOfMeleeRankingsFirst = tournamentTeamRecord.numberOfMeleeRankingsFirst;
+            NumberOfMeleeRankingsSecond = tournamentTeamRecord.numberOfMeleeRankingsSecond;
+            NumberOfMeleeRankingsThird = tournamentTeamRecord.numberOfMeleeRankingsThird;
         }
     }
 }

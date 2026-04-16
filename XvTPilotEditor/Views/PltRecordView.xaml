@@ -106,9 +106,9 @@
                                 <DataTemplate>
                                     <Grid Height="30">
                                         <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
-                                                    Text="{Binding (ItemsControl.AlternationIndex),
-                                                                RelativeSource={RelativeSource AncestorType=ContentPresenter},
-                                                                Converter={conv:UIntToCraftTypeConverter}}"/>
+                                                   Text="{Binding (ItemsControl.AlternationIndex),
+                                                            RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                            Converter={conv:UIntToCraftTypeConverter}}"/>
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -124,7 +124,7 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
                                         <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                            SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                         SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -140,7 +140,7 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
                                         <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                            SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                         SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -156,7 +156,7 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
                                         <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                            SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                         SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -181,9 +181,9 @@
                                 <DataTemplate>
                                     <Grid Height="30">
                                         <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
-                                        Text="{Binding (ItemsControl.AlternationIndex),
-                                                    RelativeSource={RelativeSource AncestorType=ContentPresenter},
-                                                    Converter={conv:UIntToCraftTypeConverter}}"/>
+                                                   Text="{Binding (ItemsControl.AlternationIndex),
+                                                        RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                        Converter={conv:UIntToCraftTypeConverter}}"/>
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -236,6 +236,38 @@
                     </StackPanel>
                 </ctrl:QuadBase.Column3Content>
             </ctrl:QuadBase>
+        </Expander>
+
+        <!-- TODO: Change display to show the individual bytes, rather than an integer representation of them; this is almost certainly padding, in which case we don't actually need UI for it -->
+        <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
+            <ctrl:LabeledTextBox Label="Unknown0x1612:"
+                                 Value="{Binding Unknown0x1612, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Metadata=""/>
+        </StackPanel>
+
+        <!-- TODO: What does this mean? -->
+        <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
+            <ctrl:LabeledTextBox Label="?Plaque Won?:"
+                                 Value="{Binding UnknownPlaqueWon, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Metadata=""/>
+        </StackPanel>
+
+        <Expander Header="Tournament Team Records" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding TournamentTeamRecord}" AlternationCount="1000">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Width="20" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                            <ctrl:TournamentTeamRecordView Margin="0,0,20,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Expander>
 
     </StackPanel>

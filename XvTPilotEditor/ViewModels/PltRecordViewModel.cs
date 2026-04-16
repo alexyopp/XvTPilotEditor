@@ -99,6 +99,22 @@ namespace XvTPilotEditor.ViewModels
         // TODO: Consider renaming "...Assists" instead of "...AssistKills"
         public MissionCategoryRecordMatrixViewModel TotalCraftAssistKills { get; private set; }
 
+        // TODO: This appears to be padding, in which case we don't want to provide UI for it.
+        public string Unknown0x1612
+        {
+            get => Encoding.UTF8.GetString(PltRecord.Unknown0x1612);
+            set { PltRecord.Unknown0x1612 = Encoding.UTF8.GetBytes(value); }
+        }
+
+        // TODO: What is this?
+        public string UnknownPlaqueWon
+        {
+            get => PltRecord.UnknownPlaqueWon.ToString();
+            set { PltRecord.UnknownPlaqueWon = SetIntProperty(value); }
+        }
+
+        public ObservableCollection<TournamentTeamRecordViewModel> TournamentTeamRecord { get; private set; } = new();
+
         private PltRecord PltRecord;
 
         public PltRecordViewModel(PltRecord initPltRecord) : base(initPltRecord)
@@ -119,6 +135,11 @@ namespace XvTPilotEditor.ViewModels
             TotalCraftAssistKills = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalCraftAssistKillsExercise,
                                                                              PltRecord.TotalCraftAssistKillsMelee,
                                                                              PltRecord.TotalCraftAssistKillsCombat);
+
+            foreach (var tournamentTeamRecord in PltRecord.TournamentTeamRecord)
+            {
+                TournamentTeamRecord.Add(new TournamentTeamRecordViewModel(tournamentTeamRecord));
+            }
         }
     }
 }

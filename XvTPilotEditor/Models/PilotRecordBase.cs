@@ -70,7 +70,7 @@ namespace XvTPilotEditor.Models
         // Plt and Pl2 schemas diverge here; refer to PltRecord and Pl2Record for those properties.
 
         public ConnectedPlayerRecord[]              ConnectedPlayer                 { get; set; } = new ConnectedPlayerRecord[Constants.MAX_CONNECTED_PLAYERS];     // ConnectedPlayerRecord[8]
-        public TeamResultRecord[]                   DebriefTeamResult               { get; set; } = new TeamResultRecord[10];                                       // int[10][6]
+        public TeamResultRecord[]                   DebriefTeamResult               { get; set; } = new TeamResultRecord[Constants.MAX_TEAMS];                      // int[10][6]
 
         // Plt and Pl2 schemas diverge here; refer to PltRecord and Pl2Record for those properties.
 
