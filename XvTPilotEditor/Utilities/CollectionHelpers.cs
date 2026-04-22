@@ -27,6 +27,25 @@ namespace XvTPilotEditor.Utilities
             }
         }
 
+        public static void PopulateCollection(ObservableCollection<NotifyingString> target, byte[]? source, PropertyChangedEventHandler? handler)
+        {
+            target.Clear();
+            if (source == null)
+            {
+                return;
+            }
+
+            foreach (var byteData in source)
+            {
+                var newString = new NotifyingString(byteData.ToString("X2"));
+                if (handler != null)
+                {
+                    newString.PropertyChanged += handler;
+                }
+                target.Add(newString);
+            }
+        }
+
         // Helper to combine two ObservableCollection<NotifyingInt> into pairs, preserving references so edits write back.
         public static ObservableCollection<KillPairViewModel> Combine(ObservableCollection<NotifyingInt> FullKills, ObservableCollection<NotifyingInt> SharedKills)
         {

@@ -58,12 +58,19 @@
                                  Metadata=""/>
         </StackPanel>
 
-        <!-- TODO: Change display to show the individual bytes, rather than an integer representation of them; this is almost certainly padding, in which case we don't actually need UI for it -->
-        <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-            <ctrl:LabeledTextBox Label="Unknown0x2F8:"
-                                 Value="{Binding Unknown0x2F8, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 Metadata=""/>
-        </StackPanel>
+        <!-- TODO: This is almost certainly padding, in which case we don't actually need UI for it, but, if we do, maybe just blocks of text boxes, with labels at every 16 bytes (a-la a binary editor display)? -->
+        <Expander Header="Unknown0x2F8" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding Unknown0x2F8.Values}" AlternationCount="1000">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="25,4">
+                            <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                            <TextBox Width="75" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Expander>
 
         <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
             <ctrl:LabeledTextBox Label="Game Name String 2:"
@@ -71,12 +78,19 @@
                                  Metadata=""/>
         </StackPanel>
 
-        <!-- TODO: Change display to show the individual bytes, rather than an integer representation of them; this is almost certainly padding, in which case we don't actually need UI for it -->
-        <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-            <ctrl:LabeledTextBox Label="Unknown0x318:"
-                                 Value="{Binding Unknown0x318, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 Metadata=""/>
-        </StackPanel>
+        <!-- TODO: This is almost certainly padding, in which case we don't actually need UI for it, but, if we do, maybe just blocks of text boxes, with labels at every 16 bytes (a-la a binary editor display)? -->
+        <Expander Header="Unknown0x318" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding Unknown0x318.Values}" AlternationCount="1000">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="25,4">
+                            <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                            <TextBox Width="75" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Expander>
 
         <!-- TODO: What does this mean? -->
         <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
@@ -238,12 +252,19 @@
             </ctrl:QuadBase>
         </Expander>
 
-        <!-- TODO: Change display to show the individual bytes, rather than an integer representation of them; this is almost certainly padding, in which case we don't actually need UI for it -->
-        <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
-            <ctrl:LabeledTextBox Label="Unknown0x1612:"
-                                 Value="{Binding Unknown0x1612, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 Metadata=""/>
-        </StackPanel>
+        <!-- TODO: This is almost certainly padding, in which case we don't actually need UI for it, but, if we do, maybe just blocks of text boxes, with labels at every 16 bytes (a-la a binary editor display)? -->
+        <Expander Header="Unknown0x1612" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding Unknown0x1612.Values}" AlternationCount="1000">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="25,4">
+                            <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                            <TextBox Width="75" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Expander>
 
         <!-- TODO: What does this mean? -->
         <StackPanel Orientation="Horizontal" Margin="0,6,0,6">

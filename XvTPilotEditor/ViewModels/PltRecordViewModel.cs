@@ -57,11 +57,7 @@ namespace XvTPilotEditor.ViewModels
         }
 
         // TODO: This appears to be padding, in which case we don't want to provide UI for it.
-        public string Unknown0x2F8
-        {
-            get => Encoding.UTF8.GetString(PltRecord.Unknown0x2F8);
-            set { PltRecord.Unknown0x2F8 = Encoding.UTF8.GetBytes(value); }
-        }
+        public ByteArrayViewModel Unknown0x2F8 { get; private set; }
 
         public string GameNameString2
         {
@@ -70,11 +66,7 @@ namespace XvTPilotEditor.ViewModels
         }
 
         // TODO: This appears to be padding, in which case we don't want to provide UI for it.
-        public string Unknown0x318
-        {
-            get => Encoding.UTF8.GetString(PltRecord.Unknown0x318);
-            set { PltRecord.Unknown0x318 = Encoding.UTF8.GetBytes(value); }
-        }
+        public ByteArrayViewModel Unknown0x318 { get; private set; }
 
         // TODO: What does this mean?
         public string LastMissionWasNonSpecific
@@ -101,11 +93,7 @@ namespace XvTPilotEditor.ViewModels
         public MissionCategoryRecordMatrixViewModel TotalCraftAssistKills { get; private set; }
 
         // TODO: This appears to be padding, in which case we don't want to provide UI for it.
-        public string Unknown0x1612
-        {
-            get => Encoding.UTF8.GetString(PltRecord.Unknown0x1612);
-            set { PltRecord.Unknown0x1612 = Encoding.UTF8.GetBytes(value); }
-        }
+        public ByteArrayViewModel Unknown0x1612 { get; private set; }
 
         // TODO: What is this?
         public string UnknownPlaqueWon
@@ -157,6 +145,9 @@ namespace XvTPilotEditor.ViewModels
         {
             this.PltRecord = initPltRecord;
 
+            Unknown0x2F8 = new ByteArrayViewModel(PltRecord.Unknown0x2F8);
+            Unknown0x318 = new ByteArrayViewModel(PltRecord.Unknown0x318);
+
             TotalCraftFullKills = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalCraftFullKillsExercise,
                                                                            PltRecord.TotalCraftFullKillsMelee,
                                                                            PltRecord.TotalCraftFullKillsCombat);
@@ -171,6 +162,8 @@ namespace XvTPilotEditor.ViewModels
             TotalCraftAssistKills = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalCraftAssistKillsExercise,
                                                                              PltRecord.TotalCraftAssistKillsMelee,
                                                                              PltRecord.TotalCraftAssistKillsCombat);
+
+            Unknown0x1612 = new ByteArrayViewModel(PltRecord.Unknown0x1612);
 
             foreach (var tournamentTeamRecord in PltRecord.TournamentTeamRecord)
             {
