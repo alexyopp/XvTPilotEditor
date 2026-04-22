@@ -325,5 +325,53 @@
                                  Value="{Binding NumCombatFlownInLastBattle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  Metadata=""/>
         </StackPanel>
+
+        <!-- TODO: Too big to be padding, but probably don't actually need UI for it, but, if we do, maybe just blocks of text boxes, with labels at every 16 bytes (a-la a binary editor display)? -->
+        <Expander Header="Unknown0x171A" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding Unknown0x171A.Values}" AlternationCount="2052">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="25,4">
+                            <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                            <TextBox Width="75" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Expander>
+
+        <Expander Header="BattleCombatMissionID" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding BattleCombatMissionID.Values}" AlternationCount="1000">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="25,4">
+                            <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                            <TextBox Width="75" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Expander>
+
+        <!-- TODO: Too big to be padding, but probably don't actually need UI for it, but, if we do, maybe just blocks of text boxes, with labels at every 16 bytes (a-la a binary editor display)? -->
+        <Expander Header="Unknown0x1F2E" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding Unknown0x1F2E.Values}" AlternationCount="1012">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="25,4">
+                            <TextBlock Width="40" Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, StringFormat='[{0}]'}"/>
+                            <TextBox Width="75" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Expander>
+
+        <!-- TODO: Confirm label is correct -->
+        <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
+            <ctrl:LabeledTextBox Label="Total Score For Current Battle:"
+                                 Value="{Binding TotalScoreForCurrentBattleUNK, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Metadata=""/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

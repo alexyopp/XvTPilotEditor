@@ -138,6 +138,20 @@ namespace XvTPilotEditor.ViewModels
             set { PltRecord.NumCombatFlownInLastBattle = SetIntProperty(value); }
         }
 
+        // TODO: This is to big to be padding, maybe data for cut content?  Regardless, probably don't want to provide UI for it anyway.
+        public ByteArrayViewModel Unknown0x171A { get; private set; }
+
+        public IntArrayViewModel BattleCombatMissionID { get; private set; }
+
+        // TODO: This is to big to be padding, maybe data for cut content?  Regardless, probably don't want to provide UI for it anyway.
+        public ByteArrayViewModel Unknown0x1F2E { get; private set; }
+
+        public string TotalScoreForCurrentBattleUNK
+        {
+            get => PltRecord.TotalScoreForCurrentBattleUNK.ToString();
+            set { PltRecord.TotalScoreForCurrentBattleUNK = SetIntProperty(value); }
+        }
+
         //**** Members
         private PltRecord PltRecord;
 
@@ -169,6 +183,12 @@ namespace XvTPilotEditor.ViewModels
             {
                 TournamentTeamRecord.Add(new TournamentTeamRecordViewModel(tournamentTeamRecord));
             }
+
+            Unknown0x171A = new ByteArrayViewModel(PltRecord.Unknown0x171A);
+
+            BattleCombatMissionID = new IntArrayViewModel(PltRecord.BattleCombatMissionID);
+
+            Unknown0x1F2E = new ByteArrayViewModel(PltRecord.Unknown0x1F2E);
         }
     }
 }

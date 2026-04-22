@@ -43,10 +43,10 @@ namespace XvTPilotEditor.Models
         public int                      Unknown0x170E                   { get; set; }                                                               //              TODO: What is this?
         public int                      Unknown0x1712                   { get; set; }                                                               //              TODO: What is this?
         public int                      NumCombatFlownInLastBattle      { get; set; }                                                               //              TODO: Confirm this is the number of combet engagements flown in the last battle
-        public byte[]                   unknown0x171A                   { get; private set; }   = Array.Empty<byte>();
-        public int[]                    battleCombatMissionID           { get; private set; }   = Array.Empty<int>();
-        public byte[]                   unknown0x1F2E                   { get; private set; }   = Array.Empty<byte>();
-        public int                      totalScoreForCurrentBattleUNK   { get; set; }
+        public byte[]                   Unknown0x171A                   { get; set; }           = Array.Empty<byte>();                              // byte[2052]   TODO: What is this?  Too big to be padding.  Regardless, probably don't need to provide UI access to this, but should still preserve it when writing to file
+        public int[]                    BattleCombatMissionID           { get; set; }           = Array.Empty<int>();                               // int[4]       TODO: What actually is this?  Battles can have up to 7 missions, but at most 4 victories, so maybe that's it?
+        public byte[]                   Unknown0x1F2E                   { get; set; }           = Array.Empty<byte>();                              // byte[1012]   TODO: What is this?  Too big to be padding.  Regardless, probably don't need to provide UI access to this, but should still preserve it when writing to file
+        public int                      TotalScoreForCurrentBattleUNK   { get; set; }                                                               //              TODO: Why the UNK postfix?
 
         public PLTCategoryTypeRecord    UnknownRecord1                  { get; private set; }
         public PLTCategoryTypeRecord    UnknownRecord2                  { get; private set; }
@@ -175,10 +175,10 @@ namespace XvTPilotEditor.Models
             Unknown0x170E                       = pltFile.unknown0x170E;
             Unknown0x1712                       = pltFile.unknown0x1712;
             NumCombatFlownInLastBattle          = pltFile.numCombatFlownInLastBattle;
-            unknown0x171A                       = pltFile.unknown0x171A ?? Array.Empty<byte>();
-            battleCombatMissionID               = pltFile.battleCombatMissionID ?? Array.Empty<int>();
-            unknown0x1F2E                       = pltFile.unknown0x1F2E ?? Array.Empty<byte>();
-            totalScoreForCurrentBattleUNK       = pltFile.totalScoreForCurrentBattleUNK;
+            Unknown0x171A                       = pltFile.unknown0x171A ?? Array.Empty<byte>();
+            BattleCombatMissionID               = pltFile.battleCombatMissionID ?? Array.Empty<int>();
+            Unknown0x1F2E                       = pltFile.unknown0x1F2E ?? Array.Empty<byte>();
+            TotalScoreForCurrentBattleUNK       = pltFile.totalScoreForCurrentBattleUNK;
             CurrentRank                         = pltFile.CurrentRank;
             TotalCountMissionsFlown             = pltFile.TotalCountMissionsFlown;
             RankAchievedOnMissionCount          = pltFile.RankAchievedOnMissionCount ?? Array.Empty<int>();
@@ -332,10 +332,10 @@ namespace XvTPilotEditor.Models
             rec.unknown0x170E                       = Unknown0x170E;
             rec.unknown0x1712                       = Unknown0x1712;
             rec.numCombatFlownInLastBattle          = NumCombatFlownInLastBattle;
-            rec.unknown0x171A                       = unknown0x171A;                                                // byte[2052]
-            rec.battleCombatMissionID               = battleCombatMissionID;                                        // int[4]
-            rec.unknown0x1F2E                       = unknown0x1F2E;                                                // byte[1012]
-            rec.totalScoreForCurrentBattleUNK       = totalScoreForCurrentBattleUNK;
+            rec.unknown0x171A                       = Unknown0x171A;                                                // byte[2052]
+            rec.battleCombatMissionID               = BattleCombatMissionID;                                        // int[4]
+            rec.unknown0x1F2E                       = Unknown0x1F2E;                                                // byte[1012]
+            rec.totalScoreForCurrentBattleUNK       = TotalScoreForCurrentBattleUNK;
             rec.CurrentRank                         = CurrentRank;
             rec.TotalCountMissionsFlown             = TotalCountMissionsFlown;
             rec.RankAchievedOnMissionCount          = RankAchievedOnMissionCount;                                   // int[25]
