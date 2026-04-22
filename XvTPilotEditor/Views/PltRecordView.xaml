@@ -270,5 +270,39 @@
             </ItemsControl>
         </Expander>
 
+        <!-- TODO: What does this mean? -->
+        <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
+            <ctrl:LabeledTextBox Label="?NumHumanPlayersUNK?:"
+                                 Value="{Binding NumHumanPlayersUNK, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Metadata=""/>
+        </StackPanel>
+
+        <!-- TODO: What does this mean? -->
+        <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
+            <ctrl:LabeledTextBox Label="?NumTeamsUNK?:"
+                                 Value="{Binding NumTeamsUNK, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Metadata=""/>
+        </StackPanel>
+
+        <!-- TODO: What is this? -->
+        <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
+            <ctrl:LabeledTextBox Label="Unknown0x170E:"
+                                 Value="{Binding Unknown0x170E, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Metadata=""/>
+        </StackPanel>
+
+        <!-- TODO: What is this? -->
+        <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
+            <ctrl:LabeledTextBox Label="Unknown0x1712:"
+                                 Value="{Binding Unknown0x1712, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Metadata=""/>
+        </StackPanel>
+
+        <!-- TODO: Confirm label is correct -->
+        <StackPanel Orientation="Horizontal" Margin="0,6,0,6">
+            <ctrl:LabeledTextBox Label="Number of Sorties In Last Battle:"
+                                 Value="{Binding NumCombatFlownInLastBattle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 Metadata=""/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

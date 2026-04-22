@@ -7,6 +7,7 @@ namespace XvTPilotEditor.ViewModels
 {
     public sealed class PltRecordViewModel : PilotRecordBaseViewModel
     {
+        //**** Properties
         public string LastTeamNumber
         {
             get => PltRecord.LastTeamNumber.ToString();
@@ -115,6 +116,41 @@ namespace XvTPilotEditor.ViewModels
 
         public ObservableCollection<TournamentTeamRecordViewModel> TournamentTeamRecord { get; private set; } = new();
 
+        // TODO: What is this?
+        public string NumHumanPlayersUNK
+        {
+            get => PltRecord.NumHumanPlayersUNK.ToString();
+            set { PltRecord.NumHumanPlayersUNK = SetIntProperty(value); }
+        }
+
+        // TODO: What is this?
+        public string NumTeamsUNK
+        {
+            get => PltRecord.NumTeamsUNK.ToString();
+            set { PltRecord.NumTeamsUNK = SetIntProperty(value); }
+        }
+
+        // TODO: What is this?
+        public string Unknown0x170E
+        {
+            get => PltRecord.Unknown0x170E.ToString();
+            set { PltRecord.Unknown0x170E = SetIntProperty(value); }
+        }
+
+        // TODO: What is this?
+        public string Unknown0x1712
+        {
+            get => PltRecord.Unknown0x1712.ToString();
+            set { PltRecord.Unknown0x1712 = SetIntProperty(value); }
+        }
+
+        public string NumCombatFlownInLastBattle
+        {
+            get => PltRecord.NumCombatFlownInLastBattle.ToString();
+            set { PltRecord.NumCombatFlownInLastBattle = SetIntProperty(value); }
+        }
+
+        //**** Members
         private PltRecord PltRecord;
 
         public PltRecordViewModel(PltRecord initPltRecord) : base(initPltRecord)

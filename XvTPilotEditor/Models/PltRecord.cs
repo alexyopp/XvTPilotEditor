@@ -38,11 +38,11 @@ namespace XvTPilotEditor.Models
         public byte[]                   Unknown0x1612                   { get; set; }           = Array.Empty<byte>();                              // byte[40]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
         public int                      UnknownPlaqueWon                { get; set; }                                                               //              TODO: What is this? Give it a better name and remove the "Unknown" prefix
         public TournamentTeamRecord[]   TournamentTeamRecord            { get; set; }           = new TournamentTeamRecord[Constants.MAX_TEAMS];    // int[10][5]
-        public int                      numHumanPlayersUNK              { get; set; }
-        public int                      numTeamsUNK                     { get; set; }
-        public int                      unknown0x170E                   { get; set; }
-        public int                      unknown0x1712                   { get; set; }
-        public int                      numCombatFlownInLastBattle      { get; set; }
+        public int                      NumHumanPlayersUNK              { get; set; }                                                               //              TODO: What is this? Give it a better name and remove the "UNK" postfix
+        public int                      NumTeamsUNK                     { get; set; }                                                               //              TODO: What is this? Give it a better name and remove the "UNK" postfix
+        public int                      Unknown0x170E                   { get; set; }                                                               //              TODO: What is this?
+        public int                      Unknown0x1712                   { get; set; }                                                               //              TODO: What is this?
+        public int                      NumCombatFlownInLastBattle      { get; set; }                                                               //              TODO: Confirm this is the number of combet engagements flown in the last battle
         public byte[]                   unknown0x171A                   { get; private set; }   = Array.Empty<byte>();
         public int[]                    battleCombatMissionID           { get; private set; }   = Array.Empty<int>();
         public byte[]                   unknown0x1F2E                   { get; private set; }   = Array.Empty<byte>();
@@ -170,11 +170,11 @@ namespace XvTPilotEditor.Models
                 TournamentTeamRecord[idx] = new TournamentTeamRecord(pltFile.TournTeamRecords[idx]);
             }
 
-            numHumanPlayersUNK                  = pltFile.numHumanPlayersUNK;
-            numTeamsUNK                         = pltFile.numTeamsUNK;
-            unknown0x170E                       = pltFile.unknown0x170E;
-            unknown0x1712                       = pltFile.unknown0x1712;
-            numCombatFlownInLastBattle          = pltFile.numCombatFlownInLastBattle;
+            NumHumanPlayersUNK                  = pltFile.numHumanPlayersUNK;
+            NumTeamsUNK                         = pltFile.numTeamsUNK;
+            Unknown0x170E                       = pltFile.unknown0x170E;
+            Unknown0x1712                       = pltFile.unknown0x1712;
+            NumCombatFlownInLastBattle          = pltFile.numCombatFlownInLastBattle;
             unknown0x171A                       = pltFile.unknown0x171A ?? Array.Empty<byte>();
             battleCombatMissionID               = pltFile.battleCombatMissionID ?? Array.Empty<int>();
             unknown0x1F2E                       = pltFile.unknown0x1F2E ?? Array.Empty<byte>();
@@ -327,11 +327,11 @@ namespace XvTPilotEditor.Models
             rec.unknown0x1612                       = Unknown0x1612;                                                // byte[40]
             rec.unknownPlaqueWon                    = UnknownPlaqueWon;
             rec.TournTeamRecords                    = ToPLTTournTeamRecordArray(TournamentTeamRecord);              // PLTTournTeamRecord[10]  (int[10][5])
-            rec.numHumanPlayersUNK                  = numHumanPlayersUNK;
-            rec.numTeamsUNK                         = numTeamsUNK;
-            rec.unknown0x170E                       = unknown0x170E;
-            rec.unknown0x1712                       = unknown0x1712;
-            rec.numCombatFlownInLastBattle          = numCombatFlownInLastBattle;
+            rec.numHumanPlayersUNK                  = NumHumanPlayersUNK;
+            rec.numTeamsUNK                         = NumTeamsUNK;
+            rec.unknown0x170E                       = Unknown0x170E;
+            rec.unknown0x1712                       = Unknown0x1712;
+            rec.numCombatFlownInLastBattle          = NumCombatFlownInLastBattle;
             rec.unknown0x171A                       = unknown0x171A;                                                // byte[2052]
             rec.battleCombatMissionID               = battleCombatMissionID;                                        // int[4]
             rec.unknown0x1F2E                       = unknown0x1F2E;                                                // byte[1012]
