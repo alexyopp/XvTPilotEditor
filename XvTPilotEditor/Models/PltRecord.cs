@@ -48,11 +48,11 @@ namespace XvTPilotEditor.Models
         public byte[]                   Unknown0x1F2E                   { get; set; }           = Array.Empty<byte>();                              // byte[1012]   TODO: What is this?  Too big to be padding.  Regardless, probably don't need to provide UI access to this, but should still preserve it when writing to file
         public int                      TotalScoreForCurrentBattleUNK   { get; set; }                                                               //              TODO: Why the UNK postfix?
 
-        public PLTCategoryTypeRecord    UnknownRecord1                  { get; private set; }
-        public PLTCategoryTypeRecord    UnknownRecord2                  { get; private set; }
-        public PLTCategoryTypeRecord    UnknownRecord3                  { get; private set; }
-        public PLTCategoryTypeRecord    debriefEnemyKills               { get; private set; }
-        public PLTCategoryTypeRecord    debriefFriendlyKills            { get; private set; }
+        public MissionCategoryRecord    UnknownRecord1                  { get; set; }           = new MissionCategoryRecord();                      // int[3]       TODO: What is this?
+        public MissionCategoryRecord    UnknownRecord2                  { get; set; }           = new MissionCategoryRecord();                      // int[3]       TODO: What is this?
+        public MissionCategoryRecord    UnknownRecord3                  { get; set; }           = new MissionCategoryRecord();                      // int[3]       TODO: What is this?
+        public MissionCategoryRecord    DebriefEnemyKills               { get; set; }           = new MissionCategoryRecord();                      // int[3]
+        public MissionCategoryRecord    DebriefFriendlyKills            { get; set; }           = new MissionCategoryRecord();                      // int[3]
         public int[]                    debriefFullKillsByShipTypeA     { get; private set; }   = Array.Empty<int>();
         public int[]                    debriefFullKillsByShipTypeB     { get; private set; }   = Array.Empty<int>();
         public int[]                    debriefFullKillsByShipTypeC     { get; private set; }   = Array.Empty<int>();
@@ -193,11 +193,11 @@ namespace XvTPilotEditor.Models
             DebriefFullKillsByFG                = pltFile.debriefFullKillsByFG ?? Array.Empty<int>();
             DebriefSharedKillsByFG              = pltFile.debriefSharedKillsByFG ?? Array.Empty<int>();
             DebriefMeleeAIRankFG                = pltFile.debriefMeleeAIRankFG ?? Array.Empty<int>();
-            UnknownRecord1                      = pltFile.UnknownRecord1;
-            UnknownRecord2                      = pltFile.UnknownRecord2;
-            UnknownRecord3                      = pltFile.UnknownRecord3;
-            debriefEnemyKills                   = pltFile.debriefEnemyKills;
-            debriefFriendlyKills                = pltFile.debriefFriendlyKills;
+            UnknownRecord1                      = new MissionCategoryRecord(pltFile.UnknownRecord1);
+            UnknownRecord2                      = new MissionCategoryRecord(pltFile.UnknownRecord2);
+            UnknownRecord3                      = new MissionCategoryRecord(pltFile.UnknownRecord3);
+            DebriefEnemyKills                   = new MissionCategoryRecord(pltFile.debriefEnemyKills);
+            DebriefFriendlyKills                = new MissionCategoryRecord(pltFile.debriefFriendlyKills);
             debriefFullKillsByShipTypeA         = pltFile.debriefFullKillsByShipTypeA ?? Array.Empty<int>();
             debriefFullKillsByShipTypeB         = pltFile.debriefFullKillsByShipTypeB ?? Array.Empty<int>();
             debriefFullKillsByShipTypeC         = pltFile.debriefFullKillsByShipTypeC ?? Array.Empty<int>();
@@ -350,11 +350,11 @@ namespace XvTPilotEditor.Models
             rec.debriefFullKillsByFG                = DebriefFullKillsByFG;                                         // int[48]
             rec.debriefSharedKillsByFG              = DebriefSharedKillsByFG;                                       // int[48]
             rec.debriefMeleeAIRankFG                = DebriefMeleeAIRankFG;                                         // int[48]
-            rec.UnknownRecord1                      = UnknownRecord1;                                               // int[3]
-            rec.UnknownRecord2                      = UnknownRecord2;                                               // int[3]
-            rec.UnknownRecord3                      = UnknownRecord3;                                               // int[3]
-            rec.debriefEnemyKills                   = debriefEnemyKills;                                            // int[3]
-            rec.debriefFriendlyKills                = debriefFriendlyKills;                                         // int[3]
+            rec.UnknownRecord1                      = ToPLTCategoryTypeRecord(UnknownRecord1);                      // int[3]
+            rec.UnknownRecord2                      = ToPLTCategoryTypeRecord(UnknownRecord2);                      // int[3]
+            rec.UnknownRecord3                      = ToPLTCategoryTypeRecord(UnknownRecord3);                      // int[3]
+            rec.debriefEnemyKills                   = ToPLTCategoryTypeRecord(DebriefEnemyKills);                   // int[3]
+            rec.debriefFriendlyKills                = ToPLTCategoryTypeRecord(DebriefFriendlyKills);                // int[3]
             rec.debriefFullKillsByShipTypeA         = debriefFullKillsByShipTypeA;                                  // int[88]
             rec.debriefFullKillsByShipTypeB         = debriefFullKillsByShipTypeB;                                  // int[88]
             rec.debriefFullKillsByShipTypeC         = debriefFullKillsByShipTypeC;                                  // int[88]

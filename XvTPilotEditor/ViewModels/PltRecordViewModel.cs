@@ -152,6 +152,91 @@ namespace XvTPilotEditor.ViewModels
             set { PltRecord.TotalScoreForCurrentBattleUNK = SetIntProperty(value); }
         }
 
+        // UnknownRecord1
+        public string UnknownRecord1Exercise
+        {
+            get => PltRecord.UnknownRecord1.Exercise.ToString();
+            set { PltRecord.UnknownRecord1.Exercise = SetIntProperty(value); }
+        }
+        public string UnknownRecord1Melee
+        {
+            get => PltRecord.UnknownRecord1.Melee.ToString();
+            set { PltRecord.UnknownRecord1.Melee = SetIntProperty(value); }
+        }
+        public string UnknownRecord1CombatEngagement
+        {
+            get => PltRecord.UnknownRecord1.CombatEngagement.ToString();
+            set { PltRecord.UnknownRecord1.CombatEngagement = SetIntProperty(value); }
+        }
+
+        // UnknownRecord2
+        public string UnknownRecord2Exercise
+        {
+            get => PltRecord.UnknownRecord2.Exercise.ToString();
+            set { PltRecord.UnknownRecord2.Exercise = SetIntProperty(value); }
+        }
+        public string UnknownRecord2Melee
+        {
+            get => PltRecord.UnknownRecord2.Melee.ToString();
+            set { PltRecord.UnknownRecord2.Melee = SetIntProperty(value); }
+        }
+        public string UnknownRecord2CombatEngagement
+        {
+            get => PltRecord.UnknownRecord2.CombatEngagement.ToString();
+            set { PltRecord.UnknownRecord2.CombatEngagement = SetIntProperty(value); }
+        }
+
+        // UnknownRecord3
+        public string UnknownRecord3Exercise
+        {
+            get => PltRecord.UnknownRecord3.Exercise.ToString();
+            set { PltRecord.UnknownRecord3.Exercise = SetIntProperty(value); }
+        }
+        public string UnknownRecord3Melee
+        {
+            get => PltRecord.UnknownRecord3.Melee.ToString();
+            set { PltRecord.UnknownRecord3.Melee = SetIntProperty(value); }
+        }
+        public string UnknownRecord3CombatEngagement
+        {
+            get => PltRecord.UnknownRecord3.CombatEngagement.ToString();
+            set { PltRecord.UnknownRecord3.CombatEngagement = SetIntProperty(value); }
+        }
+
+        // DebriefEnemyKills
+        public string DebriefEnemyKillsExercise
+        {
+            get => PltRecord.DebriefEnemyKills.Exercise.ToString();
+            set { PltRecord.DebriefEnemyKills.Exercise = SetIntProperty(value); }
+        }
+        public string DebriefEnemyKillsMelee
+        {
+            get => PltRecord.DebriefEnemyKills.Melee.ToString();
+            set { PltRecord.DebriefEnemyKills.Melee = SetIntProperty(value); }
+        }
+        public string DebriefEnemyKills1CombatEngagement
+        {
+            get => PltRecord.DebriefEnemyKills.CombatEngagement.ToString();
+            set { PltRecord.DebriefEnemyKills.CombatEngagement = SetIntProperty(value); }
+        }
+
+        // DebriefFriendlyKills
+        public string DebriefFriendlyKillsExercise
+        {
+            get => PltRecord.DebriefFriendlyKills.Exercise.ToString();
+            set { PltRecord.DebriefFriendlyKills.Exercise = SetIntProperty(value); }
+        }
+        public string DebriefFriendlyKillsMelee
+        {
+            get => PltRecord.DebriefFriendlyKills.Melee.ToString();
+            set { PltRecord.DebriefFriendlyKills.Melee = SetIntProperty(value); }
+        }
+        public string DebriefFriendlyKillsCombatEngagement
+        {
+            get => PltRecord.DebriefFriendlyKills.CombatEngagement.ToString();
+            set { PltRecord.DebriefFriendlyKills.CombatEngagement = SetIntProperty(value); }
+        }
+
         //**** Members
         private PltRecord PltRecord;
 

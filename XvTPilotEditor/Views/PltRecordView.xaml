@@ -373,5 +373,45 @@
                                  Value="{Binding TotalScoreForCurrentBattleUNK, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                  Metadata=""/>
         </StackPanel>
+
+        <ctrl:ExerciseMeleeCombatHeader/>
+
+        <!-- TODO: What is this? -->
+        <!-- UnknownRecord1 -->
+        <ctrl:LabeledTripleTextBox
+            Label="UnknownRecord1:"
+            TextBox1Content="{Binding UnknownRecord1Exercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding UnknownRecord1Melee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding UnknownRecord1CombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- TODO: What is this? -->
+        <!-- UnknownRecord2 -->
+        <ctrl:LabeledTripleTextBox
+            Label="UnknownRecord2:"
+            TextBox1Content="{Binding UnknownRecord2Exercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding UnknownRecord2Melee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding UnknownRecord2CombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- TODO: What is this? -->
+        <!-- UnknownRecord3 -->
+        <ctrl:LabeledTripleTextBox
+            Label="UnknownRecord3:"
+            TextBox1Content="{Binding UnknownRecord3Exercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding UnknownRecord3Melee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding UnknownRecord3CombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- DebriefEnemyKills -->
+        <ctrl:LabeledTripleTextBox
+            Label="Debrief Enemy Kills:"
+            TextBox1Content="{Binding DebriefEnemyKillsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding DebriefEnemyKillsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding DebriefEnemyKillsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- DebriefFriendlyKills -->
+        <ctrl:LabeledTripleTextBox
+            Label="Debrief Friendly Kills:"
+            TextBox1Content="{Binding DebriefFriendlyKillsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding DebriefFriendlyKillsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding DebriefFriendlyKillsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
     </StackPanel>
 </UserControl>
