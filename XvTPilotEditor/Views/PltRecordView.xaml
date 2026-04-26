@@ -413,5 +413,114 @@
             TextBox1Content="{Binding DebriefFriendlyKillsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             TextBox2Content="{Binding DebriefFriendlyKillsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             TextBox3Content="{Binding DebriefFriendlyKillsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- DebriefFullKillsByShipTypeA, DebriefSharedKillsByShipTypeA -->
+        <Expander Header="Debrief Kills On Ship Type A" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding CombinedDebriefKillsByShipTypeA}" AlternationCount="1000">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center" Width="120" Margin="25,4" FontWeight="Bold"
+                                       Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, Converter={conv:UIntToCraftTypeConverter}}"/>
+                            <ctrl:KillsTuple Grid.Column="1"
+                                             KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Expander>
+
+        <!-- DebriefFullKillsByShipTypeB, DebriefSharedKillsByShipTypeB -->
+        <Expander Header="Debrief Kills On Ship Type B" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding CombinedDebriefKillsByShipTypeB}" AlternationCount="1000">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center" Width="120" Margin="25,4" FontWeight="Bold"
+                                       Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, Converter={conv:UIntToCraftTypeConverter}}"/>
+                            <ctrl:KillsTuple Grid.Column="1"
+                                             KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Expander>
+
+        <!-- DebriefFullKillsByShipTypeC, DebriefSharedKillsByShipTypeC -->
+        <Expander Header="Debrief Kills On Ship Type C" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding CombinedDebriefKillsByShipTypeC}" AlternationCount="1000">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" VerticalAlignment="Center" Width="120" Margin="25,4" FontWeight="Bold"
+                                       Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, Converter={conv:UIntToCraftTypeConverter}}"/>
+                            <ctrl:KillsTuple Grid.Column="1"
+                                             KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                             SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Expander>
+
+        <!-- DebriefAssistKillsByShipTypeA -->
+        <Expander Header="Debrief Assists By Ship Type A" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding DebriefAssistKillsByShipTypeA.Values}" AlternationCount="1000">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="25,4">
+                            <TextBlock Width="120" FontWeight="Bold"
+                                       Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, Converter={conv:UIntToCraftTypeConverter}}"/>
+                            <TextBox Width="75" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Expander>
+
+        <!-- DebriefAssistKillsByShipTypeB -->
+        <Expander Header="Debrief Assists By Ship Type B" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding DebriefAssistKillsByShipTypeB.Values}" AlternationCount="1000">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="25,4">
+                            <TextBlock Width="120" FontWeight="Bold"
+                                       Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, Converter={conv:UIntToCraftTypeConverter}}"/>
+                            <TextBox Width="75" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Expander>
+
+        <!-- DebriefAssistKillsByShipTypeC -->
+        <Expander Header="Debrief Assists By Ship Type C" IsExpanded="False" Margin="0,6,0,6">
+            <ItemsControl ItemsSource="{Binding DebriefAssistKillsByShipTypeC.Values}" AlternationCount="1000">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="25,4">
+                            <TextBlock Width="120" FontWeight="Bold"
+                                       Text="{Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource AncestorType=ContentPresenter}, Converter={conv:UIntToCraftTypeConverter}}"/>
+                            <TextBox Width="75" Margin="8,0,0,0" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Expander>
+
     </StackPanel>
 </UserControl>

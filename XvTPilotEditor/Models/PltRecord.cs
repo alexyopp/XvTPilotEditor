@@ -53,15 +53,15 @@ namespace XvTPilotEditor.Models
         public MissionCategoryRecord    UnknownRecord3                  { get; set; }           = new MissionCategoryRecord();                      // int[3]       TODO: What is this?
         public MissionCategoryRecord    DebriefEnemyKills               { get; set; }           = new MissionCategoryRecord();                      // int[3]
         public MissionCategoryRecord    DebriefFriendlyKills            { get; set; }           = new MissionCategoryRecord();                      // int[3]
-        public int[]                    debriefFullKillsByShipTypeA     { get; private set; }   = Array.Empty<int>();
-        public int[]                    debriefFullKillsByShipTypeB     { get; private set; }   = Array.Empty<int>();
-        public int[]                    debriefFullKillsByShipTypeC     { get; private set; }   = Array.Empty<int>();
-        public int[]                    debriefSharedKillsByShipTypeA   { get; private set; }   = Array.Empty<int>();
-        public int[]                    debriefSharedKillsByShipTypeB   { get; private set; }   = Array.Empty<int>();
-        public int[]                    debriefSharedKillsByShipTypeC   { get; private set; }   = Array.Empty<int>();
-        public int[]                    debriefAssistKillsByShipTypeA   { get; private set; }   = Array.Empty<int>();
-        public int[]                    debriefAssistKillsByShipTypeB   { get; private set; }   = Array.Empty<int>();
-        public int[]                    debriefAssistKillsByShipTypeC   { get; private set; }   = Array.Empty<int>();
+        public int[]                    DebriefFullKillsByShipTypeA     { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                    DebriefFullKillsByShipTypeB     { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                    DebriefFullKillsByShipTypeC     { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                    DebriefSharedKillsByShipTypeA   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                    DebriefSharedKillsByShipTypeB   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                    DebriefSharedKillsByShipTypeC   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                    DebriefAssistKillsByShipTypeA   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                    DebriefAssistKillsByShipTypeB   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                    DebriefAssistKillsByShipTypeC   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
         public PLTPlayerRankCountRecord debriefFullKillsOnPlayerRank    { get; private set; }
         public PLTPlayerRankCountRecord debriefSharedKillsOnPlayerRank  { get; private set; }
         public PLTPlayerRankCountRecord debriefAssistKillsOnPlayerRank  { get; private set; }
@@ -198,15 +198,15 @@ namespace XvTPilotEditor.Models
             UnknownRecord3                      = new MissionCategoryRecord(pltFile.UnknownRecord3);
             DebriefEnemyKills                   = new MissionCategoryRecord(pltFile.debriefEnemyKills);
             DebriefFriendlyKills                = new MissionCategoryRecord(pltFile.debriefFriendlyKills);
-            debriefFullKillsByShipTypeA         = pltFile.debriefFullKillsByShipTypeA ?? Array.Empty<int>();
-            debriefFullKillsByShipTypeB         = pltFile.debriefFullKillsByShipTypeB ?? Array.Empty<int>();
-            debriefFullKillsByShipTypeC         = pltFile.debriefFullKillsByShipTypeC ?? Array.Empty<int>();
-            debriefSharedKillsByShipTypeA       = pltFile.debriefSharedKillsByShipTypeA ?? Array.Empty<int>();
-            debriefSharedKillsByShipTypeB       = pltFile.debriefSharedKillsByShipTypeB ?? Array.Empty<int>();
-            debriefSharedKillsByShipTypeC       = pltFile.debriefSharedKillsByShipTypeC ?? Array.Empty<int>();
-            debriefAssistKillsByShipTypeA       = pltFile.debriefAssistKillsByShipTypeA ?? Array.Empty<int>();
-            debriefAssistKillsByShipTypeB       = pltFile.debriefAssistKillsByShipTypeB ?? Array.Empty<int>();
-            debriefAssistKillsByShipTypeC       = pltFile.debriefAssistKillsByShipTypeC ?? Array.Empty<int>();
+            DebriefFullKillsByShipTypeA         = pltFile.debriefFullKillsByShipTypeA ?? Array.Empty<int>();
+            DebriefFullKillsByShipTypeB         = pltFile.debriefFullKillsByShipTypeB ?? Array.Empty<int>();
+            DebriefFullKillsByShipTypeC         = pltFile.debriefFullKillsByShipTypeC ?? Array.Empty<int>();
+            DebriefSharedKillsByShipTypeA       = pltFile.debriefSharedKillsByShipTypeA ?? Array.Empty<int>();
+            DebriefSharedKillsByShipTypeB       = pltFile.debriefSharedKillsByShipTypeB ?? Array.Empty<int>();
+            DebriefSharedKillsByShipTypeC       = pltFile.debriefSharedKillsByShipTypeC ?? Array.Empty<int>();
+            DebriefAssistKillsByShipTypeA       = pltFile.debriefAssistKillsByShipTypeA ?? Array.Empty<int>();
+            DebriefAssistKillsByShipTypeB       = pltFile.debriefAssistKillsByShipTypeB ?? Array.Empty<int>();
+            DebriefAssistKillsByShipTypeC       = pltFile.debriefAssistKillsByShipTypeC ?? Array.Empty<int>();
             debriefFullKillsOnPlayerRank        = pltFile.debriefFullKillsOnPlayerRank;
             debriefSharedKillsOnPlayerRank      = pltFile.debriefSharedKillsOnPlayerRank;
             debriefAssistKillsOnPlayerRank      = pltFile.debriefAssistKillsOnPlayerRank;
@@ -355,15 +355,15 @@ namespace XvTPilotEditor.Models
             rec.UnknownRecord3                      = ToPLTCategoryTypeRecord(UnknownRecord3);                      // int[3]
             rec.debriefEnemyKills                   = ToPLTCategoryTypeRecord(DebriefEnemyKills);                   // int[3]
             rec.debriefFriendlyKills                = ToPLTCategoryTypeRecord(DebriefFriendlyKills);                // int[3]
-            rec.debriefFullKillsByShipTypeA         = debriefFullKillsByShipTypeA;                                  // int[88]
-            rec.debriefFullKillsByShipTypeB         = debriefFullKillsByShipTypeB;                                  // int[88]
-            rec.debriefFullKillsByShipTypeC         = debriefFullKillsByShipTypeC;                                  // int[88]
-            rec.debriefSharedKillsByShipTypeA       = debriefSharedKillsByShipTypeA;                                // int[88]
-            rec.debriefSharedKillsByShipTypeB       = debriefSharedKillsByShipTypeB;                                // int[88]
-            rec.debriefSharedKillsByShipTypeC       = debriefSharedKillsByShipTypeC;                                // int[88]
-            rec.debriefAssistKillsByShipTypeA       = debriefAssistKillsByShipTypeA;                                // int[88]
-            rec.debriefAssistKillsByShipTypeB       = debriefAssistKillsByShipTypeB;                                // int[88]
-            rec.debriefAssistKillsByShipTypeC       = debriefAssistKillsByShipTypeC;                                // int[88]
+            rec.debriefFullKillsByShipTypeA         = DebriefFullKillsByShipTypeA;                                  // int[88]
+            rec.debriefFullKillsByShipTypeB         = DebriefFullKillsByShipTypeB;                                  // int[88]
+            rec.debriefFullKillsByShipTypeC         = DebriefFullKillsByShipTypeC;                                  // int[88]
+            rec.debriefSharedKillsByShipTypeA       = DebriefSharedKillsByShipTypeA;                                // int[88]
+            rec.debriefSharedKillsByShipTypeB       = DebriefSharedKillsByShipTypeB;                                // int[88]
+            rec.debriefSharedKillsByShipTypeC       = DebriefSharedKillsByShipTypeC;                                // int[88]
+            rec.debriefAssistKillsByShipTypeA       = DebriefAssistKillsByShipTypeA;                                // int[88]
+            rec.debriefAssistKillsByShipTypeB       = DebriefAssistKillsByShipTypeB;                                // int[88]
+            rec.debriefAssistKillsByShipTypeC       = DebriefAssistKillsByShipTypeC;                                // int[88]
             rec.debriefFullKillsOnPlayerRank        = debriefFullKillsOnPlayerRank;                                 // int[3][25]
             rec.debriefSharedKillsOnPlayerRank      = debriefSharedKillsOnPlayerRank;                               // int[3][25]
             rec.debriefAssistKillsOnPlayerRank      = debriefAssistKillsOnPlayerRank;                               // int[3][25]

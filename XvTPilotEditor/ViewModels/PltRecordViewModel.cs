@@ -214,7 +214,7 @@ namespace XvTPilotEditor.ViewModels
             get => PltRecord.DebriefEnemyKills.Melee.ToString();
             set { PltRecord.DebriefEnemyKills.Melee = SetIntProperty(value); }
         }
-        public string DebriefEnemyKills1CombatEngagement
+        public string DebriefEnemyKillsCombatEngagement
         {
             get => PltRecord.DebriefEnemyKills.CombatEngagement.ToString();
             set { PltRecord.DebriefEnemyKills.CombatEngagement = SetIntProperty(value); }
@@ -236,6 +236,27 @@ namespace XvTPilotEditor.ViewModels
             get => PltRecord.DebriefFriendlyKills.CombatEngagement.ToString();
             set { PltRecord.DebriefFriendlyKills.CombatEngagement = SetIntProperty(value); }
         }
+
+        private IntArrayViewModel DebriefFullKillsByShipTypeA;
+        private IntArrayViewModel DebriefSharedKillsByShipTypeA;
+        // Combined collections for UI (Full + Shared pairs)
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsByShipTypeA { get; private set; } = new();
+
+        private IntArrayViewModel DebriefFullKillsByShipTypeB;
+        private IntArrayViewModel DebriefSharedKillsByShipTypeB;
+        // Combined collections for UI (Full + Shared pairs)
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsByShipTypeB { get; private set; } = new();
+
+        private IntArrayViewModel DebriefFullKillsByShipTypeC;
+        private IntArrayViewModel DebriefSharedKillsByShipTypeC;
+        // Combined collections for UI (Full + Shared pairs)
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsByShipTypeC { get; private set; } = new();
+
+        public IntArrayViewModel DebriefAssistKillsByShipTypeA { get; private set; }
+
+        public IntArrayViewModel DebriefAssistKillsByShipTypeB { get; private set; }
+
+        public IntArrayViewModel DebriefAssistKillsByShipTypeC { get; private set; }
 
         //**** Members
         private PltRecord PltRecord;
@@ -274,6 +295,27 @@ namespace XvTPilotEditor.ViewModels
             BattleCombatMissionID = new IntArrayViewModel(PltRecord.BattleCombatMissionID);
 
             Unknown0x1F2E = new ByteArrayViewModel(PltRecord.Unknown0x1F2E);
+
+            DebriefFullKillsByShipTypeA = new IntArrayViewModel(PltRecord.DebriefFullKillsByShipTypeA);
+            DebriefSharedKillsByShipTypeA = new IntArrayViewModel(PltRecord.DebriefSharedKillsByShipTypeA);
+            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
+            CombinedDebriefKillsByShipTypeA = CollectionHelpers.Combine(DebriefFullKillsByShipTypeA.Values, DebriefSharedKillsByShipTypeA.Values);
+
+            DebriefFullKillsByShipTypeB = new IntArrayViewModel(PltRecord.DebriefFullKillsByShipTypeB);
+            DebriefSharedKillsByShipTypeB = new IntArrayViewModel(PltRecord.DebriefSharedKillsByShipTypeB);
+            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
+            CombinedDebriefKillsByShipTypeB = CollectionHelpers.Combine(DebriefFullKillsByShipTypeB.Values, DebriefSharedKillsByShipTypeB.Values);
+
+            DebriefFullKillsByShipTypeC = new IntArrayViewModel(PltRecord.DebriefFullKillsByShipTypeC);
+            DebriefSharedKillsByShipTypeC = new IntArrayViewModel(PltRecord.DebriefSharedKillsByShipTypeC);
+            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
+            CombinedDebriefKillsByShipTypeC = CollectionHelpers.Combine(DebriefFullKillsByShipTypeC.Values, DebriefSharedKillsByShipTypeC.Values);
+
+            DebriefAssistKillsByShipTypeA = new IntArrayViewModel(PltRecord.DebriefAssistKillsByShipTypeA);
+
+            DebriefAssistKillsByShipTypeB = new IntArrayViewModel(PltRecord.DebriefAssistKillsByShipTypeB);
+
+            DebriefAssistKillsByShipTypeC = new IntArrayViewModel(PltRecord.DebriefAssistKillsByShipTypeC);
         }
     }
 }
