@@ -258,6 +258,24 @@ namespace XvTPilotEditor.ViewModels
 
         public IntArrayViewModel DebriefAssistKillsByShipTypeC { get; private set; }
 
+        private MissionCategoryRecordMatrixViewModel DebriefFullKillsOnPlayerRank;
+        private MissionCategoryRecordMatrixViewModel DebriefSharedKillsOnPlayerRank;
+        // Combined collections for UI (Full + Shared pairs)
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsOnPlayerRatingExercise { get; private set; } = new();
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsOnPlayerRatingMelee { get; private set; } = new();
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsOnPlayerRatingCombat { get; private set; } = new();
+
+        public MissionCategoryRecordMatrixViewModel DebriefAssistKillsOnPlayerRank { get; private set; }
+
+        private MissionCategoryRecordMatrixViewModel DebriefFullKillsOnAIRank;
+        private MissionCategoryRecordMatrixViewModel DebriefSharedKillsOnAIRank;
+        // Combined collections for UI (Full + Shared pairs)
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsOnAIRankExercise { get; private set; } = new();
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsOnAIRankMelee { get; private set; } = new();
+        public ObservableCollection<KillPairViewModel> CombinedDebriefKillsOnAIRankCombat { get; private set; } = new();
+
+        public MissionCategoryRecordMatrixViewModel DebriefAssistKillsOnAIRank { get; private set; }
+
         //**** Members
         private PltRecord PltRecord;
 
@@ -316,6 +334,36 @@ namespace XvTPilotEditor.ViewModels
             DebriefAssistKillsByShipTypeB = new IntArrayViewModel(PltRecord.DebriefAssistKillsByShipTypeB);
 
             DebriefAssistKillsByShipTypeC = new IntArrayViewModel(PltRecord.DebriefAssistKillsByShipTypeC);
+
+            DebriefFullKillsOnPlayerRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefFullKillsOnPlayerRank?.Exercise,
+                                                                                    PltRecord.DebriefFullKillsOnPlayerRank?.Melee,
+                                                                                    PltRecord.DebriefFullKillsOnPlayerRank?.CombatEngagement);
+            DebriefSharedKillsOnPlayerRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefSharedKillsOnPlayerRank?.Exercise,
+                                                                                      PltRecord.DebriefSharedKillsOnPlayerRank?.Melee,
+                                                                                      PltRecord.DebriefSharedKillsOnPlayerRank?.CombatEngagement);
+            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
+            CombinedDebriefKillsOnPlayerRatingExercise = CollectionHelpers.Combine(DebriefFullKillsOnPlayerRank.Exercise, DebriefSharedKillsOnPlayerRank.Exercise);
+            CombinedDebriefKillsOnPlayerRatingMelee = CollectionHelpers.Combine(DebriefFullKillsOnPlayerRank.Melee, DebriefSharedKillsOnPlayerRank.Melee);
+            CombinedDebriefKillsOnPlayerRatingCombat = CollectionHelpers.Combine(DebriefFullKillsOnPlayerRank.Combat, DebriefSharedKillsOnPlayerRank.Combat);
+
+            DebriefAssistKillsOnPlayerRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefAssistKillsOnPlayerRank?.Exercise,
+                                                                                      PltRecord.DebriefAssistKillsOnPlayerRank?.Melee,
+                                                                                      PltRecord.DebriefAssistKillsOnPlayerRank?.CombatEngagement);
+
+            DebriefFullKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefFullKillsOnAIRank?.Exercise,
+                                                                                PltRecord.DebriefFullKillsOnAIRank?.Melee,
+                                                                                PltRecord.DebriefFullKillsOnAIRank?.CombatEngagement);
+            DebriefSharedKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefSharedKillsOnAIRank?.Exercise,
+                                                                                  PltRecord.DebriefSharedKillsOnAIRank?.Melee,
+                                                                                  PltRecord.DebriefSharedKillsOnAIRank?.CombatEngagement);
+            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
+            CombinedDebriefKillsOnAIRankExercise = CollectionHelpers.Combine(DebriefFullKillsOnAIRank.Exercise, DebriefSharedKillsOnAIRank.Exercise);
+            CombinedDebriefKillsOnAIRankMelee = CollectionHelpers.Combine(DebriefFullKillsOnAIRank.Melee, DebriefSharedKillsOnAIRank.Melee);
+            CombinedDebriefKillsOnAIRankCombat = CollectionHelpers.Combine(DebriefFullKillsOnAIRank.Combat, DebriefSharedKillsOnAIRank.Combat);
+
+            DebriefAssistKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefAssistKillsOnAIRank?.Exercise,
+                                                                                  PltRecord.DebriefAssistKillsOnAIRank?.Melee,
+                                                                                  PltRecord.DebriefAssistKillsOnAIRank?.CombatEngagement);
         }
     }
 }

@@ -522,5 +522,294 @@
             </ItemsControl>
         </Expander>
 
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
+        <!-- DebriefFullKillsOnPlayerRank, DebriefSharedKillsOnPlayerRank -->
+        <Expander Header="Debrief Kills On Player Rating" IsExpanded="False">
+            <ctrl:QuadBase>
+                <!-- Index column -->
+                <ctrl:QuadBase.Column0Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding CombinedDebriefKillsOnPlayerRatingExercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="30">
+                                        <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                                    Text="{Binding (ItemsControl.AlternationIndex),
+                                                                RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                                Converter={conv:UIntToPilotRatingConverter}}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column0Content>
+
+                <!-- Exercise column (Full + Shared) -->
+                <ctrl:QuadBase.Column1Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding CombinedDebriefKillsOnPlayerRatingExercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column1Content>
+
+                <!-- Melee column (Full + Shared) -->
+                <ctrl:QuadBase.Column2Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding CombinedDebriefKillsOnPlayerRatingMelee}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column2Content>
+
+                <!-- Combat column (Full + Shared) -->
+                <ctrl:QuadBase.Column3Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding CombinedDebriefKillsOnPlayerRatingCombat}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column3Content>
+            </ctrl:QuadBase>
+        </Expander>
+
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
+        <!-- DebriefAssistKillsOnPlayerRank -->
+        <Expander Header="Debrief Assists On Player Rating" IsExpanded="False">
+            <ctrl:QuadBase>
+                <!-- Index column -->
+                <ctrl:QuadBase.Column0Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefAssistKillsOnPlayerRank.Exercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="30">
+                                        <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                                Text="{Binding (ItemsControl.AlternationIndex),
+                                                            RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                            Converter={conv:UIntToPilotRatingConverter}}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column0Content>
+
+                <!-- Exercise column -->
+                <ctrl:QuadBase.Column1Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefAssistKillsOnPlayerRank.Exercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column1Content>
+
+                <!-- Melee column -->
+                <ctrl:QuadBase.Column2Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefAssistKillsOnPlayerRank.Melee}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column2Content>
+
+                <!-- Combat column -->
+                <ctrl:QuadBase.Column3Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefAssistKillsOnPlayerRank.Combat}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column3Content>
+            </ctrl:QuadBase>
+        </Expander>
+
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
+        <!-- DebriefFullKillsOnAIRank, DebriefSharedKillsOnAIRank -->
+        <Expander Header="Debrief Kills On AI Rank" IsExpanded="False">
+            <ctrl:QuadBase>
+                <!-- Index column -->
+                <ctrl:QuadBase.Column0Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding CombinedDebriefKillsOnAIRankExercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="30">
+                                        <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                                    Text="{Binding (ItemsControl.AlternationIndex),
+                                                                RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                                Converter={conv:UIntToAIRankConverter}}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column0Content>
+
+                <!-- Exercise column (Full + Shared) -->
+                <ctrl:QuadBase.Column1Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding CombinedDebriefKillsOnAIRankExercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column1Content>
+
+                <!-- Melee column (Full + Shared) -->
+                <ctrl:QuadBase.Column2Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding CombinedDebriefKillsOnAIRankMelee}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column2Content>
+
+                <!-- Combat column (Full + Shared) -->
+                <ctrl:QuadBase.Column3Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding CombinedDebriefKillsOnAIRankCombat}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <ctrl:KillsTuple KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                         SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column3Content>
+            </ctrl:QuadBase>
+        </Expander>
+
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
+        <!-- DebriefAssistKillsOnAIRank -->
+        <Expander Header="Debrief Assists On AI Rank" IsExpanded="False">
+            <ctrl:QuadBase>
+                <!-- Index column -->
+                <ctrl:QuadBase.Column0Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefAssistKillsOnAIRank.Exercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="30">
+                                        <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                                Text="{Binding (ItemsControl.AlternationIndex),
+                                                            RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                            Converter={conv:UIntToAIRankConverter}}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column0Content>
+
+                <!-- Exercise column -->
+                <ctrl:QuadBase.Column1Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefAssistKillsOnAIRank.Exercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column1Content>
+
+                <!-- Melee column -->
+                <ctrl:QuadBase.Column2Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefAssistKillsOnAIRank.Melee}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column2Content>
+
+                <!-- Combat column -->
+                <ctrl:QuadBase.Column3Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefAssistKillsOnAIRank.Combat}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column3Content>
+            </ctrl:QuadBase>
+        </Expander>
     </StackPanel>
 </UserControl>

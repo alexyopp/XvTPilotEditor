@@ -9,65 +9,65 @@ namespace XvTPilotEditor.Models
         // TODO: Consider creating directly from filebytes/exporting filebytes, rather than PilotFileSchema objects.
 
         //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
-        public int                      LastTeamNumber                  { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's activeMissionTeam
-        public int                      LastSelectedMissionType         { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's MissionFolderIndex
-        public int                      LastSelectedTraining            { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[0]
-        public int                      LastSelectedMelee               { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[1]
-        public int                      LastSelectedTournament          { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[2]
-        public int                      LastSelectedCombat              { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[3]
-        public int                      LastSelectedBattle              { get; set; }                                                               //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[4]
-        public string                   GameNameString                  { get; set; }           = string.Empty;                                     // char[22]     TODO: Investigate if this is the same as Pl2's GameName
-        public byte[]                   Unknown0x2F8                    { get; set; }           = Array.Empty<byte>();                              // byte[10]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
-        public string                   GameNameString2                 { get; set; }           = string.Empty;                                     // char[22]     TODO: Investigate if this is the same as Pl2's LastGameName
-        public byte[]                   Unknown0x318                    { get; set; }           = Array.Empty<byte>();                              // byte[10]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
-        public int                      LastMissionWasNonSpecific       { get; set; }                                                               //              TODO: What is this?  Is it the same as Pl2's isMissionCategorySeries?
-        public int                      Unknown0x326                    { get; set; }                                                               //              TODO: What is this?  Is it the same as Pl2's activeMissionIDNum?
+        public int                                  LastTeamNumber                  { get; set; }                                                       //              TODO: Investigate if this is the same as Pl2's activeMissionTeam
+        public int                                  LastSelectedMissionType         { get; set; }                                                       //              TODO: Investigate if this is the same as Pl2's MissionFolderIndex
+        public int                                  LastSelectedTraining            { get; set; }                                                       //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[0]
+        public int                                  LastSelectedMelee               { get; set; }                                                       //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[1]
+        public int                                  LastSelectedTournament          { get; set; }                                                       //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[2]
+        public int                                  LastSelectedCombat              { get; set; }                                                       //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[3]
+        public int                                  LastSelectedBattle              { get; set; }                                                       //              TODO: Investigate if this is the same as Pl2's SelectedIDNumOfMissionCategory[4]
+        public string                               GameNameString                  { get; set; }   = string.Empty;                                     // char[22]     TODO: Investigate if this is the same as Pl2's GameName
+        public byte[]                               Unknown0x2F8                    { get; set; }   = Array.Empty<byte>();                              // byte[10]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
+        public string                               GameNameString2                 { get; set; }   = string.Empty;                                     // char[22]     TODO: Investigate if this is the same as Pl2's LastGameName
+        public byte[]                               Unknown0x318                    { get; set; }   = Array.Empty<byte>();                              // byte[10]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
+        public int                                  LastMissionWasNonSpecific       { get; set; }                                                       //              TODO: What is this?  Is it the same as Pl2's isMissionCategorySeries?
+        public int                                  Unknown0x326                    { get; set; }                                                       //              TODO: What is this?  Is it the same as Pl2's activeMissionIDNum?
 
         //  Note the difference in types between the Plt and Pl2 versions
         //  TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
-        public int[]                    TotalCraftFullKillsExercise     { get; set; }           = Array.Empty<int>();                               // int[88]
-        public int[]                    TotalCraftFullKillsMelee        { get; set; }           = Array.Empty<int>();                               // int[88]
-        public int[]                    TotalCraftFullKillsCombat       { get; set; }           = Array.Empty<int>();                               // int[88]
-        public int[]                    TotalCraftSharedKillsExercise   { get; set; }           = Array.Empty<int>();                               // int[88]
-        public int[]                    TotalCraftSharedKillsMelee      { get; set; }           = Array.Empty<int>();                               // int[88]
-        public int[]                    TotalCraftSharedKillsCombat     { get; set; }           = Array.Empty<int>();                               // int[88]
-        public int[]                    TotalCraftAssistKillsExercise   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
-        public int[]                    TotalCraftAssistKillsMelee      { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
-        public int[]                    TotalCraftAssistKillsCombat     { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
+        public int[]                                TotalCraftFullKillsExercise     { get; set; }   = Array.Empty<int>();                               // int[88]
+        public int[]                                TotalCraftFullKillsMelee        { get; set; }   = Array.Empty<int>();                               // int[88]
+        public int[]                                TotalCraftFullKillsCombat       { get; set; }   = Array.Empty<int>();                               // int[88]
+        public int[]                                TotalCraftSharedKillsExercise   { get; set; }   = Array.Empty<int>();                               // int[88]
+        public int[]                                TotalCraftSharedKillsMelee      { get; set; }   = Array.Empty<int>();                               // int[88]
+        public int[]                                TotalCraftSharedKillsCombat     { get; set; }   = Array.Empty<int>();                               // int[88]
+        public int[]                                TotalCraftAssistKillsExercise   { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
+        public int[]                                TotalCraftAssistKillsMelee      { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
+        public int[]                                TotalCraftAssistKillsCombat     { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
 
-        public byte[]                   Unknown0x1612                   { get; set; }           = Array.Empty<byte>();                              // byte[40]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
-        public int                      UnknownPlaqueWon                { get; set; }                                                               //              TODO: What is this? Give it a better name and remove the "Unknown" prefix
-        public TournamentTeamRecord[]   TournamentTeamRecord            { get; set; }           = new TournamentTeamRecord[Constants.MAX_TEAMS];    // int[10][5]
-        public int                      NumHumanPlayersUNK              { get; set; }                                                               //              TODO: What is this? Give it a better name and remove the "UNK" postfix
-        public int                      NumTeamsUNK                     { get; set; }                                                               //              TODO: What is this? Give it a better name and remove the "UNK" postfix
-        public int                      Unknown0x170E                   { get; set; }                                                               //              TODO: What is this?
-        public int                      Unknown0x1712                   { get; set; }                                                               //              TODO: What is this?
-        public int                      NumCombatFlownInLastBattle      { get; set; }                                                               //              TODO: Confirm this is the number of combet engagements flown in the last battle
-        public byte[]                   Unknown0x171A                   { get; set; }           = Array.Empty<byte>();                              // byte[2052]   TODO: What is this?  Too big to be padding.  Regardless, probably don't need to provide UI access to this, but should still preserve it when writing to file
-        public int[]                    BattleCombatMissionID           { get; set; }           = Array.Empty<int>();                               // int[4]       TODO: What actually is this?  Battles can have up to 7 missions, but at most 4 victories, so maybe that's it?
-        public byte[]                   Unknown0x1F2E                   { get; set; }           = Array.Empty<byte>();                              // byte[1012]   TODO: What is this?  Too big to be padding.  Regardless, probably don't need to provide UI access to this, but should still preserve it when writing to file
-        public int                      TotalScoreForCurrentBattleUNK   { get; set; }                                                               //              TODO: Why the UNK postfix?
+        public byte[]                               Unknown0x1612                   { get; set; }   = Array.Empty<byte>();                              // byte[40]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
+        public int                                  UnknownPlaqueWon                { get; set; }                                                       //              TODO: What is this? Give it a better name and remove the "Unknown" prefix
+        public TournamentTeamRecord[]               TournamentTeamRecord            { get; set; }   = new TournamentTeamRecord[Constants.MAX_TEAMS];    // int[10][5]
+        public int                                  NumHumanPlayersUNK              { get; set; }                                                       //              TODO: What is this? Give it a better name and remove the "UNK" postfix
+        public int                                  NumTeamsUNK                     { get; set; }                                                       //              TODO: What is this? Give it a better name and remove the "UNK" postfix
+        public int                                  Unknown0x170E                   { get; set; }                                                       //              TODO: What is this?
+        public int                                  Unknown0x1712                   { get; set; }                                                       //              TODO: What is this?
+        public int                                  NumCombatFlownInLastBattle      { get; set; }                                                       //              TODO: Confirm this is the number of combet engagements flown in the last battle
+        public byte[]                               Unknown0x171A                   { get; set; }   = Array.Empty<byte>();                              // byte[2052]   TODO: What is this?  Too big to be padding.  Regardless, probably don't need to provide UI access to this, but should still preserve it when writing to file
+        public int[]                                BattleCombatMissionID           { get; set; }   = Array.Empty<int>();                               // int[4]       TODO: What actually is this?  Battles can have up to 7 missions, but at most 4 victories, so maybe that's it?
+        public byte[]                               Unknown0x1F2E                   { get; set; }   = Array.Empty<byte>();                              // byte[1012]   TODO: What is this?  Too big to be padding.  Regardless, probably don't need to provide UI access to this, but should still preserve it when writing to file
+        public int                                  TotalScoreForCurrentBattleUNK   { get; set; }                                                       //              TODO: Why the UNK postfix?
 
-        public MissionCategoryRecord    UnknownRecord1                  { get; set; }           = new MissionCategoryRecord();                      // int[3]       TODO: What is this?
-        public MissionCategoryRecord    UnknownRecord2                  { get; set; }           = new MissionCategoryRecord();                      // int[3]       TODO: What is this?
-        public MissionCategoryRecord    UnknownRecord3                  { get; set; }           = new MissionCategoryRecord();                      // int[3]       TODO: What is this?
-        public MissionCategoryRecord    DebriefEnemyKills               { get; set; }           = new MissionCategoryRecord();                      // int[3]
-        public MissionCategoryRecord    DebriefFriendlyKills            { get; set; }           = new MissionCategoryRecord();                      // int[3]
-        public int[]                    DebriefFullKillsByShipTypeA     { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
-        public int[]                    DebriefFullKillsByShipTypeB     { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
-        public int[]                    DebriefFullKillsByShipTypeC     { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
-        public int[]                    DebriefSharedKillsByShipTypeA   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
-        public int[]                    DebriefSharedKillsByShipTypeB   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
-        public int[]                    DebriefSharedKillsByShipTypeC   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
-        public int[]                    DebriefAssistKillsByShipTypeA   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
-        public int[]                    DebriefAssistKillsByShipTypeB   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
-        public int[]                    DebriefAssistKillsByShipTypeC   { get; set; }           = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
-        public PLTPlayerRankCountRecord debriefFullKillsOnPlayerRank    { get; private set; }
-        public PLTPlayerRankCountRecord debriefSharedKillsOnPlayerRank  { get; private set; }
-        public PLTPlayerRankCountRecord debriefAssistKillsOnPlayerRank  { get; private set; }
-        public PLTAIRankCountRecord     debriefFullKillsOnAIRank        { get; private set; }
-        public PLTAIRankCountRecord     debriefSharedKillsOnAIRank      { get; private set; }
-        public PLTAIRankCountRecord     debriefAssistKillsOnAIRank      { get; private set; }
+        public MissionCategoryRecord                UnknownRecord1                  { get; set; }   = new MissionCategoryRecord();                      // int[3]       TODO: What is this?
+        public MissionCategoryRecord                UnknownRecord2                  { get; set; }   = new MissionCategoryRecord();                      // int[3]       TODO: What is this?
+        public MissionCategoryRecord                UnknownRecord3                  { get; set; }   = new MissionCategoryRecord();                      // int[3]       TODO: What is this?
+        public MissionCategoryRecord                DebriefEnemyKills               { get; set; }   = new MissionCategoryRecord();                      // int[3]
+        public MissionCategoryRecord                DebriefFriendlyKills            { get; set; }   = new MissionCategoryRecord();                      // int[3]
+        public int[]                                DebriefFullKillsByShipTypeA     { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                                DebriefFullKillsByShipTypeB     { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                                DebriefFullKillsByShipTypeC     { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                                DebriefSharedKillsByShipTypeA   { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                                DebriefSharedKillsByShipTypeB   { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                                DebriefSharedKillsByShipTypeC   { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                                DebriefAssistKillsByShipTypeA   { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                                DebriefAssistKillsByShipTypeB   { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public int[]                                DebriefAssistKillsByShipTypeC   { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
+        public MissionCategoryRecordByPlayerRating  DebriefFullKillsOnPlayerRank    { get; set; }   = new MissionCategoryRecordByPlayerRating();        // int[3][25]
+        public MissionCategoryRecordByPlayerRating  DebriefSharedKillsOnPlayerRank  { get; set; }   = new MissionCategoryRecordByPlayerRating();        // int[3][25]
+        public MissionCategoryRecordByPlayerRating  DebriefAssistKillsOnPlayerRank  { get; set; }   = new MissionCategoryRecordByPlayerRating();        // int[3][25]
+        public MissionCategoryRecordByAIRating      DebriefFullKillsOnAIRank        { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
+        public MissionCategoryRecordByAIRating      DebriefSharedKillsOnAIRank      { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
+        public MissionCategoryRecordByAIRating      DebriefAssistKillsOnAIRank      { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
         public PLTCategoryTypeRecord    debriefNumHiddenCargoFound      { get; private set; }
         public PLTCategoryTypeRecord    debriefNumCannonHits            { get; private set; }
         public PLTCategoryTypeRecord    debriefNumCannonFired           { get; private set; }
@@ -207,12 +207,12 @@ namespace XvTPilotEditor.Models
             DebriefAssistKillsByShipTypeA       = pltFile.debriefAssistKillsByShipTypeA ?? Array.Empty<int>();
             DebriefAssistKillsByShipTypeB       = pltFile.debriefAssistKillsByShipTypeB ?? Array.Empty<int>();
             DebriefAssistKillsByShipTypeC       = pltFile.debriefAssistKillsByShipTypeC ?? Array.Empty<int>();
-            debriefFullKillsOnPlayerRank        = pltFile.debriefFullKillsOnPlayerRank;
-            debriefSharedKillsOnPlayerRank      = pltFile.debriefSharedKillsOnPlayerRank;
-            debriefAssistKillsOnPlayerRank      = pltFile.debriefAssistKillsOnPlayerRank;
-            debriefFullKillsOnAIRank            = pltFile.debriefFullKillsOnAIRank;
-            debriefSharedKillsOnAIRank          = pltFile.debriefSharedKillsOnAIRank;
-            debriefAssistKillsOnAIRank          = pltFile.debriefAssistKillsOnAIRank;
+            DebriefFullKillsOnPlayerRank        = new MissionCategoryRecordByPlayerRating(pltFile.debriefFullKillsOnPlayerRank);
+            DebriefSharedKillsOnPlayerRank      = new MissionCategoryRecordByPlayerRating(pltFile.debriefSharedKillsOnPlayerRank);
+            DebriefAssistKillsOnPlayerRank      = new MissionCategoryRecordByPlayerRating(pltFile.debriefAssistKillsOnPlayerRank);
+            DebriefFullKillsOnAIRank            = new MissionCategoryRecordByAIRating(pltFile.debriefFullKillsOnAIRank);
+            DebriefSharedKillsOnAIRank          = new MissionCategoryRecordByAIRating(pltFile.debriefSharedKillsOnAIRank);
+            DebriefAssistKillsOnAIRank          = new MissionCategoryRecordByAIRating(pltFile.debriefAssistKillsOnAIRank);
             debriefNumHiddenCargoFound          = pltFile.debriefNumHiddenCargoFound;
             debriefNumCannonHits                = pltFile.debriefNumCannonHits;
             debriefNumCannonFired               = pltFile.debriefNumCannonFired;
@@ -364,12 +364,12 @@ namespace XvTPilotEditor.Models
             rec.debriefAssistKillsByShipTypeA       = DebriefAssistKillsByShipTypeA;                                // int[88]
             rec.debriefAssistKillsByShipTypeB       = DebriefAssistKillsByShipTypeB;                                // int[88]
             rec.debriefAssistKillsByShipTypeC       = DebriefAssistKillsByShipTypeC;                                // int[88]
-            rec.debriefFullKillsOnPlayerRank        = debriefFullKillsOnPlayerRank;                                 // int[3][25]
-            rec.debriefSharedKillsOnPlayerRank      = debriefSharedKillsOnPlayerRank;                               // int[3][25]
-            rec.debriefAssistKillsOnPlayerRank      = debriefAssistKillsOnPlayerRank;                               // int[3][25]
-            rec.debriefFullKillsOnAIRank            = debriefFullKillsOnAIRank;                                     // int[3][6]
-            rec.debriefSharedKillsOnAIRank          = debriefSharedKillsOnAIRank;                                   // int[3][6]
-            rec.debriefAssistKillsOnAIRank          = debriefAssistKillsOnAIRank;                                   // int[3][6]
+            rec.debriefFullKillsOnPlayerRank        = ToPLTPlayerRankCountRecord(DebriefFullKillsOnPlayerRank);     // int[3][25]
+            rec.debriefSharedKillsOnPlayerRank      = ToPLTPlayerRankCountRecord(DebriefSharedKillsOnPlayerRank);   // int[3][25]
+            rec.debriefAssistKillsOnPlayerRank      = ToPLTPlayerRankCountRecord(DebriefAssistKillsOnPlayerRank);   // int[3][25]
+            rec.debriefFullKillsOnAIRank            = ToPLTAIRankCountRecord(DebriefFullKillsOnAIRank);             // int[3][6]
+            rec.debriefSharedKillsOnAIRank          = ToPLTAIRankCountRecord(DebriefSharedKillsOnAIRank);           // int[3][6]
+            rec.debriefAssistKillsOnAIRank          = ToPLTAIRankCountRecord(DebriefAssistKillsOnAIRank);           // int[3][6]
             rec.debriefNumHiddenCargoFound          = debriefNumHiddenCargoFound;                                   // int[3]
             rec.debriefNumCannonHits                = debriefNumCannonHits;                                         // int[3]
             rec.debriefNumCannonFired               = debriefNumCannonFired;                                        // int[3]
