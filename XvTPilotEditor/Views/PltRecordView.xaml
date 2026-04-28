@@ -377,42 +377,17 @@
         <ctrl:ExerciseMeleeCombatHeader/>
 
         <!-- TODO: What is this? -->
-        <!-- UnknownRecord1 -->
-        <ctrl:LabeledTripleTextBox
-            Label="UnknownRecord1:"
-            TextBox1Content="{Binding UnknownRecord1Exercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding UnknownRecord1Melee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding UnknownRecord1CombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding UnknownRecord1}"/>
 
         <!-- TODO: What is this? -->
-        <!-- UnknownRecord2 -->
-        <ctrl:LabeledTripleTextBox
-            Label="UnknownRecord2:"
-            TextBox1Content="{Binding UnknownRecord2Exercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding UnknownRecord2Melee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding UnknownRecord2CombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding UnknownRecord2}"/>
 
         <!-- TODO: What is this? -->
-        <!-- UnknownRecord3 -->
-        <ctrl:LabeledTripleTextBox
-            Label="UnknownRecord3:"
-            TextBox1Content="{Binding UnknownRecord3Exercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding UnknownRecord3Melee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding UnknownRecord3CombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding UnknownRecord3}"/>
 
-        <!-- DebriefEnemyKills -->
-        <ctrl:LabeledTripleTextBox
-            Label="Debrief Enemy Kills:"
-            TextBox1Content="{Binding DebriefEnemyKillsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding DebriefEnemyKillsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding DebriefEnemyKillsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefEnemyKills}"/>
 
-        <!-- DebriefFriendlyKills -->
-        <ctrl:LabeledTripleTextBox
-            Label="Debrief Friendly Kills:"
-            TextBox1Content="{Binding DebriefFriendlyKillsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding DebriefFriendlyKillsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding DebriefFriendlyKillsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefFriendlyKills}"/>
 
         <!-- DebriefFullKillsByShipTypeA, DebriefSharedKillsByShipTypeA -->
         <Expander Header="Debrief Kills On Ship Type A" IsExpanded="False" Margin="0,6,0,6">
@@ -812,68 +787,23 @@
             </ctrl:QuadBase>
         </Expander>
 
-        <!-- DebriefNumHiddenCargoFound -->
-        <ctrl:LabeledTripleTextBox
-            Label="Debrief Hidden Cargo Found:"
-            TextBox1Content="{Binding DebriefNumHiddenCargoFoundExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding DebriefNumHiddenCargoFoundMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding DebriefNumHiddenCargoFoundCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefNumHiddenCargoFound}"/>
 
-        <!-- DebriefNumCannonHits -->
-        <ctrl:LabeledTripleTextBox
-            Label="Debrief Laser Hits:"
-            TextBox1Content="{Binding DebriefNumCannonHitsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding DebriefNumCannonHitsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding DebriefNumCannonHitsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefNumCannonHits}"/>
 
-        <!-- DebriefNumCannonFired -->
-        <ctrl:LabeledTripleTextBox
-            Label="Debrief Lasers Fired:"
-            TextBox1Content="{Binding DebriefNumCannonFiredExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding DebriefNumCannonFiredMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding DebriefNumCannonFiredCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefNumCannonFired}"/>
 
-        <!-- DebriefNumWarheadHits -->
-        <ctrl:LabeledTripleTextBox
-            Label="Debrief Warhead Hits:"
-            TextBox1Content="{Binding DebriefNumWarheadHitsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding DebriefNumWarheadHitsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding DebriefNumWarheadHitsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefNumWarheadHits}"/>
 
-        <!-- DebriefNumWarheadFired -->
-        <ctrl:LabeledTripleTextBox
-            Label="Debrief Warheads Fired:"
-            TextBox1Content="{Binding DebriefNumWarheadFiredExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding DebriefNumWarheadFiredMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding DebriefNumWarheadFiredCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefNumWarheadFired}"/>
 
-        <!-- DebriefNumCraftLosses -->
-        <ctrl:LabeledTripleTextBox
-            Label="Debrief Craft Losses:"
-            TextBox1Content="{Binding DebriefNumCraftLossesExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding DebriefNumCraftLossesMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding DebriefNumCraftLossesCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefNumCraftLosses}"/>
 
-        <!-- DebriefCraftLossesFromCollision -->
-        <ctrl:LabeledTripleTextBox
-            Label="Debrief Losses From Collisions:"
-            TextBox1Content="{Binding DebriefCraftLossesFromCollisionExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding DebriefCraftLossesFromCollisionMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding DebriefCraftLossesFromCollisionCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefCraftLossesFromCollision}"/>
 
-        <!-- DebriefCraftLossesFromStarship -->
-        <ctrl:LabeledTripleTextBox
-            Label="Debrief Losses From Starships:"
-            TextBox1Content="{Binding DebriefCraftLossesFromStarshipExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding DebriefCraftLossesFromStarshipMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding DebriefCraftLossesFromStarshipCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefCraftLossesFromStarship}"/>
 
-        <!-- DebriefCraftLossesFromMine -->
-        <ctrl:LabeledTripleTextBox
-            Label="Debrief Losses From Mines:"
-            TextBox1Content="{Binding DebriefCraftLossesFromMineExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding DebriefCraftLossesFromMineMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding DebriefCraftLossesFromMineCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefCraftLossesFromMine}"/>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
         <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->

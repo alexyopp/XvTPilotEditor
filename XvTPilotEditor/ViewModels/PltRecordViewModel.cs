@@ -152,90 +152,15 @@ namespace XvTPilotEditor.ViewModels
             set { PltRecord.TotalScoreForCurrentBattleUNK = SetIntProperty(value); }
         }
 
-        // UnknownRecord1
-        public string UnknownRecord1Exercise
-        {
-            get => PltRecord.UnknownRecord1.Exercise.ToString();
-            set { PltRecord.UnknownRecord1.Exercise = SetIntProperty(value); }
-        }
-        public string UnknownRecord1Melee
-        {
-            get => PltRecord.UnknownRecord1.Melee.ToString();
-            set { PltRecord.UnknownRecord1.Melee = SetIntProperty(value); }
-        }
-        public string UnknownRecord1CombatEngagement
-        {
-            get => PltRecord.UnknownRecord1.CombatEngagement.ToString();
-            set { PltRecord.UnknownRecord1.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel UnknownRecord1 { get; private set; }
 
-        // UnknownRecord2
-        public string UnknownRecord2Exercise
-        {
-            get => PltRecord.UnknownRecord2.Exercise.ToString();
-            set { PltRecord.UnknownRecord2.Exercise = SetIntProperty(value); }
-        }
-        public string UnknownRecord2Melee
-        {
-            get => PltRecord.UnknownRecord2.Melee.ToString();
-            set { PltRecord.UnknownRecord2.Melee = SetIntProperty(value); }
-        }
-        public string UnknownRecord2CombatEngagement
-        {
-            get => PltRecord.UnknownRecord2.CombatEngagement.ToString();
-            set { PltRecord.UnknownRecord2.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel UnknownRecord2 { get; private set; }
 
-        // UnknownRecord3
-        public string UnknownRecord3Exercise
-        {
-            get => PltRecord.UnknownRecord3.Exercise.ToString();
-            set { PltRecord.UnknownRecord3.Exercise = SetIntProperty(value); }
-        }
-        public string UnknownRecord3Melee
-        {
-            get => PltRecord.UnknownRecord3.Melee.ToString();
-            set { PltRecord.UnknownRecord3.Melee = SetIntProperty(value); }
-        }
-        public string UnknownRecord3CombatEngagement
-        {
-            get => PltRecord.UnknownRecord3.CombatEngagement.ToString();
-            set { PltRecord.UnknownRecord3.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel UnknownRecord3 { get; private set; }
 
-        // DebriefEnemyKills
-        public string DebriefEnemyKillsExercise
-        {
-            get => PltRecord.DebriefEnemyKills.Exercise.ToString();
-            set { PltRecord.DebriefEnemyKills.Exercise = SetIntProperty(value); }
-        }
-        public string DebriefEnemyKillsMelee
-        {
-            get => PltRecord.DebriefEnemyKills.Melee.ToString();
-            set { PltRecord.DebriefEnemyKills.Melee = SetIntProperty(value); }
-        }
-        public string DebriefEnemyKillsCombatEngagement
-        {
-            get => PltRecord.DebriefEnemyKills.CombatEngagement.ToString();
-            set { PltRecord.DebriefEnemyKills.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel DebriefEnemyKills { get; private set; }
 
-        // DebriefFriendlyKills
-        public string DebriefFriendlyKillsExercise
-        {
-            get => PltRecord.DebriefFriendlyKills.Exercise.ToString();
-            set { PltRecord.DebriefFriendlyKills.Exercise = SetIntProperty(value); }
-        }
-        public string DebriefFriendlyKillsMelee
-        {
-            get => PltRecord.DebriefFriendlyKills.Melee.ToString();
-            set { PltRecord.DebriefFriendlyKills.Melee = SetIntProperty(value); }
-        }
-        public string DebriefFriendlyKillsCombatEngagement
-        {
-            get => PltRecord.DebriefFriendlyKills.CombatEngagement.ToString();
-            set { PltRecord.DebriefFriendlyKills.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel DebriefFriendlyKills { get; private set; }
 
         private IntArrayViewModel DebriefFullKillsByShipTypeA;
         private IntArrayViewModel DebriefSharedKillsByShipTypeA;
@@ -276,158 +201,23 @@ namespace XvTPilotEditor.ViewModels
 
         public MissionCategoryRecordMatrixViewModel DebriefAssistKillsOnAIRank { get; private set; }
 
-        // DebriefNumHiddenCargoFound
-        public string DebriefNumHiddenCargoFoundExercise
-        {
-            get => PltRecord.DebriefNumHiddenCargoFound.Exercise.ToString();
-            set { PltRecord.DebriefNumHiddenCargoFound.Exercise = SetIntProperty(value); }
-        }
-        public string DebriefNumHiddenCargoFoundMelee
-        {
-            get => PltRecord.DebriefNumHiddenCargoFound.Melee.ToString();
-            set { PltRecord.DebriefNumHiddenCargoFound.Melee = SetIntProperty(value); }
-        }
-        public string DebriefNumHiddenCargoFoundCombatEngagement
-        {
-            get => PltRecord.DebriefNumHiddenCargoFound.CombatEngagement.ToString();
-            set { PltRecord.DebriefNumHiddenCargoFound.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel DebriefNumHiddenCargoFound { get; private set; }
 
-        // DebriefNumCannonHits
-        public string DebriefNumCannonHitsExercise
-        {
-            get => PltRecord.DebriefNumCannonHits.Exercise.ToString();
-            set { PltRecord.DebriefNumCannonHits.Exercise = SetIntProperty(value); }
-        }
-        public string DebriefNumCannonHitsMelee
-        {
-            get => PltRecord.DebriefNumCannonHits.Melee.ToString();
-            set { PltRecord.DebriefNumCannonHits.Melee = SetIntProperty(value); }
-        }
-        public string DebriefNumCannonHitsCombatEngagement
-        {
-            get => PltRecord.DebriefNumCannonHits.CombatEngagement.ToString();
-            set { PltRecord.DebriefNumCannonHits.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel DebriefNumCannonHits { get; private set; }
 
-        // DebriefNumCannonFired
-        public string DebriefNumCannonFiredExercise
-        {
-            get => PltRecord.DebriefNumCannonFired.Exercise.ToString();
-            set { PltRecord.DebriefNumCannonFired.Exercise = SetIntProperty(value); }
-        }
-        public string DebriefNumCannonFiredMelee
-        {
-            get => PltRecord.DebriefNumCannonFired.Melee.ToString();
-            set { PltRecord.DebriefNumCannonFired.Melee = SetIntProperty(value); }
-        }
-        public string DebriefNumCannonFiredCombatEngagement
-        {
-            get => PltRecord.DebriefNumCannonFired.CombatEngagement.ToString();
-            set { PltRecord.DebriefNumCannonFired.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel DebriefNumCannonFired { get; private set; }
 
-        // DebriefNumWarheadHits
-        public string DebriefNumWarheadHitsExercise
-        {
-            get => PltRecord.DebriefNumWarheadHits.Exercise.ToString();
-            set { PltRecord.DebriefNumWarheadHits.Exercise = SetIntProperty(value); }
-        }
-        public string DebriefNumWarheadHitsMelee
-        {
-            get => PltRecord.DebriefNumWarheadHits.Melee.ToString();
-            set { PltRecord.DebriefNumWarheadHits.Melee = SetIntProperty(value); }
-        }
-        public string DebriefNumWarheadHitsCombatEngagement
-        {
-            get => PltRecord.DebriefNumWarheadHits.CombatEngagement.ToString();
-            set { PltRecord.DebriefNumWarheadHits.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel DebriefNumWarheadHits { get; private set; }
 
-        // DebriefNumWarheadFired
-        public string DebriefNumWarheadFiredExercise
-        {
-            get => PltRecord.DebriefNumWarheadFired.Exercise.ToString();
-            set { PltRecord.DebriefNumWarheadFired.Exercise = SetIntProperty(value); }
-        }
-        public string DebriefNumWarheadFiredMelee
-        {
-            get => PltRecord.DebriefNumWarheadFired.Melee.ToString();
-            set { PltRecord.DebriefNumWarheadFired.Melee = SetIntProperty(value); }
-        }
-        public string DebriefNumWarheadFiredCombatEngagement
-        {
-            get => PltRecord.DebriefNumWarheadFired.CombatEngagement.ToString();
-            set { PltRecord.DebriefNumWarheadFired.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel DebriefNumWarheadFired { get; private set; }
 
-        // DebriefNumCraftLosses
-        public string DebriefNumCraftLossesExercise
-        {
-            get => PltRecord.DebriefNumCraftLosses.Exercise.ToString();
-            set { PltRecord.DebriefNumCraftLosses.Exercise = SetIntProperty(value); }
-        }
-        public string DebriefNumCraftLossesMelee
-        {
-            get => PltRecord.DebriefNumCraftLosses.Melee.ToString();
-            set { PltRecord.DebriefNumCraftLosses.Melee = SetIntProperty(value); }
-        }
-        public string DebriefNumCraftLossesCombatEngagement
-        {
-            get => PltRecord.DebriefNumCraftLosses.CombatEngagement.ToString();
-            set { PltRecord.DebriefNumCraftLosses.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel DebriefNumCraftLosses { get; private set; }
 
-        // DebriefCraftLossesFromCollision
-        public string DebriefCraftLossesFromCollisionExercise
-        {
-            get => PltRecord.DebriefCraftLossesFromCollision.Exercise.ToString();
-            set { PltRecord.DebriefCraftLossesFromCollision.Exercise = SetIntProperty(value); }
-        }
-        public string DebriefCraftLossesFromCollisionMelee
-        {
-            get => PltRecord.DebriefCraftLossesFromCollision.Melee.ToString();
-            set { PltRecord.DebriefCraftLossesFromCollision.Melee = SetIntProperty(value); }
-        }
-        public string DebriefCraftLossesFromCollisionCombatEngagement
-        {
-            get => PltRecord.DebriefCraftLossesFromCollision.CombatEngagement.ToString();
-            set { PltRecord.DebriefCraftLossesFromCollision.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel DebriefCraftLossesFromCollision { get; private set; }
 
-        // DebriefCraftLossesFromStarship
-        public string DebriefCraftLossesFromStarshipExercise
-        {
-            get => PltRecord.DebriefCraftLossesFromStarship.Exercise.ToString();
-            set { PltRecord.DebriefCraftLossesFromStarship.Exercise = SetIntProperty(value); }
-        }
-        public string DebriefCraftLossesFromStarshipMelee
-        {
-            get => PltRecord.DebriefCraftLossesFromStarship.Melee.ToString();
-            set { PltRecord.DebriefCraftLossesFromStarship.Melee = SetIntProperty(value); }
-        }
-        public string DebriefCraftLossesFromStarshipCombatEngagement
-        {
-            get => PltRecord.DebriefCraftLossesFromStarship.CombatEngagement.ToString();
-            set { PltRecord.DebriefCraftLossesFromStarship.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel DebriefCraftLossesFromStarship { get; private set; }
 
-        // DebriefCraftLossesFromMine
-        public string DebriefCraftLossesFromMineExercise
-        {
-            get => PltRecord.DebriefCraftLossesFromMine.Exercise.ToString();
-            set { PltRecord.DebriefCraftLossesFromMine.Exercise = SetIntProperty(value); }
-        }
-        public string DebriefCraftLossesFromMineMelee
-        {
-            get => PltRecord.DebriefCraftLossesFromMine.Melee.ToString();
-            set { PltRecord.DebriefCraftLossesFromMine.Melee = SetIntProperty(value); }
-        }
-        public string DebriefCraftLossesFromMineCombatEngagement
-        {
-            get => PltRecord.DebriefCraftLossesFromMine.CombatEngagement.ToString();
-            set { PltRecord.DebriefCraftLossesFromMine.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel DebriefCraftLossesFromMine { get; private set; }
 
         public MissionCategoryRecordMatrixViewModel DebriefLossesFromPlayerRank { get; private set; }
 
@@ -468,6 +258,12 @@ namespace XvTPilotEditor.ViewModels
             Unknown0x171A = new ByteArrayViewModel(PltRecord.Unknown0x171A);
 
             BattleCombatMissionID = new IntArrayViewModel(PltRecord.BattleCombatMissionID);
+
+            UnknownRecord1 = new MissionCategoryRecordViewModel("UnknownRecord1", PltRecord.UnknownRecord1);
+            UnknownRecord2 = new MissionCategoryRecordViewModel("UnknownRecord2", PltRecord.UnknownRecord2);
+            UnknownRecord3 = new MissionCategoryRecordViewModel("UnknownRecord3", PltRecord.UnknownRecord3);
+            DebriefEnemyKills = new MissionCategoryRecordViewModel("Debrief Enemy Kills", PltRecord.DebriefEnemyKills);
+            DebriefFriendlyKills = new MissionCategoryRecordViewModel("Debrief Friendly Kills", PltRecord.DebriefFriendlyKills);
 
             Unknown0x1F2E = new ByteArrayViewModel(PltRecord.Unknown0x1F2E);
 
@@ -521,6 +317,24 @@ namespace XvTPilotEditor.ViewModels
             DebriefAssistKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefAssistKillsOnAIRank?.Exercise,
                                                                                   PltRecord.DebriefAssistKillsOnAIRank?.Melee,
                                                                                   PltRecord.DebriefAssistKillsOnAIRank?.CombatEngagement);
+
+            DebriefNumHiddenCargoFound = new MissionCategoryRecordViewModel("Debrief Hidden Cargo Found", PltRecord.DebriefNumHiddenCargoFound);
+
+            DebriefNumCannonHits = new MissionCategoryRecordViewModel("Debrief Cannon Hits", PltRecord.DebriefNumCannonHits);
+
+            DebriefNumCannonFired = new MissionCategoryRecordViewModel("Debrief Cannon Fired", PltRecord.DebriefNumCannonFired);
+
+            DebriefNumWarheadHits = new MissionCategoryRecordViewModel("Debrief Warhead Hits", PltRecord.DebriefNumWarheadHits);
+
+            DebriefNumWarheadFired = new MissionCategoryRecordViewModel("Debrief Warhead Fired", PltRecord.DebriefNumWarheadFired);
+
+            DebriefNumCraftLosses = new MissionCategoryRecordViewModel("Debrief Craft Losses", PltRecord.DebriefNumCraftLosses);
+
+            DebriefCraftLossesFromCollision = new MissionCategoryRecordViewModel("Debrief Craft Losses From Collisions", PltRecord.DebriefCraftLossesFromCollision);
+
+            DebriefCraftLossesFromStarship = new MissionCategoryRecordViewModel("Debrief Craft Losses From Starships", PltRecord.DebriefCraftLossesFromStarship);
+
+            DebriefCraftLossesFromMine = new MissionCategoryRecordViewModel("Debrief Craft Losses From Mines", PltRecord.DebriefCraftLossesFromMine);
 
             DebriefLossesFromPlayerRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefLossesFromPlayerRank?.Exercise,
                                                                                    PltRecord.DebriefLossesFromPlayerRank?.Melee,

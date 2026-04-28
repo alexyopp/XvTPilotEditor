@@ -76,90 +76,15 @@ namespace XvTPilotEditor.ViewModels
             set { PilotRecordBase.PercentToNextRank = SetIntProperty(value); }
         }
 
-        // TotalCategoryScore
-        public string TotalCategoryScoreExercise
-        {
-            get => PilotRecordBase.TotalCategoryScore.Exercise.ToString();
-            set { PilotRecordBase.TotalCategoryScore.Exercise = SetIntProperty(value); }
-        }
-        public string TotalCategoryScoreMelee
-        {
-            get => PilotRecordBase.TotalCategoryScore.Melee.ToString();
-            set { PilotRecordBase.TotalCategoryScore.Melee = SetIntProperty(value); }
-        }
-        public string TotalCategoryScoreCombatEngagement
-        {
-            get => PilotRecordBase.TotalCategoryScore.CombatEngagement.ToString();
-            set { PilotRecordBase.TotalCategoryScore.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel TotalCategoryScore { get; private set; }
 
-        // NumFlownNonSeries
-        public string NumFlownNonSeriesExercise
-        {
-            get => PilotRecordBase.NumFlownNonSeries.Exercise.ToString();
-            set { PilotRecordBase.NumFlownNonSeries.Exercise = SetIntProperty(value); }
-        }
-        public string NumFlownNonSeriesMelee
-        {
-            get => PilotRecordBase.NumFlownNonSeries.Melee.ToString();
-            set { PilotRecordBase.NumFlownNonSeries.Melee = SetIntProperty(value); }
-        }
-        public string NumFlownNonSeriesCombatEngagement
-        {
-            get => PilotRecordBase.NumFlownNonSeries.CombatEngagement.ToString();
-            set { PilotRecordBase.NumFlownNonSeries.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel NumFlownNonSeries { get; private set; }
 
-        // NumFlownSeries
-        public string NumFlownSeriesExercise
-        {
-            get => PilotRecordBase.NumFlownSeries.Exercise.ToString();
-            set { PilotRecordBase.NumFlownSeries.Exercise = SetIntProperty(value); }
-        }
-        public string NumFlownSeriesMelee
-        {
-            get => PilotRecordBase.NumFlownSeries.Melee.ToString();
-            set { PilotRecordBase.NumFlownSeries.Melee = SetIntProperty(value); }
-        }
-        public string NumFlownSeriesCombatEngagement
-        {
-            get => PilotRecordBase.NumFlownSeries.CombatEngagement.ToString();
-            set { PilotRecordBase.NumFlownSeries.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel NumFlownSeries { get; private set; }
 
-        // TotalKills
-        public string TotalKillsExercise
-        {
-            get => PilotRecordBase.TotalKills.Exercise.ToString();
-            set { PilotRecordBase.TotalKills.Exercise = SetIntProperty(value); }
-        }
-        public string TotalKillsMelee
-        {
-            get => PilotRecordBase.TotalKills.Melee.ToString();
-            set { PilotRecordBase.TotalKills.Melee = SetIntProperty(value); }
-        }
-        public string TotalKillsCombatEngagement
-        {
-            get => PilotRecordBase.TotalKills.CombatEngagement.ToString();
-            set { PilotRecordBase.TotalKills.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel TotalKills { get; private set; }
 
-        // FriendlyKills
-        public string FriendlyKillsExercise
-        {
-            get => PilotRecordBase.FriendlyKills.Exercise.ToString();
-            set { PilotRecordBase.FriendlyKills.Exercise = SetIntProperty(value); }
-        }
-        public string FriendlyKillsMelee
-        {
-            get => PilotRecordBase.FriendlyKills.Melee.ToString();
-            set { PilotRecordBase.FriendlyKills.Melee = SetIntProperty(value); }
-        }
-        public string FriendlyKillsCombatEngagement
-        {
-            get => PilotRecordBase.FriendlyKills.CombatEngagement.ToString();
-            set { PilotRecordBase.FriendlyKills.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel FriendlyKills { get; private set; }
 
         private MissionCategoryRecordMatrixViewModel TotalFullKillsOnPlayerRating;
         private MissionCategoryRecordMatrixViewModel TotalSharedKillsOnPlayerRating;
@@ -179,158 +104,23 @@ namespace XvTPilotEditor.ViewModels
 
         public MissionCategoryRecordMatrixViewModel TotalAssistsOnAIRank { get; private set; }
 
-        // TotalHiddenCargoFound
-        public string TotalHiddenCargoFoundExercise
-        {
-            get => PilotRecordBase.TotalHiddenCargoFound.Exercise.ToString();
-            set { PilotRecordBase.TotalHiddenCargoFound.Exercise = SetIntProperty(value); }
-        }
-        public string TotalHiddenCargoFoundMelee
-        {
-            get => PilotRecordBase.TotalHiddenCargoFound.Melee.ToString();
-            set { PilotRecordBase.TotalHiddenCargoFound.Melee = SetIntProperty(value); }
-        }
-        public string TotalHiddenCargoFoundCombatEngagement
-        {
-            get => PilotRecordBase.TotalHiddenCargoFound.CombatEngagement.ToString();
-            set { PilotRecordBase.TotalHiddenCargoFound.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel TotalHiddenCargoFound { get; private set; }
 
-        // TotalLaserHit
-        public string TotalLaserHitExercise
-        {
-            get => PilotRecordBase.TotalLaserHit.Exercise.ToString();
-            set { PilotRecordBase.TotalLaserHit.Exercise = SetIntProperty(value); }
-        }
-        public string TotalLaserHitMelee
-        {
-            get => PilotRecordBase.TotalLaserHit.Melee.ToString();
-            set { PilotRecordBase.TotalLaserHit.Melee = SetIntProperty(value); }
-        }
-        public string TotalLaserHitCombatEngagement
-        {
-            get => PilotRecordBase.TotalLaserHit.CombatEngagement.ToString();
-            set { PilotRecordBase.TotalLaserHit.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel TotalLaserHit { get; private set; }
 
-        // TotalLaserFired
-        public string TotalLaserFiredExercise
-        {
-            get => PilotRecordBase.TotalLaserFired.Exercise.ToString();
-            set { PilotRecordBase.TotalLaserFired.Exercise = SetIntProperty(value); }
-        }
-        public string TotalLaserFiredMelee
-        {
-            get => PilotRecordBase.TotalLaserFired.Melee.ToString();
-            set { PilotRecordBase.TotalLaserFired.Melee = SetIntProperty(value); }
-        }
-        public string TotalLaserFiredCombatEngagement
-        {
-            get => PilotRecordBase.TotalLaserFired.CombatEngagement.ToString();
-            set { PilotRecordBase.TotalLaserFired.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel TotalLaserFired { get; private set; }
 
-        // TotalWarheadHit
-        public string TotalWarheadHitExercise
-        {
-            get => PilotRecordBase.TotalWarheadHit.Exercise.ToString();
-            set { PilotRecordBase.TotalWarheadHit.Exercise = SetIntProperty(value); }
-        }
-        public string TotalWarheadHitMelee
-        {
-            get => PilotRecordBase.TotalWarheadHit.Melee.ToString();
-            set { PilotRecordBase.TotalWarheadHit.Melee = SetIntProperty(value); }
-        }
-        public string TotalWarheadHitCombatEngagement
-        {
-            get => PilotRecordBase.TotalWarheadHit.CombatEngagement.ToString();
-            set { PilotRecordBase.TotalWarheadHit.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel TotalWarheadHit { get; private set; }
 
-        // TotalWarheadFired
-        public string TotalWarheadFiredExercise
-        {
-            get => PilotRecordBase.TotalWarheadFired.Exercise.ToString();
-            set { PilotRecordBase.TotalWarheadFired.Exercise = SetIntProperty(value); }
-        }
-        public string TotalWarheadFiredMelee
-        {
-            get => PilotRecordBase.TotalWarheadFired.Melee.ToString();
-            set { PilotRecordBase.TotalWarheadFired.Melee = SetIntProperty(value); }
-        }
-        public string TotalWarheadFiredCombatEngagement
-        {
-            get => PilotRecordBase.TotalWarheadFired.CombatEngagement.ToString();
-            set { PilotRecordBase.TotalWarheadFired.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel TotalWarheadFired { get; private set; }
 
-        // TotalCraftLosses
-        public string TotalCraftLossesExercise
-        {
-            get => PilotRecordBase.TotalCraftLosses.Exercise.ToString();
-            set { PilotRecordBase.TotalCraftLosses.Exercise = SetIntProperty(value); }
-        }
-        public string TotalCraftLossesMelee
-        {
-            get => PilotRecordBase.TotalCraftLosses.Melee.ToString();
-            set { PilotRecordBase.TotalCraftLosses.Melee = SetIntProperty(value); }
-        }
-        public string TotalCraftLossesCombatEngagement
-        {
-            get => PilotRecordBase.TotalCraftLosses.CombatEngagement.ToString();
-            set { PilotRecordBase.TotalCraftLosses.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel TotalCraftLosses { get; private set; }
 
-        // TotalLossesFromCollisions
-        public string TotalLossesFromCollisionsExercise
-        {
-            get => PilotRecordBase.TotalLossesFromCollisions.Exercise.ToString();
-            set { PilotRecordBase.TotalLossesFromCollisions.Exercise = SetIntProperty(value); }
-        }
-        public string TotalLossesFromCollisionsMelee
-        {
-            get => PilotRecordBase.TotalLossesFromCollisions.Melee.ToString();
-            set { PilotRecordBase.TotalLossesFromCollisions.Melee = SetIntProperty(value); }
-        }
-        public string TotalLossesFromCollisionsCombatEngagement
-        {
-            get => PilotRecordBase.TotalLossesFromCollisions.CombatEngagement.ToString();
-            set { PilotRecordBase.TotalLossesFromCollisions.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel TotalLossesFromCollisions { get; private set; }
 
-        // TotalLossesFromStarships
-        public string TotalLossesFromStarshipsExercise
-        {
-            get => PilotRecordBase.TotalLossesFromStarships.Exercise.ToString();
-            set { PilotRecordBase.TotalLossesFromStarships.Exercise = SetIntProperty(value); }
-        }
-        public string TotalLossesFromStarshipsMelee
-        {
-            get => PilotRecordBase.TotalLossesFromStarships.Melee.ToString();
-            set { PilotRecordBase.TotalLossesFromStarships.Melee = SetIntProperty(value); }
-        }
-        public string TotalLossesFromStarshipsCombatEngagement
-        {
-            get => PilotRecordBase.TotalLossesFromStarships.CombatEngagement.ToString();
-            set { PilotRecordBase.TotalLossesFromStarships.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel TotalLossesFromStarships { get; private set; }
 
-        // TotalLossesFromMines
-        public string TotalLossesFromMinesExercise
-        {
-            get => PilotRecordBase.TotalLossesFromMines.Exercise.ToString();
-            set { PilotRecordBase.TotalLossesFromMines.Exercise = SetIntProperty(value); }
-        }
-        public string TotalLossesFromMinesMelee
-        {
-            get => PilotRecordBase.TotalLossesFromMines.Melee.ToString();
-            set { PilotRecordBase.TotalLossesFromMines.Melee = SetIntProperty(value); }
-        }
-        public string TotalLossesFromMinesCombatEngagement
-        {
-            get => PilotRecordBase.TotalLossesFromMines.CombatEngagement.ToString();
-            set { PilotRecordBase.TotalLossesFromMines.CombatEngagement = SetIntProperty(value); }
-        }
+        public MissionCategoryRecordViewModel TotalLossesFromMines { get; private set; }
 
         public MissionCategoryRecordMatrixViewModel TotalLossesFromPlayerRank { get; private set; }
 
@@ -399,6 +189,16 @@ namespace XvTPilotEditor.ViewModels
             Unknown0x166 = new IntArrayViewModel(PilotRecordBase.Unknown0x166);
             Unknown0x186 = new IntArrayViewModel(PilotRecordBase.Unknown0x186);
 
+            TotalCategoryScore = new MissionCategoryRecordViewModel("Total Category Score", PilotRecordBase.TotalCategoryScore);
+
+            NumFlownNonSeries = new MissionCategoryRecordViewModel("Num Flown Non-Series", PilotRecordBase.NumFlownNonSeries);
+
+            NumFlownSeries = new MissionCategoryRecordViewModel("Num Flown Series", PilotRecordBase.NumFlownSeries);
+
+            TotalKills = new MissionCategoryRecordViewModel("Total Kills", PilotRecordBase.TotalKills);
+
+            FriendlyKills = new MissionCategoryRecordViewModel("Friendly Kills", PilotRecordBase.FriendlyKills);
+
             TotalFullKillsOnPlayerRating = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalFullKillsOnPlayerRating?.Exercise,
                                                                                     PilotRecordBase.TotalFullKillsOnPlayerRating?.Melee,
                                                                                     PilotRecordBase.TotalFullKillsOnPlayerRating?.CombatEngagement);
@@ -428,6 +228,24 @@ namespace XvTPilotEditor.ViewModels
             TotalAssistsOnAIRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalAssistsOnAIRank?.Exercise,
                                                                 PilotRecordBase.TotalAssistsOnAIRank?.Melee,
                                                                 PilotRecordBase.TotalAssistsOnAIRank?.CombatEngagement);
+
+            TotalHiddenCargoFound = new MissionCategoryRecordViewModel("Total Hidden Cargo Found", PilotRecordBase.TotalHiddenCargoFound);
+
+            TotalLaserHit = new MissionCategoryRecordViewModel("Total Laser Hit", PilotRecordBase.TotalLaserHit);
+
+            TotalLaserFired = new MissionCategoryRecordViewModel("Total Laser Fired", PilotRecordBase.TotalLaserFired);
+
+            TotalWarheadHit = new MissionCategoryRecordViewModel("Total Warhead Hit", PilotRecordBase.TotalWarheadHit);
+
+            TotalWarheadFired = new MissionCategoryRecordViewModel("Total Warhead Fired", PilotRecordBase.TotalWarheadFired);
+
+            TotalCraftLosses = new MissionCategoryRecordViewModel("Total Craft Losses", PilotRecordBase.TotalCraftLosses);
+
+            TotalLossesFromCollisions = new MissionCategoryRecordViewModel("Total Losses From Collisions", PilotRecordBase.TotalLossesFromCollisions);
+
+            TotalLossesFromStarships = new MissionCategoryRecordViewModel("Total Losses From Starships", PilotRecordBase.TotalLossesFromStarships);
+
+            TotalLossesFromMines = new MissionCategoryRecordViewModel("Total Losses From Mines", PilotRecordBase.TotalLossesFromMines);
 
             TotalLossesFromPlayerRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalLossesFromPlayerRank?.Exercise,
                                                                                  PilotRecordBase.TotalLossesFromPlayerRank?.Melee,

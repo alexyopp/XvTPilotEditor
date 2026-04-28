@@ -118,40 +118,15 @@
 
         <ctrl:ExerciseMeleeCombatHeader/>
 
-        <!-- TotalCategoryScore -->
-        <ctrl:LabeledTripleTextBox
-            Label="Total Category Score:"
-            TextBox1Content="{Binding TotalCategoryScoreExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding TotalCategoryScoreMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding TotalCategoryScoreCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalCategoryScore}"/>
 
-        <!-- NumFlownNonSeries -->
-        <ctrl:LabeledTripleTextBox
-            Label="Num Flown Non Series:"
-            TextBox1Content="{Binding NumFlownNonSeriesExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding NumFlownNonSeriesMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding NumFlownNonSeriesCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding NumFlownNonSeries}"/>
 
-        <!-- NumFlownSeries -->
-        <ctrl:LabeledTripleTextBox
-            Label="Num Flown Series:"
-            TextBox1Content="{Binding NumFlownSeriesExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding NumFlownSeriesMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding NumFlownSeriesCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding NumFlownSeries}"/>
 
-        <!-- TotalKills -->
-        <ctrl:LabeledTripleTextBox
-            Label="Total Kills:"
-            TextBox1Content="{Binding TotalKillsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding TotalKillsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding TotalKillsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalKills}"/>
 
-        <!-- FriendlyKills -->
-        <ctrl:LabeledTripleTextBox
-            Label="Friendly Kills:"
-            TextBox1Content="{Binding FriendlyKillsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding FriendlyKillsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding FriendlyKillsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding FriendlyKills}"/>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
         <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
@@ -443,68 +418,23 @@
             </ctrl:QuadBase>
         </Expander>
 
-        <!-- TotalHiddenCargoFound -->
-        <ctrl:LabeledTripleTextBox
-            Label="Total Hidden Cargo Found:"
-            TextBox1Content="{Binding TotalHiddenCargoFoundExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding TotalHiddenCargoFoundMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding TotalHiddenCargoFoundCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalHiddenCargoFound}"/>
 
-        <!-- TotalLaserHit -->
-        <ctrl:LabeledTripleTextBox
-            Label="Total Laser Hits:"
-            TextBox1Content="{Binding TotalLaserHitExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding TotalLaserHitMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding TotalLaserHitCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalLaserHit}"/>
 
-        <!-- TotalLaserFired -->
-        <ctrl:LabeledTripleTextBox
-            Label="Total Lasers Fired:"
-            TextBox1Content="{Binding TotalLaserFiredExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding TotalLaserFiredMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding TotalLaserFiredCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalLaserFired}"/>
 
-        <!-- TotalWarheadHit -->
-        <ctrl:LabeledTripleTextBox
-            Label="Total Warhead Hits:"
-            TextBox1Content="{Binding TotalWarheadHitExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding TotalWarheadHitMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding TotalWarheadHitCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalWarheadHit}"/>
 
-        <!-- TotalWarheadFired -->
-        <ctrl:LabeledTripleTextBox
-            Label="Total Warheads Fired:"
-            TextBox1Content="{Binding TotalWarheadFiredExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding TotalWarheadFiredMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding TotalWarheadFiredCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalWarheadFired}"/>
 
-        <!-- TotalCraftLosses -->
-        <ctrl:LabeledTripleTextBox
-            Label="Total Craft Losses:"
-            TextBox1Content="{Binding TotalCraftLossesExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding TotalCraftLossesMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding TotalCraftLossesCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalCraftLosses}"/>
 
-        <!-- TotalLossesFromCollisions -->
-        <ctrl:LabeledTripleTextBox
-            Label="Total Losses From Collisions:"
-            TextBox1Content="{Binding TotalLossesFromCollisionsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding TotalLossesFromCollisionsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding TotalLossesFromCollisionsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalLossesFromCollisions}"/>
 
-        <!-- TotalLossesFromStarships -->
-        <ctrl:LabeledTripleTextBox
-            Label="Total Losses From Starships:"
-            TextBox1Content="{Binding TotalLossesFromStarshipsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding TotalLossesFromStarshipsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding TotalLossesFromStarshipsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalLossesFromStarships}"/>
 
-        <!-- TotalLossesFromMines -->
-        <ctrl:LabeledTripleTextBox
-            Label="Total Losses From Mines:"
-            TextBox1Content="{Binding TotalLossesFromMinesExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox2Content="{Binding TotalLossesFromMinesMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-            TextBox3Content="{Binding TotalLossesFromMinesCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalLossesFromMines}"/>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
         <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
