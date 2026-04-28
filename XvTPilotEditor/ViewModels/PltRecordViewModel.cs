@@ -276,6 +276,163 @@ namespace XvTPilotEditor.ViewModels
 
         public MissionCategoryRecordMatrixViewModel DebriefAssistKillsOnAIRank { get; private set; }
 
+        // DebriefNumHiddenCargoFound
+        public string DebriefNumHiddenCargoFoundExercise
+        {
+            get => PltRecord.DebriefNumHiddenCargoFound.Exercise.ToString();
+            set { PltRecord.DebriefNumHiddenCargoFound.Exercise = SetIntProperty(value); }
+        }
+        public string DebriefNumHiddenCargoFoundMelee
+        {
+            get => PltRecord.DebriefNumHiddenCargoFound.Melee.ToString();
+            set { PltRecord.DebriefNumHiddenCargoFound.Melee = SetIntProperty(value); }
+        }
+        public string DebriefNumHiddenCargoFoundCombatEngagement
+        {
+            get => PltRecord.DebriefNumHiddenCargoFound.CombatEngagement.ToString();
+            set { PltRecord.DebriefNumHiddenCargoFound.CombatEngagement = SetIntProperty(value); }
+        }
+
+        // DebriefNumCannonHits
+        public string DebriefNumCannonHitsExercise
+        {
+            get => PltRecord.DebriefNumCannonHits.Exercise.ToString();
+            set { PltRecord.DebriefNumCannonHits.Exercise = SetIntProperty(value); }
+        }
+        public string DebriefNumCannonHitsMelee
+        {
+            get => PltRecord.DebriefNumCannonHits.Melee.ToString();
+            set { PltRecord.DebriefNumCannonHits.Melee = SetIntProperty(value); }
+        }
+        public string DebriefNumCannonHitsCombatEngagement
+        {
+            get => PltRecord.DebriefNumCannonHits.CombatEngagement.ToString();
+            set { PltRecord.DebriefNumCannonHits.CombatEngagement = SetIntProperty(value); }
+        }
+
+        // DebriefNumCannonFired
+        public string DebriefNumCannonFiredExercise
+        {
+            get => PltRecord.DebriefNumCannonFired.Exercise.ToString();
+            set { PltRecord.DebriefNumCannonFired.Exercise = SetIntProperty(value); }
+        }
+        public string DebriefNumCannonFiredMelee
+        {
+            get => PltRecord.DebriefNumCannonFired.Melee.ToString();
+            set { PltRecord.DebriefNumCannonFired.Melee = SetIntProperty(value); }
+        }
+        public string DebriefNumCannonFiredCombatEngagement
+        {
+            get => PltRecord.DebriefNumCannonFired.CombatEngagement.ToString();
+            set { PltRecord.DebriefNumCannonFired.CombatEngagement = SetIntProperty(value); }
+        }
+
+        // DebriefNumWarheadHits
+        public string DebriefNumWarheadHitsExercise
+        {
+            get => PltRecord.DebriefNumWarheadHits.Exercise.ToString();
+            set { PltRecord.DebriefNumWarheadHits.Exercise = SetIntProperty(value); }
+        }
+        public string DebriefNumWarheadHitsMelee
+        {
+            get => PltRecord.DebriefNumWarheadHits.Melee.ToString();
+            set { PltRecord.DebriefNumWarheadHits.Melee = SetIntProperty(value); }
+        }
+        public string DebriefNumWarheadHitsCombatEngagement
+        {
+            get => PltRecord.DebriefNumWarheadHits.CombatEngagement.ToString();
+            set { PltRecord.DebriefNumWarheadHits.CombatEngagement = SetIntProperty(value); }
+        }
+
+        // DebriefNumWarheadFired
+        public string DebriefNumWarheadFiredExercise
+        {
+            get => PltRecord.DebriefNumWarheadFired.Exercise.ToString();
+            set { PltRecord.DebriefNumWarheadFired.Exercise = SetIntProperty(value); }
+        }
+        public string DebriefNumWarheadFiredMelee
+        {
+            get => PltRecord.DebriefNumWarheadFired.Melee.ToString();
+            set { PltRecord.DebriefNumWarheadFired.Melee = SetIntProperty(value); }
+        }
+        public string DebriefNumWarheadFiredCombatEngagement
+        {
+            get => PltRecord.DebriefNumWarheadFired.CombatEngagement.ToString();
+            set { PltRecord.DebriefNumWarheadFired.CombatEngagement = SetIntProperty(value); }
+        }
+
+        // DebriefNumCraftLosses
+        public string DebriefNumCraftLossesExercise
+        {
+            get => PltRecord.DebriefNumCraftLosses.Exercise.ToString();
+            set { PltRecord.DebriefNumCraftLosses.Exercise = SetIntProperty(value); }
+        }
+        public string DebriefNumCraftLossesMelee
+        {
+            get => PltRecord.DebriefNumCraftLosses.Melee.ToString();
+            set { PltRecord.DebriefNumCraftLosses.Melee = SetIntProperty(value); }
+        }
+        public string DebriefNumCraftLossesCombatEngagement
+        {
+            get => PltRecord.DebriefNumCraftLosses.CombatEngagement.ToString();
+            set { PltRecord.DebriefNumCraftLosses.CombatEngagement = SetIntProperty(value); }
+        }
+
+        // DebriefCraftLossesFromCollision
+        public string DebriefCraftLossesFromCollisionExercise
+        {
+            get => PltRecord.DebriefCraftLossesFromCollision.Exercise.ToString();
+            set { PltRecord.DebriefCraftLossesFromCollision.Exercise = SetIntProperty(value); }
+        }
+        public string DebriefCraftLossesFromCollisionMelee
+        {
+            get => PltRecord.DebriefCraftLossesFromCollision.Melee.ToString();
+            set { PltRecord.DebriefCraftLossesFromCollision.Melee = SetIntProperty(value); }
+        }
+        public string DebriefCraftLossesFromCollisionCombatEngagement
+        {
+            get => PltRecord.DebriefCraftLossesFromCollision.CombatEngagement.ToString();
+            set { PltRecord.DebriefCraftLossesFromCollision.CombatEngagement = SetIntProperty(value); }
+        }
+
+        // DebriefCraftLossesFromStarship
+        public string DebriefCraftLossesFromStarshipExercise
+        {
+            get => PltRecord.DebriefCraftLossesFromStarship.Exercise.ToString();
+            set { PltRecord.DebriefCraftLossesFromStarship.Exercise = SetIntProperty(value); }
+        }
+        public string DebriefCraftLossesFromStarshipMelee
+        {
+            get => PltRecord.DebriefCraftLossesFromStarship.Melee.ToString();
+            set { PltRecord.DebriefCraftLossesFromStarship.Melee = SetIntProperty(value); }
+        }
+        public string DebriefCraftLossesFromStarshipCombatEngagement
+        {
+            get => PltRecord.DebriefCraftLossesFromStarship.CombatEngagement.ToString();
+            set { PltRecord.DebriefCraftLossesFromStarship.CombatEngagement = SetIntProperty(value); }
+        }
+
+        // DebriefCraftLossesFromMine
+        public string DebriefCraftLossesFromMineExercise
+        {
+            get => PltRecord.DebriefCraftLossesFromMine.Exercise.ToString();
+            set { PltRecord.DebriefCraftLossesFromMine.Exercise = SetIntProperty(value); }
+        }
+        public string DebriefCraftLossesFromMineMelee
+        {
+            get => PltRecord.DebriefCraftLossesFromMine.Melee.ToString();
+            set { PltRecord.DebriefCraftLossesFromMine.Melee = SetIntProperty(value); }
+        }
+        public string DebriefCraftLossesFromMineCombatEngagement
+        {
+            get => PltRecord.DebriefCraftLossesFromMine.CombatEngagement.ToString();
+            set { PltRecord.DebriefCraftLossesFromMine.CombatEngagement = SetIntProperty(value); }
+        }
+
+        public MissionCategoryRecordMatrixViewModel DebriefLossesFromPlayerRank { get; private set; }
+
+        public MissionCategoryRecordMatrixViewModel DebriefLossesFromAIRank { get; private set; }
+
         //**** Members
         private PltRecord PltRecord;
 
@@ -364,6 +521,14 @@ namespace XvTPilotEditor.ViewModels
             DebriefAssistKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefAssistKillsOnAIRank?.Exercise,
                                                                                   PltRecord.DebriefAssistKillsOnAIRank?.Melee,
                                                                                   PltRecord.DebriefAssistKillsOnAIRank?.CombatEngagement);
+
+            DebriefLossesFromPlayerRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefLossesFromPlayerRank?.Exercise,
+                                                                                   PltRecord.DebriefLossesFromPlayerRank?.Melee,
+                                                                                   PltRecord.DebriefLossesFromPlayerRank?.CombatEngagement);
+
+            DebriefLossesFromAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefLossesFromAIRank?.Exercise,
+                                                                               PltRecord.DebriefLossesFromAIRank?.Melee,
+                                                                               PltRecord.DebriefLossesFromAIRank?.CombatEngagement);
         }
     }
 }

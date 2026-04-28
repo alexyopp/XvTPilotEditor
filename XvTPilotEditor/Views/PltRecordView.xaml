@@ -811,5 +811,211 @@
                 </ctrl:QuadBase.Column3Content>
             </ctrl:QuadBase>
         </Expander>
+
+        <!-- DebriefNumHiddenCargoFound -->
+        <ctrl:LabeledTripleTextBox
+            Label="Debrief Hidden Cargo Found:"
+            TextBox1Content="{Binding DebriefNumHiddenCargoFoundExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding DebriefNumHiddenCargoFoundMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding DebriefNumHiddenCargoFoundCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- DebriefNumCannonHits -->
+        <ctrl:LabeledTripleTextBox
+            Label="Debrief Laser Hits:"
+            TextBox1Content="{Binding DebriefNumCannonHitsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding DebriefNumCannonHitsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding DebriefNumCannonHitsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- DebriefNumCannonFired -->
+        <ctrl:LabeledTripleTextBox
+            Label="Debrief Lasers Fired:"
+            TextBox1Content="{Binding DebriefNumCannonFiredExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding DebriefNumCannonFiredMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding DebriefNumCannonFiredCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- DebriefNumWarheadHits -->
+        <ctrl:LabeledTripleTextBox
+            Label="Debrief Warhead Hits:"
+            TextBox1Content="{Binding DebriefNumWarheadHitsExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding DebriefNumWarheadHitsMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding DebriefNumWarheadHitsCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- DebriefNumWarheadFired -->
+        <ctrl:LabeledTripleTextBox
+            Label="Debrief Warheads Fired:"
+            TextBox1Content="{Binding DebriefNumWarheadFiredExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding DebriefNumWarheadFiredMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding DebriefNumWarheadFiredCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- DebriefNumCraftLosses -->
+        <ctrl:LabeledTripleTextBox
+            Label="Debrief Craft Losses:"
+            TextBox1Content="{Binding DebriefNumCraftLossesExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding DebriefNumCraftLossesMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding DebriefNumCraftLossesCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- DebriefCraftLossesFromCollision -->
+        <ctrl:LabeledTripleTextBox
+            Label="Debrief Losses From Collisions:"
+            TextBox1Content="{Binding DebriefCraftLossesFromCollisionExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding DebriefCraftLossesFromCollisionMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding DebriefCraftLossesFromCollisionCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- DebriefCraftLossesFromStarship -->
+        <ctrl:LabeledTripleTextBox
+            Label="Debrief Losses From Starships:"
+            TextBox1Content="{Binding DebriefCraftLossesFromStarshipExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding DebriefCraftLossesFromStarshipMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding DebriefCraftLossesFromStarshipCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- DebriefCraftLossesFromMine -->
+        <ctrl:LabeledTripleTextBox
+            Label="Debrief Losses From Mines:"
+            TextBox1Content="{Binding DebriefCraftLossesFromMineExercise, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox2Content="{Binding DebriefCraftLossesFromMineMelee, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            TextBox3Content="{Binding DebriefCraftLossesFromMineCombatEngagement, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
+        <!-- DebriefLossesFromPlayerRank -->
+        <Expander Header="Debrief Losses From Player Rank" IsExpanded="False">
+            <ctrl:QuadBase>
+                <!-- Index column -->
+                <ctrl:QuadBase.Column0Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefLossesFromPlayerRank.Exercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="30">
+                                        <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                            Text="{Binding (ItemsControl.AlternationIndex),
+                                                RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                Converter={conv:UIntToPilotRatingConverter}}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column0Content>
+
+                <!-- Exercise column -->
+                <ctrl:QuadBase.Column1Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefLossesFromPlayerRank.Exercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column1Content>
+
+                <!-- Melee column -->
+                <ctrl:QuadBase.Column2Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefLossesFromPlayerRank.Melee}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column2Content>
+
+                <!-- Combat column -->
+                <ctrl:QuadBase.Column3Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefLossesFromPlayerRank.Combat}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column3Content>
+            </ctrl:QuadBase>
+        </Expander>
+
+        <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
+        <!-- TODO: Remove Expander once item filtering is in place -->
+        <!-- DebriefLossesFromAIRank -->
+        <Expander Header="Debrief Losses From AI Rank" IsExpanded="False">
+            <ctrl:QuadBase>
+                <!-- Index column -->
+                <ctrl:QuadBase.Column0Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefLossesFromAIRank.Exercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="30">
+                                        <TextBlock Width="120" VerticalAlignment="Center" FontWeight="Bold"
+                                            Text="{Binding (ItemsControl.AlternationIndex),
+                                                RelativeSource={RelativeSource AncestorType=ContentPresenter},
+                                                Converter={conv:UIntToAIRankConverter}}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column0Content>
+
+                <!-- Exercise column -->
+                <ctrl:QuadBase.Column1Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefLossesFromAIRank.Exercise}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column1Content>
+
+                <!-- Melee column -->
+                <ctrl:QuadBase.Column2Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefLossesFromAIRank.Melee}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column2Content>
+
+                <!-- Combat column -->
+                <ctrl:QuadBase.Column3Content>
+                    <StackPanel>
+                        <ItemsControl ItemsSource="{Binding DebriefLossesFromAIRank.Combat}" AlternationCount="1000">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ctrl:QuadBase.Column3Content>
+            </ctrl:QuadBase>
+        </Expander>
+        
     </StackPanel>
 </UserControl>

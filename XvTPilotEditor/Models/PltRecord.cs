@@ -68,17 +68,17 @@ namespace XvTPilotEditor.Models
         public MissionCategoryRecordByAIRating      DebriefFullKillsOnAIRank        { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
         public MissionCategoryRecordByAIRating      DebriefSharedKillsOnAIRank      { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
         public MissionCategoryRecordByAIRating      DebriefAssistKillsOnAIRank      { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
-        public PLTCategoryTypeRecord    debriefNumHiddenCargoFound      { get; private set; }
-        public PLTCategoryTypeRecord    debriefNumCannonHits            { get; private set; }
-        public PLTCategoryTypeRecord    debriefNumCannonFired           { get; private set; }
-        public PLTCategoryTypeRecord    debriefNumWarheadHits           { get; private set; }
-        public PLTCategoryTypeRecord    debriefNumWarheadFired          { get; private set; }
-        public PLTCategoryTypeRecord    debriefNumCraftLosses           { get; private set; }
-        public PLTCategoryTypeRecord    debriefCraftLossesFromCollision { get; private set; }
-        public PLTCategoryTypeRecord    debriefCraftLossesFromStarship  { get; private set; }
-        public PLTCategoryTypeRecord    debriefCraftLossesFromMine      { get; private set; }
-        public PLTPlayerRankCountRecord debriefLossesFromPlayerRank     { get; private set; }
-        public PLTAIRankCountRecord     debriefLossesFromAIRank         { get; private set; }
+        public MissionCategoryRecord                DebriefNumHiddenCargoFound      { get; set; }   = new MissionCategoryRecord();                      // int[3]
+        public MissionCategoryRecord                DebriefNumCannonHits            { get; set; }   = new MissionCategoryRecord();                      // int[3]
+        public MissionCategoryRecord                DebriefNumCannonFired           { get; set; }   = new MissionCategoryRecord();                      // int[3]
+        public MissionCategoryRecord                DebriefNumWarheadHits           { get; set; }   = new MissionCategoryRecord();                      // int[3]
+        public MissionCategoryRecord                DebriefNumWarheadFired          { get; set; }   = new MissionCategoryRecord();                      // int[3]
+        public MissionCategoryRecord                DebriefNumCraftLosses           { get; set; }   = new MissionCategoryRecord();                      // int[3]
+        public MissionCategoryRecord                DebriefCraftLossesFromCollision { get; set; }   = new MissionCategoryRecord();                      // int[3]
+        public MissionCategoryRecord                DebriefCraftLossesFromStarship  { get; set; }   = new MissionCategoryRecord();                      // int[3]
+        public MissionCategoryRecord                DebriefCraftLossesFromMine      { get; set; }   = new MissionCategoryRecord();                      // int[3]
+        public MissionCategoryRecordByPlayerRating  DebriefLossesFromPlayerRank     { get; set; }   = new MissionCategoryRecordByPlayerRating();        // int[3][25]   TODO: Confirm this is really Exercise, Melee, Combat; found values in the Exercise column, but that is unexpected (Exercise should be co-op only)
+        public MissionCategoryRecordByAIRating      DebriefLossesFromAIRank         { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
 
         //  Note the difference in types between the Plt and Pl2 versions
         public int LastSelectedFaction { get; set; }                                                                                            //          TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
@@ -213,17 +213,17 @@ namespace XvTPilotEditor.Models
             DebriefFullKillsOnAIRank            = new MissionCategoryRecordByAIRating(pltFile.debriefFullKillsOnAIRank);
             DebriefSharedKillsOnAIRank          = new MissionCategoryRecordByAIRating(pltFile.debriefSharedKillsOnAIRank);
             DebriefAssistKillsOnAIRank          = new MissionCategoryRecordByAIRating(pltFile.debriefAssistKillsOnAIRank);
-            debriefNumHiddenCargoFound          = pltFile.debriefNumHiddenCargoFound;
-            debriefNumCannonHits                = pltFile.debriefNumCannonHits;
-            debriefNumCannonFired               = pltFile.debriefNumCannonFired;
-            debriefNumWarheadHits               = pltFile.debriefNumWarheadHits;
-            debriefNumWarheadFired              = pltFile.debriefNumWarheadFired;
-            debriefNumCraftLosses               = pltFile.debriefNumCraftLosses;
-            debriefCraftLossesFromCollision     = pltFile.debriefCraftLossesFromCollision;
-            debriefCraftLossesFromStarship      = pltFile.debriefCraftLossesFromStarship;
-            debriefCraftLossesFromMine          = pltFile.debriefCraftLossesFromMine;
-            debriefLossesFromPlayerRank         = pltFile.debriefLossesFromPlayerRank;
-            debriefLossesFromAIRank             = pltFile.debriefLossesFromAIRank;
+            DebriefNumHiddenCargoFound          = new MissionCategoryRecord(pltFile.debriefNumHiddenCargoFound);
+            DebriefNumCannonHits                = new MissionCategoryRecord(pltFile.debriefNumCannonHits);
+            DebriefNumCannonFired               = new MissionCategoryRecord(pltFile.debriefNumCannonFired);
+            DebriefNumWarheadHits               = new MissionCategoryRecord(pltFile.debriefNumWarheadHits);
+            DebriefNumWarheadFired              = new MissionCategoryRecord(pltFile.debriefNumWarheadFired);
+            DebriefNumCraftLosses               = new MissionCategoryRecord(pltFile.debriefNumCraftLosses);
+            DebriefCraftLossesFromCollision     = new MissionCategoryRecord(pltFile.debriefCraftLossesFromCollision);
+            DebriefCraftLossesFromStarship      = new MissionCategoryRecord(pltFile.debriefCraftLossesFromStarship);
+            DebriefCraftLossesFromMine          = new MissionCategoryRecord(pltFile.debriefCraftLossesFromMine);
+            DebriefLossesFromPlayerRank         = new MissionCategoryRecordByPlayerRating(pltFile.debriefLossesFromPlayerRank);
+            DebriefLossesFromAIRank             = new MissionCategoryRecordByAIRating(pltFile.debriefLossesFromAIRank);
 
             ConnectedPlayer = new ConnectedPlayerRecord[Constants.MAX_CONNECTED_PLAYERS];
             for (uint idx = 0; idx < Constants.MAX_CONNECTED_PLAYERS; ++idx)
@@ -370,17 +370,17 @@ namespace XvTPilotEditor.Models
             rec.debriefFullKillsOnAIRank            = ToPLTAIRankCountRecord(DebriefFullKillsOnAIRank);             // int[3][6]
             rec.debriefSharedKillsOnAIRank          = ToPLTAIRankCountRecord(DebriefSharedKillsOnAIRank);           // int[3][6]
             rec.debriefAssistKillsOnAIRank          = ToPLTAIRankCountRecord(DebriefAssistKillsOnAIRank);           // int[3][6]
-            rec.debriefNumHiddenCargoFound          = debriefNumHiddenCargoFound;                                   // int[3]
-            rec.debriefNumCannonHits                = debriefNumCannonHits;                                         // int[3]
-            rec.debriefNumCannonFired               = debriefNumCannonFired;                                        // int[3]
-            rec.debriefNumWarheadHits               = debriefNumWarheadHits;                                        // int[3]
-            rec.debriefNumWarheadFired              = debriefNumWarheadFired;                                       // int[3]
-            rec.debriefNumCraftLosses               = debriefNumCraftLosses;                                        // int[3]
-            rec.debriefCraftLossesFromCollision     = debriefCraftLossesFromCollision;                              // int[3]
-            rec.debriefCraftLossesFromStarship      = debriefCraftLossesFromStarship;                               // int[3]
-            rec.debriefCraftLossesFromMine          = debriefCraftLossesFromMine;                                   // int[3]
-            rec.debriefLossesFromPlayerRank         = debriefLossesFromPlayerRank;                                  // int[3][25]
-            rec.debriefLossesFromAIRank             = debriefLossesFromAIRank;                                      // int[3][6]
+            rec.debriefNumHiddenCargoFound          = ToPLTCategoryTypeRecord(DebriefNumHiddenCargoFound);          // int[3]
+            rec.debriefNumCannonHits                = ToPLTCategoryTypeRecord(DebriefNumCannonHits);                // int[3]
+            rec.debriefNumCannonFired               = ToPLTCategoryTypeRecord(DebriefNumCannonFired);               // int[3]
+            rec.debriefNumWarheadHits               = ToPLTCategoryTypeRecord(DebriefNumWarheadHits);               // int[3]
+            rec.debriefNumWarheadFired              = ToPLTCategoryTypeRecord(DebriefNumWarheadFired);              // int[3]
+            rec.debriefNumCraftLosses               = ToPLTCategoryTypeRecord(DebriefNumCraftLosses);               // int[3]
+            rec.debriefCraftLossesFromCollision     = ToPLTCategoryTypeRecord(DebriefCraftLossesFromCollision);     // int[3]
+            rec.debriefCraftLossesFromStarship      = ToPLTCategoryTypeRecord(DebriefCraftLossesFromStarship);      // int[3]
+            rec.debriefCraftLossesFromMine          = ToPLTCategoryTypeRecord(DebriefCraftLossesFromMine);          // int[3]
+            rec.debriefLossesFromPlayerRank         = ToPLTPlayerRankCountRecord(DebriefLossesFromPlayerRank);      // int[3][25]
+            rec.debriefLossesFromAIRank             = ToPLTAIRankCountRecord(DebriefLossesFromAIRank);              // int[3][6]
             rec.connectedPlayerData                 = ToPLTConnectedPlayerDataArray(ConnectedPlayer);               // PLTConnectedPlayerData[8]
             rec.debriefTeamResult                   = ToPLTTeamResultRecordArray(DebriefTeamResult);                // PLTTeamResultRecord[10]  (int[10][6])
             rec.lastSelectedFaction                 = LastSelectedFaction;
