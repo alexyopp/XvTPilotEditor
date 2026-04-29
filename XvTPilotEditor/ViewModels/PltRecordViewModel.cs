@@ -152,15 +152,11 @@ namespace XvTPilotEditor.ViewModels
             set { PltRecord.TotalScoreForCurrentBattleUNK = SetIntProperty(value); }
         }
 
-        public MissionCategoryRecordViewModel UnknownRecord1 { get; private set; }
-
-        public MissionCategoryRecordViewModel UnknownRecord2 { get; private set; }
-
-        public MissionCategoryRecordViewModel UnknownRecord3 { get; private set; }
-
-        public MissionCategoryRecordViewModel DebriefEnemyKills { get; private set; }
-
-        public MissionCategoryRecordViewModel DebriefFriendlyKills { get; private set; }
+        public MissionCategoryRecordViewModel           UnknownRecord1                          { get; private set; }
+        public MissionCategoryRecordViewModel           UnknownRecord2                          { get; private set; }
+        public MissionCategoryRecordViewModel           UnknownRecord3                          { get; private set; }
+        public MissionCategoryRecordViewModel           DebriefEnemyKills                       { get; private set; }
+        public MissionCategoryRecordViewModel           DebriefFriendlyKills                    { get; private set; }
 
         private IntArrayViewModel DebriefFullKillsByShipTypeA;
         private IntArrayViewModel DebriefSharedKillsByShipTypeA;
@@ -201,23 +197,15 @@ namespace XvTPilotEditor.ViewModels
 
         public MissionCategoryRecordMatrixViewModel DebriefAssistKillsOnAIRank { get; private set; }
 
-        public MissionCategoryRecordViewModel DebriefNumHiddenCargoFound { get; private set; }
-
-        public MissionCategoryRecordViewModel DebriefNumCannonHits { get; private set; }
-
-        public MissionCategoryRecordViewModel DebriefNumCannonFired { get; private set; }
-
-        public MissionCategoryRecordViewModel DebriefNumWarheadHits { get; private set; }
-
-        public MissionCategoryRecordViewModel DebriefNumWarheadFired { get; private set; }
-
-        public MissionCategoryRecordViewModel DebriefNumCraftLosses { get; private set; }
-
-        public MissionCategoryRecordViewModel DebriefCraftLossesFromCollision { get; private set; }
-
-        public MissionCategoryRecordViewModel DebriefCraftLossesFromStarship { get; private set; }
-
-        public MissionCategoryRecordViewModel DebriefCraftLossesFromMine { get; private set; }
+        public MissionCategoryRecordViewModel           DebriefNumHiddenCargoFound              { get; private set; }
+        public MissionCategoryRecordViewModel           DebriefNumLaserHit                      { get; private set; }
+        public MissionCategoryRecordViewModel           DebriefNumLaserFired                    { get; private set; }
+        public MissionCategoryRecordViewModel           DebriefNumWarheadHit                    { get; private set; }
+        public MissionCategoryRecordViewModel           DebriefNumWarheadFired                  { get; private set; }
+        public MissionCategoryRecordViewModel           DebriefNumCraftLosses                   { get; private set; }
+        public MissionCategoryRecordViewModel           DebriefNumLossesFromCollisions          { get; private set; }
+        public MissionCategoryRecordViewModel           DebriefNumLossesFromStarships           { get; private set; }
+        public MissionCategoryRecordViewModel           DebriefNumLossesFromMines               { get; private set; }
 
         public MissionCategoryRecordMatrixViewModel DebriefLossesFromPlayerRank { get; private set; }
 
@@ -259,11 +247,11 @@ namespace XvTPilotEditor.ViewModels
 
             BattleCombatMissionID = new IntArrayViewModel(PltRecord.BattleCombatMissionID);
 
-            UnknownRecord1 = new MissionCategoryRecordViewModel("UnknownRecord1", PltRecord.UnknownRecord1);
-            UnknownRecord2 = new MissionCategoryRecordViewModel("UnknownRecord2", PltRecord.UnknownRecord2);
-            UnknownRecord3 = new MissionCategoryRecordViewModel("UnknownRecord3", PltRecord.UnknownRecord3);
-            DebriefEnemyKills = new MissionCategoryRecordViewModel("Debrief Enemy Kills", PltRecord.DebriefEnemyKills);
-            DebriefFriendlyKills = new MissionCategoryRecordViewModel("Debrief Friendly Kills", PltRecord.DebriefFriendlyKills);
+            UnknownRecord1                  = new MissionCategoryRecordViewModel(PltRecord.UnknownRecord1);
+            UnknownRecord2                  = new MissionCategoryRecordViewModel(PltRecord.UnknownRecord2);
+            UnknownRecord3                  = new MissionCategoryRecordViewModel(PltRecord.UnknownRecord3);
+            DebriefEnemyKills               = new MissionCategoryRecordViewModel(PltRecord.DebriefEnemyKills);
+            DebriefFriendlyKills            = new MissionCategoryRecordViewModel(PltRecord.DebriefFriendlyKills);
 
             Unknown0x1F2E = new ByteArrayViewModel(PltRecord.Unknown0x1F2E);
 
@@ -318,23 +306,15 @@ namespace XvTPilotEditor.ViewModels
                                                                                   PltRecord.DebriefAssistKillsOnAIRank?.Melee,
                                                                                   PltRecord.DebriefAssistKillsOnAIRank?.CombatEngagement);
 
-            DebriefNumHiddenCargoFound = new MissionCategoryRecordViewModel("Debrief Hidden Cargo Found", PltRecord.DebriefNumHiddenCargoFound);
-
-            DebriefNumCannonHits = new MissionCategoryRecordViewModel("Debrief Cannon Hits", PltRecord.DebriefNumCannonHits);
-
-            DebriefNumCannonFired = new MissionCategoryRecordViewModel("Debrief Cannon Fired", PltRecord.DebriefNumCannonFired);
-
-            DebriefNumWarheadHits = new MissionCategoryRecordViewModel("Debrief Warhead Hits", PltRecord.DebriefNumWarheadHits);
-
-            DebriefNumWarheadFired = new MissionCategoryRecordViewModel("Debrief Warhead Fired", PltRecord.DebriefNumWarheadFired);
-
-            DebriefNumCraftLosses = new MissionCategoryRecordViewModel("Debrief Craft Losses", PltRecord.DebriefNumCraftLosses);
-
-            DebriefCraftLossesFromCollision = new MissionCategoryRecordViewModel("Debrief Craft Losses From Collisions", PltRecord.DebriefCraftLossesFromCollision);
-
-            DebriefCraftLossesFromStarship = new MissionCategoryRecordViewModel("Debrief Craft Losses From Starships", PltRecord.DebriefCraftLossesFromStarship);
-
-            DebriefCraftLossesFromMine = new MissionCategoryRecordViewModel("Debrief Craft Losses From Mines", PltRecord.DebriefCraftLossesFromMine);
+            DebriefNumHiddenCargoFound      = new MissionCategoryRecordViewModel(PltRecord.DebriefNumHiddenCargoFound);
+            DebriefNumLaserHit              = new MissionCategoryRecordViewModel(PltRecord.DebriefNumLaserHit);
+            DebriefNumLaserFired            = new MissionCategoryRecordViewModel(PltRecord.DebriefNumLaserFired);
+            DebriefNumWarheadHit            = new MissionCategoryRecordViewModel(PltRecord.DebriefNumWarheadHit);
+            DebriefNumWarheadFired          = new MissionCategoryRecordViewModel(PltRecord.DebriefNumWarheadFired);
+            DebriefNumCraftLosses           = new MissionCategoryRecordViewModel(PltRecord.DebriefNumCraftLosses);
+            DebriefNumLossesFromCollisions  = new MissionCategoryRecordViewModel(PltRecord.DebriefNumLossesFromCollisions);
+            DebriefNumLossesFromStarships   = new MissionCategoryRecordViewModel(PltRecord.DebriefNumLossesFromStarships);
+            DebriefNumLossesFromMines       = new MissionCategoryRecordViewModel(PltRecord.DebriefNumLossesFromMines);
 
             DebriefLossesFromPlayerRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefLossesFromPlayerRank?.Exercise,
                                                                                    PltRecord.DebriefLossesFromPlayerRank?.Melee,

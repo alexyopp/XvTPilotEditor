@@ -4,11 +4,6 @@ namespace XvTPilotEditor.ViewModels
 {
     public sealed class MissionCategoryRecordViewModel : PilotDataViewModelBase
     {
-        public string Name
-        {
-            get => name;
-        }
-
         public string Exercise
         {
             get => missionCategoryRecord.Exercise.ToString();
@@ -27,12 +22,10 @@ namespace XvTPilotEditor.ViewModels
             set { missionCategoryRecord.CombatEngagement = SetIntProperty(value); }
         }
 
-        private readonly string name;
         private readonly MissionCategoryRecord missionCategoryRecord;
 
-        public MissionCategoryRecordViewModel(string initName, MissionCategoryRecord initRecord)
+        public MissionCategoryRecordViewModel(MissionCategoryRecord initRecord)
         {
-            this.name = initName;
             this.missionCategoryRecord = initRecord;
         }
     }

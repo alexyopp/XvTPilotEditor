@@ -116,20 +116,16 @@
                 Metadata=""/>
         </StackPanel>
 
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and label of the selected textbox to improve usability -->
         <ctrl:ExerciseMeleeCombatHeader/>
 
-        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalCategoryScore}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding NumFlownNonSeries}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding NumFlownSeries}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalKills}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding FriendlyKills}"/>
+        <ctrl:MissionCategoryRecordView Label="Total Category Score:"                   Data="{Binding TotalCategoryScore}"/>
+        <ctrl:MissionCategoryRecordView Label="Number of Flown Non-Series:"             Data="{Binding NumFlownNonSeries}"/>
+        <ctrl:MissionCategoryRecordView Label="Number of Flown Series:"                 Data="{Binding NumFlownSeries}"/>
+        <ctrl:MissionCategoryRecordView Label="Total Kills:"                            Data="{Binding TotalKills}"/>
+        <ctrl:MissionCategoryRecordView Label="Total Friendly Kills:"                   Data="{Binding FriendlyKills}"/>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalFullKillsOnPlayerRating, TotalSharedKillsOnPlayerRating -->
         <Expander Header="Total Kills On Player Rating" IsExpanded="False">
@@ -203,7 +199,6 @@
         </Expander>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalAssistsOnPlayerRating -->
         <Expander Header="Total Assists On Player Rating" IsExpanded="False">
@@ -274,7 +269,6 @@
         </Expander>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalFullKillsOnAIRank, TotalSharedKillsOnAIRank -->
         <Expander Header="Total Kills On AI Rank" IsExpanded="False">
@@ -348,7 +342,6 @@
         </Expander>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalAssistsOnPlayerRating -->
         <Expander Header="Total Assists On AI Rank" IsExpanded="False">
@@ -418,26 +411,17 @@
             </ctrl:QuadBase>
         </Expander>
 
-        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalHiddenCargoFound}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalLaserHit}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalLaserFired}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalWarheadHit}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalWarheadFired}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalCraftLosses}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalLossesFromCollisions}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalLossesFromStarships}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding TotalLossesFromMines}"/>
+        <ctrl:MissionCategoryRecordView Label="Total Hidden Cargo Found:"               Data="{Binding TotalHiddenCargoFound}"/>
+        <ctrl:MissionCategoryRecordView Label="Total Lasers Hit:"                       Data="{Binding TotalLaserHit}"/>
+        <ctrl:MissionCategoryRecordView Label="Total Lasers Fired:"                     Data="{Binding TotalLaserFired}"/>
+        <ctrl:MissionCategoryRecordView Label="Total Warheads Hit:"                     Data="{Binding TotalWarheadHit}"/>
+        <ctrl:MissionCategoryRecordView Label="Total Warheads Fired:"                   Data="{Binding TotalWarheadFired}"/>
+        <ctrl:MissionCategoryRecordView Label="Total Craft Losses:"                     Data="{Binding TotalCraftLosses}"/>
+        <ctrl:MissionCategoryRecordView Label="Total Craft Losses From Collisions:"     Data="{Binding TotalLossesFromCollisions}"/>
+        <ctrl:MissionCategoryRecordView Label="Total Craft Losses From Starships:"      Data="{Binding TotalLossesFromStarships}"/>
+        <ctrl:MissionCategoryRecordView Label="Total Craft Losses From Mines:"          Data="{Binding TotalLossesFromMines}"/>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalLossesFromPlayerRank -->
         <Expander Header="Total Losses From Player Rank" IsExpanded="False">
@@ -508,7 +492,6 @@
         </Expander>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalLossesFromAIRank -->
         <Expander Header="Total Losses From AI Rank" IsExpanded="False">

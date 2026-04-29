@@ -107,7 +107,6 @@
         </StackPanel>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalCraftFullKills, TotalCraftSharedKills -->
         <Expander Header="Total Kills On Player Rating" IsExpanded="False">
@@ -181,7 +180,6 @@
         </Expander>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Consider renaming as "Assists" instead of "AssistKills" -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- TotalCraftAssistKills -->
@@ -374,20 +372,14 @@
                                  Metadata=""/>
         </StackPanel>
 
+        <!-- TODO: Highlight the Exercise/Melee/Combat header and label of the selected textbox to improve usability -->
         <ctrl:ExerciseMeleeCombatHeader/>
 
-        <!-- TODO: What is this? -->
-        <ctrl:MissionCategoryRecordView DataContext="{Binding UnknownRecord1}"/>
-
-        <!-- TODO: What is this? -->
-        <ctrl:MissionCategoryRecordView DataContext="{Binding UnknownRecord2}"/>
-
-        <!-- TODO: What is this? -->
-        <ctrl:MissionCategoryRecordView DataContext="{Binding UnknownRecord3}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefEnemyKills}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefFriendlyKills}"/>
+        <ctrl:MissionCategoryRecordView Label="UnknownRecord1:"                         Data="{Binding UnknownRecord1}"/>
+        <ctrl:MissionCategoryRecordView Label="UnknownRecord2:"                         Data="{Binding UnknownRecord2}"/>
+        <ctrl:MissionCategoryRecordView Label="UnknownRecord3:"                         Data="{Binding UnknownRecord3}"/>
+        <ctrl:MissionCategoryRecordView Label="Debrief Enemy Kills:"                    Data="{Binding DebriefEnemyKills}"/>
+        <ctrl:MissionCategoryRecordView Label="Debrief Friendly Kills:"                 Data="{Binding DebriefFriendlyKills}"/>
 
         <!-- DebriefFullKillsByShipTypeA, DebriefSharedKillsByShipTypeA -->
         <Expander Header="Debrief Kills On Ship Type A" IsExpanded="False" Margin="0,6,0,6">
@@ -498,7 +490,6 @@
         </Expander>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- DebriefFullKillsOnPlayerRank, DebriefSharedKillsOnPlayerRank -->
         <Expander Header="Debrief Kills On Player Rating" IsExpanded="False">
@@ -572,7 +563,6 @@
         </Expander>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- DebriefAssistKillsOnPlayerRank -->
         <Expander Header="Debrief Assists On Player Rating" IsExpanded="False">
@@ -643,7 +633,6 @@
         </Expander>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- DebriefFullKillsOnAIRank, DebriefSharedKillsOnAIRank -->
         <Expander Header="Debrief Kills On AI Rank" IsExpanded="False">
@@ -717,7 +706,6 @@
         </Expander>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- DebriefAssistKillsOnAIRank -->
         <Expander Header="Debrief Assists On AI Rank" IsExpanded="False">
@@ -787,26 +775,17 @@
             </ctrl:QuadBase>
         </Expander>
 
-        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefNumHiddenCargoFound}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefNumCannonHits}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefNumCannonFired}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefNumWarheadHits}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefNumWarheadFired}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefNumCraftLosses}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefCraftLossesFromCollision}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefCraftLossesFromStarship}"/>
-
-        <ctrl:MissionCategoryRecordView DataContext="{Binding DebriefCraftLossesFromMine}"/>
+        <ctrl:MissionCategoryRecordView Label="Debrief Hidden Cargo Found:"             Data="{Binding DebriefNumHiddenCargoFound}"/>
+        <ctrl:MissionCategoryRecordView Label="Debrief Lasers Hit:"                     Data="{Binding DebriefNumLaserHit}"/>
+        <ctrl:MissionCategoryRecordView Label="Debrief Lasers Fired:"                   Data="{Binding DebriefNumLaserFired}"/>
+        <ctrl:MissionCategoryRecordView Label="Debrief Warheads Hit:"                   Data="{Binding DebriefNumWarheadHit}"/>
+        <ctrl:MissionCategoryRecordView Label="Debrief Warheads Fired:"                 Data="{Binding DebriefNumWarheadFired}"/>
+        <ctrl:MissionCategoryRecordView Label="Debrief Craft Losses:"                   Data="{Binding DebriefNumCraftLosses}"/>
+        <ctrl:MissionCategoryRecordView Label="Debrief Craft Losses From Collisions:"   Data="{Binding DebriefNumLossesFromCollisions}"/>
+        <ctrl:MissionCategoryRecordView Label="Debrief Craft Losses From Starships:"    Data="{Binding DebriefNumLossesFromStarships}"/>
+        <ctrl:MissionCategoryRecordView Label="Debrief Craft Losses From Mines:"        Data="{Binding DebriefNumLossesFromMines}"/>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- DebriefLossesFromPlayerRank -->
         <Expander Header="Debrief Losses From Player Rank" IsExpanded="False">
@@ -877,7 +856,6 @@
         </Expander>
 
         <!-- TODO: Consider spinning the QuadBase control into its own named control (like LabeledTripleTextBox?) -->
-        <!-- TODO: Highlight the Exercise/Melee/Combat header and Rating index of the selected textbox to improve usability -->
         <!-- TODO: Remove Expander once item filtering is in place -->
         <!-- DebriefLossesFromAIRank -->
         <Expander Header="Debrief Losses From AI Rank" IsExpanded="False">

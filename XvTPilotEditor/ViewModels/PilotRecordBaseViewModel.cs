@@ -76,15 +76,11 @@ namespace XvTPilotEditor.ViewModels
             set { PilotRecordBase.PercentToNextRank = SetIntProperty(value); }
         }
 
-        public MissionCategoryRecordViewModel TotalCategoryScore { get; private set; }
-
-        public MissionCategoryRecordViewModel NumFlownNonSeries { get; private set; }
-
-        public MissionCategoryRecordViewModel NumFlownSeries { get; private set; }
-
-        public MissionCategoryRecordViewModel TotalKills { get; private set; }
-
-        public MissionCategoryRecordViewModel FriendlyKills { get; private set; }
+        public MissionCategoryRecordViewModel           TotalCategoryScore                      { get; private set; }
+        public MissionCategoryRecordViewModel           NumFlownNonSeries                       { get; private set; }
+        public MissionCategoryRecordViewModel           NumFlownSeries                          { get; private set; }
+        public MissionCategoryRecordViewModel           TotalKills                              { get; private set; }
+        public MissionCategoryRecordViewModel           FriendlyKills                           { get; private set; }
 
         private MissionCategoryRecordMatrixViewModel TotalFullKillsOnPlayerRating;
         private MissionCategoryRecordMatrixViewModel TotalSharedKillsOnPlayerRating;
@@ -104,23 +100,15 @@ namespace XvTPilotEditor.ViewModels
 
         public MissionCategoryRecordMatrixViewModel TotalAssistsOnAIRank { get; private set; }
 
-        public MissionCategoryRecordViewModel TotalHiddenCargoFound { get; private set; }
-
-        public MissionCategoryRecordViewModel TotalLaserHit { get; private set; }
-
-        public MissionCategoryRecordViewModel TotalLaserFired { get; private set; }
-
-        public MissionCategoryRecordViewModel TotalWarheadHit { get; private set; }
-
-        public MissionCategoryRecordViewModel TotalWarheadFired { get; private set; }
-
-        public MissionCategoryRecordViewModel TotalCraftLosses { get; private set; }
-
-        public MissionCategoryRecordViewModel TotalLossesFromCollisions { get; private set; }
-
-        public MissionCategoryRecordViewModel TotalLossesFromStarships { get; private set; }
-
-        public MissionCategoryRecordViewModel TotalLossesFromMines { get; private set; }
+        public MissionCategoryRecordViewModel           TotalHiddenCargoFound                   { get; private set; }
+        public MissionCategoryRecordViewModel           TotalLaserHit                           { get; private set; }
+        public MissionCategoryRecordViewModel           TotalLaserFired                         { get; private set; }
+        public MissionCategoryRecordViewModel           TotalWarheadHit                         { get; private set; }
+        public MissionCategoryRecordViewModel           TotalWarheadFired                       { get; private set; }
+        public MissionCategoryRecordViewModel           TotalCraftLosses                        { get; private set; }
+        public MissionCategoryRecordViewModel           TotalLossesFromCollisions               { get; private set; }
+        public MissionCategoryRecordViewModel           TotalLossesFromStarships                { get; private set; }
+        public MissionCategoryRecordViewModel           TotalLossesFromMines                    { get; private set; }
 
         public MissionCategoryRecordMatrixViewModel TotalLossesFromPlayerRank { get; private set; }
 
@@ -189,15 +177,11 @@ namespace XvTPilotEditor.ViewModels
             Unknown0x166 = new IntArrayViewModel(PilotRecordBase.Unknown0x166);
             Unknown0x186 = new IntArrayViewModel(PilotRecordBase.Unknown0x186);
 
-            TotalCategoryScore = new MissionCategoryRecordViewModel("Total Category Score", PilotRecordBase.TotalCategoryScore);
-
-            NumFlownNonSeries = new MissionCategoryRecordViewModel("Num Flown Non-Series", PilotRecordBase.NumFlownNonSeries);
-
-            NumFlownSeries = new MissionCategoryRecordViewModel("Num Flown Series", PilotRecordBase.NumFlownSeries);
-
-            TotalKills = new MissionCategoryRecordViewModel("Total Kills", PilotRecordBase.TotalKills);
-
-            FriendlyKills = new MissionCategoryRecordViewModel("Friendly Kills", PilotRecordBase.FriendlyKills);
+            TotalCategoryScore              = new MissionCategoryRecordViewModel(PilotRecordBase.TotalCategoryScore);
+            NumFlownNonSeries               = new MissionCategoryRecordViewModel(PilotRecordBase.NumFlownNonSeries);
+            NumFlownSeries                  = new MissionCategoryRecordViewModel(PilotRecordBase.NumFlownSeries);
+            TotalKills                      = new MissionCategoryRecordViewModel(PilotRecordBase.TotalKills);
+            FriendlyKills                   = new MissionCategoryRecordViewModel(PilotRecordBase.FriendlyKills);
 
             TotalFullKillsOnPlayerRating = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalFullKillsOnPlayerRating?.Exercise,
                                                                                     PilotRecordBase.TotalFullKillsOnPlayerRating?.Melee,
@@ -229,23 +213,15 @@ namespace XvTPilotEditor.ViewModels
                                                                 PilotRecordBase.TotalAssistsOnAIRank?.Melee,
                                                                 PilotRecordBase.TotalAssistsOnAIRank?.CombatEngagement);
 
-            TotalHiddenCargoFound = new MissionCategoryRecordViewModel("Total Hidden Cargo Found", PilotRecordBase.TotalHiddenCargoFound);
-
-            TotalLaserHit = new MissionCategoryRecordViewModel("Total Laser Hit", PilotRecordBase.TotalLaserHit);
-
-            TotalLaserFired = new MissionCategoryRecordViewModel("Total Laser Fired", PilotRecordBase.TotalLaserFired);
-
-            TotalWarheadHit = new MissionCategoryRecordViewModel("Total Warhead Hit", PilotRecordBase.TotalWarheadHit);
-
-            TotalWarheadFired = new MissionCategoryRecordViewModel("Total Warhead Fired", PilotRecordBase.TotalWarheadFired);
-
-            TotalCraftLosses = new MissionCategoryRecordViewModel("Total Craft Losses", PilotRecordBase.TotalCraftLosses);
-
-            TotalLossesFromCollisions = new MissionCategoryRecordViewModel("Total Losses From Collisions", PilotRecordBase.TotalLossesFromCollisions);
-
-            TotalLossesFromStarships = new MissionCategoryRecordViewModel("Total Losses From Starships", PilotRecordBase.TotalLossesFromStarships);
-
-            TotalLossesFromMines = new MissionCategoryRecordViewModel("Total Losses From Mines", PilotRecordBase.TotalLossesFromMines);
+            TotalHiddenCargoFound           = new MissionCategoryRecordViewModel(PilotRecordBase.TotalHiddenCargoFound);
+            TotalLaserHit                   = new MissionCategoryRecordViewModel(PilotRecordBase.TotalLaserHit);
+            TotalLaserFired                 = new MissionCategoryRecordViewModel(PilotRecordBase.TotalLaserFired);
+            TotalWarheadHit                 = new MissionCategoryRecordViewModel(PilotRecordBase.TotalWarheadHit);
+            TotalWarheadFired               = new MissionCategoryRecordViewModel(PilotRecordBase.TotalWarheadFired);
+            TotalCraftLosses                = new MissionCategoryRecordViewModel(PilotRecordBase.TotalCraftLosses);
+            TotalLossesFromCollisions       = new MissionCategoryRecordViewModel(PilotRecordBase.TotalLossesFromCollisions);
+            TotalLossesFromStarships        = new MissionCategoryRecordViewModel(PilotRecordBase.TotalLossesFromStarships);
+            TotalLossesFromMines            = new MissionCategoryRecordViewModel(PilotRecordBase.TotalLossesFromMines);
 
             TotalLossesFromPlayerRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalLossesFromPlayerRank?.Exercise,
                                                                                  PilotRecordBase.TotalLossesFromPlayerRank?.Melee,
