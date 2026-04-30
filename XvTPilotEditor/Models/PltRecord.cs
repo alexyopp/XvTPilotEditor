@@ -31,9 +31,9 @@ namespace XvTPilotEditor.Models
         public int[]                                TotalCraftSharedKillsExercise   { get; set; }   = Array.Empty<int>();                               // int[88]
         public int[]                                TotalCraftSharedKillsMelee      { get; set; }   = Array.Empty<int>();                               // int[88]
         public int[]                                TotalCraftSharedKillsCombat     { get; set; }   = Array.Empty<int>();                               // int[88]
-        public int[]                                TotalCraftAssistKillsExercise   { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
-        public int[]                                TotalCraftAssistKillsMelee      { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
-        public int[]                                TotalCraftAssistKillsCombat     { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: Rename simply "Assists" instead of "AssistKills"?
+        public int[]                                TotalAssistsByCraftExercise     { get; set; }   = Array.Empty<int>();                               // int[88]
+        public int[]                                TotalAssistsByCraftMelee        { get; set; }   = Array.Empty<int>();                               // int[88]
+        public int[]                                TotalAssistsByCraftCombat       { get; set; }   = Array.Empty<int>();                               // int[88]
 
         public byte[]                               Unknown0x1612                   { get; set; }   = Array.Empty<byte>();                              // byte[40]     TODO: Appears to just be padding; probably don't need to provide UI access to this, but should still preserve it when writing to file
         public int                                  UnknownPlaqueWon                { get; set; }                                                       //              TODO: What is this? Give it a better name and remove the "Unknown" prefix
@@ -64,10 +64,10 @@ namespace XvTPilotEditor.Models
         public int[]                                DebriefAssistKillsByShipTypeC   { get; set; }   = Array.Empty<int>();                               // int[88]      TODO: ShipType == CraftType, preumably, but why A, B, and C?
         public MissionCategoryRecordByPlayerRating  DebriefFullKillsOnPlayerRank    { get; set; }   = new MissionCategoryRecordByPlayerRating();        // int[3][25]
         public MissionCategoryRecordByPlayerRating  DebriefSharedKillsOnPlayerRank  { get; set; }   = new MissionCategoryRecordByPlayerRating();        // int[3][25]
-        public MissionCategoryRecordByPlayerRating  DebriefAssistKillsOnPlayerRank  { get; set; }   = new MissionCategoryRecordByPlayerRating();        // int[3][25]
+        public MissionCategoryRecordByPlayerRating  DebriefAssistByPlayerRating     { get; set; }   = new MissionCategoryRecordByPlayerRating();        // int[3][25]
         public MissionCategoryRecordByAIRating      DebriefFullKillsOnAIRank        { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
         public MissionCategoryRecordByAIRating      DebriefSharedKillsOnAIRank      { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
-        public MissionCategoryRecordByAIRating      DebriefAssistKillsOnAIRank      { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
+        public MissionCategoryRecordByAIRating      DebriefAssistsByAIRank          { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
         public MissionCategoryRecord                DebriefNumHiddenCargoFound      { get; set; }   = new MissionCategoryRecord();                      // int[3]
         public MissionCategoryRecord                DebriefNumLaserHit              { get; set; }   = new MissionCategoryRecord();                      // int[3]
         public MissionCategoryRecord                DebriefNumLaserFired            { get; set; }   = new MissionCategoryRecord();                      // int[3]
@@ -77,8 +77,8 @@ namespace XvTPilotEditor.Models
         public MissionCategoryRecord                DebriefNumLossesFromCollisions  { get; set; }   = new MissionCategoryRecord();                      // int[3]
         public MissionCategoryRecord                DebriefNumLossesFromStarships   { get; set; }   = new MissionCategoryRecord();                      // int[3]
         public MissionCategoryRecord                DebriefNumLossesFromMines       { get; set; }   = new MissionCategoryRecord();                      // int[3]
-        public MissionCategoryRecordByPlayerRating  DebriefLossesFromPlayerRank     { get; set; }   = new MissionCategoryRecordByPlayerRating();        // int[3][25]   TODO: Confirm this is really Exercise, Melee, Combat; found values in the Exercise column, but that is unexpected (Exercise should be co-op only)
-        public MissionCategoryRecordByAIRating      DebriefLossesFromAIRank         { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
+        public MissionCategoryRecordByPlayerRating  DebriefLossesByPlayerRating     { get; set; }   = new MissionCategoryRecordByPlayerRating();        // int[3][25]   TODO: Confirm this is really Exercise, Melee, Combat; found values in the Exercise column, but that is unexpected (Exercise should be co-op only)
+        public MissionCategoryRecordByAIRating      DebriefLossesByAIRank           { get; set; }   = new MissionCategoryRecordByAIRating();            // int[3][6]
 
         //  Note the difference in types between the Plt and Pl2 versions
         public int LastSelectedFaction { get; set; }                                                                                            //          TODO: Look into bringing this into the Base class (i.e., merging how Plt and Pl2 handle this)
@@ -141,15 +141,15 @@ namespace XvTPilotEditor.Models
             TotalCraftSharedKillsExercise       = pltFile.totalCraftSharedKillsExercise ?? Array.Empty<int>();
             TotalCraftSharedKillsMelee          = pltFile.totalCraftSharedKillsMelee ?? Array.Empty<int>();
             TotalCraftSharedKillsCombat         = pltFile.totalCraftSharedKillsCombat ?? Array.Empty<int>();
-            TotalCraftAssistKillsExercise       = pltFile.totalCraftAssistKillsExercise ?? Array.Empty<int>();
-            TotalCraftAssistKillsMelee          = pltFile.totalCraftAssistKillsMelee ?? Array.Empty<int>();
-            TotalCraftAssistKillsCombat         = pltFile.totalCraftAssistKillsCombat ?? Array.Empty<int>();
+            TotalAssistsByCraftExercise         = pltFile.totalCraftAssistKillsExercise ?? Array.Empty<int>();
+            TotalAssistsByCraftMelee            = pltFile.totalCraftAssistKillsMelee ?? Array.Empty<int>();
+            TotalAssistsByCraftCombat           = pltFile.totalCraftAssistKillsCombat ?? Array.Empty<int>();
             TotalFullKillsOnPlayerRating        = new MissionCategoryRecordByPlayerRating(pltFile.TotalFullKillsOnPlayerRank);
             TotalSharedKillsOnPlayerRating      = new MissionCategoryRecordByPlayerRating(pltFile.TotalSharedKillsOnPlayerRank);
-            TotalAssistsOnPlayerRating          = new MissionCategoryRecordByPlayerRating(pltFile.TotalAssistKillsOnPlayerRank);
+            TotalAssistsByPlayerRating          = new MissionCategoryRecordByPlayerRating(pltFile.TotalAssistKillsOnPlayerRank);
             TotalFullKillsOnAIRank              = new MissionCategoryRecordByAIRating(pltFile.TotalFullKillsOnAIRank);
             TotalSharedKillsOnAIRank            = new MissionCategoryRecordByAIRating(pltFile.TotalSharedKillsOnAIRank);
-            TotalAssistsOnAIRank                = new MissionCategoryRecordByAIRating(pltFile.TotalAssistKillsOnAIRank);
+            TotalAssistsByAIRank                = new MissionCategoryRecordByAIRating(pltFile.TotalAssistKillsOnAIRank);
             TotalHiddenCargoFound               = new MissionCategoryRecord(pltFile.totalHiddenCargoFound);
             TotalLaserHit                       = new MissionCategoryRecord(pltFile.totalLaserHit);
             TotalLaserFired                     = new MissionCategoryRecord(pltFile.totalLaserFiredExercise, pltFile.totalLaserFiredMelee, pltFile.totalLaserFiredCombat);
@@ -159,8 +159,8 @@ namespace XvTPilotEditor.Models
             TotalLossesFromCollisions           = new MissionCategoryRecord(pltFile.totalLossesFromCollisionExercise, pltFile.totalLossesFromCollisionMelee, pltFile.totalLossesFromCollisionCombat);
             TotalLossesFromStarships            = new MissionCategoryRecord(pltFile.totalLossesFromStarshipsExercise, pltFile.totalLossesFromStarshipsMelee, pltFile.totalLossesFromStarshipsCombat);
             TotalLossesFromMines                = new MissionCategoryRecord(pltFile.totalLossesFromMinesExercise, pltFile.totalLossesFromMinesMelee, pltFile.totalLossesFromMinesCombat);
-            TotalLossesFromPlayerRank           = new MissionCategoryRecordByPlayerRating(pltFile.TotalLossesFromPlayerRank);
-            TotalLossesFromAIRank               = new MissionCategoryRecordByAIRating(pltFile.TotalLossesFromAIRank);
+            TotalLossesByPlayerRating           = new MissionCategoryRecordByPlayerRating(pltFile.TotalLossesFromPlayerRank);
+            TotalLossesByAIRank                 = new MissionCategoryRecordByAIRating(pltFile.TotalLossesFromAIRank);
             Unknown0x1612                       = pltFile.unknown0x1612 ?? Array.Empty<byte>();
             UnknownPlaqueWon                    = pltFile.unknownPlaqueWon;
 
@@ -209,10 +209,10 @@ namespace XvTPilotEditor.Models
             DebriefAssistKillsByShipTypeC       = pltFile.debriefAssistKillsByShipTypeC ?? Array.Empty<int>();
             DebriefFullKillsOnPlayerRank        = new MissionCategoryRecordByPlayerRating(pltFile.debriefFullKillsOnPlayerRank);
             DebriefSharedKillsOnPlayerRank      = new MissionCategoryRecordByPlayerRating(pltFile.debriefSharedKillsOnPlayerRank);
-            DebriefAssistKillsOnPlayerRank      = new MissionCategoryRecordByPlayerRating(pltFile.debriefAssistKillsOnPlayerRank);
+            DebriefAssistByPlayerRating         = new MissionCategoryRecordByPlayerRating(pltFile.debriefAssistKillsOnPlayerRank);
             DebriefFullKillsOnAIRank            = new MissionCategoryRecordByAIRating(pltFile.debriefFullKillsOnAIRank);
             DebriefSharedKillsOnAIRank          = new MissionCategoryRecordByAIRating(pltFile.debriefSharedKillsOnAIRank);
-            DebriefAssistKillsOnAIRank          = new MissionCategoryRecordByAIRating(pltFile.debriefAssistKillsOnAIRank);
+            DebriefAssistsByAIRank              = new MissionCategoryRecordByAIRating(pltFile.debriefAssistKillsOnAIRank);
             DebriefNumHiddenCargoFound          = new MissionCategoryRecord(pltFile.debriefNumHiddenCargoFound);
             DebriefNumLaserHit                  = new MissionCategoryRecord(pltFile.debriefNumCannonHits);
             DebriefNumLaserFired                = new MissionCategoryRecord(pltFile.debriefNumCannonFired);
@@ -222,8 +222,8 @@ namespace XvTPilotEditor.Models
             DebriefNumLossesFromCollisions      = new MissionCategoryRecord(pltFile.debriefCraftLossesFromCollision);
             DebriefNumLossesFromStarships       = new MissionCategoryRecord(pltFile.debriefCraftLossesFromStarship);
             DebriefNumLossesFromMines           = new MissionCategoryRecord(pltFile.debriefCraftLossesFromMine);
-            DebriefLossesFromPlayerRank         = new MissionCategoryRecordByPlayerRating(pltFile.debriefLossesFromPlayerRank);
-            DebriefLossesFromAIRank             = new MissionCategoryRecordByAIRating(pltFile.debriefLossesFromAIRank);
+            DebriefLossesByPlayerRating         = new MissionCategoryRecordByPlayerRating(pltFile.debriefLossesFromPlayerRank);
+            DebriefLossesByAIRank               = new MissionCategoryRecordByAIRating(pltFile.debriefLossesFromAIRank);
 
             ConnectedPlayer = new ConnectedPlayerRecord[Constants.MAX_CONNECTED_PLAYERS];
             for (uint idx = 0; idx < Constants.MAX_CONNECTED_PLAYERS; ++idx)
@@ -290,15 +290,15 @@ namespace XvTPilotEditor.Models
             rec.totalCraftSharedKillsExercise       = TotalCraftSharedKillsExercise;                                // int[88]
             rec.totalCraftSharedKillsMelee          = TotalCraftSharedKillsMelee;                                   // int[88]
             rec.totalCraftSharedKillsCombat         = TotalCraftSharedKillsCombat;                                  // int[88]
-            rec.totalCraftAssistKillsExercise       = TotalCraftAssistKillsExercise;                                // int[88]
-            rec.totalCraftAssistKillsMelee          = TotalCraftAssistKillsMelee;                                   // int[88]
-            rec.totalCraftAssistKillsCombat         = TotalCraftAssistKillsCombat;                                  // int[88]
+            rec.totalCraftAssistKillsExercise       = TotalAssistsByCraftExercise;                                  // int[88]
+            rec.totalCraftAssistKillsMelee          = TotalAssistsByCraftMelee;                                     // int[88]
+            rec.totalCraftAssistKillsCombat         = TotalAssistsByCraftCombat;                                    // int[88]
             rec.TotalFullKillsOnPlayerRank          = ToPLTPlayerRankCountRecord(TotalFullKillsOnPlayerRating);     // int[3][25]
             rec.TotalSharedKillsOnPlayerRank        = ToPLTPlayerRankCountRecord(TotalSharedKillsOnPlayerRating);   // int[3][25]
-            rec.TotalAssistKillsOnPlayerRank        = ToPLTPlayerRankCountRecord(TotalAssistsOnPlayerRating);       // int[3][25]
+            rec.TotalAssistKillsOnPlayerRank        = ToPLTPlayerRankCountRecord(TotalAssistsByPlayerRating);       // int[3][25]
             rec.TotalFullKillsOnAIRank              = ToPLTAIRankCountRecord(TotalFullKillsOnAIRank);               // int[3][6]
             rec.TotalSharedKillsOnAIRank            = ToPLTAIRankCountRecord(TotalSharedKillsOnAIRank);             // int[3][6]
-            rec.TotalAssistKillsOnAIRank            = ToPLTAIRankCountRecord(TotalAssistsOnAIRank);                 // int[3][6]
+            rec.TotalAssistKillsOnAIRank            = ToPLTAIRankCountRecord(TotalAssistsByAIRank);                 // int[3][6]
             rec.totalHiddenCargoFound               = ToPLTCategoryTypeRecord(TotalHiddenCargoFound);               // int[3]
             rec.totalLaserHit                       = ToPLTCategoryTypeRecord(TotalLaserHit);                       // int[3]
             rec.totalLaserFiredExercise             = TotalLaserFired.Exercise;
@@ -322,8 +322,8 @@ namespace XvTPilotEditor.Models
             rec.totalLossesFromMinesExercise        = TotalLossesFromMines.Exercise;
             rec.totalLossesFromMinesMelee           = TotalLossesFromMines.Melee;
             rec.totalLossesFromMinesCombat          = TotalLossesFromMines.CombatEngagement;
-            rec.TotalLossesFromPlayerRank           = ToPLTPlayerRankCountRecord(TotalLossesFromPlayerRank);        // int[3][25]
-            rec.TotalLossesFromAIRank               = ToPLTAIRankCountRecord(TotalLossesFromAIRank);                // int[3][6]
+            rec.TotalLossesFromPlayerRank           = ToPLTPlayerRankCountRecord(TotalLossesByPlayerRating);        // int[3][25]
+            rec.TotalLossesFromAIRank               = ToPLTAIRankCountRecord(TotalLossesByAIRank);                  // int[3][6]
             rec.unknown0x1612                       = Unknown0x1612;                                                // byte[40]
             rec.unknownPlaqueWon                    = UnknownPlaqueWon;
             rec.TournTeamRecords                    = ToPLTTournTeamRecordArray(TournamentTeamRecord);              // PLTTournTeamRecord[10]  (int[10][5])
@@ -366,10 +366,10 @@ namespace XvTPilotEditor.Models
             rec.debriefAssistKillsByShipTypeC       = DebriefAssistKillsByShipTypeC;                                // int[88]
             rec.debriefFullKillsOnPlayerRank        = ToPLTPlayerRankCountRecord(DebriefFullKillsOnPlayerRank);     // int[3][25]
             rec.debriefSharedKillsOnPlayerRank      = ToPLTPlayerRankCountRecord(DebriefSharedKillsOnPlayerRank);   // int[3][25]
-            rec.debriefAssistKillsOnPlayerRank      = ToPLTPlayerRankCountRecord(DebriefAssistKillsOnPlayerRank);   // int[3][25]
+            rec.debriefAssistKillsOnPlayerRank      = ToPLTPlayerRankCountRecord(DebriefAssistByPlayerRating);      // int[3][25]
             rec.debriefFullKillsOnAIRank            = ToPLTAIRankCountRecord(DebriefFullKillsOnAIRank);             // int[3][6]
             rec.debriefSharedKillsOnAIRank          = ToPLTAIRankCountRecord(DebriefSharedKillsOnAIRank);           // int[3][6]
-            rec.debriefAssistKillsOnAIRank          = ToPLTAIRankCountRecord(DebriefAssistKillsOnAIRank);           // int[3][6]
+            rec.debriefAssistKillsOnAIRank          = ToPLTAIRankCountRecord(DebriefAssistsByAIRank);               // int[3][6]
             rec.debriefNumHiddenCargoFound          = ToPLTCategoryTypeRecord(DebriefNumHiddenCargoFound);          // int[3]
             rec.debriefNumCannonHits                = ToPLTCategoryTypeRecord(DebriefNumLaserHit);                  // int[3]
             rec.debriefNumCannonFired               = ToPLTCategoryTypeRecord(DebriefNumLaserFired);                // int[3]
@@ -379,8 +379,8 @@ namespace XvTPilotEditor.Models
             rec.debriefCraftLossesFromCollision     = ToPLTCategoryTypeRecord(DebriefNumLossesFromCollisions);      // int[3]
             rec.debriefCraftLossesFromStarship      = ToPLTCategoryTypeRecord(DebriefNumLossesFromStarships);       // int[3]
             rec.debriefCraftLossesFromMine          = ToPLTCategoryTypeRecord(DebriefNumLossesFromMines);           // int[3]
-            rec.debriefLossesFromPlayerRank         = ToPLTPlayerRankCountRecord(DebriefLossesFromPlayerRank);      // int[3][25]
-            rec.debriefLossesFromAIRank             = ToPLTAIRankCountRecord(DebriefLossesFromAIRank);              // int[3][6]
+            rec.debriefLossesFromPlayerRank         = ToPLTPlayerRankCountRecord(DebriefLossesByPlayerRating);      // int[3][25]
+            rec.debriefLossesFromAIRank             = ToPLTAIRankCountRecord(DebriefLossesByAIRank);                // int[3][6]
             rec.connectedPlayerData                 = ToPLTConnectedPlayerDataArray(ConnectedPlayer);               // PLTConnectedPlayerData[8]
             rec.debriefTeamResult                   = ToPLTTeamResultRecordArray(DebriefTeamResult);                // PLTTeamResultRecord[10]  (int[10][6])
             rec.lastSelectedFaction                 = LastSelectedFaction;

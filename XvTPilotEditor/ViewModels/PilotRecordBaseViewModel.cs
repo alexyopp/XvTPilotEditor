@@ -89,7 +89,7 @@ namespace XvTPilotEditor.ViewModels
         public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnPlayerRatingMelee { get; private set; } = new();
         public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnPlayerRatingCombat { get; private set; } = new();
 
-        public MissionCategoryRecordMatrixViewModel TotalAssistsOnPlayerRating { get; private set; }
+        public MissionCategoryRecordMatrixViewModel TotalAssistsByPlayerRating { get; private set; }
 
         private MissionCategoryRecordMatrixViewModel TotalFullKillsOnAIRank;
         private MissionCategoryRecordMatrixViewModel TotalSharedKillsOnAIRank;
@@ -98,7 +98,7 @@ namespace XvTPilotEditor.ViewModels
         public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnAIRankMelee { get; private set; } = new();
         public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnAIRankCombat { get; private set; } = new();
 
-        public MissionCategoryRecordMatrixViewModel TotalAssistsOnAIRank { get; private set; }
+        public MissionCategoryRecordMatrixViewModel TotalAssistsByAIRank { get; private set; }
 
         public MissionCategoryRecordViewModel           TotalHiddenCargoFound                   { get; private set; }
         public MissionCategoryRecordViewModel           TotalLaserHit                           { get; private set; }
@@ -110,9 +110,9 @@ namespace XvTPilotEditor.ViewModels
         public MissionCategoryRecordViewModel           TotalLossesFromStarships                { get; private set; }
         public MissionCategoryRecordViewModel           TotalLossesFromMines                    { get; private set; }
 
-        public MissionCategoryRecordMatrixViewModel TotalLossesFromPlayerRank { get; private set; }
+        public MissionCategoryRecordMatrixViewModel TotalLossesByPlayerRating { get; private set; }
 
-        public MissionCategoryRecordMatrixViewModel TotalLossesFromAIRank { get; private set; }
+        public MissionCategoryRecordMatrixViewModel TotalLossesByAIRank { get; private set; }
 
         // Leave this number value as-is; do not convert to a Pilot Rating description.  That is handled by the RankString property.
         public string CurrentRank
@@ -194,9 +194,9 @@ namespace XvTPilotEditor.ViewModels
             CombinedTotalKillsOnPlayerRatingMelee = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Melee, TotalSharedKillsOnPlayerRating.Melee);
             CombinedTotalKillsOnPlayerRatingCombat = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Combat, TotalSharedKillsOnPlayerRating.Combat);
 
-            TotalAssistsOnPlayerRating = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalAssistsOnPlayerRating?.Exercise,
-                                                                      PilotRecordBase.TotalAssistsOnPlayerRating?.Melee,
-                                                                      PilotRecordBase.TotalAssistsOnPlayerRating?.CombatEngagement);
+            TotalAssistsByPlayerRating = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalAssistsByPlayerRating?.Exercise,
+                                                                                  PilotRecordBase.TotalAssistsByPlayerRating?.Melee,
+                                                                                  PilotRecordBase.TotalAssistsByPlayerRating?.CombatEngagement);
 
             TotalFullKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalFullKillsOnAIRank?.Exercise,
                                                                               PilotRecordBase.TotalFullKillsOnAIRank?.Melee,
@@ -209,9 +209,9 @@ namespace XvTPilotEditor.ViewModels
             CombinedTotalKillsOnAIRankMelee = CollectionHelpers.Combine(TotalFullKillsOnAIRank.Melee, TotalSharedKillsOnAIRank.Melee);
             CombinedTotalKillsOnAIRankCombat = CollectionHelpers.Combine(TotalFullKillsOnAIRank.Combat, TotalSharedKillsOnAIRank.Combat);
 
-            TotalAssistsOnAIRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalAssistsOnAIRank?.Exercise,
-                                                                PilotRecordBase.TotalAssistsOnAIRank?.Melee,
-                                                                PilotRecordBase.TotalAssistsOnAIRank?.CombatEngagement);
+            TotalAssistsByAIRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalAssistsByAIRank?.Exercise,
+                                                                            PilotRecordBase.TotalAssistsByAIRank?.Melee,
+                                                                            PilotRecordBase.TotalAssistsByAIRank?.CombatEngagement);
 
             TotalHiddenCargoFound           = new MissionCategoryRecordViewModel(PilotRecordBase.TotalHiddenCargoFound);
             TotalLaserHit                   = new MissionCategoryRecordViewModel(PilotRecordBase.TotalLaserHit);
@@ -223,13 +223,13 @@ namespace XvTPilotEditor.ViewModels
             TotalLossesFromStarships        = new MissionCategoryRecordViewModel(PilotRecordBase.TotalLossesFromStarships);
             TotalLossesFromMines            = new MissionCategoryRecordViewModel(PilotRecordBase.TotalLossesFromMines);
 
-            TotalLossesFromPlayerRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalLossesFromPlayerRank?.Exercise,
-                                                                                 PilotRecordBase.TotalLossesFromPlayerRank?.Melee,
-                                                                                 PilotRecordBase.TotalLossesFromPlayerRank?.CombatEngagement);
+            TotalLossesByPlayerRating = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalLossesByPlayerRating?.Exercise,
+                                                                                 PilotRecordBase.TotalLossesByPlayerRating?.Melee,
+                                                                                 PilotRecordBase.TotalLossesByPlayerRating?.CombatEngagement);
 
-            TotalLossesFromAIRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalLossesFromAIRank?.Exercise,
-                                                                             PilotRecordBase.TotalLossesFromAIRank?.Melee,
-                                                                             PilotRecordBase.TotalLossesFromAIRank?.CombatEngagement);
+            TotalLossesByAIRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalLossesByAIRank?.Exercise,
+                                                                           PilotRecordBase.TotalLossesByAIRank?.Melee,
+                                                                           PilotRecordBase.TotalLossesByAIRank?.CombatEngagement);
 
             RankAchievedOnMissionCount = new IntArrayViewModel(PilotRecordBase.RankAchievedOnMissionCount);
 

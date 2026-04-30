@@ -89,8 +89,7 @@ namespace XvTPilotEditor.ViewModels
         public ObservableCollection<KillPairViewModel> CombinedCraftKillsMelee { get; private set; } = new();
         public ObservableCollection<KillPairViewModel> CombinedCraftKillsCombat { get; private set; } = new();
 
-        // TODO: Consider renaming "...Assists" instead of "...AssistKills"
-        public MissionCategoryRecordMatrixViewModel TotalCraftAssistKills { get; private set; }
+        public MissionCategoryRecordMatrixViewModel TotalAssistsByCraft { get; private set; }
 
         // TODO: This appears to be padding, in which case we don't want to provide UI for it.
         public ByteArrayViewModel Unknown0x1612 { get; private set; }
@@ -186,7 +185,7 @@ namespace XvTPilotEditor.ViewModels
         public ObservableCollection<KillPairViewModel> CombinedDebriefKillsOnPlayerRatingMelee { get; private set; } = new();
         public ObservableCollection<KillPairViewModel> CombinedDebriefKillsOnPlayerRatingCombat { get; private set; } = new();
 
-        public MissionCategoryRecordMatrixViewModel DebriefAssistKillsOnPlayerRank { get; private set; }
+        public MissionCategoryRecordMatrixViewModel DebriefAssistByPlayerRating { get; private set; }
 
         private MissionCategoryRecordMatrixViewModel DebriefFullKillsOnAIRank;
         private MissionCategoryRecordMatrixViewModel DebriefSharedKillsOnAIRank;
@@ -195,7 +194,7 @@ namespace XvTPilotEditor.ViewModels
         public ObservableCollection<KillPairViewModel> CombinedDebriefKillsOnAIRankMelee { get; private set; } = new();
         public ObservableCollection<KillPairViewModel> CombinedDebriefKillsOnAIRankCombat { get; private set; } = new();
 
-        public MissionCategoryRecordMatrixViewModel DebriefAssistKillsOnAIRank { get; private set; }
+        public MissionCategoryRecordMatrixViewModel DebriefAssistsByAIRank { get; private set; }
 
         public MissionCategoryRecordViewModel           DebriefNumHiddenCargoFound              { get; private set; }
         public MissionCategoryRecordViewModel           DebriefNumLaserHit                      { get; private set; }
@@ -207,9 +206,9 @@ namespace XvTPilotEditor.ViewModels
         public MissionCategoryRecordViewModel           DebriefNumLossesFromStarships           { get; private set; }
         public MissionCategoryRecordViewModel           DebriefNumLossesFromMines               { get; private set; }
 
-        public MissionCategoryRecordMatrixViewModel DebriefLossesFromPlayerRank { get; private set; }
+        public MissionCategoryRecordMatrixViewModel DebriefLossesByPlayerRating { get; private set; }
 
-        public MissionCategoryRecordMatrixViewModel DebriefLossesFromAIRank { get; private set; }
+        public MissionCategoryRecordMatrixViewModel DebriefLossesByAIRank { get; private set; }
 
         //**** Members
         private PltRecord PltRecord;
@@ -232,9 +231,9 @@ namespace XvTPilotEditor.ViewModels
             CombinedCraftKillsMelee = CollectionHelpers.Combine(TotalCraftFullKills.Melee, TotalCraftSharedKills.Melee);
             CombinedCraftKillsCombat = CollectionHelpers.Combine(TotalCraftFullKills.Combat, TotalCraftSharedKills.Combat);
 
-            TotalCraftAssistKills = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalCraftAssistKillsExercise,
-                                                                             PltRecord.TotalCraftAssistKillsMelee,
-                                                                             PltRecord.TotalCraftAssistKillsCombat);
+            TotalAssistsByCraft = new MissionCategoryRecordMatrixViewModel(PltRecord.TotalAssistsByCraftExercise,
+                                                                           PltRecord.TotalAssistsByCraftMelee,
+                                                                           PltRecord.TotalAssistsByCraftCombat);
 
             Unknown0x1612 = new ByteArrayViewModel(PltRecord.Unknown0x1612);
 
@@ -287,9 +286,9 @@ namespace XvTPilotEditor.ViewModels
             CombinedDebriefKillsOnPlayerRatingMelee = CollectionHelpers.Combine(DebriefFullKillsOnPlayerRank.Melee, DebriefSharedKillsOnPlayerRank.Melee);
             CombinedDebriefKillsOnPlayerRatingCombat = CollectionHelpers.Combine(DebriefFullKillsOnPlayerRank.Combat, DebriefSharedKillsOnPlayerRank.Combat);
 
-            DebriefAssistKillsOnPlayerRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefAssistKillsOnPlayerRank?.Exercise,
-                                                                                      PltRecord.DebriefAssistKillsOnPlayerRank?.Melee,
-                                                                                      PltRecord.DebriefAssistKillsOnPlayerRank?.CombatEngagement);
+            DebriefAssistByPlayerRating = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefAssistByPlayerRating?.Exercise,
+                                                                                   PltRecord.DebriefAssistByPlayerRating?.Melee,
+                                                                                   PltRecord.DebriefAssistByPlayerRating?.CombatEngagement);
 
             DebriefFullKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefFullKillsOnAIRank?.Exercise,
                                                                                 PltRecord.DebriefFullKillsOnAIRank?.Melee,
@@ -302,9 +301,9 @@ namespace XvTPilotEditor.ViewModels
             CombinedDebriefKillsOnAIRankMelee = CollectionHelpers.Combine(DebriefFullKillsOnAIRank.Melee, DebriefSharedKillsOnAIRank.Melee);
             CombinedDebriefKillsOnAIRankCombat = CollectionHelpers.Combine(DebriefFullKillsOnAIRank.Combat, DebriefSharedKillsOnAIRank.Combat);
 
-            DebriefAssistKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefAssistKillsOnAIRank?.Exercise,
-                                                                                  PltRecord.DebriefAssistKillsOnAIRank?.Melee,
-                                                                                  PltRecord.DebriefAssistKillsOnAIRank?.CombatEngagement);
+            DebriefAssistsByAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefAssistsByAIRank?.Exercise,
+                                                                              PltRecord.DebriefAssistsByAIRank?.Melee,
+                                                                              PltRecord.DebriefAssistsByAIRank?.CombatEngagement);
 
             DebriefNumHiddenCargoFound      = new MissionCategoryRecordViewModel(PltRecord.DebriefNumHiddenCargoFound);
             DebriefNumLaserHit              = new MissionCategoryRecordViewModel(PltRecord.DebriefNumLaserHit);
@@ -316,13 +315,13 @@ namespace XvTPilotEditor.ViewModels
             DebriefNumLossesFromStarships   = new MissionCategoryRecordViewModel(PltRecord.DebriefNumLossesFromStarships);
             DebriefNumLossesFromMines       = new MissionCategoryRecordViewModel(PltRecord.DebriefNumLossesFromMines);
 
-            DebriefLossesFromPlayerRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefLossesFromPlayerRank?.Exercise,
-                                                                                   PltRecord.DebriefLossesFromPlayerRank?.Melee,
-                                                                                   PltRecord.DebriefLossesFromPlayerRank?.CombatEngagement);
+            DebriefLossesByPlayerRating = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefLossesByPlayerRating?.Exercise,
+                                                                                   PltRecord.DebriefLossesByPlayerRating?.Melee,
+                                                                                   PltRecord.DebriefLossesByPlayerRating?.CombatEngagement);
 
-            DebriefLossesFromAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefLossesFromAIRank?.Exercise,
-                                                                               PltRecord.DebriefLossesFromAIRank?.Melee,
-                                                                               PltRecord.DebriefLossesFromAIRank?.CombatEngagement);
+            DebriefLossesByAIRank = new MissionCategoryRecordMatrixViewModel(PltRecord.DebriefLossesByAIRank?.Exercise,
+                                                                             PltRecord.DebriefLossesByAIRank?.Melee,
+                                                                             PltRecord.DebriefLossesByAIRank?.CombatEngagement);
         }
     }
 }

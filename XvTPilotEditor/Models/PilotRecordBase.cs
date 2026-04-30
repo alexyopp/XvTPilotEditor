@@ -34,10 +34,10 @@ namespace XvTPilotEditor.Models
 
         public MissionCategoryRecordByPlayerRating  TotalFullKillsOnPlayerRating    { get; set; } = new MissionCategoryRecordByPlayerRating();                      // int[3][25]
         public MissionCategoryRecordByPlayerRating  TotalSharedKillsOnPlayerRating  { get; set; } = new MissionCategoryRecordByPlayerRating();                      // int[3][25]
-        public MissionCategoryRecordByPlayerRating  TotalAssistsOnPlayerRating      { get; set; } = new MissionCategoryRecordByPlayerRating();                      // int[3][25]
+        public MissionCategoryRecordByPlayerRating  TotalAssistsByPlayerRating      { get; set; } = new MissionCategoryRecordByPlayerRating();                      // int[3][25]
         public MissionCategoryRecordByAIRating      TotalFullKillsOnAIRank          { get; set; } = new MissionCategoryRecordByAIRating();                          // int[3][6]
         public MissionCategoryRecordByAIRating      TotalSharedKillsOnAIRank        { get; set; } = new MissionCategoryRecordByAIRating();                          // int[3][6]
-        public MissionCategoryRecordByAIRating      TotalAssistsOnAIRank            { get; set; } = new MissionCategoryRecordByAIRating();                          // int[3][6]
+        public MissionCategoryRecordByAIRating      TotalAssistsByAIRank            { get; set; } = new MissionCategoryRecordByAIRating();                          // int[3][6]
         public MissionCategoryRecord                TotalHiddenCargoFound           { get; set; } = new MissionCategoryRecord();                                    // int[3]
         public MissionCategoryRecord                TotalLaserHit                   { get; set; } = new MissionCategoryRecord();                                    // int[3]
         public MissionCategoryRecord                TotalLaserFired                 { get; set; } = new MissionCategoryRecord();                                    // int[3]
@@ -47,8 +47,8 @@ namespace XvTPilotEditor.Models
         public MissionCategoryRecord                TotalLossesFromCollisions       { get; set; } = new MissionCategoryRecord();                                    // int[3]
         public MissionCategoryRecord                TotalLossesFromStarships        { get; set; } = new MissionCategoryRecord();                                    // int[3]
         public MissionCategoryRecord                TotalLossesFromMines            { get; set; } = new MissionCategoryRecord();                                    // int[3]
-        public MissionCategoryRecordByPlayerRating  TotalLossesFromPlayerRank       { get; set; } = new MissionCategoryRecordByPlayerRating();                      // int[3][25]
-        public MissionCategoryRecordByAIRating      TotalLossesFromAIRank           { get; set; } = new MissionCategoryRecordByAIRating();                          // int[3][6]
+        public MissionCategoryRecordByPlayerRating  TotalLossesByPlayerRating       { get; set; } = new MissionCategoryRecordByPlayerRating();                      // int[3][25]
+        public MissionCategoryRecordByAIRating      TotalLossesByAIRank             { get; set; } = new MissionCategoryRecordByAIRating();                          // int[3][6]
 
         // Plt and Pl2 schemas diverge here; refer to PltRecord and Pl2Record for those properties.
 

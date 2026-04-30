@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace XvTPilotEditor.Views.Controls
 {
@@ -26,6 +27,10 @@ namespace XvTPilotEditor.Views.Controls
         public static readonly DependencyProperty Column3ContentProperty =
             DependencyProperty.Register(nameof(Column3Content), typeof(object), typeof(QuadBase), new PropertyMetadata(null));
         public object? Column3Content { get => GetValue(Column3ContentProperty); set => SetValue(Column3ContentProperty, value); }
+
+        public static readonly DependencyProperty IndexConverterProperty =
+                    DependencyProperty.Register(nameof(IndexConverter), typeof(IValueConverter), typeof(QuadBase), new PropertyMetadata(null));
+        public IValueConverter? IndexConverter { get => (IValueConverter?)GetValue(IndexConverterProperty); set => SetValue(IndexConverterProperty, value); }
 
         // Templates
         public static readonly DependencyProperty Column0ContentTemplateProperty =
