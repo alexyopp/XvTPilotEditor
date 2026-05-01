@@ -46,6 +46,44 @@ namespace XvTPilotEditor.Utilities
             }
         }
 
+        // Helper to provide a PropertyChanged handler to elements of an ObservableCollection<KillPairViewModel>.
+        public static void PopulateCollection(ObservableCollection<KillPairViewModel> target, int[]? sourceFull, PropertyChangedEventHandler? handlerFull, int[]? sourceShared, PropertyChangedEventHandler? handlerShared)
+        {
+            target.Clear();
+            
+            // SharedSource not valid if FullSource is null
+            if (sourceFull == null)
+            {
+                return;
+            }
+
+            // This should never happen, I don't think?
+            if (sourceShared != null && sourceFull.Length != sourceShared.Length)
+            {
+                Console.WriteLine("Warning: FullKills and SharedKills arrays have different lengths. SharedKills will be ignored.");
+            }
+
+            for (int idx = 0; idx < sourceFull.Length; ++idx)
+            {
+                NotifyingInt fullValue = new NotifyingInt(sourceFull[idx]);
+                NotifyingInt? sharedValue = null;
+                if (handlerFull != null)
+                {
+                    fullValue.PropertyChanged += handlerFull;
+                }
+
+                if (sourceShared != null && idx < sourceShared.Length)
+                {
+                    sharedValue = new NotifyingInt(sourceShared[idx]);
+                    if (handlerShared != null)
+                    {
+                        sharedValue.PropertyChanged += handlerShared;
+                    }
+                }
+                target.Add(new KillPairViewModel(fullValue, sharedValue));
+            }
+        }
+
         // Helper to combine two ObservableCollection<NotifyingInt> into pairs, preserving references so edits write back.
         public static ObservableCollection<KillPairViewModel> Combine(ObservableCollection<NotifyingInt> FullKills, ObservableCollection<NotifyingInt> SharedKills)
         {

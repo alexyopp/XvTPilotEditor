@@ -5,11 +5,38 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:XvTPilotEditor.Views.Controls"
              xmlns:conv="clr-namespace:XvTPilotEditor.Converters"
+             xmlns:vm="clr-namespace:XvTPilotEditor.ViewModels"
              mc:Ignorable="d" 
              x:Name="Root"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <conv:ApplyConverterMultiConverter x:Key="ApplyConverterMultiConverter"/>
+
+        <!-- DataTemplate for KillPairViewModel:
+             - shows the KillsTuple control when Shared != null
+             - shows a single TextBox (Full only) when Shared == null
+        -->
+        <DataTemplate DataType="{x:Type vm:KillPairViewModel}">
+            <Grid>
+                <!-- KillsTuple visible by default -->
+                <local:KillsTuple x:Name="tuple" Visibility="Visible"
+                                 KillsValue="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                 SharedKillsValue="{Binding Shared.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <!-- Single Full textbox collapsed by default -->
+                <StackPanel x:Name="single" Orientation="Horizontal" HorizontalAlignment="Center" Height="30" Visibility="Collapsed">
+                    <TextBox Width="75" Text="{Binding Full.Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </Grid>
+
+            <DataTemplate.Triggers>
+                <!-- If Shared is null show single TextBox and hide KillsTuple -->
+                <DataTrigger Binding="{Binding Shared}" Value="{x:Null}">
+                    <Setter TargetName="tuple" Property="Visibility" Value="Collapsed"/>
+                    <Setter TargetName="single" Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
     </UserControl.Resources>
 
     <Grid>
@@ -45,45 +72,21 @@
                 <!-- Exercise column -->
                 <local:QuadBase.Column1Content>
                     <StackPanel>
-                        <ItemsControl ItemsSource="{Binding Exercise}" AlternationCount="1000">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
-                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                        <ItemsControl ItemsSource="{Binding Exercise}" AlternationCount="1000"/>
                     </StackPanel>
                 </local:QuadBase.Column1Content>
 
                 <!-- Melee column -->
                 <local:QuadBase.Column2Content>
                     <StackPanel>
-                        <ItemsControl ItemsSource="{Binding Melee}" AlternationCount="1000">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
-                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                        <ItemsControl ItemsSource="{Binding Melee}" AlternationCount="1000"/>
                     </StackPanel>
                 </local:QuadBase.Column2Content>
 
                 <!-- Combat column -->
                 <local:QuadBase.Column3Content>
                     <StackPanel>
-                        <ItemsControl ItemsSource="{Binding Combat}" AlternationCount="1000">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
-                                        <TextBox Width="75" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                        <ItemsControl ItemsSource="{Binding Combat}" AlternationCount="1000"/>
                     </StackPanel>
                 </local:QuadBase.Column3Content>
             </local:QuadBase>

@@ -32,11 +32,11 @@ namespace XvTPilotEditor.Models
 
         // Plt and Pl2 schemas diverge here; refer to PltRecord and Pl2Record for those properties.
 
-        public MissionCategoryRecordByPlayerRating  TotalFullKillsOnPlayerRating    { get; set; } = new MissionCategoryRecordByPlayerRating();                      // int[3][25]
-        public MissionCategoryRecordByPlayerRating  TotalSharedKillsOnPlayerRating  { get; set; } = new MissionCategoryRecordByPlayerRating();                      // int[3][25]
+        public MissionCategoryRecordByPlayerRating  TotalFullKillsByPlayerRating    { get; set; } = new MissionCategoryRecordByPlayerRating();                      // int[3][25]
+        public MissionCategoryRecordByPlayerRating  TotalSharedKillsByPlayerRating  { get; set; } = new MissionCategoryRecordByPlayerRating();                      // int[3][25]
         public MissionCategoryRecordByPlayerRating  TotalAssistsByPlayerRating      { get; set; } = new MissionCategoryRecordByPlayerRating();                      // int[3][25]
-        public MissionCategoryRecordByAIRating      TotalFullKillsOnAIRank          { get; set; } = new MissionCategoryRecordByAIRating();                          // int[3][6]
-        public MissionCategoryRecordByAIRating      TotalSharedKillsOnAIRank        { get; set; } = new MissionCategoryRecordByAIRating();                          // int[3][6]
+        public MissionCategoryRecordByAIRating      TotalFullKillsByAIRank          { get; set; } = new MissionCategoryRecordByAIRating();                          // int[3][6]
+        public MissionCategoryRecordByAIRating      TotalSharedKillsByAIRank        { get; set; } = new MissionCategoryRecordByAIRating();                          // int[3][6]
         public MissionCategoryRecordByAIRating      TotalAssistsByAIRank            { get; set; } = new MissionCategoryRecordByAIRating();                          // int[3][6]
         public MissionCategoryRecord                TotalHiddenCargoFound           { get; set; } = new MissionCategoryRecord();                                    // int[3]
         public MissionCategoryRecord                TotalLaserHit                   { get; set; } = new MissionCategoryRecord();                                    // int[3]

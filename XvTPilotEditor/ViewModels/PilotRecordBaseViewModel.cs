@@ -81,25 +81,10 @@ namespace XvTPilotEditor.ViewModels
         public MissionCategoryRecordViewModel           NumFlownSeries                          { get; private set; }
         public MissionCategoryRecordViewModel           TotalKills                              { get; private set; }
         public MissionCategoryRecordViewModel           FriendlyKills                           { get; private set; }
-
-        private MissionCategoryRecordMatrixViewModel TotalFullKillsOnPlayerRating;
-        private MissionCategoryRecordMatrixViewModel TotalSharedKillsOnPlayerRating;
-        // Combined collections for UI (Full + Shared pairs)
-        public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnPlayerRatingExercise { get; private set; } = new();
-        public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnPlayerRatingMelee { get; private set; } = new();
-        public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnPlayerRatingCombat { get; private set; } = new();
-
-        public MissionCategoryRecordMatrixViewModel TotalAssistsByPlayerRating { get; private set; }
-
-        private MissionCategoryRecordMatrixViewModel TotalFullKillsOnAIRank;
-        private MissionCategoryRecordMatrixViewModel TotalSharedKillsOnAIRank;
-        // Combined collections for UI (Full + Shared pairs)
-        public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnAIRankExercise { get; private set; } = new();
-        public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnAIRankMelee { get; private set; } = new();
-        public ObservableCollection<KillPairViewModel> CombinedTotalKillsOnAIRankCombat { get; private set; } = new();
-
-        public MissionCategoryRecordMatrixViewModel TotalAssistsByAIRank { get; private set; }
-
+        public MissionCategoryRecordMatrixViewModel     TotalKillsByPlayerRating                { get; private set; }
+        public MissionCategoryRecordMatrixViewModel     TotalAssistsByPlayerRating              { get; private set; }
+        public MissionCategoryRecordMatrixViewModel     TotalKillsByAIRank                      { get; private set; }
+        public MissionCategoryRecordMatrixViewModel     TotalAssistsByAIRank                    { get; private set; }
         public MissionCategoryRecordViewModel           TotalHiddenCargoFound                   { get; private set; }
         public MissionCategoryRecordViewModel           TotalLaserHit                           { get; private set; }
         public MissionCategoryRecordViewModel           TotalLaserFired                         { get; private set; }
@@ -183,31 +168,23 @@ namespace XvTPilotEditor.ViewModels
             TotalKills                      = new MissionCategoryRecordViewModel(PilotRecordBase.TotalKills);
             FriendlyKills                   = new MissionCategoryRecordViewModel(PilotRecordBase.FriendlyKills);
 
-            TotalFullKillsOnPlayerRating = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalFullKillsOnPlayerRating?.Exercise,
-                                                                                    PilotRecordBase.TotalFullKillsOnPlayerRating?.Melee,
-                                                                                    PilotRecordBase.TotalFullKillsOnPlayerRating?.CombatEngagement);
-            TotalSharedKillsOnPlayerRating = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalSharedKillsOnPlayerRating?.Exercise,
-                                                                                      PilotRecordBase.TotalSharedKillsOnPlayerRating?.Melee,
-                                                                                      PilotRecordBase.TotalSharedKillsOnPlayerRating?.CombatEngagement);
-            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
-            CombinedTotalKillsOnPlayerRatingExercise = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Exercise, TotalSharedKillsOnPlayerRating.Exercise);
-            CombinedTotalKillsOnPlayerRatingMelee = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Melee, TotalSharedKillsOnPlayerRating.Melee);
-            CombinedTotalKillsOnPlayerRatingCombat = CollectionHelpers.Combine(TotalFullKillsOnPlayerRating.Combat, TotalSharedKillsOnPlayerRating.Combat);
+            TotalKillsByPlayerRating = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalFullKillsByPlayerRating?.Exercise,
+                                                                                PilotRecordBase.TotalFullKillsByPlayerRating?.Melee,
+                                                                                PilotRecordBase.TotalFullKillsByPlayerRating?.CombatEngagement,
+                                                                                PilotRecordBase.TotalSharedKillsByPlayerRating?.Exercise,
+                                                                                PilotRecordBase.TotalSharedKillsByPlayerRating?.Melee,
+                                                                                PilotRecordBase.TotalSharedKillsByPlayerRating?.CombatEngagement);
 
             TotalAssistsByPlayerRating = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalAssistsByPlayerRating?.Exercise,
                                                                                   PilotRecordBase.TotalAssistsByPlayerRating?.Melee,
                                                                                   PilotRecordBase.TotalAssistsByPlayerRating?.CombatEngagement);
 
-            TotalFullKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalFullKillsOnAIRank?.Exercise,
-                                                                              PilotRecordBase.TotalFullKillsOnAIRank?.Melee,
-                                                                              PilotRecordBase.TotalFullKillsOnAIRank?.CombatEngagement);
-            TotalSharedKillsOnAIRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalSharedKillsOnAIRank?.Exercise,
-                                                                                PilotRecordBase.TotalSharedKillsOnAIRank?.Melee,
-                                                                                PilotRecordBase.TotalSharedKillsOnAIRank?.CombatEngagement);
-            // Build combined collections (Full + Shared) so columns can render both values aligned by index.
-            CombinedTotalKillsOnAIRankExercise = CollectionHelpers.Combine(TotalFullKillsOnAIRank.Exercise, TotalSharedKillsOnAIRank.Exercise);
-            CombinedTotalKillsOnAIRankMelee = CollectionHelpers.Combine(TotalFullKillsOnAIRank.Melee, TotalSharedKillsOnAIRank.Melee);
-            CombinedTotalKillsOnAIRankCombat = CollectionHelpers.Combine(TotalFullKillsOnAIRank.Combat, TotalSharedKillsOnAIRank.Combat);
+            TotalKillsByAIRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalFullKillsByAIRank?.Exercise,
+                                                                          PilotRecordBase.TotalFullKillsByAIRank?.Melee,
+                                                                          PilotRecordBase.TotalFullKillsByAIRank?.CombatEngagement,
+                                                                          PilotRecordBase.TotalSharedKillsByAIRank?.Exercise,
+                                                                          PilotRecordBase.TotalSharedKillsByAIRank?.Melee,
+                                                                          PilotRecordBase.TotalSharedKillsByAIRank?.CombatEngagement);
 
             TotalAssistsByAIRank = new MissionCategoryRecordMatrixViewModel(PilotRecordBase.TotalAssistsByAIRank?.Exercise,
                                                                             PilotRecordBase.TotalAssistsByAIRank?.Melee,
